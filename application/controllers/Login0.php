@@ -25,8 +25,7 @@ class Login0 extends CI_Controller{
 			foreach ($data_pelanggan as $N){
 				$USERNAME_PELANGGAN= $N->username_pelanggan;
 				$NAMA_PELANGGAN= $N->nama_pelanggan;
-				//$prodi= $N->PRODI;
-				//$no_hp= $N->HP;
+				
 			}
 
 			$data_session = array(
