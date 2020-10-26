@@ -1,0 +1,10 @@
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/web/assets/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/popper/popper.min.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/tether/tether.min.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/smoothscroll/smooth-scroll.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/dropdown/js/nav-dropdown.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/countdown/jquery.countdown.min.js"></script>
+<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/theme/js/script.js"></script>
