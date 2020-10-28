@@ -23,4 +23,9 @@ class Welcome extends CI_Controller {
 		$this->load->view('Frontend/landing_page');
 	}
 
+	public function register()
+	{
+		$this->load->view('Frontend/register');
+	}
+
 }
