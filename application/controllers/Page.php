@@ -13,4 +13,9 @@ class Page extends CI_Controller
     {
         $this->load->view('Backend/Dashboard');
     }
+
+    public function profil()
+    {
+        $this->load->view('Backend/profil');
+    }
 }
