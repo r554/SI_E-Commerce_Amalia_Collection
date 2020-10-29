@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light ">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -36,8 +36,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user1-128x128.jpg" alt="User Avatar"
-                            class="img-size-50 mr-3 img-circle">
+                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -53,8 +52,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user8-128x128.jpg" alt="User Avatar"
-                            class="img-size-50 img-circle mr-3">
+                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce
@@ -119,8 +117,8 @@
         <li class="nav-item">
 
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <img src="<?php echo base_url() ?>assets/Admin/dist/img/user4-128x128.jpg"
-                    class="img-circle elevation-20" width="30px">
+
+                <img src="<?php echo base_url() ?>assets/Admin/dist/img/user4-128x128.jpg" class="img-circle elevation-20 " width="30px">
 
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">Amalia Collecton</span>

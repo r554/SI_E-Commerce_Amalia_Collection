@@ -1,3 +1,12 @@
+<?php
+
+if (!$this->session->userdata('kd_pengguna')) {
+  redirect(base_url("Auth_Admin"));
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +14,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Amalia Collection</title>
-
   <?php $this->load->view('Backend/template/head'); ?>
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -21,8 +28,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="<?php echo base_url() ?>assets/Admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Amalia Collection</span>
+        <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
       </a>
 
       <!-- Sidebar -->
@@ -895,12 +902,9 @@
 
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer class="main-footer text-sm">
       <strong>Copyright &copy; 2020 <a href="https://adminlte.io">Indanah Group</a>.</strong>
       All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.1.0-pre
-      </div>
     </footer>
   </div>
   <!-- ./wrapper -->

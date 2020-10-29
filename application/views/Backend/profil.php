@@ -21,9 +21,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
 
             <!-- Sidebar -->
@@ -66,9 +65,7 @@
                             <div class="card card-primary card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle"
-                                            src="<?php echo base_url() ?>assets/Admin//dist/img/user4-128x128.jpg"
-                                            alt="User profile picture">
+                                        <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url() ?>assets/Admin//dist/img/user4-128x128.jpg" alt="User profile picture">
                                     </div>
 
                                     <h3 class="profile-username text-center">Amalia</h3>
@@ -90,28 +87,23 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Username</label>
-                                            <input type="username" class="form-control" id="exampleInputUsername1"
-                                                placeholder="Username">
+                                            <input type="username" class="form-control" id="exampleInputUsername1" placeholder="Username">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNama1">Nama</label>
-                                            <input type="nama" class="form-control" id="exampleInputNama1"
-                                                placeholder="Nama">
+                                            <input type="nama" class="form-control" id="exampleInputNama1" placeholder="Nama">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputAlamat1">Alamat</label>
-                                            <input type="alamat" class="form-control" id="exampleInputAlamat1"
-                                                placeholder="Alamat">
+                                            <input type="alamat" class="form-control" id="exampleInputAlamat1" placeholder="Alamat">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
-                                            <input type="username" class="form-control" id="exampleInputNomorTelepon1"
-                                                placeholder="Nomor Telepon">
+                                            <input type="username" class="form-control" id="exampleInputNomorTelepon1" placeholder="Nomor Telepon">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Enter email">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                                         </div>
 
                                         <div class="form-group">
@@ -119,8 +111,7 @@
                                             <input type="file" name="foto">
                                             <p class="help-block">Format File Harus .jpg atau .png</p>
                                             <?php if (!empty($foto)) { ?>
-                                            <img src="<?php echo base_url() . 'upload/guru/' . $foto; ?>"
-                                                style="width:100px;height:100px;">
+                                                <img src="<?php echo base_url() . 'upload/guru/' . $foto; ?>" style="width:100px;height:100px;">
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -152,7 +143,7 @@
 
 
         <!-- Main Footer -->
-        <footer class="main-footer">
+        <footer class="main-footer text-sm">
             <strong>Copyright &copy; INDANAH GROUP</strong>
         </footer>
     </div>
