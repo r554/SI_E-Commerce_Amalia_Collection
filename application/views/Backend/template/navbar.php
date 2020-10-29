@@ -125,15 +125,15 @@
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">Amalia Collecton</span>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Edit Profil
+                    <a href="<?php echo base_url('page/profil') ?>" class="dropdown-item">Edit Profil
                         <span class="float-right text-muted text-sm"></span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Ubah Password
+                    <a href="<?php echo base_url('page/ubahpw') ?>" class="dropdown-item">Ubah Password
                         <span class="float-right text-muted text-sm"></span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">Log Out
+                    <a href="<?php echo base_url('Auth_Admin/logout') ?>" class="dropdown-item">Log Out
                         <span class="float-right text-muted text-sm"></span>
                     </a>
 
