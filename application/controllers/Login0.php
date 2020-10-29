@@ -38,7 +38,7 @@ class Login0 extends CI_Controller{
 				);
 
 			$this->session->set_userdata($data_session);
-			redirect(base_url("homepage"));		
+			redirect(base_url("Welcome"));		
 			
 		}else{
 			$data_session = array(

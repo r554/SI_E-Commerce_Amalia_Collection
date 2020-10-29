@@ -28,6 +28,18 @@
   
 </head>
 <body> 
+<?php 
+	if (isset($_SESSION["logingagal"])){ ?>
+	<div class="alert alert-danger alert-dismissible fade show">
+		<strong>Login Gagal</strong> username atau password salah.
+		<button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+  <?php } 
+	  $this->session->unset_userdata('logingagal');
+  ?>
+
 <section class="form4 cid-secUYvj1Zp mbr-fullscreen">
     <div class="container">
         <div class="row content-wrapper justify-content-center">
@@ -53,11 +65,11 @@
                 <div class="image-wrapper">
                     <img class="w-100" src="<?php echo base_url('tambahan/assets/images/sq3.jpg');?>" alt="BP">
                 </div>
-            </div>
-        </div>
+            </div>                  
+        </div>       
     </div>
 </section>
-           
+
 
 <section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
     <a href="https://mobirise.site/y"></a>
