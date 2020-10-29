@@ -18,4 +18,10 @@ class Page extends CI_Controller
     {
         $this->load->view('Backend/profil');
     }
+
+    public function ubahpw()
+    {
+        $this->load->view('Backend/ubahpw');
+    }
 }
+?>

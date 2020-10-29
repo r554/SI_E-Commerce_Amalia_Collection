@@ -21,7 +21,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -38,12 +39,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Profil</li>
+                                <li class="breadcrumb-item active">Edit Profil</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -56,6 +58,85 @@
             <!-- Main content Ini Bagian Content -->
             <section class="content">
                 <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <!-- Profile Image -->
+                            <div class="card card-primary card-outline">
+                                <div class="card-body box-profile">
+                                    <div class="text-center">
+                                        <img class="profile-user-img img-fluid img-circle"
+                                            src="<?php echo base_url() ?>assets/Admin//dist/img/user4-128x128.jpg"
+                                            alt="User profile picture">
+                                    </div>
+
+                                    <h3 class="profile-username text-center">Amalia</h3>
+
+                                    <p class="text-muted text-center">Admin</p>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-9">
+
+
+                            <div class="card card-primary">
+                                <form>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputUsername1">Username</label>
+                                            <input type="username" class="form-control" id="exampleInputUsername1"
+                                                placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputNama1">Nama</label>
+                                            <input type="nama" class="form-control" id="exampleInputNama1"
+                                                placeholder="Nama">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputAlamat1">Alamat</label>
+                                            <input type="alamat" class="form-control" id="exampleInputAlamat1"
+                                                placeholder="Alamat">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
+                                            <input type="username" class="form-control" id="exampleInputNomorTelepon1"
+                                                placeholder="Nomor Telepon">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                placeholder="Enter email">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Foto</label>
+                                            <input type="file" name="foto">
+                                            <p class="help-block">Format File Harus .jpg atau .png</p>
+                                            <?php if (!empty($foto)) { ?>
+                                            <img src="<?php echo base_url() . 'upload/guru/' . $foto; ?>"
+                                                style="width:100px;height:100px;">
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-info">Simpan</button>
+                                        <button type="submit" class="btn btn-default float-right">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
                     <!-- Ini bagian Content -->
 
 
@@ -72,11 +153,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.1.0-pre
-            </div>
+            <strong>Copyright &copy; INDANAH GROUP</strong>
         </footer>
     </div>
     <!-- ./wrapper -->
