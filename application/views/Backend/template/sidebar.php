@@ -13,7 +13,7 @@
 
   <!-- Sidebar Menu -->
   <nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
       <li class="nav-item menu-open">
@@ -25,13 +25,46 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="<?php echo base_url('Page/profil') ?>" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
+        <a href="#" class="nav-link">
+          <i class="nav-icon fa fa-archive"></i>
           <p>
-            Widgets
-            <span class="right badge badge-danger">New</span>
+            Pesanan
+            <i class="fas fa-angle-left right"></i>
+            <!-- <span class="badge badge-info right">6</span> -->
           </p>
         </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Semua Pesanan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Pesanan Dibatalkan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/layout/boxed.html" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Pesanan Diproses</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Pesanan Dikirim</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Pesanan Selesai</p>
+            </a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
