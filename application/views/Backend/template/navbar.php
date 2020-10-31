@@ -36,7 +36,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user1-128x128.jpg" alt="User Avatar"
+                            class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -52,7 +53,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="<?php echo base_url() ?>assets/Admin/dist/img/user8-128x128.jpg" alt="User Avatar"
+                            class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce
@@ -118,16 +120,23 @@
 
             <a class="nav-link" data-toggle="dropdown" href="#">
 
-                <img src="<?php echo base_url() ?>assets/Admin/dist/img/user4-128x128.jpg" class="img-circle elevation-20 " width="30px">
+                <img src="<?php echo base_url() ?>assets/Admin/dist/img/user4-128x128.jpg"
+                    class="img-circle elevation-20 " width="30px">
 
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">Amalia Collecton</span>
+                    <a href="<?php echo base_url('Page') ?>">
+                        <span class="dropdown-item dropdown-header">Amalia Collection</span>
+                    </a>
                     <div class="dropdown-divider"></div>
-                    <a href="<?php echo base_url('page/profil') ?>" class="dropdown-item">Edit Profil
+                    <?php $id_user = $this->session->userdata('kd_pengguna')?>
+
+                    <a href="<?php echo base_url('Admin/profil/tampil/'.$id_user) ?>" class="dropdown-item">
+                        Edit Profil
                         <span class="float-right text-muted text-sm"></span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="<?php echo base_url('page/ubahpw') ?>" class="dropdown-item">Ubah Password
+                    <a href="<?php echo base_url('Admin/profil/ubah_password/'.$id_user) ?>" class="dropdown-item">Ubah
+                        Password
                         <span class="float-right text-muted text-sm"></span>
                     </a>
                     <div class="dropdown-divider"></div>

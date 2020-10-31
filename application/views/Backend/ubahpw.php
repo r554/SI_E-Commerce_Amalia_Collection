@@ -63,30 +63,40 @@
                         <div class="col-2"> </div>
                         <div class="col-8">
                             <div class="card card-primary">
-                                <form class="form-horizontal">
+                                <?php $id_user = $this->session->userdata('kd_pengguna')?>
+                                <form action="<?php echo base_url('Admin/profil/edit_ubahpw/'.$id_user)?>" method="POST"
+                                    role="form" class="form-horizontal">
+                                    <input name="id_admin" value="<?php echo $user->id_admin; ?>" type="hidden">
+                                    <input name="nama_admin" value="<?php echo $user->nama_admin; ?>" type="hidden">
+                                    <input name="alamat_admin" value="<?php echo $user->alamat_admin; ?>" type="hidden">
+                                    <input name="no_admin" value="<?php echo $user->no_admin; ?>" type="hidden">
+                                    <input name="email_admin" value="<?php echo $user->email_admin; ?>" type="hidden">
+                                    <input name="foto_admin" value="<?php echo $user->foto_admin; ?>" type="hidden">
+                                    <input name="username_admin" value="<?php echo $user->username_admin; ?>"
+                                        type="hidden">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="inputpasswordlama1" class="col-sm-2 col-form-label">Password
                                                 Lama</label>
                                             <div class="col-sm-10">
-                                                <input type="password lama" class="form-control"
-                                                    id="inputpasswordlama1">
+                                                <input value="<?php echo $user->password_admin; ?>" type="password"
+                                                    disabled class="form-control" id="inputpasswordlama1">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputpasswordbaru1" class="col-sm-2 col-form-label">Password
                                                 Baru</label>
                                             <div class="col-sm-10">
-                                                <input type="password baru" class="form-control"
+                                                <input name="password_admin" type="password baru" class="form-control"
                                                     id="inputpasswordbaru1">
                                             </div>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-info float-right">Simpan</button>
-                                    </div>
-                                    <!-- /.card-footer -->
+                                        <button type="submit" class="btn btn-success float-right">
+                                            Simpan</button>
+                                        <!-- /.card-footer -->
                                 </form>
                             </div>
                         </div>
