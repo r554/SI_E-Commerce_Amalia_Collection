@@ -15,7 +15,7 @@ class Auth_Admin extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('authenticated')) // Jika user sudah login (Session authenticated ditemukan)
-            redirect('Page/home'); // Redirect ke page home
+            redirect('Dashboard/tampil'); // Redirect ke page home
 
         $this->load->view('Backend/login'); // Load view login.php
     }
@@ -43,7 +43,7 @@ class Auth_Admin extends CI_Controller
 
                 $this->session->set_userdata($session); // Buat session sesuai $session
                 //redirect('page/home'); // Redirect ke halaman home
-                redirect(site_url('page/home'));
+                redirect(site_url('Dashboard/tampil'));
             } else {
                 $this->session->set_flashdata('message', 'Username atau Password Salah'); // Buat session flashdata
                 redirect('Auth_Admin'); // Redirect ke halaman login
