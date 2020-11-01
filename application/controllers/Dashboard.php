@@ -29,7 +29,7 @@ class Dashboard extends CI_Controller
 			"user2"  => $show->tampil_data46(),
 		];
 
-		$this->load->view("Backend/Dashboard", $data);
+		$this->load->view("Backend/DashboardAdmin", $data);
 	}
 
 

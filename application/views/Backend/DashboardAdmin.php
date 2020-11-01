@@ -336,9 +336,9 @@
 
 
     <!-- Data Table-->
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <!-- DataTables  & Plugins -->
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -357,7 +357,7 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>assets/Admin/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script> -->
     <!-- Page specific script -->
     <script>
     $(function() {
