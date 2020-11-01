@@ -67,12 +67,10 @@
                                 <div class="card-body box-profile">
                                     <div class="text-center">
                                         <img class="profile-user-img img-fluid img-circle"
-                                            src="<?php echo base_url() ?>assets/Admin//dist/img/user4-128x128.jpg"
+                                            src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin?>"
                                             alt="User profile picture">
                                     </div>
-
                                     <h3 class="profile-username text-center">Amalia</h3>
-
                                     <p class="text-muted text-center">Admin</p>
                                 </div>
                                 <!-- /.card-body -->
@@ -88,15 +86,14 @@
                             <div class="card card-primary">
                                 <?php $id_user = $this->session->userdata('kd_pengguna')?>
                                 <form action="<?php echo base_url('Admin/profil/edit/'.$id_user)?>" method="POST"
-                                    role="form">
+                                    role="form" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="exampleInputUsername1">Username</label>
                                             <input name="id_admin" value="<?php echo $user->id_admin; ?>" type="hidden">
                                             <input name="password_admin" value="<?php echo $user->password_admin; ?>"
                                                 type="hidden">
                                             <input name="username_admin" value="<?php echo $user->username_admin; ?>"
-                                                type="username" class="form-control" id="exampleInputUsername1">
+                                                type="hidden" class="form-control" id="exampleInputUsername1">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNama1">Nama</label>
@@ -123,11 +120,6 @@
                                             <label>Foto</label>
                                             <input name="foto_admin" value="<?php echo $user->foto_admin; ?>"
                                                 type="file" name="foto">
-                                            <p class="help-block">Format File Harus .jpg atau .png</p>
-                                            <?php if (!empty($foto)) { ?>
-                                            <img src="<?php echo base_url() . 'upload/guru/' . $foto; ?>"
-                                                style="width:100px;height:100px;">
-                                            <?php } ?>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

@@ -60,14 +60,30 @@ public function update()
   $this->alamat_admin = $post["alamat_admin"];
   $this->no_admin = $post["no_admin"];
   $this->email_admin = $post["email_admin"];
-  $this->foto_admin = $post["foto_admin"];
+  //$this->foto_admin = $post["foto_admin"];
+  $this->foto_admin = $this->do_upload();
   $this->username_admin = $post["username_admin"];
   // $this->password_admin = $post["password_admin"];
   $this->password_admin = md5($post["password_admin"]);
   //$this->role = $post["role"];
+ 
 
   return $this->db->update($this->_table, $this, array('id_admin' => $post['id_admin']));
 }
+
+function do_upload()
+	{
+        // setting konfigurasi upload
+		$config['upload_path'] = './assets/Gambar/foto_profil';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['file_name']            = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+        // load library upload
+		$this->load->library('upload', $config);
+        // upload gambar
+		$this->upload->do_upload('foto_admin');
+		$result1 = $this->upload->data('file_name');
+		return $result1;
+	}
 
 }
 
