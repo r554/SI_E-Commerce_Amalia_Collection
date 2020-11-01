@@ -261,7 +261,44 @@
 
 <!-- REQUIRED SCRIPTS -->
 <?php $this->load->view('Backend/template/js'); ?>
-
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#example3').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+  });
+  $("#setstatus1").change(function()
+{
+    document.location.href = $(this).val();
+});
+$("#setstatus2").change(function()
+{
+    document.location.href = $(this).val();
+});
+</script>
 
 </body>
 </html>
