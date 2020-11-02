@@ -23,5 +23,21 @@ class Page extends CI_Controller
     {
         $this->load->view('Backend/ubahpw');
     }
+
+    public function banner()
+    {
+        $this->load->view('Backend/banner');
+    }
+
+    public function tambah_banner()
+    {
+        $this->load->view('Backend/tambah_banner');
+    }  
+    
+    public function edit_banner()
+    {
+        $this->load->view('Backend/edit_banner');
+    } 
+
 }
 ?>

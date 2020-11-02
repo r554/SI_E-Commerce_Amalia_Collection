@@ -122,12 +122,11 @@
 
                 <img src="<?php echo base_url() ?>assets/Admin/dist/img/user4-128x128.jpg"
                     class="img-circle elevation-20 " width="30px">
-
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="<?php echo base_url('Page') ?>">
                         <span class="dropdown-item dropdown-header">Amalia Collection</span>
                     </a>
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider dropdown-menu dropdown-menu-lg dropdown-menu-right"></div>
                     <?php $id_user = $this->session->userdata('kd_pengguna')?>
 
                     <a href="<?php echo base_url('Admin/profil/tampil/'.$id_user) ?>" class="dropdown-item">
