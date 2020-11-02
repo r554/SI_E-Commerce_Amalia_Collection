@@ -33,6 +33,7 @@ class Banner extends CI_Controller
 		];
 
 		$this->load->view("Backend/banner", $data);
+		
 	}
 
 	public function edit_banner($id = null)
@@ -50,8 +51,8 @@ class Banner extends CI_Controller
 		}
 
 		$data["edit_banner"] = $model->getById($id);
-		//var_dump($data);
-		//die;
+		// var_dump($data);
+		// die;
 		$this->load->view("Backend/edit_banner", $data);
 	}
 

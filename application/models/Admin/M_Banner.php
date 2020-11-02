@@ -55,7 +55,7 @@ class M_Banner extends CI_model
 	public function update_banner()
 	{
 		$post = $this->input->post();
-		//$this->id_banner = $post["id_banner"];
+		$this->id_banner = $post["id_banner"];
         $this->sub_tittle = $post["sub_tittle"];
         $this->tittle_banner = $post["tittle_banner"];
         $this->deskripsi_banner = $post["deskripsi_banner"];
@@ -66,10 +66,18 @@ class M_Banner extends CI_model
 		return $this->db->update($this->_table, $this, array('id_banner' => $post['id_banner']));
 	}
 
-	pulic function getById($id)
+	public function tampil_data()
+    {
+     $query = $this->db->get('tbl_banner');
+     return $query->result_array();
+   }
+
+
+	public function getById($id)
 	{
-		$query = $this->db->get('tbl_banner');
-		return $query->result_array();
+		//$query = $this->db->get('tbl_banner');
+		//return $query->result();
+		return $this->db->get_where($this->_table, ['id_banner' => $id])->result();
 	}
 
 	public function delete($id)
@@ -122,11 +130,6 @@ class M_Banner extends CI_model
 		return $this->db->get()->result();
     }
     
-    public function tampil_data()
-    {
-     $query = $this->db->get('tbl_banner');
-     return $query->result_array();
-   }
-
+    
 
 }
