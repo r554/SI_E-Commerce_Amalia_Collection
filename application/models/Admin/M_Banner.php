@@ -61,7 +61,13 @@ class M_Banner extends CI_model
         $this->deskripsi_banner = $post["deskripsi_banner"];
         //$this->foto_banner = $post["foto_banner"];
 		$this->link_banner = $post["link_banner"];
-		$this->foto_banner = $this->do_upload();
+		
+		//$this->foto_banner = $this->do_upload();
+		if (!empty($_FILES["foto_banner"]["name"])) {
+			$this->foto_banner = $this->do_upload();
+		} else {
+			  $this->foto_banner = $post["foto"];
+		}
 
 		return $this->db->update($this->_table, $this, array('id_banner' => $post['id_banner']));
 	}

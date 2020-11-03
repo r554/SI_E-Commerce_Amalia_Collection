@@ -61,8 +61,9 @@
                     <div class="row">
                         <div class="col-md-10 mx-auto">
                             <!-- Form Element sizes -->
-                            <form action="<?php echo base_url('Admin/Banner/edit_banner')?>" method="POST" role="form"
-                                enctype="multipart/form-data">
+                            <form
+                                action="<?php echo base_url('Admin/Banner/edit_banner/'.$edit_banner['0']->id_banner)?>"
+                                method="POST" role="form" enctype="multipart/form-data">
                                 <div class="card card-success">
                                     <div class="card-header">
                                         <h3 class="card-title">Edit Banner</h3>
@@ -91,7 +92,11 @@
                                             name="link_banner" value="<?php echo $edit_banner['0']->link_banner?>">
                                         <br>
                                         <label>Foto</label>
-                                        <input name="foto_banner" type="file">
+                                        <input name="foto_banner" type="file"
+                                            value="<?php echo $edit_banner['0']->foto_banner?>">
+                                        <input name="foto" type="hidden"
+                                            value="<?php echo $edit_banner['0']->foto_banner?>">
+
                                         <img src="<?php echo base_url() ?>assets/Gambar/foto_banner/<?php echo $edit_banner['0']->foto_banner?>"
                                             alt="" width="200px" hight="200px">
                                     </div>

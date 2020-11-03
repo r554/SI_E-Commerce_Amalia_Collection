@@ -46,8 +46,8 @@ class Banner extends CI_Controller
 
 		if ($validation->run()) {
 			$model->update_banner();
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
-			redirect(site_url('Admin/Banner/edit_banner'));
+			//$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$this->session->set_flashdata('message', 'Berhasil Disimpan');
 		}
 
 		$data["edit_banner"] = $model->getById($id);
@@ -55,6 +55,7 @@ class Banner extends CI_Controller
 		// die;
 		$this->load->view("Backend/edit_banner", $data);
 	}
+
 
 	public function delete($id = null)
 	{
