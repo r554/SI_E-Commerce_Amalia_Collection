@@ -38,31 +38,25 @@
                 <li data-slide-to="1" data-target="#sehycMm2yg"></li>
                 <li data-slide-to="2" data-target="#sehycMm2yg"></li>
             </ol>
+
             <div class="carousel-inner">
-                <div class="carousel-item slider-image item active">
+                <?php foreach ($tbl_banner as $a) {  ?>
+                <div class="carousel-item slider-image item 
+                <?php if ($a->id_banner == 5) {
+                        echo ("active");
+                    } else {
+                        echo ("");
+                    }
+                ?>
+                    ">
                     <div class="item-wrapper">
                         <img class="d-block w-100"
-                            src="<?php echo base_url() ?>assets/Frontend_mobi/assets/images/slide2.jpg">
-
+                            src="<?php echo base_url() ?>assets/Gambar/foto_banner/<?php echo $a->foto_banner; ?>">
                     </div>
                 </div>
-                <div class="carousel-item slider-image item">
-                    <div class="item-wrapper">
-                        <img class="d-block w-100"
-                            src="<?php echo base_url() ?>assets/Frontend_mobi/assets/images/slide3.jpg">
-
-
-                    </div>
-                </div>
-                <div class="carousel-item slider-image item">
-                    <div class="item-wrapper">
-                        <img class="d-block w-100"
-                            src="<?php echo base_url() ?>assets/Frontend_mobi/assets/images/slide1.jpg">
-
-
-                    </div>
-                </div>
+                <?php }; ?>
             </div>
+
             <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#sehycMm2yg">
                 <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
