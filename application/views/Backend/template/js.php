@@ -36,4 +36,41 @@
 <!-- Bootstrap Switch -->
 <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
-
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#example3').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+  });
+  $("#setstatus1").change(function()
+{
+    document.location.href = $(this).val();
+});
+$("#setstatus2").change(function()
+{
+    document.location.href = $(this).val();
+});
+</script>

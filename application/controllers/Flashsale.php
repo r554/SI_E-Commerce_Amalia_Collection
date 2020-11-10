@@ -13,6 +13,12 @@ class Flashsale extends CI_Controller
     //if($this->session->userdata('status') != "login0"){
     //redirect(base_url("login0"));
   } 
+  function index()
+     {
+      $data['tbl_promo'] = $this->m_data->tampil_dataPromo()->result();
+      $data['tbl_produk'] = $this->m_data->tampil_dataProduk()->result();
+      $this->load->view('Backend/Fsale',$data);
+     }
   function produkflashsale()
      {
       $data['tbl_promo'] = $this->m_data->tampil_dataPromo()->result();

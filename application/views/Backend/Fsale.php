@@ -198,6 +198,11 @@
                       echo "Aktif";
                     } ?></td>                    
                     <td>
+                    <!--<select class="form-control select2" id="setstatus1">
+                          <option >--- Pilih Aksi ---</option>
+                            <option value="<?php //echo base_url('Flashsale/updatestatus2/'.$u->id_produk); ?>">Promo</option>
+                            <option value="<?php //echo base_url('Flashsale/updatestatus3/'.$u->id_produk); ?>">Tidak Promo</option>
+                        </select>-->
                     <a class="btn btn-success btn-sm" <?php echo anchor('Flashsale/updatestatus1/'.$p->id_promo,'Aktifkan'); ?></a>
                     <a class="btn btn-danger btn-sm" <?php echo anchor('Flashsale/updatestatus0/'.$p->id_promo,'Non-Aktifkan'); ?></a>
                   </td>
