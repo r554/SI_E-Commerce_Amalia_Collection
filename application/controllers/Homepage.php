@@ -16,19 +16,14 @@ class Homepage extends CI_Controller
 
   function index()
   {
-    $data['tbl_produk'] = $this->m_data->tampil_dataProduk()->result();
-    $this->load->view('katalog', $data);
+    $data['tbl_banner'] = $this->m_data->tampil_slider();
+    //var_dump($data);
+    //die;
+    $this->load->view('Frontend/landing_page', $data);
   }
   function detailProduk($id)
   {
     $data['detailProduk'] = $this->m_data->tpdetailProduk($id);
     $this->load->view('Frontend/detailProduk', $data);
-  }
-  public function slider()
-  {
-    $data['tbl_banner'] = $this->m_data->tampil_slider();
-    //var_dump($data);
-    //die;
-    $this->load->view('Frontend/landing_page', $data);
   }
 }
