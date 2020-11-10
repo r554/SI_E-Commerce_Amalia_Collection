@@ -72,7 +72,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
-                        Layout Options
+                        Banner
                         <i class="fas fa-angle-left right"></i>
                         <span class="badge badge-info right">6</span>
                     </p>
@@ -291,10 +291,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="<?php echo base_url("Admin/Banner/tampil")?>" class="nav-link">
                     <i class="nav-icon far fa-image"></i>
                     <p>
-                        Gallery
+                        Banner
                     </p>
                 </a>
             </li>

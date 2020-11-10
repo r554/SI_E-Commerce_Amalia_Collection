@@ -1,6 +1,6 @@
 <?php
 
-if (!$this->session->userdata('kd_pengguna')) {
+if (!$this->session->userdata('nama')) {
     redirect(base_url("Auth_Admin"));
 }
 
