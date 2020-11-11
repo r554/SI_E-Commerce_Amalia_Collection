@@ -4,8 +4,8 @@ class M_Pesanan extends CI_model
 {
     private $_table = "tbl_order";
 
-    public $id_kategori;
-    public $nama_kategori;
+    public $id_order;
+    public $id_pelanggan;
 
     public function rules()
     {
@@ -19,14 +19,102 @@ class M_Pesanan extends CI_model
         ];
     }
 
+
     public function tampil_semua()
     {
-        $query = $this->db->get('tbl_order');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    public function get_tampil_detail($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
+    public function get_tampil_semua_pesanan_diproses()
+    {
+        $id = "diproses";
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_order.status', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    public function get_tampil_semua_pesanan_dikirim()
+    {
+        $id = "dikirim";
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_order.status', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    public function get_tampil_semua_pesanan_selesai()
+    {
+        $id = "selesai";
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_order.status', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    public function get_tampil_semua_pesanan_dibatalkan()
+    {
+        $id = "dibatalkan";
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_order.status', $id);
+        $query = $this->db->get();
         return $query->result_array();
     }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function tampil_sum()
+    {
+        $this->db->select_sum('jumlah');
+        $query = $this->db->get('tbl_keranjang'); // Produces: SELECT SUM(age) as age FROM members
+        return $query->result_array();
+    }
 
     public function save()
     {
@@ -40,7 +128,7 @@ class M_Pesanan extends CI_model
 
     public function tampil_data()
     {
-        $query = $this->db->get('tbl_kategori');
+        $query = $this->db->get('tbl_order');
         return $query->result_array();
     }
 

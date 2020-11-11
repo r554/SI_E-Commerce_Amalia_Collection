@@ -50,7 +50,7 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Semua Pesanan</h1>
+                            <h1 class="m-0">Pesanan Diproses</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -89,7 +89,7 @@ if (!$this->session->userdata('nama')) {
                                 </thead>
                                 <?php
                                 $no = 1;
-                                foreach ($pesanan as $pesanan) {
+                                foreach ($pesanan_diproses as $pesanan) {
                                 ?>
                                     <tbody>
                                         <tr>

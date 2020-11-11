@@ -50,7 +50,7 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Semua Pesanan</h1>
+                            <h1 class="m-0">Pesanan Dikirim</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -73,7 +73,7 @@ if (!$this->session->userdata('nama')) {
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Daftar Pesanan</h3>
+                            <h3 class="card-title">Pesanan Dikirim</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -89,7 +89,7 @@ if (!$this->session->userdata('nama')) {
                                 </thead>
                                 <?php
                                 $no = 1;
-                                foreach ($pesanan as $pesanan) {
+                                foreach ($pesanan_dikirim as $pesanan) {
                                 ?>
                                     <tbody>
                                         <tr>
@@ -125,13 +125,8 @@ if (!$this->session->userdata('nama')) {
 
 
                     <!-- Main Footer -->
-                    <footer class="main-footer">
-                        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-                        All rights reserved.
-                        <div class="float-right d-none d-sm-inline-block">
-                            <b>Version</b> 3.1.0-pre
-                        </div>
-                    </footer>
+                    <?php $this->load->view('Backend/template/footer'); ?>
+
                 </div>
                 <!-- ./wrapper -->
 
