@@ -412,73 +412,120 @@
 
 
 
+
+
     <!-- ini Bagian Footer -->
+
+
     <section class="footer3 cid-seeCeCy87Y" once="footers" id="footer3-e">
+
         <div class="container">
-            <div class="media-container-row align-center mbr-white">
-                <div class="row row-links">
-                    <ul class="foot-menu">
-                        <li class="foot-menu-item mbr-fonts-style display-7">
-                            <a class="text-white" href="#" target="_blank">About us</a>
-                        </li>
-                        <li class="foot-menu-item mbr-fonts-style display-7">
-                            <a class="text-white" href="#" target="_blank">Services</a>
-                        </li>
-                        <li class="foot-menu-item mbr-fonts-style display-7">
-                            <a class="text-white" href="#" target="_blank">Contact Us</a>
-                        </li>
-                        <li class="foot-menu-item mbr-fonts-style display-7">
-                            <a class="text-white" href="#" target="_blank">Careers</a>
-                        </li>
-                        <li class="foot-menu-item mbr-fonts-style display-7">
-                            <a class="text-white" href="#" target="_blank">Work</a>
+            <div class="row content mbr-white">
+
+
+
+
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+
+
+                    <?php                                            
+            $no = 1;
+            foreach ($footer as $z) {
+            ?>
+                    <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
+                        <strong>Alamat</strong>
+                    </h5>
+                    <p class="mbr-text mbr-fonts-style display-7"><?php echo $z->Alamat; ?> </p>
+
+                    <br>
+                    <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 mt-4 display-7">
+                        <strong>Info Kontak</strong>
+                    </h5>
+                    <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                        Email: <?php echo $z->email; ?> <br>
+                        Phone: <?php echo $z->no_telepon; ?> <br>
+                        Fax: <?php echo $z->fax; ?>
+                    </p>
+
+                    <?php } ?>
+
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
+                        <strong>Informasi Tambahan</strong>
+                    </h5>
+                    <ul class="list mbr-fonts-style mb-4 display-4">
+                        <li class="mbr-text item-wrap">Tentang Kami</li>
+                        <li class="mbr-text item-wrap">
+                            Privasi &amp; Kebijakan</li>
+                        <li class="mbr-text item-wrap">
+                            <a class="text-primary" href="">Berlangganan</a>
                         </li>
                     </ul>
                 </div>
-                <div class="row social-row">
-                    <div class="social-list align-right pb-2">
+                <div class="col-6 col-md-6 ">
+                    <div class="google-map"><iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.2965708227107!2d113.36887381433182!3d-8.27325198544883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd663703403958d%3A0xc691acd0f91f4677!2sAmalia%20collection!5e0!3m2!1sen!2sid!4v1603956166325!5m2!1sen!2sid"
+                            frameborder="0" style="border:0;" allowfullscreen="" width="230px" height="260px"></iframe>
+                    </div>
+                </div>
 
 
-                        <div class="soc-item">
-                            <a href="https://twitter.com/mobirise" target="_blank">
-                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
+            </div>
+
+            <section class="footer3 cid-seeCeCy87Y" once="footers" id="footer3-e">
+                <div class="container">
+                    <div class="media-container-row align-center mbr-white">
+
+                        <div class="row social-row">
+                            <div class="social-list align-right pb-2">
+                                <div class="soc-item">
+                                    <a href="https://twitter.com/mobirise" target="_blank">
+                                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                                    </a>
+                                </div>
+                                <div class="soc-item">
+                                    <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                                    </a>
+                                </div>
+                                <div class="soc-item">
+                                    <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                                        <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                                    </a>
+                                </div>
+                                <div class="soc-item">
+                                    <a href=<?php echo $z->instagram; ?> target="_blank">
+                                        <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                                    </a>
+                                </div>
+                                <div class="soc-item">
+                                    <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
+                                        <span
+                                            class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
+                                    </a>
+                                </div>
+                                <div class="soc-item">
+                                    <a href="https://www.behance.net/Mobirise" target="_blank">
+                                        <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="soc-item">
-                            <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
-                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://instagram.com/mobirise" target="_blank">
-                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.behance.net/Mobirise" target="_blank">
-                                <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
+                        <br>
+                        <div class="row row-copirayt">
+                            <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                                © Copyright CV.INDANAH GROUP 2020. All Rights Reserved.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row row-copirayt">
-                    <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
-                        © Copyright 2025 Mobirise. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
+            </section>
+
         </div>
     </section>
+
+
 
     <section
         style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">

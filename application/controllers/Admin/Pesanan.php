@@ -15,11 +15,103 @@ class Pesanan extends CI_Controller
     {
         $show = $this->M_Pesanan;
         $data = [
-            "user" => $show->tampil_semua()
+            "pesanan" => $show->tampil_semua(),
         ];
-
         $this->load->view("Backend/Semua_Pesanan", $data);
     }
+
+
+    public function tampil_detail_pemesanan($id)
+    {
+        $show = $this->M_Pesanan;
+        $data = [
+            "pesanan" => $show->get_tampil_detail($id),
+        ];
+        $this->load->view("Backend/Semua_Pesanan_Detail", $data);
+    }
+
+
+    public function tampil_semua_pesanan_diproses()
+    {
+        $model = $this->M_Pesanan;
+        $data = [
+            "pesanan_diproses" => $model->get_tampil_semua_pesanan_diproses(),
+        ];
+        $this->load->view("Backend/Semua_Pesanan_Diproses", $data);
+    }
+
+
+    public function tampil_semua_pesanan_dikirim()
+    {
+        $model = $this->M_Pesanan;
+        $data = [
+            "pesanan_dikirim" => $model->get_tampil_semua_pesanan_dikirim(),
+        ];
+        $this->load->view("Backend/Semua_Pesanan_Dikirim", $data);
+    }
+
+
+    public function tampil_semua_pesanan_selesai()
+    {
+        $model = $this->M_Pesanan;
+        $data = [
+            "pesanan_selesai" => $model->get_tampil_semua_pesanan_selesai(),
+        ];
+        $this->load->view("Backend/Semua_Pesanan_Selesai", $data);
+    }
+
+    public function tampil_semua_pesanan_dibatalkan()
+    {
+        $model = $this->M_Pesanan;
+        $data = [
+            "pesanan_dibatalkan" => $model->get_tampil_semua_pesanan_dibatalkan(),
+        ];
+        $this->load->view("Backend/Semua_Pesanan_Dibatalkan", $data);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function tampil()
     {
