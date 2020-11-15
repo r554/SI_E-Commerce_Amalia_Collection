@@ -4,7 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laporan Penjualan</title>
+  <?php
 
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
   
   <?php $this->load->view('Backend/template/head'); ?>
 </head>
@@ -100,10 +106,10 @@
               </div>
               <!-- /.card-header -->
               <ul class="nav nav-tabs nav-justified">
-                <li class="nav-link active"><a href="index">Semua</a></li>
-                <li class="nav-link"><a href="penjualan">Terbayar</a></li>
-                <li class="nav-link"><a href="dibatalkan">Dibatalkan</a></li>
-                <li class="nav-link"><a href="diproses">DiProses</a></li>
+                <li class="nav-link active"><a href="laporan/index">Semua</a></li>
+                <li class="nav-link"><a href="laporan/penjualan">Terbayar</a></li>
+                <li class="nav-link"><a href="laporan/dibatalkan">Dibatalkan</a></li>
+                <li class="nav-link"><a href="laporan/diproses">DiProses</a></li>
               </ul>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
@@ -166,10 +172,7 @@
                 </table>
               </div>
               <!-- /.card-body -->              
-            </div>
-            
-      
-              
+            </div>              
               
               <!-- /.card-body -->              
             </div>

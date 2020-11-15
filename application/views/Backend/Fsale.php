@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | DataTables</title>
 
-  
+  <?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
   <?php $this->load->view('Backend/template/head'); ?>
 </head>
 <body class="hold-transition sidebar-mini">
