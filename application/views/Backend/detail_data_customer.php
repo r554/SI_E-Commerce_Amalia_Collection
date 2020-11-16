@@ -69,6 +69,7 @@
                                 ?>
                                 <img width="230px" height="230px"
                                     src="<?php echo base_url() ?>assets/Gambar/foto_customer/<?php echo $u->foto_pelanggan ?>">
+
                             </div>
                             <div class=" col-md-9">
                                 <div class="card-body">
@@ -79,65 +80,77 @@
                                         <!-- /.card-header -->
 
                                         <!-- form start -->
-                                        <form action="<?php echo base_url() . 'Admin/data_customer/edit' ?>"
-                                            method="POST" role="form">
+                                        <form action="<?php echo base_url('Admin/data_customer/edit'); ?>" method="POST"
+                                            role="form">
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label>Nama Pelanggan</label>
-                                                    <input type="text" class="form-control" name="nama_pelanggan"
-                                                        value="<?php echo $u->nama_pelanggan ?>" disabled>
+                                                    <input type="hidden" name="id_pelanggan"
+                                                        value="<?php echo $u->id_pelanggan ?>">
+                                                    <input type="hidden" name="foto_pelanggan"
+                                                        value="<?php echo $u->foto_pelanggan ?>">
+                                                    <input type="hidden" name="nama_pelanggan"
+                                                        value="<?php echo $u->nama_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->nama_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>No HP</label>
-                                                    <input type="text" class="form-control" name="no_pelanggan"
-                                                        value="<?php echo $u->no_pelanggan ?>" disabled>
+                                                    <input type="hidden" name="no_pelanggan"
+                                                        value="<?php echo $u->no_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->no_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" name="email_pelanggan"
-                                                        disabled value="<?php echo $u->email_pelanggan ?>">
+                                                    <input type="hidden" name="email_pelanggan"
+                                                        value="<?php echo $u->email_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->email_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Alamat</label>
-                                                    <input type="text" class="form-control" name="alamat_pelanggan"
-                                                        disabled value="<?php echo $u->alamat_pelanggan ?>">
+                                                    <input type="hidden" name="alamat_pelanggan"
+                                                        value="<?php echo $u->alamat_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->alamat_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Kode Pos</label>
-                                                    <input type="text" class="form-control" name="kode_pos" disabled
+                                                    <input type="hidden" name="kode_pos"
                                                         value="<?php echo $u->kode_pos ?>">
+                                                    <p class="form-control"><?php echo $u->kode_pos ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Kabupaten</label>
-                                                    <input type="text" class="form-control" name="kabupaten" disabled
+                                                    <input type="hidden" name="kabupaten"
                                                         value="<?php echo $u->kabupaten ?>">
+                                                    <p class="form-control"><?php echo $u->kabupaten ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Provinsi</label>
-                                                    <input type="text" class="form-control" name="provinsi" disabled
+                                                    <input type="hidden" name="provinsi"
                                                         value="<?php echo $u->provinsi ?>">
+                                                    <p class="form-control"><?php echo $u->provinsi ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Username</label>
-                                                    <input type="text" class="form-control" name="username_pelanggan"
-                                                        disabled value="<?php echo $u->username_pelanggan ?>">
+                                                    <input type="hidden" name="username_pelanggan"
+                                                        value="<?php echo $u->username_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->username_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="text" class="form-control" name="password_pelanggan"
-                                                        disabled value="<?php echo $u->password_pelanggan ?>">
+                                                    <input type="hidden" name="password_pelanggan"
+                                                        value="<?php echo $u->password_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->password_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Tanggal Daftar</label>
-                                                    <input type="text" class="form-control" name="tanggal_daftar"
-                                                        disabled value="<?php echo $u->tanggal_daftar ?>">
+                                                    <input type="hidden" name="tanggal_daftar"
+                                                        value="<?php echo $u->tanggal_daftar ?>">
+                                                    <p class="form-control"><?php echo $u->tanggal_daftar ?></p>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <input type="hidden" name="Status" value="1">
+                                                    <input type="hidden" name="Status" value="0">
                                                 </div>
-
-
                                             </div>
                                             <?php } ?>
 
@@ -152,27 +165,22 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <!-- /Ini Akhir Konten -->
+                    </div><!-- /Ini Akhir Konten -->
 
 
 
                     <!-- Main Footer -->
-                    <footer class="main-footer">
-                        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-                        All rights reserved.
-                        <div class="float-right d-none d-sm-inline-block">
-                            <b>Version</b> 3.1.0-pre
-                        </div>
-                    </footer>
+                    <?php $this->load->view('Backend/template/footer'); ?>
+
                 </div>
                 <!-- ./wrapper -->
 
                 <!-- REQUIRED SCRIPTS -->
                 <?php $this->load->view('Backend/template/js'); ?>
 
+            </section>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -20,6 +20,7 @@ class data_customer extends CI_Controller
         }
     }
 
+
     public function tampil()
     {
         $show = $this->M_data_customer;
@@ -31,25 +32,26 @@ class data_customer extends CI_Controller
         $this->load->view("Backend/data_customer", $data);
     }
 
+
     public function tampil_detail($id)
     {
 
         $data['detailCustomer'] = $this->M_data_customer->tpdetailCustomer($id);
         $this->load->view('Backend/detail_data_customer', $data);
     }
+
+
     public function edit()
     {
-
         $model = $this->M_data_customer;
         $validation = $this->form_validation;
         $validation->set_rules($model->rules());
 
 
         if ($validation->run()) {
+            $model->update();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            redirect(site_url('Admin/data_customer/tampil'));
         }
-
-        $model->update();
-        $this->session->set_flashdata('success', 'Berhasil disimpan');
-        redirect(site_url('Admin/data_customer/tampil'));
     }
 }

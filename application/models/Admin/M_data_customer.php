@@ -4,7 +4,7 @@ class M_data_customer extends CI_model
 {
     private $_table = "tbl_pelanggan";
 
-    //public $id_admin;
+    //public $id_pelanggan;
     public $nama_pelanggan;
     public $no_pelanggan;
     public $email_pelanggan;
@@ -47,7 +47,7 @@ class M_data_customer extends CI_model
         $this->password_pelanggan = $post["password_pelanggan"];
         $this->tanggal_daftar = $post["tanggal_daftar"];
         $this->foto_pelanggan = $post["foto_pelanggan"];
-        $this->Status = $post["Status"];
+        $Status = $post["Status"];
 
         return $this->db->update($this->_table, $this, array('id_pelanggan' => $post['id_pelanggan']));
     }

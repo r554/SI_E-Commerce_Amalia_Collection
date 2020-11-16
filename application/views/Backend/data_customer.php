@@ -111,7 +111,16 @@
                                                     <p><?php echo $a['alamat_pelanggan']; ?></p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a['Status']; ?></p>
+                                                    <p>
+                                                        <?php
+                                                            if ($a['status'] == "1") {
+                                                                echo "Aktif";
+                                                            } else {
+                                                                echo "Non Aktif";
+                                                            }
+
+                                                            ?>
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <p><?php echo $a['tanggal_daftar']; ?></p>
@@ -120,8 +129,8 @@
                                                 <td>
                                                     <a
                                                         href="<?= base_url('Admin/data_customer/tampil_detail/' . $a['id_pelanggan']) ?>"><button
-                                                            type="button">Detail</button></a>
-
+                                                            type="button"
+                                                            class="btn btn-primary btn-sm ">Detail</button></a>
                                                 </td>
 
                                             </tr>
@@ -152,13 +161,7 @@
 
 
                     <!-- Main Footer -->
-                    <footer class="main-footer">
-                        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-                        All rights reserved.
-                        <div class="float-right d-none d-sm-inline-block">
-                            <b>Version</b> 3.1.0-pre
-                        </div>
-                    </footer>
+                    <?php $this->load->view('Backend/template/footer'); ?>
                 </div>
                 <!-- ./wrapper -->
 
