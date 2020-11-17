@@ -8,6 +8,8 @@
 
     <?php $this->load->view('Backend/template/head'); ?>
 
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -207,9 +209,10 @@
                                                 </td>
 
                                             </tr>
-
-
                                             <?php } ?>
+                                        </tbody>
+
+
                                     </table>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-info float-right">Tambah
                                         Stok</a>
@@ -229,7 +232,7 @@
                         <div class="col-md-12">
 
                             <div class="card">
-                                <div class="card-header bg-light">
+                                <div class="card-header bg-secondary">
                                     <h3 class="card-title">DataTable - Pesanan Hari Ini </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -242,7 +245,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body text-center bg-light">
-                                    <table id="example3" class="table table-bordered table-striped bg-light">
+                                    <table id="pesananhari" class="table table-bordered table-striped bg-light">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>
@@ -295,9 +298,9 @@
                                                     <p><?php echo $a->grand_total; ?> </p>
                                                 </td>
                                             </tr>
-
-
                                             <?php } ?>
+                                        </tbody>
+
                                     </table>
                                     <div class="card-footer clearfix">
                                         <a href="javascript:void(0)" class="btn btn-sm btn-info float-right">Pesanan</a>
@@ -311,6 +314,14 @@
                 </div>
 
             </section>
+
+
+
+
+
+
+
+
 
         </div>
 
@@ -336,10 +347,10 @@
 
 
     <!-- Data Table-->
-    <!-- <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script> -->
-    <!-- Bootstrap 4 -->
-    <!-- <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-    <!-- DataTables  & Plugins -->
+    <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
@@ -354,23 +365,26 @@
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- AdminLTE App -->
+
     <script src="<?php echo base_url() ?>assets/Admin/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script> -->
-    <!-- Page specific script -->
+
+    <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script>
+
+
+
+
     <script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["excel", "pdf", "print", ]
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-
+            "searching": false,
             "ordering": true,
             "info": true,
             "autoWidth": false,
@@ -378,20 +392,18 @@
         });
     });
     </script>
-
-
     <script>
     $(function() {
-        $("#example3").DataTable({
+        $("#pesananhari").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["excel", "pdf", "print", ]
-        }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#pesananhari_wrapper .col-md-6:eq(0)');
         $('#example4').DataTable({
             "paging": true,
             "lengthChange": false,
-
+            "searching": false,
             "ordering": true,
             "info": true,
             "autoWidth": false,
@@ -399,9 +411,6 @@
         });
     });
     </script>
-
-
-
 
     <!-- Data Table-->
 

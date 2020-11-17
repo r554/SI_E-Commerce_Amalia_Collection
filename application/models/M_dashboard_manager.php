@@ -1,6 +1,6 @@
 <?php 
 
-class M_dashboard extends CI_model
+class M_dashboard_manager extends CI_model
 {
 
     private $_table = "tbl_produk";
@@ -32,7 +32,7 @@ class M_dashboard extends CI_model
    
 
 
-    public function tampil_data2()
+    public function tampil_data7()
     {
         $this->db->from('tbl_produk');
         $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
@@ -44,7 +44,7 @@ class M_dashboard extends CI_model
 
 
     
-    public function tampil_data46()
+    public function tampil_data10()
     {
     $this->db->from('tbl_keranjang');
     $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_keranjang.id_pelanggan');
