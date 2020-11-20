@@ -63,4 +63,13 @@ class M_data extends CI_Model
     $query = $this->db->get('tbl_banner');
     return $query->result();
   }
+
+  public function get_cari($keyword)
+  {
+      $this->db->from('tbl_produk');
+      $this->db->like('nama_produk', $keyword);
+
+      return $this->db->get()->result();
+  }
+
 }

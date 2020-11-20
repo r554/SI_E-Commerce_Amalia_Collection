@@ -70,8 +70,8 @@
                                             src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin?>"
                                             alt="User profile picture">
                                     </div>
-                                    <h3 class="profile-username text-center">Amalia</h3>
-                                    <p class="text-muted text-center">Admin</p>
+                                    <h3 class="profile-username text-center"><?php echo $user->nama_admin?></h3>
+                                    <p class="text-muted text-center">Login sebagai <?php echo $user->role?></p>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

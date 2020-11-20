@@ -44,4 +44,12 @@ class Homepage extends CI_Controller
     $data['detailProduk'] = $this->m_data->tpdetailProduk($id);
     $this->load->view('Frontend/detailProduk', $data);
   }
+  public function cari()
+    {
+        $keyword = $this->input->post('cari');
+        $data['cari'] = $this->m_data->get_cari($keyword);
+        // var_dump($data);
+        // die;
+        $this->load->view('Frontend/cari', $data);
+    }
 }
