@@ -1,34 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url() ?>/assets/Frontend/images/amalia.png" type="image/x-icon">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-
-    <!-- Glidejs StyleSheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css" />
-
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-    <!-- StyleSheet -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Frontend/styles.css" />
-    <title>Amalia</title>
-
-
-
-
-
-</head>
-
 <body>
     <!-- Pre Loader -->
     <div class="preloader" id="preloader">
@@ -42,62 +11,7 @@
     </div>
     <!-- End Adverts -->
 
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="navigation">
-            <div class="nav-center container">
-                <a href="#home" class="logo">
-                    <h1>AM<span>A</span>LIA <span>COLLECTION</span></h1>
-                </a>
 
-                <div class="nav-menu">
-                    <div class="nav-top">
-                        <div class="logo">
-                            <h1>AM<span>A</span>LIA <span>COLLECTION</span></h1>
-                        </div>
-                        <div class="close">
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div>
-
-                    <ul class="nav-list">
-
-                        <li class="nav-item">
-                            <a href="#home" class="nav-link scroll-link">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#shop" class="nav-link scroll-link">Products</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#new" class="nav-link scroll-link">New</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#recent" class="nav-link scroll-link">Recent</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#blog" class="nav-link scroll-link">Blog</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="nav-icons">
-                    <span><i class="fas fa-user"></i></span>
-                    <span><i class="fas fa-search"></i></span>
-                    <span><i class="fas fa-shopping-basket"></i></span>
-                </div>
-
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-            </div>
-        </nav>
-    </header>
-    <!-- End Header -->
 
     <!-- Main -->
     <main>
@@ -1074,6 +988,9 @@
     <script src="<?php base_url() ?>assets/Frontend/js/index.js"></script>
     <script src="<?php base_url() ?>assets/Frontend/js/product.js"></script>
     <script src="<?php base_url() ?>assets/Frontend/js/slider.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>

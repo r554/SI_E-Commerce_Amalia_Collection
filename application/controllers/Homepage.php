@@ -34,7 +34,9 @@ class Homepage extends CI_Controller
       "tbl_banner" => $this->m_data->tampil_slider(),
     
   ];
-   $this->load->view('Frontend/Homepage',$data);
+    $this->load->view('Frontend/template/head1');
+    $this->load->view('Frontend/template/navbar3');
+    $this->load->view('Frontend/Homepage',$data);
 }
 
 
