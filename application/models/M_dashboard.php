@@ -47,9 +47,9 @@ class M_dashboard extends CI_model
     public function tampil_data46()
     {
     $this->db->from('tbl_keranjang');
-    $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_keranjang.id_pelanggan');
-    $this->db->join('tbl_order', 'tbl_order.id_keranjang = tbl_keranjang.id_keranjang');
-    $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+   // $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_keranjang.id_pelanggan');
+   // $this->db->join('tbl_order', 'tbl_order.id_keranjang = tbl_keranjang.id_keranjang');
+   // $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
    //  $this->db->where('tabel_lapak.kd_pengguna', $id); 
     $query = $this->db->get();
     return $query->result();
