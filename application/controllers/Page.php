@@ -32,12 +32,17 @@ class Page extends CI_Controller
     public function tambah_banner()
     {
         $this->load->view('Backend/tambah_banner');
-    }  
-    
+    }
+
     public function edit_banner()
     {
         $this->load->view('Backend/edit_banner');
-    } 
+    }
 
+    public function contoh()
+    {
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/contoh');
+    }
 }
-?>

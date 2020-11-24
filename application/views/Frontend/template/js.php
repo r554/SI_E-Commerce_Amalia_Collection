@@ -1,10 +1,9 @@
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/web/assets/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/popper/popper.min.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/tether/tether.min.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/smoothscroll/smooth-scroll.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/dropdown/js/nav-dropdown.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/dropdown/js/navbar-dropdown.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/touchswipe/jquery.touch-swipe.min.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/countdown/jquery.countdown.min.js"></script>
-<script src="<?php echo base_url() ?>assets/Frontend_mobi/assets/theme/js/script.js"></script>
+ <!-- Glide JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+ <!-- Script -->
+ <script src="<?php echo base_url() ?>assets/Frontend/js/index.js"></script>
+ <script src="<?php echo base_url() ?>assets/Frontend/js/product.js"></script>
+ <script src="<?php echo base_url() ?>assets/Frontend/js/slider.js"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

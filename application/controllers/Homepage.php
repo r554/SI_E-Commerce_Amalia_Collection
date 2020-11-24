@@ -21,23 +21,26 @@ class Homepage extends CI_Controller
   //   //var_dump($data);
   //   //die;
   //   $this->load->view('Frontend/landing_page', $data);
-    
+
   // }
 
 
-  function index(){ 
+  function index()
+  {
     // $data['tbl_produk'] = $this->m_data->tampil_dataProduk()->result();
     $show = $this->M_footer;
-    $data = 
-    ["footer" => $show->tampil_footer(),
-    "tbl_produk" => $this->m_data->tampil_dataProduk()->result(),
-      "tbl_banner" => $this->m_data->tampil_slider(),
-    
-  ];
+    $data =
+      [
+        "footer" => $show->tampil_footer(),
+        "tbl_produk" => $this->m_data->tampil_dataProduk()->result(),
+        "tbl_banner" => $this->m_data->tampil_slider(),
+
+      ];
+
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3');
-    $this->load->view('Frontend/Homepage',$data);
-}
+    $this->load->view('Frontend/Homepage', $data);
+  }
 
 
 
@@ -47,11 +50,11 @@ class Homepage extends CI_Controller
     $this->load->view('Frontend/detailProduk', $data);
   }
   public function cari()
-    {
-        $keyword = $this->input->post('cari');
-        $data['cari'] = $this->m_data->get_cari($keyword);
-        // var_dump($data);
-        // die;
-        $this->load->view('Frontend/cari', $data);
-    }
+  {
+    $keyword = $this->input->post('cari');
+    $data['cari'] = $this->m_data->get_cari($keyword);
+    // var_dump($data);
+    // die;
+    $this->load->view('Frontend/cari', $data);
+  }
 }

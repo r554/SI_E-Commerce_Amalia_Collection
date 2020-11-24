@@ -48,19 +48,19 @@ img {
     max-height: 100%;
 }
 
-.container {
+.container2 {
     max-width: 114rem;
     margin: 0 auto;
 }
 
 @media only screen and (max-width: 1200px) {
-    .container {
+    .container2 {
         padding: 0 3rem;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .container {
+    .container2 {
         padding: 0 5rem;
     }
 }
