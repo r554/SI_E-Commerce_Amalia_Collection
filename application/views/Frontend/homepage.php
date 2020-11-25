@@ -117,11 +117,11 @@
                     <div class="product-footer">
                         <h3>Hijab Pasmina</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
                             <h4>Rp.20.000</h4>
@@ -152,14 +152,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$2500.99</h4>
+                            <h4>Rp. 30.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -187,14 +187,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -222,14 +222,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -258,11 +258,11 @@
                     <div class="product-footer">
                         <h3>Hijab Pasmina</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
                             <h4>Rp.20.000</h4>
@@ -293,14 +293,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$2500.99</h4>
+                            <h4>Rp. 30.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -328,14 +328,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -363,14 +363,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -399,11 +399,11 @@
                     <div class="product-footer">
                         <h3>Hijab Pasmina</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
                             <h4>Rp.20.000</h4>
@@ -434,14 +434,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$2500.99</h4>
+                            <h4>Rp. 30.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -469,14 +469,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -504,14 +504,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -540,11 +540,11 @@
                     <div class="product-footer">
                         <h3>Hijab Pasmina</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
                             <h4>Rp.20.000</h4>
@@ -575,14 +575,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$2500.99</h4>
+                            <h4>Rp. 30.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -610,14 +610,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
@@ -645,14 +645,14 @@
                     <div class="product-footer">
                         <h3>Men Casual Shoe</h3>
                         <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4>$3000.99</h4>
+                            <h4>Rp. 15.000</h4>
                         </div>
                     </div>
                     <ul>
