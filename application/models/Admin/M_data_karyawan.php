@@ -35,7 +35,7 @@ class M_data_karyawan extends CI_model
         $this->no_admin = $post["no_admin"];
         $this->email_admin = $post["email_admin"];
         $this->username_admin = $post["username_admin"];
-        $this->password_admin = $post["password_admin"];
+        $this->password_admin = md5($post["password_admin"]);
         $this->foto_admin = $this->do_upload();
 
 
