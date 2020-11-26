@@ -57,6 +57,7 @@ class M_data extends CI_Model
     $hasil = $this->db->query("UPDATE `tbl_produk` SET `hargadiskon` = '$hardis' WHERE `tbl_produk`.`id_produk` = '$idp';");
     return $hasil;
   }
+
   //untuk slider
   public function tampil_slider()
   {
@@ -66,10 +67,54 @@ class M_data extends CI_Model
 
   public function get_cari($keyword)
   {
-      $this->db->from('tbl_produk');
-      $this->db->like('nama_produk', $keyword);
+    $this->db->from('tbl_produk');
+    $this->db->like('nama_produk', $keyword);
 
-      return $this->db->get()->result();
+    return $this->db->get()->result();
   }
 
+
+  function data_homepage($number, $offset)
+  {
+    $status_produk = "1";
+    $this->db->like('status_produk', $status_produk);
+
+    return $query = $this->db->get('tbl_produk', $number, $offset)->result();
+  }
+
+  function data($number, $offset, $keyword = null)
+  {
+
+    if ($keyword) {
+      $this->db->like('nama_produk', $keyword);
+    }
+
+
+    return $query = $this->db->get('tbl_produk', $number, $offset)->result();
+  }
+
+  function jumlah_data()
+  {
+    return $this->db->get('tbl_produk')->num_rows();
+  }
+
+  // Function Kategori Hijab ==============================================================================================
+  function data_kategori_hijab($number, $offset, $keyword = null)
+  {
+
+    if ($keyword) {
+      $this->db->like('id_kategori', $keyword);
+    }
+
+    return $query = $this->db->get('tbl_produk', $number, $offset)->result();
+  }
+  // End Function Kategori Hijab ==============================================================================================
+
+
+  // Kategori hijab
+  public function tampil_kategori()
+  {
+    $query = $this->db->get('tbl_kategori');
+    return $query->result();
+  }
 }

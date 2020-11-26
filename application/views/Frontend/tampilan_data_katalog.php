@@ -13,43 +13,73 @@
 
     <div class="container">
 
-        <div class="row mt-5">
-            <div class="col-sm-9 col-md-8 mx-auto">
-                <form action="" class="row" method="GET">
-                    <input class="col-md-11 col-10 rounded-pill" type="text" value="" name="cari" placeholder="Cari Produk">
+        <!-- <div class="row mt-5">
+            <div class="col-sm-3 col-md-8 mx-auto">
+                <form action="<?= base_url('Homepage/semua_produk') ?>" class="row" method="POST">
+                    <input class="col-md-11 col-10 rounded-pill" type="text" value="" name="keyword" placeholder="Cari Produk" style="height:60px;font-size:14pt;">
 
-                    <button type="submit" class="col-2 col-md-1">
-                        <i class="fas fa-search text-success" aria-hidden="true"></i>
-                    </button>
+                    <i class="fas fa-search text-success" aria-hidden="true"></i>
+                    <input type="submit" class="col-2 col-md-1 btn btn-danger" name="submit">
+                </form>
+            </div>
+        </div> -->
+        <!-- <div class="row">
+            <div class="col-sm-8 col-md-12 text-center mt-5">
+
+                <label class="mdb-main-label">Cari Produk Berdasarkan Kategori </label><br>
+
+                <select class="mdb-select md-form colorful-select dropdown-primary" searchable="Search here..">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                </select>
+
+                <label class="mdb-main-label">Example label</label>
+
+                <select class="mdb-select" searchable="Search here..">
+                    <option value="1" disabled selected>Choose your option</option>
+                    <option value="2" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">
+                        example
+                        1</option>
+                    <option value="3" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">
+                        example
+                        2</option>
+                    <option value="4" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" class="rounded-circle">
+                        example
+                        1</option>
+                </select>
+            </div> -->
+        <!--Blue select-->
+        <!-- </div> -->
+
+    </div>
+
+    <div class="container-fluid">
+        <h2 class="text-center display-4 mt-5">Pencarian Produk</h2>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mt-5 mb-5 ">
+                <form action="<?= base_url('Homepage/semua_produk') ?>" method="POST">
+                    <div class="input-group">
+                        <!-- <input type="search" class="form-control form-control-lg" placeholder="Cari Produk Disini">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div> -->
+                        <input class="col-md-11 col-10 rounded-pill" type="text" value="" name="keyword" placeholder="Cari Produk" style="height:60px;font-size:14pt;">
+                        <input type="submit" class="col-2 col-md-1 btn btn-danger btn-s fa fa-search" name="submit" value="Cari">
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="row">
-            <!--Blue select-->
-            <select class="mdb-select md-form colorful-select dropdown-primary" searchable="Search here..">
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
-                <option value="5">Option 5</option>
-            </select>
-
-            <label class="mdb-main-label">Example label</label>
-
-            <select class="mdb-select" searchable="Search here..">
-                <option value="1" disabled selected>Choose your option</option>
-                <option value="2" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">
-                    example
-                    1</option>
-                <option value="3" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">
-                    example
-                    2</option>
-                <option value="4" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" class="rounded-circle">
-                    example
-                    1</option>
-            </select>
-        </div>
-
+        <!-- <div class="row">
+            <div class="col-md-8 mx-auto">
+                <a href="#" class="btn btn-info bo-rad-23 p-l-16 p-r-16 m-r-4 m-b-12">
+                    Pashmina </a>
+            </div>
+        </div> -->
     </div>
 
     <main>
@@ -66,574 +96,77 @@
                 </div>
             </div>
 
+            <!-- Alert Untuk Menampilkan Apabila Pencarian Tidak ditemukan -->
+            <?php if (empty($data_produk)) : ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-warning" role="alert">
+                                <b>Pencarian Yang Anda Cari Tidak ditemukan !!!</b> Silahkan Cari kembali.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-5 mt-5">
+                        <div class="col-8 mx-auto">
+                            <img src="<?= base_url() ?>assets/Frontend/images/data.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <!-- END Alert Untuk Menampilkan Apabila Pencarian Tidak ditemukan -->
+
             <div class="product-center container2">
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic1.jpg" alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Hijab Pasmina</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>Rp.20.000</h4>
+                <?php
+                $no = $this->uri->segment('3') + 1;
+                foreach ($data_produk as $data_produk) {
+                ?>
+                    <div class="product">
+                        <div class="product-header">
+                            <img src="<?= base_url() ?>assets/Gambar/foto_produk/<?= $data_produk->gambar_produk; ?>" alt="product">
                         </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic2.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
+                        <div class="product-footer">
+                            <h3><?= $data_produk->nama_produk; ?></h3>
+                            <div class="rating">
+                                <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$2500.99</h4>
+                            <i class="far fa-star"></i> -->
+                            </div>
+                            <div class="product-price">
+                                <h4><?= $data_produk->harga; ?></h4>
+                            </div>
                         </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-sync"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic4.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic3.png" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic1.jpg" alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Hijab Pasmina</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>Rp.20.000</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic2.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$2500.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic4.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic3.png" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic1.jpg" alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Hijab Pasmina</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>Rp.20.000</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic2.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$2500.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic4.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic3.png" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic1.jpg" alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Hijab Pasmina</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>Rp.20.000</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic2.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$2500.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic4.jpg" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="product">
-                    <div class="product-header">
-                        <img src="<?php echo base_url() ?>assets/Frontend/images/pic3.png" class='small' alt="product">
-                    </div>
-                    <div class="product-footer">
-                        <h3>Men Casual Shoe</h3>
-                        <!-- <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div> -->
-                        <div class="product-price">
-                            <h4>$3000.99</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-eye"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sync"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <?php } ?>
             </div>
         </section>
         <!-- Akhir Produk Amalia -->
 
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12 text-center">
+                    <h2> <?php echo $this->pagination->create_links(); ?></h2>
+                </div>
+            </div>
+        </div>
 
         <!-- Facility -->
         <section class="facility section" id="facility">

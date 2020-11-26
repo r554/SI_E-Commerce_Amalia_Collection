@@ -2,7 +2,7 @@
 <header class="header" id="header">
     <nav class="navigation">
         <div class="nav-center container">
-            <a href="#home" class="logo">
+            <a href="<?= base_url('Homepage') ?>" class="logo">
                 <h1>AM<span>A</span>LIA <span>COLLECTION</span></h1>
             </a>
 
