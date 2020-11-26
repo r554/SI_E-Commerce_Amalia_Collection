@@ -57,7 +57,7 @@
                 ?>
                     <form action="<?php echo base_url('Homepage/kategori_hijab') ?>" method="POST">
                         <div class="category-box">
-                            <img src="<?= base_url() ?>assets/Frontend/images/cat1.jpg" alt="">
+                            <img src="<?= base_url() ?>assets/Frontend/images/<?= $data_kategori->gambar_kategori  ?>" alt="">
                             <div class="content">
                                 <h2><?= $data_kategori->nama_kategori  ?></h2>
                                 <span>#Amaliahijab</span>
