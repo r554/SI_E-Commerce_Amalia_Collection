@@ -45,4 +45,17 @@ class Page extends CI_Controller
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/contoh');
     }
+
+    public function pembayaran()
+    {
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/pembayaran');
+    }
+    public function buktipembayaran()
+    {
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/buktipembayaran');
+    }
 }
