@@ -24,21 +24,24 @@ class Login0 extends CI_Controller{
 		if($cek > 0){
 			foreach ($data_pelanggan as $N){
 				$USERNAME_PELANGGAN= $N->username_pelanggan;
-				$NAMA_PELANGGAN= $N->nama_pelanggan;
-				
+				$id = $N->id_pelanggan;
+				$NAMA= $N->nama_pelanggan;
+				$ALAMAT= $N->alamat_pelanggan;
+				$nohp= $N->no_pelanggan;
 			}
 
 			$data_session = array(
 				'username_pelanggan' => $USERNAME_PELANGGAN,
 				'nama_pelanggan' => $row->NAMA_PELANGGAN,
 				'id' => $id,			
-				'ALAMAT' => $ALAMAT_PELANGGAN,
-				'no_hp'=> $NO_PELANGGAN,
+				'alamat' => $ALAMAT,
+				'nama' => $NAMA,
+				'no_hp'=> $nohp,
 				'status' => "login0"
 				);
 
 			$this->session->set_userdata($data_session);
-			redirect(base_url("Welcome"));		
+			redirect(base_url("Homepage"));		
 			
 		}else{
 			$data_session = array(

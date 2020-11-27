@@ -28,7 +28,13 @@
   
 </head>
 <body> 
-<?php 
+
+
+<section class="form4 cid-secUYvj1Zp mbr-fullscreen">
+    <div class="container">
+        <div class="row content-wrapper justify-content-center">
+            <div class="col-lg-3 offset-lg-1 mbr-form">
+            <?php 
 	if (isset($_SESSION["logingagal"])){ ?>
 	<div class="alert alert-danger alert-dismissible fade show">
 		<strong>Login Gagal</strong> username atau password salah.
@@ -39,11 +45,6 @@
   <?php } 
 	  $this->session->unset_userdata('logingagal');
   ?>
-
-<section class="form4 cid-secUYvj1Zp mbr-fullscreen">
-    <div class="container">
-        <div class="row content-wrapper justify-content-center">
-            <div class="col-lg-3 offset-lg-1 mbr-form">
                 <form action="<?php echo base_url('login0/aksi_login'); ?>" method="post" class="mbr-form form-with-styler">                    
                     <div class="dragArea row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
