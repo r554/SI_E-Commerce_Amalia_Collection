@@ -48,10 +48,10 @@
                     <div class="dropdown-menu">
                         <h5 class="dropdown-divider"></h5>
                         <a class="dropdown-item" href="#">Keranjang</a>
-                        <a class="dropdown-item" href="#">Pesanan Saya</a>
+                        <a class="dropdown-item" href="pesanan_saya">Pesanan Saya</a>
                         <a class="dropdown-item" href="#">Link 3</a>
                         <h5 class="dropdown-divider"></h5>
-                        <a class="dropdown-item" href="#">Bukti Pembayaran</a>
+                        <a class="dropdown-item" href="buktipembayaran">Bukti Pembayaran</a>
                     </div>
                 </div>
             </div>
