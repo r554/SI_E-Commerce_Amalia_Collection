@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="nav-item menu-open">
-                <a href="#" class="nav-link">
+                <a href="<?php echo base_url('Admin/kategori/tampil_kategori')?>" class="nav-link">
                     <i class="nav-icon fab fa-buffer"></i>
                     <p>
                         Pengaturan Kategori

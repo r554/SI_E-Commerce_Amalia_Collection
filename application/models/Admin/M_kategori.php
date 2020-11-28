@@ -6,6 +6,7 @@ class M_Kategori extends CI_model
 
 	public $id_kategori;
 	public $nama_kategori;
+	public $gambar_kategori;
 
 	public function rules()
 	{
@@ -44,38 +45,49 @@ class M_Kategori extends CI_model
 		return $this->db->insert($this->_table, $this);
 	}
 
-	function do_upload()
+	public function save_kategori()
+	{
+		$post = $this->input->post();
+		$this->nama_kategori = $post["nama_kategori"];
+		$this->gambar_kategori = $this->do_upload_kategori();
+		return $this->db->insert($this->_table, $this);
+	}
+
+	function do_upload_kategori()
 	{
 		// setting konfigurasi upload
-		$config['upload_path'] = './assets/Gambar/foto_banner';
+		$config['upload_path'] = './assets/Frontend/images';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['file_name']            = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 		// load library upload
 		$this->load->library('upload', $config);
 		// upload gambar 1
-		$this->upload->do_upload('foto_banner');
+		$this->upload->do_upload('gambar_kategori');
 		$result1 = $this->upload->data('file_name');
 		return $result1;
 	}
 	
-	public function update_banner()
+	public function update_kategori()
 	{
 		$post = $this->input->post();
-		$this->id_banner = $post["id_banner"];
-        $this->sub_tittle = $post["sub_tittle"];
-        $this->tittle_banner = $post["tittle_banner"];
-        $this->deskripsi_banner = $post["deskripsi_banner"];
-        //$this->foto_banner = $post["foto_banner"];
-		$this->link_banner = $post["link_banner"];
+        $this->nama_kategori = $post["nama_kategori"];
+        $this->gambar_kategori = $post["gambar_kategori"];
 		
 		//$this->foto_banner = $this->do_upload();
-		if (!empty($_FILES["foto_banner"]["name"])) {
-			$this->foto_banner = $this->do_upload();
+		if (!empty($_FILES["gambar_kategori"]["name"])) {
+			$this->gambar_kategori = $this->do_upload_kategori();
 		} else {
-			  $this->foto_banner = $post["foto"];
+			  $this->gambar_kategori = $post["gambar_kategori"];
 		}
 
-		return $this->db->update($this->_table, $this, array('id_banner' => $post['id_banner']));
+		return $this->db->update($this->_table, $this, array('id_kategori' => $post['id_kategori']));
+	}
+
+	public function getById($id)
+	{
+		//$query = $this->db->get('tbl_banner');
+		//return $query->result();
+		return $this->db->get_where($this->_table, ['id_kategori' => $id])->result();
 	}
 
 	public function tampil_data()
@@ -85,12 +97,7 @@ class M_Kategori extends CI_model
    }
 
 
-	public function getById($id)
-	{
-		//$query = $this->db->get('tbl_banner');
-		//return $query->result();
-		return $this->db->get_where($this->_table, ['id_banner' => $id])->result();
-	}
+	
 
 	public function delete($id)
 	{

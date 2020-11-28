@@ -42,7 +42,7 @@
 
             <div class="nav-icons">
                 <div class="dropdown">
-                    <a type="button" class="fas fa-search" href="<?php echo base_url('page/contoh') ?>"></a>
+                    <a type="button" class="fas fa-search" href="<?php echo base_url('Homepage/semua_produk') ?>"></a>
                     <a type="button" class="fas fa-shopping-basket" href="#"></a>
                     <a type="button" class="fas fa-user" data-toggle="dropdown"></a>
                     <div class="dropdown-menu">

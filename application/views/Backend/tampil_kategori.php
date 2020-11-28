@@ -66,16 +66,21 @@
                                     <div class="card-header">
                                         <h3 class="card-title"></h3>
 
-                                        <div class="navbar-buttons mbr-section-btn float-right"><a
-                                                class="btn btn-primary display-4"
-                                                href="<?php echo base_url("Admin/Banner/tambah_data")?>">
-                                                Tambah Data</a></div>
+                                        <div class="navbar-buttons mbr-section-btn float-right">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modal-default">
+                                                Tambah Data
+                                            </button>
+
+                                        </div>
                                         <!-- /.card-header -->
                                         <div class="card-body table-responsive p-0">
                                             <table class="table table-hover text-nowrap">
                                                 <thead>
                                                     <tr>
                                                         <th>Kategori</th>
+                                                        <th>Foto Kategori
+                                                        </th>
                                                         <th>Aksi</th>
 
                                                     </tr>
@@ -90,12 +95,16 @@
                                                             <p><?php echo $kategori['nama_kategori']; ?></p>
                                                         </td>
                                                         <td>
+                                                            <img src="<?php echo base_url()?>/assets/Frontend/images/<?php echo $kategori['gambar_kategori']?>"
+                                                                alt="" width="100px">
+                                                        </td>
+                                                        <td>
                                                             <a
                                                                 href="<?php echo base_url("Admin/kategori/tampil_detail_kategori/".$kategori['id_kategori'])?>"><button
                                                                     type="button"
                                                                     class="btn btn-success btn-sm">Detail</button></a>
                                                             <a
-                                                                href="<?php echo base_url("Admin/Banner/delete/".$kategori['id_kategori'])?>"><button
+                                                                href="<?php echo base_url("Admin/kategori/edit_kategori/".$kategori['id_kategori'])?>"><button
                                                                     type="button"
                                                                     class="btn btn-info btn-sm">Edit</button></a>
                                                         </td>
@@ -121,6 +130,42 @@
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->
     <?php $this->load->view('Backend/template/js'); ?>
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Data</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo base_url("Admin/kategori/save_kategori/")?>" method="post"
+                    enctype="multipart/form-data">
+                    <div class="container">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nama Kategori</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="nama_kategori" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Foto Kategori</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="gambar_kategori">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </body>
 
 </html>

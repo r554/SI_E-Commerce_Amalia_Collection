@@ -42,6 +42,15 @@ class kategori extends CI_Controller
 		}
 	}
 
+	public function save_kategori()
+	{
+		$model = $this->M_kategori;
+	
+		if ($model->save_kategori()) {
+			redirect(site_url('Admin/kategori/tampil_kategori/'));
+		}
+	}
+
 	public function delete_kategori($id = null)
 	{
 		if (!isset($id)) show_404();
@@ -57,26 +66,24 @@ class kategori extends CI_Controller
 		$this->load->view("Backend/tambah_banner");
 	}
 
-	
-
-	public function edit_banner($id = null)
+	public function edit_kategori($id = null)
 	{
 
-		$model = $this->M_Banner;
+		$model = $this->M_kategori;
 		$validation = $this->form_validation;
 		$validation->set_rules($model->rules());
 
 
 		if ($validation->run()) {
-			$model->update_banner();
-			//$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$model->update_kategori();
+			redirect(site_url('Admin/kategori/tampil_kategori/'));
 			$this->session->set_flashdata('message', 'Berhasil Disimpan');
 		}
 
-		$data["edit_banner"] = $model->getById($id);
+		$data["edit_kategori"] = $model->getById($id);
 		// var_dump($data);
 		// die;
-		$this->load->view("Backend/edit_banner", $data);
+		$this->load->view("Backend/edit_kategori", $data);
 	}
 
 	public function tampil_detail($id)
