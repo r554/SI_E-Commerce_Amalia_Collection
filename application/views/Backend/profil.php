@@ -107,8 +107,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
-                                            <input name="no_admin" value="<?php echo $user->no_admin; ?>"
-                                                type="username" class="form-control" id="exampleInputNomorTelepon1">
+                                            <input name="no_admin" maxlength="13" value="<?php echo $user->no_admin; ?>"
+                                                type="number" class="form-control" id="exampleInputNomorTelepon1">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
