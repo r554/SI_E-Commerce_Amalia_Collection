@@ -24,14 +24,14 @@ class Pesanan_saya extends CI_Controller
     }
 
     public function detail_order($id){
-        $data['ord'] = $this->User_model->getOrderByInvoice($id);
+        $data['ord'] = $this->M_user->getOrderByInvoice($id);
         if(!$data['ord']){
             redirect(base_url() . 'profile/transaction');
         }
         
-        $data['product_order'] = $this->User_model->getProductByInvoice($id);
+        $data['product_order'] = $this->M_user->getProductByInvoice($id);
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
-        $this->load->view('Frontend/pesanan_saya', $data);
+        $this->load->view('Frontend/detailPesanan', $data);
     }
 }

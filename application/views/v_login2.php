@@ -64,7 +64,7 @@
             </div>
             <div class="col-lg-7 offset-lg-1 col-12">
                 <div class="image-wrapper">
-                    <img class="w-100" src="<?php echo base_url('tambahan/assets/images/sq3.jpg');?>" alt="BP">
+                    <img class="w-100" src="<?php echo base_url('tambahan/assets/images/logo amalia.jpg');?>" alt="BP">
                 </div>
             </div>                  
         </div>       

@@ -41,7 +41,7 @@
                         <td><?= $d['tanggal_order']; ?></td>
                         <td><?= $d['grand_total']; ?></td>
                         <td><?= $d['status']; ?></td>
-                       <td><small><a href="<?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
+                       <td><small><a href="pesanan_saya/detail_order/<?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
                     </tr>
                     <?php endforeach; ?>
                     </table>

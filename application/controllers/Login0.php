@@ -28,6 +28,9 @@ class Login0 extends CI_Controller{
 				$NAMA= $N->nama_pelanggan;
 				$ALAMAT= $N->alamat_pelanggan;
 				$nohp= $N->no_pelanggan;
+				$kdPos= $N->kode_pos;
+				$kab= $N->kabupaten;
+				$prov= $N->provinsi;
 			}
 
 			$data_session = array(
@@ -37,6 +40,9 @@ class Login0 extends CI_Controller{
 				'alamat' => $ALAMAT,
 				'nama' => $NAMA,
 				'no_hp'=> $nohp,
+				'kabupaten' => $kab,
+				'kodePos'=> $kdPos,
+				'provinsi'=> $prov,
 				'status' => "login0"
 				);
 
