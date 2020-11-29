@@ -33,24 +33,29 @@
                     echo '<div class="alert alert-danger">' . $this->session->flashdata('message') . '</div>'; // Tampilkan pesannya
                 }
                 ?>
-                <form action="<?php echo base_url('Auth_Admin/login'); ?>" method="post">
+                <form action="<?php echo base_url('Lupa_Password/changePassword'); ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Masukkan Password Baru"
-                            name="password_baru">
+                        <input type="password" class="form-control" placeholder="Masukkan Password Baru"
+                            name="password1">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                    <div class="input-group">
+                        <?php echo form_error('password1', '<small class="text-danger">', '</small>'); ?>
+                    </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Ulangi Password Baru"
-                            name="ulangi_password_baru">
+                        <input type="password" class="form-control" placeholder="Ulangi Password Baru" name="password2">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="input-group">
+                        <?php echo form_error('password2', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="social-auth-links text-center mt-2 mb-3">
                         <button type="submit" class="btn btn-primary btn-block">Ubah</button>

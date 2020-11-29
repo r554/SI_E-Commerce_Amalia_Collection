@@ -52,6 +52,8 @@
                         <a class="dropdown-item" href="#">Link 3</a>
                         <h5 class="dropdown-divider"></h5>
                         <a class="dropdown-item" href="buktipembayaran">Bukti Pembayaran</a>
+                        <a class="dropdown-item" href="Login0/logout">Log Out</a>
+
                     </div>
                 </div>
             </div>

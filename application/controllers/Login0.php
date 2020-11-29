@@ -7,11 +7,18 @@ class Login0 extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_login');
+		$this->load->model('M_register');
 	}
 
 	function index()
 	{
-		$this->load->view('Frontend/login');
+		$show = $this->M_register;
+		$data = [
+			"id_pelanggan" => $show->get_no_invoice()
+		];
+		// var_dump($data);
+		// die;
+		$this->load->view('Frontend/login', $data);
 	}
 
 	function aksi_login()

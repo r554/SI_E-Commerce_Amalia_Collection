@@ -33,7 +33,7 @@
                     echo '<div class="alert alert-danger">' . $this->session->flashdata('message') . '</div>'; // Tampilkan pesannya
                 }
                 ?>
-                <form action="<?php echo base_url('Auth_Admin/login'); ?>" method="post">
+                <form action="<?php echo base_url('Lupa_Password/forgotPassword'); ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">
@@ -42,8 +42,9 @@
                             </div>
                         </div>
                     </div>
-
-
+                    <div class="input-group">
+                        <?php echo form_error('email', '<small class="text-danger">', '</small>'); ?>
+                    </div>
                     <div class="social-auth-links text-center mt-2 mb-3">
                         <button type="submit" class="btn btn-primary btn-block">Kirim Kode</button>
                     </div>

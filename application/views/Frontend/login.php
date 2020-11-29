@@ -23,25 +23,28 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" name="PASSWORD_PELANGGAN" placeholder="Password" />
                     </div>
-                    <a href="">
+                    <a href="<?php echo base_url('Lupa_Password/forgotPassword'); ?>">
                         <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Forgot Password</p>
                     </a>
                     <input type="submit" value="Login" class="btn solid" />
-
                 </form>
-                <form action="#" class="sign-up-form">
+
+
+                <!-- ini sign up -->
+                <form action="<?php echo base_url('register/tambah_register') ?>" method="POST" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
+                    <input type="hidden" value="<?php echo $id_pelanggan ?>" name="id_pelanggan">
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" />
+                        <input type="text" name="username" placeholder="Username" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" />
+                        <input type="email" name="email" placeholder="Email" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" name="password" placeholder="Password" />
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
 
@@ -66,7 +69,7 @@
                 <div class="content">
                     <h3>Selamat Datang Di Amalia</h3>
                     <p>
-                        Jika Kamu Sudah Memiliki Akun SIlahkan Login
+                        Jika Kamu Sudah Memiliki Akun Silahkan Login
                     </p>
                     <button class="btn transparent" id="sign-in-btn">
                         Sign in
