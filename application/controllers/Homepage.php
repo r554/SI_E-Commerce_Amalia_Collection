@@ -36,7 +36,8 @@ class Homepage extends CI_Controller
     //     "tbl_banner" => $this->m_data->tampil_slider(),
 
     //   ];
-
+    $show = $this->M_footer;
+    
     $this->load->database();
     $jumlah_data = $this->M_data->jumlah_data();
     $this->load->library('pagination');
@@ -46,8 +47,9 @@ class Homepage extends CI_Controller
     $from = $this->uri->segment(3);
     $this->pagination->initialize($config);
     // $data['data_produk'] = $this->M_data->data_homepage($config['per_page'], $from);
-    $data =
+    $data = 
       [
+        "footer" => $show->tampil_footer(),
         "data_produk" => $this->M_data->data_homepage($config['per_page'], $from),
         "foto_banner" => $this->M_data->tampil_slider(),
         "data_kategori" => $this->M_data->tampil_kategori(),

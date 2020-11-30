@@ -134,10 +134,6 @@ if (!$this->session->userdata('nama')) {
                                             <input name="no_telepon" class="form-control"
                                                 value="<?php echo $z->no_telepon; ?>">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Fax</label>
-                                            <input name="fax" class="form-control" value="<?php echo $z->fax; ?>">
-                                        </div>
 
                                     </div>
 
@@ -173,6 +169,10 @@ if (!$this->session->userdata('nama')) {
                                         <label for="exampleInputPassword1">Instagram</label>
                                         <input name="instagram" class="form-control "
                                             value="<?php echo $z->instagram; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Line</label>
+                                        <input name="fax" class="form-control" value="<?php echo $z->fax; ?>">
                                     </div>
 
                                 </div>
