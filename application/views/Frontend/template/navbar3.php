@@ -19,11 +19,11 @@
                 <ul class="nav-list">
 
                     <li class="nav-item">
-                        <a href="#home" class="nav-link scroll-link">Home</a>
+                        <a href="<?= base_url('Homepage') ?>" class="nav-link scroll-link">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#shop" class="nav-link scroll-link">Products</a>
+                        <a href="<?= base_url('Homepage/semua_produk') ?>" class="nav-link scroll-link">Products</a>
                     </li>
 
                     <li class="nav-item">
@@ -35,20 +35,31 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#blog" class="nav-link scroll-link">Blog</a>
+                        <a href="#blog" class="nav-link scroll-link">Blog </a>
                     </li>
+
+                    <?php
+                    // Cek role user
+                    if ($this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
+                    ?>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('pesanan_saya') ?>" class="nav-link scroll-link">Pesananku</a>
+                        </li>
+
+                    <?php } ?>
+
                 </ul>
             </div>
 
-            <div class="nav-icons">
+            <!-- <div class="nav-icons">
                 <div class="dropdown">
                     <a type="button" class="fas fa-search" href="<?php echo base_url('Homepage/semua_produk') ?>"></a>
-                    <a type="button" class="fas fa-shopping-basket" href="#"></a>
+                    <a type="button" class="fas fa-shopping-basket" href=""></a>
                     <a type="button" class="fas fa-user" data-toggle="dropdown"></a>
                     <div class="dropdown-menu">
                         <h5 class="dropdown-divider"></h5>
                         <a class="dropdown-item" href="#">Keranjang</a>
-                        <a class="dropdown-item" href="pesanan_saya">Pesanan Saya</a>
+                        <a class="dropdown-item" href="">Pesanan Saya</a>
                         <a class="dropdown-item" href="#">Link 3</a>
                         <h5 class="dropdown-divider"></h5>
                         <a class="dropdown-item" href="buktipembayaran">Bukti Pembayaran</a>
@@ -56,6 +67,24 @@
 
                     </div>
                 </div>
+            </div> -->
+
+            <div class="nav-icons">
+                <?php
+                // Cek role user
+                if ($this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
+                ?>
+                    <span title="Keluar"><a href="<?php echo base_url('Login0/logout') ?>"><i class="fas fa-sign-out-alt"></i></a></span>
+                    <span title="Akun"><a href=""><i class="fas fa-user"></i></a></span>
+
+                <?php } ?>
+                <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a></span>
+                <?php
+                // Cek role user
+                if (!$this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
+                ?>
+                    <a href="<?php echo base_url('Login0') ?>"><button class="shadow-sm btn btn-lg" style="color: white;background: linear-gradient(to right, #ff99cc 0%, #ff6699 100%); font-size: 15px;"><i class="fas fa-sign-in-alt"></i> Masuk/Daftar</button></a>
+                <?php } ?>
             </div>
 
             <div class="hamburger">
