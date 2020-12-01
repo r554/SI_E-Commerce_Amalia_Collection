@@ -17,11 +17,11 @@
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="USERNAME_PELANGGAN" placeholder="Username" />
+                        <input type="text" name="USERNAME_PELANGGAN" placeholder="Username" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="PASSWORD_PELANGGAN" placeholder="Password" />
+                        <input type="password" name="PASSWORD_PELANGGAN" placeholder="Password" required />
                     </div>
                     <a href="<?php echo base_url('Lupa_Password/forgotPassword'); ?>">
                         <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Forgot Password</p>
@@ -33,18 +33,18 @@
                 <!-- ini sign up -->
                 <form action="<?php echo base_url('register/tambah_register') ?>" method="POST" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
-                    <input type="hidden" value="<?php echo $id_pelanggan ?>" name="id_pelanggan">
+                    <input type="hidden" value="<?php echo $id_pelanggan ?>" name="id_pelanggan" required>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username" />
+                        <input type="text" name="username" placeholder="Username" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email" />
+                        <input type="email" name="email" placeholder="Email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" />
+                        <input type="password" name="password" placeholder="Password" required />
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
 
