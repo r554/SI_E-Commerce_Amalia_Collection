@@ -103,14 +103,15 @@
                                     <input type="hidden" name="" value="<?php echo $total2 = $total + ($data_produk2->harga * $data_produk2->jumlah) ?>">
                                     <!-- Untuk Menyimpan Data Total QTY -->
                                     <input type="hidden" name="" value="<?php echo $qty2 = $qty + ($data_produk2->jumlah) ?>">
-                                    <input type="text" name="id_produk" value="<?php echo $data_produk2->id_produk ?>">
-                                    <input type="text" name="nama_produk" value="<?php echo $data_produk2->nama_produk ?>">
-                                    <input type="text" name="warna" value="<?php echo $data_produk2->warna ?>">
-                                    <input type="text" name="harga_final" value="<?php echo $data_produk2->harga ?>">
+                                    <input type="text" name="sub_qty[]" value="<?php echo $data_produk2->jumlah ?>">
+                                    <input type="text" name="id_produk[]" value="<?php echo $data_produk2->id_produk ?>">
+                                    <input type="text" name="nama_produk[]" value="<?php echo $data_produk2->nama_produk ?>">
+                                    <input type="text" name="warna[]" value="<?php echo $data_produk2->warna ?>">
+                                    <input type="text" name="harga_final[]" value="<?php echo $data_produk2->harga ?>">
                                 <?php
                                 } ?>
                             </div>
-                            <input type="hidden" name="sub_qty" value="<?php echo $qty2; ?>">
+                            <!-- <input type="hidden" name="sub_qty" value="<?php echo $qty2; ?>"> -->
                             <input type="hidden" name="grand_total" value="<?php echo $total2; ?>">
                             <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>">
                             <input type="hidden" name="id_order" value="<?php echo $this->uri->segment(3); ?>">

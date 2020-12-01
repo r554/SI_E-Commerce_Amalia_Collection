@@ -89,21 +89,20 @@ class keranjang extends CI_Controller
         $nama_produk = $_POST["nama_produk"];
         $sub_qty = $_POST["sub_qty"];
         $harga_final = $_POST["harga_final"];
-        $warna = $_POST["harga_final"];
+        $warna = $_POST["warna"];
 
         $data2 = array();
-        //$index = 0; // Set index array awal dengan 0
+        $index = 0; // Set index array awal dengan 0
         foreach ($id_produk as $data_id_produk) { // Kita buat perulangan berdasarkan nim sampai data terakhir
             array_push($data2, array(
                 'id_order' => $id_order,
                 'id_produk' => $data_id_produk,
-                'nama_produk' => $nama_produk,
-                'sub_qty' => $sub_qty,
-                'harga_final' => $harga_final,
-                'warna' => $warna,
+                'nama_produk' => $nama_produk[$index],
+                'sub_qty' => $sub_qty[$index],
+                'harga_final' => $harga_final[$index],
+                'warna' => $warna[$index],
             ));
-            //$index++;
-
+            $index++;
         }
 
         $sql = $this->M_keranjang->save_batch($data2);

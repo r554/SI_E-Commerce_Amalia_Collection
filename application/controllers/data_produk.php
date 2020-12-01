@@ -78,11 +78,12 @@ class data_produk extends CI_Controller
 		$this->load->view("Backend/edit_produk", $data);
 	}
 
-	public function detail_product($id){
+	public function detail_product($id)
+	{
 		$getProduct = $this->M_data_produk->getProductById($id);
-		if($getProduct == NULL){
+		if ($getProduct == NULL) {
 			redirect(base_url() . '404');
-		}else{
+		} else {
 			// $this->Products_model->updateViewer($slug);
 			// $data['title'] = $getProduct['title'] . ' - ' . $this->config->item('app_name');
 			// $data['css'] = 'detail';
@@ -91,7 +92,7 @@ class data_produk extends CI_Controller
 			$data['img'] = $this->M_data_produk->getImgProductById($id);
 			$this->load->view('Frontend/template/head1');
 			$this->load->view('Frontend/template/navbar3');
-			$this->load->view('Frontend/detail_produk', $data);			
+			$this->load->view('Frontend/detail_produk', $data);
 		}
 	}
 }
