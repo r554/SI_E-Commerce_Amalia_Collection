@@ -12,21 +12,23 @@ class keranjang extends CI_Controller
     }
 
     // Method untuk menampilkan keranjang berdasarkan Login
-    public function tampil_semua_keranjang($id)
+    public function tampil_semua_keranjang($id = null)
     {
-        $data = [
-            "data_produk" => $this->M_keranjang->getById_keranjang($id),
-            "id_order" => $this->M_keranjang->id_order(),
-        ];
+        if (!isset($id)) {
+            redirect(site_url('Login0'));
+        } else {
+            $data = [
+                "data_produk" => $this->M_keranjang->getById_keranjang($id),
+                "id_order" => $this->M_keranjang->id_order(),
+            ];
 
-        // var_dump($data);
-
-        // die;
-        $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
-        $this->load->view('Frontend/keranjang', $data);
+            $this->load->view('Frontend/template/head1');
+            $this->load->view('Frontend/template/navbar3');
+            $this->load->view('Frontend/keranjang', $data);
+        }
     }
 
+    // Method untuk menyimpan ke tabel order
     public function save_order($id)
     {
         $model = $this->M_keranjang;
@@ -36,6 +38,7 @@ class keranjang extends CI_Controller
         }
     }
 
+    // Method untuk menampilkan detail pemesanan berdasarkan Login
     public function tampil_buat_pesanan()
     {
         $id = $this->session->userdata('id');
@@ -47,6 +50,7 @@ class keranjang extends CI_Controller
         $this->load->view('Frontend/buat_pesanan', $data);
     }
 
+    // Method untuk menghapus data dari keranjang berdasarkan Login
     public function delete_produk_keranjang($id = null)
     {
         if (!isset($id)) show_404();
@@ -56,56 +60,40 @@ class keranjang extends CI_Controller
         }
     }
 
-
-
     public function save_buat_pesanan()
     {
-        // $model = $this->M_keranjang;
+        //Tahap Untuk Update data di tbl_order
+        $ubah_data = $this->M_keranjang->update_tbl_detail(); //untuk menupdate tabel order
+        if ($ubah_data) {
+            $id_order = $_POST["id_order"];
+            $id_produk = $_POST["id_produk"];
+            $nama_produk = $_POST["nama_produk"];
+            $sub_qty = $_POST["sub_qty"];
+            $harga_final = $_POST["harga_final"];
+            $warna = $_POST["warna"];
 
-        // if ($model->save_order_detail()) {
-        //     redirect(site_url('Homepage'));
-        // }
+            $data2 = array();
+            $index = 0; // Set index array awal dengan 0
+            foreach ($id_produk as $data_id_produk) { // Kita buat perulangan berdasarkan nim sampai data terakhir
+                array_push($data2, array(
+                    'id_order' => $id_order,
+                    'id_produk' => $data_id_produk,
+                    'nama_produk' => $nama_produk[$index],
+                    'sub_qty' => $sub_qty[$index],
+                    'harga_final' => $harga_final[$index],
+                    'warna' => $warna[$index],
+                ));
+                $index++;
+            }
 
-        // $data = array(
-        //     array(
-        //         'id_order' => $this->input->post('id_order'),
-        //         'id_produk' => $this->input->post('id_produk'),
-        //         'nama_produk' => $this->input->post('nama_produk'),
-        //         'sub_qty' => $this->input->post('sub_qty'),
-        //         'harga_final' => $this->input->post('harga_final'),
-        //         'warna' => $this->input->post('warna'),
-        //     ),
+            $sql = $this->M_keranjang->save_batch($data2);
 
-        // );
-
-        // $this->db->insert_batch('tbl_detail_order', $data);
-
-        // Produces: INSERT INTO mytable (title, name, date) VALUES ('My title', 'My name', 'My date'), ('Another title', 'Another name', 'Another date')
-
-
-
-        $id_order = $_POST["id_order"];
-        $id_produk = $_POST["id_produk"];
-        $nama_produk = $_POST["nama_produk"];
-        $sub_qty = $_POST["sub_qty"];
-        $harga_final = $_POST["harga_final"];
-        $warna = $_POST["warna"];
-
-        $data2 = array();
-        $index = 0; // Set index array awal dengan 0
-        foreach ($id_produk as $data_id_produk) { // Kita buat perulangan berdasarkan nim sampai data terakhir
-            array_push($data2, array(
-                'id_order' => $id_order,
-                'id_produk' => $data_id_produk,
-                'nama_produk' => $nama_produk[$index],
-                'sub_qty' => $sub_qty[$index],
-                'harga_final' => $harga_final[$index],
-                'warna' => $warna[$index],
-            ));
-            $index++;
+            //Tahap Untuk Menghapus data di keranjang
+            $id = $_POST['id_pelanggan']; // Ambil data id_pelanggan yang dikirim oleh view melalui form submit
+            $this->M_keranjang->delete_keranjang($id); // Panggil fungsi delete dari model
+        } else {
+            redirect(site_url('Homepage'));
         }
-
-        $sql = $this->M_keranjang->save_batch($data2);
     }
 
 

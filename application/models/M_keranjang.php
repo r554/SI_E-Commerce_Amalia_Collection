@@ -10,6 +10,17 @@ class M_keranjang extends CI_model
     public $grand_qty;
     public $grand_total;
 
+    public $total;
+    public $jasa_pengiriman;
+    public $biaya_pengiriman;
+    public $nama_penerima;
+    public $no_penerima;
+    public $email_penerima;
+    public $alamat_penerima;
+    public $kode_pos;
+    public $provinsi_penerima;
+    public $kabupaten_penerima;
+    public $status;
 
 
 
@@ -94,6 +105,33 @@ class M_keranjang extends CI_model
         return $this->db->insert_batch('tbl_detail_order', $data2);
     }
 
+    public function update_tbl_detail()
+    {
+        $post = $this->input->post();
+        $this->id_order = $post["id_order"];
+        $this->id_pelanggan = $post["id_pelanggan"];
+        $this->grand_qty = $post["grand_qty"];
+        $this->total = $post["grand_total"];
+        $this->grand_total = $post["grand_total"];
+        $this->jasa_pengiriman = $post["jasa_pengiriman"];
+        $this->biaya_pengiriman = $post["biaya_pengiriman"];
+        $this->nama_penerima = $post["nama_penerima"];
+        $this->no_penerima = $post["no_penerima"];
+        $this->email_penerima = $post["email_penerima"];
+        $this->alamat_penerima = $post["alamat_penerima"];
+        $this->kode_pos = $post["kode_pos"];
+        $this->provinsi_penerima = $post["provinsi_penerima"];
+        $this->kabupaten_penerima = $post["kabupaten_penerima"];
+        $this->status = $post["status"];
+
+        return $this->db->update('tbl_order', $this, array('id_order' => $post['id_order']));
+    }
+
+    public function delete_keranjang($id)
+    {
+        $this->db->where('id_pelanggan', $id);
+        $this->db->delete('tbl_keranjang');
+    }
 
 
 
@@ -175,7 +213,7 @@ class M_keranjang extends CI_model
         $this->warna = $post["warna"];
         $this->harga = $post["harga"];
         $this->deskripsi = $post["deskripsi"];
-        $this->berat_produk = $post["berat_produk"];
+        $this->email_penerima = $post["email_penerima"];
         $this->gambar_produk = $this->do_upload();
 
 

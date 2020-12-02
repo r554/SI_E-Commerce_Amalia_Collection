@@ -20,74 +20,76 @@
             </div>
         </div>
 
-
-        <div class="row mb-1">
-            <div class="col-md-8">
-                <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <div class="card-header text-center">
-                        Informasi Pengiriman
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1"><strong> Alamat Pengiriman</strong></label>
-                                <input type="text" class="form-control" style="height: 40px; font-size: medium;" placeholder="Nama Penerima">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" style="height: 40px; font-size: medium;" placeholder="No Handphone Penerima">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="" class="form-control" id="" cols="30" rows="10" style="font-size: medium;" placeholder="Alamat Lengkap"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" style="height: 40px; font-size: medium;" placeholder="Provinsi">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kabupaten">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kecamatan">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kode POS">
-                            </div>
-                            <div class="form-group mt-5">
-                                <label for="exampleInputEmail1"><strong>Kurir Pengiriman</strong></label>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2 mt-2">
-                                        <select class="form-control" id="sel1" name="sellist1" style="height: 40px; font-size: medium;">
-                                            <option value="" selected disabled>Pilih Ekspedisi</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mt-2">
-                                        <select class="form-control" id="sel1" name="sellist1" style="height: 40px; font-size: medium;">
-                                            <option value="" selected disabled>Pilih Paket</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
+        <form action="<?php echo base_url('keranjang/save_buat_pesanan') ?>" method="POST" role="form">
+            <div class="row mb-1">
+                <div class="col-md-8">
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-center">
+                            Informasi Pengiriman
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><strong> Alamat Pengiriman</strong></label>
+                                    <input type="text" name="nama_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Nama Penerima" required>
+                                    <input type="hidden" name="status" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="no_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="No Handphone Penerima" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Email Penerima" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="alamat_penerima" class="form-control" id="" cols="30" rows="10" style="font-size: medium;" placeholder="Alamat Lengkap" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="provinsi_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Provinsi" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="kabupaten_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kabupaten" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="kecamatan_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kecamatan" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="kode_pos" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kode POS" required>
+                                </div>
+                                <div class="form-group mt-5">
+                                    <label for="exampleInputEmail1"><strong>Kurir Pengiriman</strong></label>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 mt-2">
+                                            <select class="form-control" id="sel1" name="jasa_pengiriman" style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Pilih Ekspedisi</option>
+                                                <option value="JNE">JNE</option>
+                                                <option value="J&T">J&T</option>
+                                                <option value="TIKI">TIKI</option>
+                                                <option value="Si Cepat">SI Cepat</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <select class="form-control" id="sel1" name="biaya_pengiriman" style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Pilih Paket</option>
+                                                <option value="8000">Rp. 8.000</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-5 bg-white rounded">
-                    <div class="card-header text-center">
-                        <h3>Pembayaran</h3>
-                    </div>
-                    <div class="card-body">
-                        <!-- Data Logic -->
-
-                        <form action="<?php echo base_url('keranjang/save_buat_pesanan') ?>" method="POST" role="form">
+                <div class="col-md-4">
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-center">
+                            <h3>Pembayaran</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Data Logic -->
                             <div class="col-md-8">
                                 <?php
                                 $total = 0;
@@ -102,7 +104,7 @@
                                     <!-- Untuk Menyimpan Data Total -->
                                     <input type="hidden" name="" value="<?php echo $total2 = $total + ($data_produk2->harga * $data_produk2->jumlah) ?>">
                                     <!-- Untuk Menyimpan Data Total QTY -->
-                                    <input type="hidden" name="" value="<?php echo $qty2 = $qty + ($data_produk2->jumlah) ?>">
+                                    <input type="hidden" name="grand_qty" value="<?php echo $qty2 = $qty + ($data_produk2->jumlah) ?>">
                                     <input type="text" name="sub_qty[]" value="<?php echo $data_produk2->jumlah ?>">
                                     <input type="text" name="id_produk[]" value="<?php echo $data_produk2->id_produk ?>">
                                     <input type="text" name="nama_produk[]" value="<?php echo $data_produk2->nama_produk ?>">
@@ -115,8 +117,6 @@
                             <input type="hidden" name="grand_total" value="<?php echo $total2; ?>">
                             <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>">
                             <input type="hidden" name="id_order" value="<?php echo $this->uri->segment(3); ?>">
-
-
 
 
                             <hr>
@@ -137,11 +137,11 @@
                             </hr>
                             <hr>
                             <button type="submit" class="btn btn-lg float-right" style="color: white;background: linear-gradient(to right, #ff99cc 0%, #ff6699 100%); font-size: 18px;">Selesaikan Pesanan</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div class="row mb-5">
 
@@ -192,8 +192,6 @@
                 <?php
                 } ?>
             </div>
-
-
         </div>
     </div>
     <!-- Akhir Bagian Content -->
