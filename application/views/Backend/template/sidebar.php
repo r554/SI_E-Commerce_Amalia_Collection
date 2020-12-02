@@ -20,10 +20,19 @@
            with font-awesome or any other icdf
            m con font library -->
             <li class="nav-item menu-open">
-                <a href="#" class="nav-link">
+                <a href="<?php echo base_url('Dashboard/tampil') ?>" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
-                        Dashboard
+                        Dashboard A
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item menu-open">
+                <a href="<?php echo base_url('Manager/Dashboard_Manager/tampil_manager') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Dashboard M
                     </p>
                 </a>
             </li>

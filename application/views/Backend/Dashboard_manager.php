@@ -74,7 +74,7 @@
 
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Pesanan Hari ini</span>
-                                    <span class="info-box-number">41,410</span>
+                                    <span class="info-box-number"><?php echo $maradona?></span>
 
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
@@ -92,7 +92,7 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Produk Terjual</span>
-                                    <span class="info-box-number">41,410</span>
+                                    <span class="info-box-number"><?php echo $dora?></span>
 
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 60%"></div>
@@ -109,9 +109,17 @@
                             <div class="info-box mb-3 bg-success ">
                                 <span class="info-box-icon "><i class="fas fa-chart-pie"></i></span>
 
+                                <?php   
+                                        $total = 0;
+                                        $no = 1;
+                                        foreach($upin as $rows){ 
+                                            $jmlh_stok[] = $rows->qty; $stok_total = array_sum($jmlh_stok);
+                                           
+                                        ?>
+                                <?php } ?>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Stok Produk</span>
-                                    <span class="info-box-number">2,000</span>
+                                    <span class="info-box-number"><?php echo $stok_total?></span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 90%"></div>
                                     </div>
@@ -394,19 +402,10 @@
 
         </div>
 
+        <?php $this->load->view('Backend/template/footer'); ?>
 
 
 
-
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="https://adminlte.io">Indanah Group</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.1.0-pre
-            </div>
-        </footer>
     </div>
     <!-- ./wrapper -->
 
