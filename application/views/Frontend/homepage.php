@@ -87,7 +87,6 @@
                 $no = $this->uri->segment('3') + 1;
                 foreach ($data_produk as $data_produk) {
                 ?>
-<<<<<<< HEAD
                 <div class="product">
                     
                     <div class="product-header">
@@ -98,16 +97,6 @@
                         <h3><?= $data_produk->nama_produk; ?></h3>
                         <div class="rating">
                             <!-- <i class="fas fa-star"></i>
-=======
-                    <div class="product">
-                        <div class="product-header">
-                            <img src="<?= base_url() ?>assets/Gambar/foto_produk/<?= $data_produk->gambar_produk; ?>" alt="product">
-                        </div>
-                        <div class="product-footer">
-                            <h3><?= $data_produk->nama_produk; ?></h3>
-                            <div class="rating">
-                                <!-- <i class="fas fa-star"></i>
->>>>>>> 28ee725c247fff08bae95da636124cd8c107282c
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -116,26 +105,7 @@
                             <div class="product-price">
                                 <h4><?= $data_produk->harga; ?></h4>
                             </div>
-                        </div>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-sync"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-<<<<<<< HEAD
+                        </div>                        
                     <ul>
                         <li>
                         <a href="<?= base_url('homepage/detail_product/'.$data_produk->id_produk) ?>">                        
@@ -155,8 +125,6 @@
                     </ul>
                     <a href="<?= base_url('homepage/detail_product/'.$data_produk->id_produk) ?>">detail</a>
                 </div>
-=======
->>>>>>> 28ee725c247fff08bae95da636124cd8c107282c
                 <?php } ?>
             </div>
         </section>
