@@ -36,7 +36,7 @@ input[type=number] {
     <div class="navigation">
         <a href="<?= base_url(); ?>">Home</a>
         <i class="fa fa-caret-right"></i>
-        <a href="<?= base_url(); ?>data_produk/detail_product/<?= $product['id_produk']; ?>"><?= $product['nama_produk']; ?></a>
+        <a href="<?= base_url(); ?>homepage/detail_product/<?= $product['id_produk']; ?>"><?= $product['nama_produk']; ?></a>
         <i class="fa fa-caret-right"></i>
         <a><?= $product['nama_produk']; ?></a>
     </div>

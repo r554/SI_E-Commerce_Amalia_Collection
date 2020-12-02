@@ -26,7 +26,18 @@ class M_data extends CI_Model
     $this->db->where('tbl_produk.id_produk', $id);
     return $this->db->get()->result();
   }
-
+  public function getProductById($id){
+    $this->db->select("*,tbl_produk.id_produk AS produkId");
+    $this->db->from("tbl_produk");
+    $this->db->join("tbl_attribut", "tbl_produk.id_produk=tbl_attribut.id_produk");
+    $this->db->order_by("tbl_produk.id_produk", "desc");
+    $this->db->where('tbl_produk.id_produk', $id);
+    return $this->db->get()->row_array();
+  }
+  public function getImgProductById($id){
+      $product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
+      return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
+  }
   function cek_data($id, $id_db, $database)
   { //cek database
     $this->db->from($database);

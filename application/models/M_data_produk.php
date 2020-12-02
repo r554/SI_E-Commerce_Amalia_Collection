@@ -142,7 +142,7 @@ class M_data_produk extends CI_model
         $this->db->select("*,tbl_produk.id_produk AS produkId");
         $this->db->from("tbl_produk");
         $this->db->join("tbl_attribut", "tbl_produk.id_produk=tbl_attribut.id_produk");
-        $this->db->order_by("tbl_produk.id_produk", "desc");
+        //$this->db->order_by("tbl_produk.id_produk", "desc");
         $this->db->where('tbl_produk.id_produk', $id);
         return $this->db->get()->row_array();
 	}

@@ -139,7 +139,7 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="#">
+                            <a href="<?= base_url('homepage/detail_product/'.$data_produk->id_produk) ?>">
                                     <i class="far fa-eye"></i>
                                 </a>
                             </li>

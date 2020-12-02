@@ -7,6 +7,7 @@ class Homepage extends CI_Controller
   {
     parent::__construct();
     $this->load->model('M_data');
+    $this->load->model('M_data_produk');
     $this->load->helper('url', 'form');
     $this->load->library(array('form_validation', 'session'));
     $this->load->model('M_footer');
@@ -101,7 +102,20 @@ class Homepage extends CI_Controller
     $this->load->view('Frontend/detailProduk', $data);
   }
 
-
+  public function detail_product($id){
+		$getProduct = $this->M_data_produk->getProductById($id);
+		
+			// $this->Products_model->updateViewer($slug);
+			// $data['title'] = $getProduct['title'] . ' - ' . $this->config->item('app_name');
+			// $data['css'] = 'detail';
+			// $data['responsive'] = '';
+			$data['product'] = $getProduct;
+			$data['img'] = $this->M_data_produk->getImgProductById($id);
+			$this->load->view('Frontend/template/head1');
+			$this->load->view('Frontend/template/navbar3');
+			$this->load->view('Frontend/detail_produk', $data);			
+		
+	}
   public function cari()
   {
     $keyword = $this->input->post('cari');
