@@ -42,7 +42,11 @@ class keranjang extends CI_Controller
     public function tampil_buat_pesanan()
     {
         $id = $this->session->userdata('id');
-        $data['data_produk'] = $this->M_keranjang->getById_keranjang($id);
+
+        $data = [
+            "data_produk" => $this->M_keranjang->getById_keranjang($id),
+            "data_provinsi" => $this->M_keranjang->get_provinsi(),
+        ];
         // var_dump($data);
         // die;
         $this->load->view('Frontend/template/head1');
@@ -94,6 +98,37 @@ class keranjang extends CI_Controller
         } else {
             redirect(site_url('Homepage'));
         }
+    }
+
+    // Method Untuk Menampilkan Data Provinsi
+    function wilayah_provinsi()
+    {
+        $x['data'] = $this->M_keranjang->get_provinsi();
+        $this->load->view('v_kategori', $x);
+    }
+
+    // Method Untuk Menampilkan Data Kabupaten
+    function wilayah_kabupaten()
+    {
+        $id = $this->input->post('id');
+        $data = $this->M_keranjang->get_kabupaten($id)->result();
+        echo json_encode($data);
+    }
+
+    // Method Untuk Menampilkan Data Kecamatan
+    function wilayah_kecamatan()
+    {
+        $id = $this->input->post('id');
+        $data = $this->M_keranjang->get_kecamatan($id)->result();
+        echo json_encode($data);
+    }
+
+    // Method Untuk Menampilkan Data Desa
+    function wilayah_desa()
+    {
+        $id = $this->input->post('id');
+        $data = $this->M_keranjang->get_desa($id)->result();
+        echo json_encode($data);
     }
 
 

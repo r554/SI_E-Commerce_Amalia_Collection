@@ -44,17 +44,45 @@
                                     <textarea name="alamat_penerima" class="form-control" id="" cols="30" rows="10" style="font-size: medium;" placeholder="Alamat Lengkap" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="provinsi_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Provinsi" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mt-3">
+                                            <select class="form-control" id="provinsi_penerima" name="provinsi_penerima" style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Provinsi</option>
+                                                <?php foreach ($data_provinsi->result() as $row) : ?>
+                                                    <option value="<?php echo $row->id; ?>"><?php echo $row->nama; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <select class="form-control" id="kabupaten_penerima" name="kabupaten_penerima" style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Kabupaten</option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <input type="text" name="kabupaten_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kabupaten" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mt-3">
+                                            <select class="form-control" id="kecamatan_penerima" name="kecamatan_penerima" style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Kecamatan</option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <select class="form-control" id="kelurahan_penerima" name="kelurahan_penerima" style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Kelurahan</option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="kecamatan_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kecamatan" required>
-                                </div>
+
                                 <div class="form-group">
                                     <input type="text" name="kode_pos" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kode POS" required>
                                 </div>
+
                                 <div class="form-group mt-5">
                                     <label for="exampleInputEmail1"><strong>Kurir Pengiriman</strong></label>
                                     <div class="row">
@@ -242,6 +270,100 @@
     <?php $this->load->view('Frontend/template/js') ?>
     <!-- End Java Script -->
 
+    <script type="text/javascript" src="<?php echo base_url() . 'assets/Bootstrap/js/jquery-3.4.1.min.js' ?>"></script>
+
+    <!-- ajax Menampilkan Data Kabupaten -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#provinsi_penerima').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo site_url('keranjang/wilayah_kabupaten'); ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].id + '>' + data[i].nama + '</option>';
+                        }
+                        $('#kabupaten_penerima').html(html);
+
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+
+    <!-- ajax Menampilkan Data Kecamatan -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#kabupaten_penerima').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo site_url('keranjang/wilayah_kecamatan'); ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].id + '>' + data[i].nama + '</option>';
+                        }
+                        $('#kecamatan_penerima').html(html);
+
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+
+    <!-- ajax Menampilkan Data kelurahan -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#kecamatan_penerima').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?php echo site_url('keranjang/wilayah_desa'); ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<option value=' + data[i].id + '>' + data[i].nama + '</option>';
+                        }
+                        $('#kelurahan_penerima').html(html);
+
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
 
 </body>
 

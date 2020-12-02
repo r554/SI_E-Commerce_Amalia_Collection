@@ -20,6 +20,8 @@ class M_keranjang extends CI_model
     public $kode_pos;
     public $provinsi_penerima;
     public $kabupaten_penerima;
+    public $kecamatan_penerima;
+    public $kelurahan_penerima;
     public $status;
 
 
@@ -122,6 +124,8 @@ class M_keranjang extends CI_model
         $this->kode_pos = $post["kode_pos"];
         $this->provinsi_penerima = $post["provinsi_penerima"];
         $this->kabupaten_penerima = $post["kabupaten_penerima"];
+        $this->kecamatan_penerima = $post["kecamatan_penerima"];
+        $this->kelurahan_penerima = $post["kelurahan_penerima"];
         $this->status = $post["status"];
 
         return $this->db->update('tbl_order', $this, array('id_order' => $post['id_order']));
@@ -131,6 +135,44 @@ class M_keranjang extends CI_model
     {
         $this->db->where('id_pelanggan', $id);
         $this->db->delete('tbl_keranjang');
+    }
+
+    // Function Untuk Menampilkan Data Provinsi
+    function get_provinsi()
+    {
+        $hasil = $this->db->query("SELECT * FROM wilayah_provinsi");
+        return $hasil;
+    }
+
+    // Function Untuk Menampilkan Data Kabupaten
+    // function get_kabupaten($id)
+    // {
+    //     $hasil = $this->db->query("SELECT * FROM wilayah_kabupaten WHERE provinsi_id='$id'");
+    //     return $hasil;
+    // }
+
+    function get_kabupaten($id)
+    {
+        $query = $this->db->get_where('wilayah_kabupaten', array('provinsi_id' => $id));
+        return $query;
+    }
+
+    // Function Untuk Menampilkan Data Kecamatan
+    function get_kecamatan($id)
+    {
+        // $hasil = $this->db->query("SELECT * FROM wilayah_kecamatan WHERE kabupaten_id='$id'");
+        // return $hasil->result();
+        $query = $this->db->get_where('wilayah_kecamatan', array('kabupaten_id' => $id));
+        return $query;
+    }
+
+    // Function Untuk Menampilkan Data Desa
+    function get_desa($id)
+    {
+        // $hasil = $this->db->query("SELECT * FROM wilayah_desa WHERE kecamatan_id='$id'");
+        // return $hasil->result();
+        $query = $this->db->get_where('wilayah_desa', array('kecamatan_id' => $id));
+        return $query;
     }
 
 
