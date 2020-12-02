@@ -201,5 +201,7 @@ if (!$this->session->userdata('nama')) {
         <!-- /.modal-dialog -->
     </div>
 </body>
+<!-- REQUIRED SCRIPTS -->
+<?php $this->load->view('Backend/template/js'); ?>
 
 </html>

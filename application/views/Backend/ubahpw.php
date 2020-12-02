@@ -87,7 +87,7 @@
                                             <label for="inputpasswordbaru1" class="col-sm-2 col-form-label">Password
                                                 Baru</label>
                                             <div class="col-sm-10">
-                                                <input name="password_admin" type="password baru" class="form-control"
+                                                <input name="password_admin" type="password" class="form-control"
                                                     id="inputpasswordbaru1">
                                             </div>
                                         </div>

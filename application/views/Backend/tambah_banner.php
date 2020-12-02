@@ -87,7 +87,8 @@
                                         <input class="form-control" type="text" placeholder="Link" name="link_banner">
                                         <br>
                                         <label>Foto</label>
-                                        <input name="foto_banner" type="file">
+                                        <input name="foto_banner" multiple accept='image/*' id="menu_images"
+                                            type="file">
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success float-right">

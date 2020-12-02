@@ -92,7 +92,7 @@
                                             name="link_banner" value="<?php echo $edit_banner['0']->link_banner?>">
                                         <br>
                                         <label>Foto</label>
-                                        <input name="foto_banner" type="file"
+                                        <input name="foto_banner" type="file" multiple accept='image/*' id="menu_images"
                                             value="<?php echo $edit_banner['0']->foto_banner?>">
                                         <input name="foto" type="hidden"
                                             value="<?php echo $edit_banner['0']->foto_banner?>">
@@ -126,6 +126,7 @@
 
     <!-- REQUIRED SCRIPTS -->
     <?php $this->load->view('Backend/template/js'); ?>
+
 
 </body>
 

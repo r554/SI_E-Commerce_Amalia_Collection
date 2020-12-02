@@ -39,3 +39,33 @@
 <!-- Bootstrap Switch -->
 <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
+<!-- js gambar -->
+<script>
+document.getElementById("menu_images").onchange = function() {
+    var reader = new FileReader();
+    if (this.files[0].size > 2028385) {
+        alert("Ukuran gambar melebihi 2 MB");
+        $("#menu_image").attr("src", "blank");
+        $("#menu_image").hide();
+        $('#menu_images').wrap('<form>').closest('form').get(0).reset();
+        $('#menu_images').unwrap();
+        return false;
+    }
+    if (this.files[0].type.indexOf("image") == -1) {
+        alert("File yang dipilih bukan gambar");
+        $("#menu_image").attr("src", "blank");
+        $("#menu_image").hide();
+        $('#menu_images').wrap('<form>').closest('form').get(0).reset();
+        $('#menu_images').unwrap();
+        return false;
+    }
+    reader.onload = function(e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("menu_image").src = e.target.result;
+        $("#menu_image").show();
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+</script>

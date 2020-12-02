@@ -108,7 +108,8 @@
                                         <div class="form-group">
                                             <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
                                             <input name="no_admin" maxlength="13" value="<?php echo $user->no_admin; ?>"
-                                                type="number" class="form-control" id="exampleInputNomorTelepon1">
+                                                type="text" class="form-control" id="exampleInputNomorTelepon1"
+                                                onkeypress="return event.charCode >= 48 && event.charCode <=57">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
@@ -119,7 +120,7 @@
                                         <div class="form-group">
                                             <label>Foto</label>
                                             <input name="foto_admin" value="<?php echo $user->foto_admin; ?>"
-                                                type="file" name="foto">
+                                                type="file" name="foto" multiple accept='image/*' id="menu_images">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

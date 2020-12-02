@@ -85,8 +85,8 @@
                                         <input type="file" name="gambar_kategori" class="mt-4"> -->
 
                                         <label>Gambar Kategori</label>
-                                        <input name="gambar_kategori" type="file"
-                                            value="<?php echo $edit_kategori['0']->gambar_kategori?>">
+                                        <input name="gambar_kategori" type="file" multiple accept='image/*'
+                                            id="menu_images" value="<?php echo $edit_kategori['0']->gambar_kategori?>">
                                         <input name="gambar_kategori" type="hidden"
                                             value="<?php echo $edit_kategori['0']->gambar_kategori?>">
 

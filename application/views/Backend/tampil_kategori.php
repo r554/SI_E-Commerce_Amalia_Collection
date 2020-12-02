@@ -151,7 +151,7 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Foto Kategori</label>
                             <div class="col-sm-10">
-                                <input type="file" name="gambar_kategori">
+                                <input type="file" name="gambar_kategori" multiple accept='image/*' id="menu_images">
                             </div>
                         </div>
                     </div>
@@ -167,5 +167,7 @@
         <!-- /.modal-dialog -->
     </div>
 </body>
+<!-- REQUIRED SCRIPTS -->
+<?php $this->load->view('Backend/template/js'); ?>
 
 </html>

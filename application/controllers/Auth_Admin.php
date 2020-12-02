@@ -39,6 +39,7 @@ class Auth_Admin extends CI_Controller
                     'nama' => $user->nama_admin, // Buat session nama
                     'role' => $user->role, // Buat session role
                     'kd_pengguna' => $user->id_admin, // Buat session role
+                    'foto_admin' => $user->foto_admin, // Buat session role
                 );
 
                 $this->session->set_userdata($session); // Buat session sesuai $session
