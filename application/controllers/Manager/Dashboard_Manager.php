@@ -15,11 +15,13 @@ class Dashboard_Manager extends CI_Controller
 		$show = $this->M_dashboard_manager;
 
 		$data = [
-			"messi" => $show->tampil_data7(),
-			"ronaldo"  => $show->tampil_data10(),
+			"messi" => $show->tampil_stok_manager(),
+			"user2"  => $show->pesanan_masuk_manager(),
 			"maradona" => $this->M_dashboard_manager->jumlah_data_order(),
 			"dora" => $this->M_dashboard_manager->jumlah_data_produk_terjual(),
 			"upin" => $this->M_dashboard_manager->jumlah_data_stokseluruh()->result(),
+			"ipin" => $this->M_dashboard_manager->jumlah_data_cutomer(),
+			"indah" => $this->M_dashboard_manager->jumlah_data_karyawan(),
 		
 		];
 		

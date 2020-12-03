@@ -58,7 +58,7 @@ class M_dashboard_manager extends CI_model
     return $query->result();
     }
  
-    // menghitung card order hari ini
+    // menghitung card pesanan masuk
     function jumlah_data_order()
     {
           return $this->db->get('tbl_order')->num_rows();
@@ -74,8 +74,7 @@ class M_dashboard_manager extends CI_model
             return $query->num_rows();
     }
 
-    
-    // menghitung card stok
+        // menghitung card stok
     function jumlah_data_stokseluruh()
     {
         $this->db->select('*');
@@ -84,6 +83,52 @@ class M_dashboard_manager extends CI_model
         
     }
 
+    // menghitung card jmlh Customer
+    function jumlah_data_cutomer()
+    {
+          return $this->db->get('tbl_pelanggan')->num_rows();
+    }
 
+    // menghitung card jmlh karyawan
+    function jumlah_data_karyawan()
+    {
+          return $this->db->get('tbl_admin')->num_rows();
+    }
+
+
+    public function pesanan_masuk()
+    {
+        $this->db->select('*');
+         $this->db->from('tbl_order');
+        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_order');
+        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_detail_order');
+ 
+         $query = $this->db->get();
+         return $query->result();
+    }
+
+    public function tampil_stok_manager()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_produk');
+        $this->db->join('tbl_kategori','tbl_kategori.id_kategori = tbl_produk.id_kategori');
+        $this->db->join('tbl_jenis','tbl_jenis.id_kategori = tbl_kategori.id_kategori');
+        $this->db->join('tbl_attribut','tbl_attribut.id_produk = tbl_produk.id_produk');
+        
+       
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function pesanan_masuk_manager()
+    {
+        $this->db->select('*');
+         $this->db->from('tbl_order');
+        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_order');
+        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_detail_order');
+ 
+         $query = $this->db->get();
+         return $query->result();
+    }
 
 }

@@ -73,13 +73,14 @@
                                 <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
 
                                 <div class="info-box-content text-dark">
-                                    <span class="info-box-text">Pesanan Hari ini</span>
+                                    <span class="info-box-text">Pesanan Masuk</span>
                                     <span class="info-box-number"><?php echo $maradona?></span>
 
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
-                                    <a href="#" class="small-box-footer text-light">
+                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                        class="small-box-footer text-light">
                                         More info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -97,7 +98,8 @@
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 60%"></div>
                                     </div>
-                                    <a href="#" class="small-box-footer text-light">
+                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>"
+                                        class="small-box-footer text-light">
                                         More info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -123,7 +125,8 @@
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 90%"></div>
                                     </div>
-                                    <a href="#" class="small-box-footer text-light">
+                                    <a href="<?php echo base_url('data_produk/tampil') ?>"
+                                        class="small-box-footer text-light">
                                         info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -135,11 +138,12 @@
                                 <span class="info-box-icon"><i class="fas fa-user-plus"></i></span>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Customer</span>
-                                    <span class="info-box-number">92,050</span>
+                                    <span class="info-box-number"><?php echo $ipin?></span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 50%"></div>
                                     </div>
-                                    <a href="#" class="small-box-footer text-light">
+                                    <a href="<?php echo base_url('Admin/data_customer/tampil') ?>"
+                                        class="small-box-footer text-light">
                                         info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -151,11 +155,12 @@
                                 <span class="info-box-icon"><i class="fas fa-users"></i></span>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Karyawan</span>
-                                    <span class="info-box-number">92,050</span>
+                                    <span class="info-box-number"><?php echo $indah?></span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 85%"></div>
                                     </div>
-                                    <a href="#" class="small-box-footer text-light">
+                                    <a href="<?php echo base_url('Admin/data_karyawan/tampil') ?>"
+                                        class="small-box-footer text-light">
                                         info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -164,50 +169,6 @@
 
                         <!--Akhir Card di atas  -->
 
-                        <br> <br>
-
-
-
-                        <!--Grafik penjualan  -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Grafik Penjualan</h5>
-
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                            <div class="col-md-4">
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <p class="text-center">
-                                                    <strong>Penjualan: 1 Jan, 2014 - 30 Jul, 2020</strong>
-                                                </p>
-
-                                                <div class="chart">
-                                                    <canvas id="salesChart" height="180"
-                                                        style="height: 180px;"></canvas>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Akhir Grafik penjualan  -->
 
 
                         <br> <br>
@@ -218,8 +179,8 @@
                         <div class="col-md-12">
 
                             <div class="card">
-                                <div class="card-header bg-secondary">
-                                    <h3 class="card-title">Pesanan Hari Ini </h3>
+                                <div class="card-header bg-info">
+                                    <h3 class="card-title">Pesanan Masuk </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
@@ -231,25 +192,24 @@
                                 </div>
 
                                 <div class="card-body bg-light">
-                                    <table id="pesananhari2"
+                                    <table id="pesanan2"
                                         class="table table-bordered table-striped bg-light text-center">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>
                                                 <th>ID Pemesanan</th>
-                                                <th> Pembeli</th>
-                                                <th>ID Produk </th>
-                                                <th>Nama Produk</th>
-                                                <th>ID Kategori</th>
-                                                <th>Kategori</th>
-                                                <th>Jumlah</th>
-                                                <th>Total Harga</th>
+                                                <th>Tanggal Pemesanan</th>
+                                                <th> Nama Pelanggan</th>
+                                                <th>Jumlah Produk Dipesan</th>
+                                                <th>Total Harga </th>
+                                                <th>Status Pemesanan</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php                                            
                                             $no = 1;
-                                            foreach ($ronaldo as $a) {
+                                            foreach ($user2 as $a) {
                                             ?>
                                             <tr>
                                                 <td>
@@ -260,30 +220,29 @@
 
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a->nama_pelanggan; ?></p>
+                                                    <p><?php echo $a->tanggal_order; ?></p>
 
                                                 </td>
+                                                <td>
+                                                    <p><?php echo $a->nama_penerima; ?></p>
 
-                                                <td>
-                                                    <p><?php echo $a->id_produk; ?> </p>
-                                                </td>
-
-                                                <td>
-                                                    <p><?php echo $a->nama_produk; ?> </p>
-                                                </td>
-
-                                                <td>
-                                                    <p><?php echo $a->id_kategori; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a->nama_kategori; ?> </p>
-                                                </td>
-                                                <td>
-                                                    <p><?php echo $a->jumlah; ?> </p>
+                                                    <p><?php echo $a->grand_qty; ?> </p>
                                                 </td>
                                                 <td>
                                                     <p><?php echo $a->grand_total; ?> </p>
                                                 </td>
+                                                <td>
+                                                    <p><?php echo $a->status; ?> </p>
+                                                </td>
+                                                <td>
+
+                                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                                        class="btn btn-info btn-sm active" role="button"
+                                                        aria-pressed="true">Detail</a>
+                                                </td>
+
                                             </tr>
                                             <?php } ?>
                                         </tbody>
@@ -304,7 +263,7 @@
                         <div class="col-md-12">
 
                             <div class="card">
-                                <div class="card-header bg-secondary">
+                                <div class="card-header bg-info">
                                     <h3 class="card-title">Stok Produk </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -321,12 +280,14 @@
                                         style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>NO</th>
+                                                <th>No</th>
                                                 <th>ID Produk</th>
-                                                <th> Nama Produk</th>
-                                                <th>ID Kategori </th>
-                                                <th>Nama Kategori</th>
+                                                <th>Nama Produk</th>
+                                                <th>Kategori</th>
+                                                <th>Jenis</th>
+                                                <th>Warna</th>
                                                 <th>Stok Tersedia</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -342,24 +303,31 @@
                                                 </td>
 
                                                 <td>
-                                                    <p><?php echo $d->id_kategori; ?></p>
+                                                    <p><?php echo $d->id_produk; ?></p>
 
                                                 </td>
 
                                                 <td>
                                                     <p><?php echo $d->nama_produk; ?> </p>
                                                 </td>
-
-                                                <td>
-                                                    <p><?php echo $d->id_kategori; ?> </p>
-                                                </td>
-
                                                 <td>
                                                     <p><?php echo $d->nama_kategori; ?> </p>
                                                 </td>
 
                                                 <td>
-                                                    <p><?php echo $d->jumlah_produk; ?> </p>
+                                                    <p><?php echo $d->nama_jenis; ?> </p>
+                                                </td>
+
+                                                <td>
+                                                    <p><?php echo $d->warna; ?> </p>
+                                                </td>
+                                                <td>
+                                                    <p><?php echo $d->qty; ?> </p>
+                                                </td>
+                                                <td>
+                                                    <a href="<?php echo base_url('data_produk/tampil') ?>"
+                                                        class="btn btn-info btn-sm active" role="button"
+                                                        aria-pressed="true">Detail</a>
                                                 </td>
 
                                             </tr>
@@ -442,23 +410,40 @@
     <!-- Data Table-->
 
     <script>
-    $(document).ready(function() {
-        $('#pesananhari2').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
+    $(function() {
+        $("#pesanan2").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["pdf", "print", ]
+        }).buttons().container().appendTo('#pesanan2_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
     });
     </script>
-
     <script>
-    $(document).ready(function() {
-        $('#stok2').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
+    $(function() {
+        $("#stok2").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["pdf", "print", ]
+        }).buttons().container().appendTo('#stok2_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
     });
     </script>
