@@ -29,32 +29,62 @@ class M_dashboard extends CI_model
     }
 
 
-   
-
-
-    public function tampil_data2()
+    public function tampil_stok()
     {
+        $this->db->select('*');
         $this->db->from('tbl_produk');
-        $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+        $this->db->join('tbl_kategori','tbl_kategori.id_kategori = tbl_produk.id_kategori');
+        $this->db->join('tbl_jenis','tbl_jenis.id_kategori = tbl_kategori.id_kategori');
+        $this->db->join('tbl_attribut','tbl_attribut.id_produk = tbl_produk.id_produk');
+        
        
         $query = $this->db->get();
         return $query->result();
     }
 
+ 
+    public function pesanan_masuk()
+    {
+        $this->db->select('*');
+         $this->db->from('tbl_order');
+        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_order');
+        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_detail_order');
+ 
+         $query = $this->db->get();
+         return $query->result();
+    }
 
+
+   
+
+
+
+ 
+      // menghitung card order masuk
+      function order_masuk()
+      {
+            return $this->db->get('tbl_order')->num_rows();
+      }
+
+      // menghitung card produk terjual
+    function produk_terjual()
+    {
+        $id="3";
+        $this->db->from('tbl_order'); 
+        $this->db->where('status', $id); 
+            $query = $this->db->get();
+            return $query->num_rows();
+    }
 
     
-    public function tampil_data46()
-    {
-    $this->db->from('tbl_keranjang');
-   // $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_keranjang.id_pelanggan');
-   // $this->db->join('tbl_order', 'tbl_order.id_keranjang = tbl_keranjang.id_keranjang');
-   // $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
-   //  $this->db->where('tabel_lapak.kd_pengguna', $id); 
-    $query = $this->db->get();
-    return $query->result();
-    }
- 
+        // menghitung card stok
+        function stok()
+        {
+            $this->db->select('*');
+            $this->db->from('tbl_attribut');
+            return $this->db->get();
+            
+        }
 
 
 }

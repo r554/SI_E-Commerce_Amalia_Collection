@@ -25,10 +25,13 @@ class Dashboard extends CI_Controller
 		$show = $this->M_dashboard;
 
 		$data = [
-			"user" => $show->tampil_data2(),
-			"user2"  => $show->tampil_data46(),
+			"user" => $show->tampil_stok(),
+			"user2"  => $show->pesanan_masuk(),
+			"kaka" => $show->order_masuk(),
+			"dora" => $show->produk_terjual(),
+			"jarjit" => $show->stok()->result(),
 		];
-
+	
 		$this->load->view("Backend/DashboardAdmin", $data);
 	}
 

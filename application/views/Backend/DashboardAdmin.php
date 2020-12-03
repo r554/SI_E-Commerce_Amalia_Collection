@@ -64,13 +64,14 @@
                             <!-- small card -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
-                                    <p>Pesanan Hari Ini</p>
+                                    <h3><?php echo $kaka?></h3>
+                                    <p>Pesanan Masuk</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-shopping-cart"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                    class="small-box-footer">
                                     More info <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -80,13 +81,14 @@
                             <!-- small card -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>730</h3>
+                                    <h3><?php echo $dora?></h3>
                                     <p>Produk Terjual</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-chart-pie"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>"
+                                    class="small-box-footer">
                                     More info <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -94,20 +96,27 @@
                         <!-- ./col -->
                         <div class="col-lg-4 col-6">
                             <!-- small card -->
+
+
+                            <?php   
+                                        $total = 0;
+                                        $no = 1;
+                                        foreach($jarjit as $rows){ 
+                                            $jmlh_stok[] = $rows->qty; $stok_total = array_sum($jmlh_stok);
+                                           
+                                        ?>
+                            <?php } ?>
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>213<sup style="font-size: 20px"></sup></h3>
+                                    <h3><?php echo $stok_total?><sup style="font-size: 20px"></sup></h3>
                                     <p>Jumlah Stok</p>
-
-
-
 
 
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="<?php echo base_url('data_produk/tampil') ?>" class="small-box-footer">
                                     More info <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -117,46 +126,12 @@
 
                     <br>
 
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="card-title">Grafik Penjualan</h5>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-center">
-                                                <strong>Penjualan: 1 Jan, 2014 - 30 Jul, 2020</strong>
-                                            </p>
-                                            <div class="chart">
-                                                <!-- Sales Chart Canvas -->
-                                                <canvas id="salesChart" height="200" style="height: 180px;"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
                     <div class="row">
                         <div class="col-md-12">
                             <!-- TABLE: STOK PRODUk -->
 
                             <div class="card">
-                                <div class="card-header bg-secondary">
+                                <div class="card-header bg-info">
                                     <h3 class="card-title">DataTable - STOK PRODUK</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -168,15 +143,20 @@
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
-                                <div class="card-body text-center bg-light ">
-                                    <table id="example1" class="table table-bordered table-striped bg-light">
+                                <div class="card-body  bg-light ">
+                                    <table id="example1"
+                                        class="table table-bordered table-striped bg-light text-center">
+
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>ID Produk</th>
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
+                                                <th>Jenis</th>
+                                                <th>Warna</th>
                                                 <th>Stok Tersedia</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -192,7 +172,7 @@
                                                 </td>
 
                                                 <td>
-                                                    <p><?php echo $d->id_kategori; ?></p>
+                                                    <p><?php echo $d->id_produk; ?></p>
 
                                                 </td>
 
@@ -205,8 +185,23 @@
                                                 </td>
 
                                                 <td>
-                                                    <p><?php echo $d->jumlah_produk; ?> </p>
+                                                    <p><?php echo $d->nama_jenis; ?> </p>
                                                 </td>
+
+                                                <td>
+                                                    <p><?php echo $d->warna; ?> </p>
+                                                </td>
+
+                                                <td>
+                                                    <p><?php echo $d->qty; ?> </p>
+                                                </td>
+                                                <td>
+
+                                                    <a href="<?php echo base_url('data_produk/tampil') ?>"
+                                                        class="btn btn-info btn-sm active" role="button"
+                                                        aria-pressed="true">Detail</a>
+                                                </td>
+
 
                                             </tr>
                                             <?php } ?>
@@ -214,8 +209,7 @@
 
 
                                     </table>
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-info float-right">Tambah
-                                        Stok</a>
+
                                 </div>
                             </div>
 
@@ -232,8 +226,8 @@
                         <div class="col-md-12">
 
                             <div class="card">
-                                <div class="card-header bg-secondary">
-                                    <h3 class="card-title">DataTable - Pesanan Hari Ini </h3>
+                                <div class="card-header bg-info">
+                                    <h3 class="card-title">DataTable - Pesanan Masuk</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
@@ -244,19 +238,18 @@
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
-                                <div class="card-body text-center bg-light">
+                                <div class="card-body  bg-light">
                                     <table id="pesananhari" class="table table-bordered table-striped bg-light">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>
                                                 <th>ID Pemesanan</th>
-                                                <th> Pembeli</th>
-                                                <th>ID Produk </th>
-                                                <th>Nama Produk</th>
-                                                <th>ID Kategori</th>
-                                                <th>Kategori</th>
-                                                <th>Jumlah</th>
-                                                <th>Total Harga</th>
+                                                <th>Tanggal Pemesanan</th>
+                                                <th> Nama Pelanggan</th>
+                                                <th>Jumlah Produk Dipesan</th>
+                                                <th>Total Harga </th>
+                                                <th>Status Pemesanan</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -273,38 +266,35 @@
 
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a->nama_pelanggan; ?></p>
+                                                    <p><?php echo $a->tanggal_order; ?></p>
 
                                                 </td>
-
                                                 <td>
-                                                    <p><?php echo $a->id_produk; ?> </p>
-                                                </td>
-
-                                                <td>
-                                                    <p><?php echo $a->nama_produk; ?> </p>
+                                                    <p><?php echo $a->nama_penerima; ?></p>
                                                 </td>
 
                                                 <td>
-                                                    <p><?php echo $a->id_kategori; ?> </p>
-                                                </td>
-                                                <td>
-                                                    <p><?php echo $a->nama_kategori; ?> </p>
-                                                </td>
-                                                <td>
-                                                    <p><?php echo $a->jumlah; ?> </p>
+                                                    <p><?php echo $a->grand_qty; ?> </p>
                                                 </td>
                                                 <td>
                                                     <p><?php echo $a->grand_total; ?> </p>
                                                 </td>
+                                                <td>
+                                                    <p><?php echo $a->status; ?> </p>
+                                                </td>
+                                                <td>
+
+                                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                                        class="btn btn-info btn-sm active" role="button"
+                                                        aria-pressed="true">Detail</a>
+                                                </td>
+
                                             </tr>
                                             <?php } ?>
                                         </tbody>
 
                                     </table>
-                                    <div class="card-footer clearfix">
-                                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-right">Pesanan</a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -314,13 +304,6 @@
                 </div>
 
             </section>
-
-
-
-
-
-
-
 
 
         </div>
@@ -379,7 +362,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["pdf", "print", ]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -398,7 +381,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["pdf", "print", ]
         }).buttons().container().appendTo('#pesananhari_wrapper .col-md-6:eq(0)');
         $('#example4').DataTable({
             "paging": true,
