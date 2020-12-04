@@ -85,13 +85,21 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Pilih Kategori</label>
-                                                        <select id="cars" name="id_kategori" class="form-control">>
-                                                            <?php
-                                                            foreach ($kategori as $hasil) {
-                                                            ?>
-                                                            <option value="<?php echo $hasil['id_kategori']; ?>">
-                                                                <?php echo $hasil['nama_kategori']; ?> </option>
-                                                            <?php } ?>
+                                                        <select class="form-control" id="id_kategori" name="id_kategori"
+                                                            style="height: 40px; font-size: medium;" required>
+                                                            <option value="" selected disabled>Kategori</option>
+                                                            <?php foreach ($kategori->result() as $row) : ?>
+                                                            <option value="<?php echo $row->id_kategori; ?>">
+                                                                <?php echo $row->nama_kategori; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Pilih Jenis</label>
+                                                        <select class="form-control" id="id_jenis" name="id_jenis"
+                                                            style="height: 40px; font-size: medium;" required>
+                                                            <option value="" selected disabled>Jenis</option>
+                                                            <option value=""></option>
                                                         </select>
                                                     </div>
 
@@ -103,17 +111,7 @@
                                                     <div class="form-group">
                                                         <label>Harga</label>
                                                         <input name="harga" type="teks" class="form-control"
-                                                            placeholder="Enter Jumlah Produk">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Jumlah Produk</label>
-                                                        <input name="jumlah_produk" type="number" class="form-control"
-                                                            placeholder="Enter Jumlah Produk">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Warna</label>
-                                                        <input name="warna" type="teks" class="form-control"
-                                                            placeholder="Enter Warna">
+                                                            placeholder="Enter Harga">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Deskripsi</label>
@@ -163,8 +161,40 @@
                 <!-- REQUIRED SCRIPTS -->
                 <?php $this->load->view('Backend/template/js'); ?>
                 <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+            </section>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
 
+        $('#id_kategori').change(function() {
+            var id = $(this).val();
+            $.ajax({
+                url: "<?php echo site_url('data_produk/jenis'); ?>",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                async: true,
+                dataType: 'json',
+                success: function(data) {
 
+                    var html = '';
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value=' + data[i].id_jenis + '>' + data[i]
+                            .nama_jenis +
+                            '</option>';
+                    }
+                    $('#id_jenis').html(html);
+
+                }
+            });
+            return false;
+        });
+
+    });
+    </script>
 </body>
 
 </html>

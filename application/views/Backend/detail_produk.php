@@ -85,16 +85,6 @@
                                                         value="<?php echo $u->nama_produk ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Jumlah Produk</label>
-                                                    <input type="number" class="form-control" name="jumlah_produk"
-                                                        disabled value="<?php echo $u->jumlah_produk ?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Warna</label>
-                                                    <input type="text" class="form-control" name="warna" disabled
-                                                        value="<?php echo $u->warna ?>">
-                                                </div>
-                                                <div class="form-group">
                                                     <label>Harga</label>
                                                     <input type="text" class="form-control" name="harga" disabled
                                                         value="<?php echo $u->harga ?>">

@@ -5,10 +5,9 @@ class M_data_produk extends CI_model
 	private $_table = "tbl_produk";
 
 	public $id_produk;
+	public $id_jenis;
 	public $nama_produk;
-	public $jumlah_produk;
 	public $harga;
-	public $warna;
 	public $deskripsi;
 	public $berat_produk;
 	public $gambar_produk = 'default.jpg';
@@ -34,10 +33,9 @@ class M_data_produk extends CI_model
 		$post = $this->input->post();
 		$this->id_produk = $post["id_produk"];
 		$this->id_kategori = $post["id_kategori"];
+		$this->id_jenis = $post["id_jenis"];
 		$this->nama_produk = $post["nama_produk"];
-		$this->jumlah_produk = $post["jumlah_produk"];
 		$this->harga = $post["harga"];
-		$this->warna = $post["warna"];
 		$this->deskripsi = $post["deskripsi"];
 		$this->berat_produk = $post["berat_produk"];
 		$this->gambar_produk = $this->do_upload();
@@ -65,8 +63,13 @@ class M_data_produk extends CI_model
 
 	public function tampil_kategori()
 	{
-		$query = $this->db->get('tbl_kategori');
-		return $query->result_array();
+		$hasil = $this->db->query("SELECT * FROM tbl_kategori");
+		return $hasil;
+	}
+	function get_jenis($id)
+	{
+		$query = $this->db->get_where('tbl_jenis', array('id_kategori' => $id));
+		return $query;
 	}
 
 	function do_upload()
@@ -103,9 +106,9 @@ class M_data_produk extends CI_model
 		$this->db->select('*');
 		$this->db->from('tbl_produk');
 		$this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+		$this->db->join('tbl_jenis', 'tbl_jenis.id_jenis = tbl_produk.id_jenis');
 		$this->db->where('tbl_produk.id_produk', $id);
 		return $this->db->get()->result();
-		//return $this->db->get_where($this->_table, ["id_produk" => $id])->row();
 	}
 
 	public function getById2($id)
@@ -118,8 +121,6 @@ class M_data_produk extends CI_model
 		$post = $this->input->post();
 		$this->id_produk = $post["id_produk"];
 		$this->nama_produk = $post["nama_produk"];
-		$this->jumlah_produk = $post["jumlah_produk"];
-		$this->warna = $post["warna"];
 		$this->harga = $post["harga"];
 		$this->deskripsi = $post["deskripsi"];
 		$this->berat_produk = $post["berat_produk"];
@@ -138,16 +139,18 @@ class M_data_produk extends CI_model
 		$this->db->where('tbl_produk.id_produk', $id);
 		return $this->db->get()->result();
 	}
-	public function getProductById($id){
-        $this->db->select("*,tbl_produk.id_produk AS produkId");
-        $this->db->from("tbl_produk");
-        $this->db->join("tbl_attribut", "tbl_produk.id_produk=tbl_attribut.id_produk");
-        //$this->db->order_by("tbl_produk.id_produk", "desc");
-        $this->db->where('tbl_produk.id_produk', $id);
-        return $this->db->get()->row_array();
+	public function getProductById($id)
+	{
+		$this->db->select("*,tbl_produk.id_produk AS produkId");
+		$this->db->from("tbl_produk");
+		$this->db->join("tbl_attribut", "tbl_produk.id_produk=tbl_attribut.id_produk");
+		//$this->db->order_by("tbl_produk.id_produk", "desc");
+		$this->db->where('tbl_produk.id_produk', $id);
+		return $this->db->get()->row_array();
 	}
-	public function getImgProductById($id){
-        $product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
-        return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
-    }
+	public function getImgProductById($id)
+	{
+		$product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
+		return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
+	}
 }

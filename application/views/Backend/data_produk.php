@@ -67,7 +67,7 @@
                                 <div class="mx-3 mt-3 ">
                                     <a class="btn btn-primary btn-sm center-block"
                                         href="<?php echo base_url(); ?>data_produk/tambah_produk"><i
-                                            class="fa fa-plus ">Tambah Data</i>
+                                            class="fa fa-plus "> Tambah Data</i>
                                     </a>
                                 </div>
                                 <!-- /.card-header -->
@@ -77,11 +77,10 @@
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">No</th>
-                                                <th>Kategori</th>
                                                 <th>Nama Produk</th>
-                                                <th>Jumlah Produk</th>
+                                                <th>Gambar Produk</th>
                                                 <th>Harga</th>
-                                                <th style="width: 40px">Aksi</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -96,14 +95,14 @@
 
                                                 </td>
 
-                                                <td>
-                                                    <p><?php echo $a['nama_kategori']; ?></p>
-                                                </td>
+
                                                 <td>
                                                     <p><?php echo $a['nama_produk']; ?></p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a['jumlah_produk']; ?></p>
+                                                    <img width="150px"
+                                                        src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $a['gambar_produk']; ?>"
+                                                        alt="">
                                                 </td>
                                                 <td>
                                                     <p><?php echo $a['harga']; ?></p>
@@ -111,11 +110,15 @@
                                                 <td>
                                                     <a
                                                         href="<?= base_url('data_produk/tampil_detail/' . $a['id_produk']) ?>"><button
-                                                            type="button">Detail</button></a>
+                                                            class="btn btn-primary btn-xs" type="button"><i
+                                                                class="fas fa-info-circle"> Detail</i></button></a>
                                                     <a href="<?= base_url('data_produk/edit/' . $a['id_produk']) ?>"><button
-                                                            type="button">Edit</button></a>
+                                                            class="btn btn-success btn-xs" type="button"><i
+                                                                class="far fa-edit"> Edit</i></button></a>
                                                     <a href="<?= base_url('data_produk/delete/' . $a['id_produk']) ?>"><button
-                                                            type="button">Hapus</button></a>
+                                                            class="btn btn-danger btn-xs" type="button "><i
+                                                                class="fas fa-trash-alt">
+                                                                Hapus</i></button></a>
 
                                                 </td>
 

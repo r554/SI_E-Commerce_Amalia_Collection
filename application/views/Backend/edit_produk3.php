@@ -1,11 +1,3 @@
-<?php
-
-if (!$this->session->userdata('nama')) {
-    redirect(base_url("Auth_Admin"));
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,21 +7,18 @@ if (!$this->session->userdata('nama')) {
     <title>Amalia Collection</title>
 
     <?php $this->load->view('Backend/template/head'); ?>
-
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
         <!-- Navbar -->
         <?php $this->load->view('Backend/template/navbar'); ?>
         <!-- /.navbar -->
 
-        <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
+            <a href="../../index3.html" class="brand-link">
+                <img src="assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
@@ -39,34 +28,30 @@ if (!$this->session->userdata('nama')) {
             <!-- /.sidebar -->
         </aside>
 
-
-        <!-- Content Wrapper. Contains page content ini Bagian Breadcom -->
+        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
+            <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div><!-- /.col -->
+                            <h1>Edit Produk</h1>
+                        </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item"><a href="#">Data Produk</a></li>
+                                <li class="breadcrumb-item active">Edit Produk</li>
                             </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
+                        </div>
+                    </div>
                 </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
+            </section>
 
 
-
-            <!-- Main content Ini Bagian Content -->
+            <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
-                    <!-- Ini Bagian Konten -->
 
+                <div class="container-fluid">
 
                     <div class="row">
                         <!-- left column -->
@@ -92,25 +77,21 @@ if (!$this->session->userdata('nama')) {
                                             <label>Pilih Kategori</label>
                                             <select class="form-control" id="id_kategori" name="id_kategori"
                                                 style="height: 40px; font-size: medium;" required>
-                                                <option value="" selected disabled><?php echo $edit[0]->nama_kategori ?>
-                                                </option>
+                                                <option value="" selected disabled>Kategori</option>
                                                 <?php foreach ($kategori->result() as $row) : ?>
                                                 <option value="<?php echo $row->id_kategori; ?>">
                                                     <?php echo $row->nama_kategori; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
-
                                         <div class="form-group">
                                             <label>Pilih Jenis</label>
                                             <select class="form-control" id="id_jenis" name="id_jenis"
                                                 style="height: 40px; font-size: medium;" required>
-                                                <option value="" selected disabled><?php echo $edit[0]->nama_jenis ?>
-                                                </option>
+                                                <option value="" selected disabled>Jenis</option>
                                                 <option value=""></option>
                                             </select>
                                         </div>
-
                                         <div class="form-group">
                                             <label>Nama Produk</label>
                                             <input type="text" class="form-control" name="nama_produk"
@@ -134,9 +115,6 @@ if (!$this->session->userdata('nama')) {
                                         <div class="form-group">
                                             <input name="gambar_produk" type="file"
                                                 value="<?php echo $edit[0]->gambar_produk ?>">
-                                            <img width="350px"
-                                                src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $edit[0]->gambar_produk; ?>"
-                                                alt="">
                                         </div>
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -153,24 +131,26 @@ if (!$this->session->userdata('nama')) {
                                 </form>
                                 <!-- /.row -->
                             </div><!-- /.container-fluid -->
-                        </div>
-                    </div>
-                </div>
             </section>
-            <!-- /Ini Akhir Konten -->
-
-
-
-
-            <!-- Main Footer -->
-            <?php $this->load->view('Backend/template/footer'); ?>
-
+            <!-- /.content -->
         </div>
-        <!-- ./wrapper -->
+        <!-- /.content-wrapper -->
 
-        <!-- REQUIRED SCRIPTS -->
-        <?php $this->load->view('Backend/template/js'); ?>
+        <?php $this->load->view('Backend/template/footer'); ?>
+        <!-- Control Sidebar -->
+
+        <!-- /.control-sidebar -->
     </div>
+    <!-- ./wrapper -->
+    </div>
+    </div>
+    </section>
+
+
+
+    <!-- jQuery -->
+    <?php $this->load->view('Backend/template/js'); ?>
+
     <script type="text/javascript">
     $(document).ready(function() {
 

@@ -71,8 +71,10 @@ class data_produk extends CI_Controller
 			$this->session->set_flashdata('success', 'Berhasil disimpan');
 			redirect(site_url('data_produk/tampil'));
 		}
-
-		$data["edit"] = $model->getById($id);
+		$data = [
+			"edit" => $model->getById($id),
+			"kategori" => $this->M_data_produk->tampil_kategori(),
+		];
 		// var_dump($data);
 		// die;
 		$this->load->view("Backend/edit_produk", $data);
@@ -94,5 +96,12 @@ class data_produk extends CI_Controller
 			$this->load->view('Frontend/template/navbar3');
 			$this->load->view('Frontend/detail_produk', $data);
 		}
+	}
+	//jenis kategori
+	function jenis()
+	{
+		$id = $this->input->post('id');
+		$data = $this->M_data_produk->get_jenis($id)->result();
+		echo json_encode($data);
 	}
 }
