@@ -77,7 +77,7 @@ if (!$this->session->userdata('nama')) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="semua_pesanan" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nama Pelanggan</th>
@@ -87,16 +87,17 @@ if (!$this->session->userdata('nama')) {
                                         <th class="text-center">Pilihan</th>
                                     </tr>
                                 </thead>
-                                <?php
-                                $no = 1;
-                                foreach ($pesanan as $pesanan) {
-                                ?>
-                                    <tbody>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($pesanan as $pesanan) {
+                                    ?>
+
                                         <tr>
                                             <td><?php echo $pesanan['nama_pelanggan']; ?></td>
                                             <td><?php echo $pesanan['id_order']; ?></td>
                                             <td><?php echo $pesanan['grand_qty']; ?></td>
-                                            <td><?php echo $pesanan['grand_total']; ?></td>
+                                            <td><?php echo $pesanan['total']; ?></td>
                                             <td>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -111,36 +112,27 @@ if (!$this->session->userdata('nama')) {
                                                 </div>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                <?php
-                                } ?>
+
+                                    <?php
+                                    } ?>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
-
                     <!-- /Ini Akhir Konten -->
 
+                    <!-- Footer -->
+                    <?php $this->load->view('Backend/template/footer'); ?>
+                    <!-- End Footer -->
 
-
-                    <!-- Main Footer -->
-                    <footer class="main-footer">
-                        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-                        All rights reserved.
-                        <div class="float-right d-none d-sm-inline-block">
-                            <b>Version</b> 3.1.0-pre
-                        </div>
-                    </footer>
                 </div>
                 <!-- ./wrapper -->
 
                 <!-- Bagian JS -->
                 <?php $this->load->view('Backend/template/js'); ?>
-                <!-- jQuery -->
-                <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
-                <!-- Bootstrap 4 -->
-                <!-- <script src="Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
                 <!-- DataTables  & Plugins -->
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -154,15 +146,17 @@ if (!$this->session->userdata('nama')) {
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
                 <!-- Page specific script -->
                 <script>
                     $(function() {
-                        $("#example1").DataTable({
+                        $("#semua_pesanan").DataTable({
                             "responsive": true,
                             "lengthChange": false,
                             "autoWidth": false,
                             "buttons": ["excel", "pdf", "print"]
-                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                        }).buttons().container().appendTo('#semua_pesanan_wrapper .col-md-6:eq(0)');
                         $('#example2').DataTable({
                             "paging": true,
                             "lengthChange": false,
