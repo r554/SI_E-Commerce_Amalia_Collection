@@ -13,6 +13,7 @@ class M_keranjang extends CI_model
     public $total;
     public $jasa_pengiriman;
     public $biaya_pengiriman;
+    public $jenis_layanan;
     public $nama_penerima;
     public $no_penerima;
     public $email_penerima;
@@ -37,6 +38,8 @@ class M_keranjang extends CI_model
 
         ];
     }
+
+
 
     // Function Untuk Menampilkan Data Keranjang Berdasarkan User Login
     public function getById_keranjang($id)
@@ -102,6 +105,7 @@ class M_keranjang extends CI_model
         return $this->db->insert('tbl_detail_order', $this);
     }
 
+    // Function Untuk Menyimpan Multi Data Ke Tabel Order 
     public function save_batch($data2)
     {
         return $this->db->insert_batch('tbl_detail_order', $data2);
@@ -113,10 +117,11 @@ class M_keranjang extends CI_model
         $this->id_order = $post["id_order"];
         $this->id_pelanggan = $post["id_pelanggan"];
         $this->grand_qty = $post["grand_qty"];
-        $this->total = $post["grand_total"];
+        $this->total = $post["total"];
         $this->grand_total = $post["grand_total"];
         $this->jasa_pengiriman = $post["jasa_pengiriman"];
-        $this->biaya_pengiriman = $post["biaya_pengiriman"];
+        $this->jenis_layanan = $post["jenis_layanan"];
+        $this->biaya_pengiriman = $post["biaya_ongkir"];
         $this->nama_penerima = $post["nama_penerima"];
         $this->no_penerima = $post["no_penerima"];
         $this->email_penerima = $post["email_penerima"];
@@ -145,12 +150,6 @@ class M_keranjang extends CI_model
     }
 
     // Function Untuk Menampilkan Data Kabupaten
-    // function get_kabupaten($id)
-    // {
-    //     $hasil = $this->db->query("SELECT * FROM wilayah_kabupaten WHERE provinsi_id='$id'");
-    //     return $hasil;
-    // }
-
     function get_kabupaten($id)
     {
         $query = $this->db->get_where('wilayah_kabupaten', array('provinsi_id' => $id));
@@ -175,6 +174,14 @@ class M_keranjang extends CI_model
         return $query;
     }
 
+    // Function Untuk Menampilkan Data Keranjang Berdasarkan User Login
+    public function getById_pembayaran($id_order)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->where('id_order', $id_order);
+        return $this->db->get()->result();
+    }
 
 
 

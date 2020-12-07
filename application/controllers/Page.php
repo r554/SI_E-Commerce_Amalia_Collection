@@ -79,5 +79,4 @@ class Page extends CI_Controller
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/manual_book');
     }
-
 }

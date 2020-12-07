@@ -47,8 +47,9 @@ class keranjang extends CI_Controller
             "data_produk" => $this->M_keranjang->getById_keranjang($id),
             "data_provinsi" => $this->M_keranjang->get_provinsi(),
         ];
-        // var_dump($data);
-        // die;
+
+        $id_order = $this->uri->segment(3);
+        $this->session->set_userdata('id_order', $id_order);
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/buat_pesanan', $data);
@@ -64,11 +65,13 @@ class keranjang extends CI_Controller
         }
     }
 
+    // Method untuk Menyimpan Multi Data ke tabel order
     public function save_buat_pesanan()
     {
         //Tahap Untuk Update data di tbl_order
         $ubah_data = $this->M_keranjang->update_tbl_detail(); //untuk menupdate tabel order
         if ($ubah_data) {
+            $this->_sendEmail(); // Mengirimkan Email
             $id_order = $_POST["id_order"];
             $id_produk = $_POST["id_produk"];
             $nama_produk = $_POST["nama_produk"];
@@ -78,7 +81,7 @@ class keranjang extends CI_Controller
 
             $data2 = array();
             $index = 0; // Set index array awal dengan 0
-            foreach ($id_produk as $data_id_produk) { // Kita buat perulangan berdasarkan nim sampai data terakhir
+            foreach ($id_produk as $data_id_produk) { // Kita buat perulangan berdasarkan id_order sampai data terakhir
                 array_push($data2, array(
                     'id_order' => $id_order,
                     'id_produk' => $data_id_produk,
@@ -95,6 +98,8 @@ class keranjang extends CI_Controller
             //Tahap Untuk Menghapus data di keranjang
             $id = $_POST['id_pelanggan']; // Ambil data id_pelanggan yang dikirim oleh view melalui form submit
             $this->M_keranjang->delete_keranjang($id); // Panggil fungsi delete dari model
+
+            redirect(site_url('keranjang/pembayaran'));
         } else {
             redirect(site_url('Homepage'));
         }
@@ -131,81 +136,72 @@ class keranjang extends CI_Controller
         echo json_encode($data);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function tampil()
+    // Method Untuk Menampilkan pembayaran
+    public function pembayaran()
     {
-        $show = $this->M_data_produk;
+        $id_order = $this->session->userdata('id_order');
         $data = [
-            "produk" => $show->tampil_data(),
-            "invoice" => $show->get_no_invoice(),
+            "data_order" => $this->M_keranjang->getById_pembayaran($id_order),
         ];
 
-        $this->load->view("Backend/data_produk", $data);
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/pembayaran', $data);
     }
 
-    public function tampil_detail($id)
+    // Method Untuk Menampilkan bukti pembayaran
+    public function buktipembayaran()
     {
-
-        $data['detailProduk'] = $this->M_data_produk->tpdetailProduk($id);
-        $this->load->view('Backend/detail_produk', $data);
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/buktipembayaran');
     }
 
-    public function delete($id = null)
-    {
-        if (!isset($id)) show_404();
 
-        if ($this->M_data_produk->delete($id)) {
-            redirect(site_url('data_produk/tampil'));
-        }
-    }
-
-    public function tambah_produk()
+    // Method Untuk Mengirim Email
+    private function _sendEmail()
     {
-        $product = $this->M_data_produk;
-        $data = [
-            "invoice" => $product->get_no_invoice(),
-            "kategori" => $this->M_data_produk->tampil_kategori(),
+        $config = [
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'indanahgroup@gmail.com',
+            'smtp_pass' => 'indah12345',
+            'smtp_port' => '465',
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
         ];
 
-        $this->load->view("Backend/data_produk_tambah", $data);
-    }
+        $this->load->library('email', $config);
 
-    public function edit($id = null)
-    {
+        $this->email->from('Indanahgroup@gmail.com', 'Indanah Group');
+        $this->email->to($this->input->post('email_penerima'));
 
-        $model = $this->M_data_produk;
-        $validation = $this->form_validation;
-        $validation->set_rules($model->rules());
+        $this->email->subject('Konfirmasi Pemesanan');
+        //$this->email->message('click : <a href="' . base_url() . 'Lupa_Password/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">activate</a>');
 
+        // Data Array ini untuk mengirim data ke halaman kirim email
+        $data = array(
+            'id_order' => $_POST["id_order"],
+            'total' => $_POST["total"],
+            'biaya_ongkir' => $_POST["biaya_ongkir"],
+            'jasa_pengiriman' => $_POST["jasa_pengiriman"],
+            'nama_penerima' => $_POST["nama_penerima"],
+            'no_penerima' => $_POST["no_penerima"],
+            'alamat_penerima' => $_POST["alamat_penerima"],
 
-        if ($validation->run()) {
-            $model->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect(site_url('data_produk/tampil'));
+        );
+
+        $body = $this->load->view('Frontend/v_konfirmasi_pemesanan', $data, true); // Untuk Menggabungkan halaman view ke body pesan
+
+        $this->email->message($body); // Isi Pesan dari Email
+
+        // Cek Apakah Email Berhasil dikirim apa tidak
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
         }
-
-        $data["edit"] = $model->getById($id);
-        // var_dump($data);
-        // die;
-        $this->load->view("Backend/edit_produk", $data);
     }
 }

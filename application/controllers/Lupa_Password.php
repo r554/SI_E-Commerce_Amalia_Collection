@@ -84,14 +84,14 @@ class Lupa_Password extends CI_Controller
             $this->db->where('email_pelanggan', $email);
             $this->db->update('tbl_pelanggan');
 
-            $this->session->unset_userdata('reset_email');
+            $this->session->unset_userdata('reset_email'); // Menghaspus Session reset_email
 
             $this->session->set_flashdata('message', '<div>Berhasil Merubah Password. Silahkan Login</div>');
             redirect('Login0');
         }
     }
 
-
+    // Method Untuk Mengirim Email
     private function _sendEmail($token, $type)
     {
         $config = [
