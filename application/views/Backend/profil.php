@@ -90,8 +90,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <input name="id_admin" value="<?php echo $user->id_admin; ?>" type="hidden">
-                                            <input name="password_admin" value="<?php echo $user->password_admin; ?>"
-                                                type="hidden">
+                                            <input name="password_admin" type="hidden">
                                             <input name="username_admin" value="<?php echo $user->username_admin; ?>"
                                                 type="hidden" class="form-control" id="exampleInputUsername1">
                                         </div>
@@ -120,7 +119,9 @@
                                         <div class="form-group">
                                             <label>Foto</label>
                                             <input name="foto_admin" value="<?php echo $user->foto_admin; ?>"
-                                                type="file" name="foto" multiple accept='image/*' id="menu_images">
+                                                type="file" multiple accept='image/*' id="menu_images">
+                                            <input name="foto_admin" type="hidden"
+                                                value="<?php echo $user->foto_admin?>">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

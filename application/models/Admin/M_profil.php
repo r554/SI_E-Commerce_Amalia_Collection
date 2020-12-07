@@ -11,7 +11,7 @@ class M_profil extends CI_model
   public $email_admin;
   public $foto_admin;
   public $username_admin;
-  public $password_admin;
+  //public $password_admin;
   //public $role;
 
   public function rules()
@@ -61,12 +61,18 @@ public function update()
   $this->no_admin = $post["no_admin"];
   $this->email_admin = $post["email_admin"];
   //$this->foto_admin = $post["foto_admin"];
-  $this->foto_admin = $this->do_upload();
+  $this->foto_admin = $post["foto_admin"];
+  //$this->foto_admin = $this->do_upload();
   $this->username_admin = $post["username_admin"];
   // $this->password_admin = $post["password_admin"];
-  $this->password_admin = md5($post["password_admin"]);
+  //$this->password_admin = md5($post["password_admin"]);
   //$this->role = $post["role"];
  
+  if (!empty($_FILES["foto_admin"]["name"])) {
+    $this->foto_admin = $this->do_upload();
+  } else {
+      $this->foto_admin = $post["foto_admin"];
+  }
 
   return $this->db->update($this->_table, $this, array('id_admin' => $post['id_admin']));
 }
@@ -84,7 +90,20 @@ function do_upload()
 		$this->upload->do_upload('foto_admin');
 		$result1 = $this->upload->data('file_name');
 		return $result1;
-	}
+  }
+  
+  public function ubahpw()
+  {
+    $post = $this->input->post();
+    $id=$this->input->post('id_admin');
+    $password_admin = md5($post["password_admin"]);
+    $data = [
+      'password_admin' => $password_admin,
+    ];
+    $this->db->where('id_admin', $id);
+    $this->db->update('tbl_admin', $data);
+
+  }
 
 }
 

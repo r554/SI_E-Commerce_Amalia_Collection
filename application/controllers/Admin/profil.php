@@ -85,7 +85,7 @@ class profil extends CI_Controller
 
 
 		if ($validation->run()) {
-			$model->update();
+			$model->ubahpw();
 			$this->session->set_flashdata('success', 'Berhasil disimpan');
 			//redirect(site_url('Admin/profil/tampil/'.$id));
 			$this->session->sess_destroy(); // Hapus semua session

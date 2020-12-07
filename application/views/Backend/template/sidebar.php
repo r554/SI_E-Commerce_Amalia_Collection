@@ -1,9 +1,10 @@
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <?php $foto_admin = $this->session->userdata('foto_admin') ?>
         <div class="image">
-            <img src="<?php echo base_url() ?>assets/Admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                alt="User Image">
+            <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $foto_admin?>"
+                class="img-circle elevation-2" alt="User Image">
         </div>
         <?php $nama = $this->session->userdata('nama') ?>
         <div class="info">
