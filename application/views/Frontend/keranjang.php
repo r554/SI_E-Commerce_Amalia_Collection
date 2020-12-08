@@ -38,9 +38,10 @@
         ?>
             <div class="row mb-5">
                 <div class="col-md-8">
-                    <?php $total = 0;
+                    <?php
+                    $total = 0;
                     $qty = 0;
-
+                    $berat = 0;
                     ?>
                     <?php
                     foreach ($data_produk as $data_produk) {
@@ -80,6 +81,8 @@
                         <input type="hidden" name="" value="<?php echo $total = $total + ($data_produk->harga * $data_produk->jumlah) ?>">
                         <!-- Untuk Menyimpan Data Total QTY -->
                         <input type="hidden" name="" value="<?php echo $qty = $qty + ($data_produk->jumlah) ?>">
+                        <!-- Untuk Menyimpan Data Total Berat -->
+                        <input type="hidden" name="" value="<?php echo $berat = $berat + ($data_produk->berat * $data_produk->jumlah) ?>">
 
                     <?php
                     } ?>
@@ -97,11 +100,18 @@
                                 <input type="hidden" name="grand_total" value="<?php echo $total; ?>">
                                 <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>">
                                 <input type="hidden" name="id_order" value="<?php echo $id_order ?>">
+                                <hr>
                                 <h3>Total Item</h3>
                                 <p> <?php echo $qty ?></p> <!-- Mencetak Jumlah item pembelian -->
+                                </hr>
+                                <hr>
                                 <h3>Total Harga</h3>
                                 <p><?php echo "Rp. "   . number_format($total) . ",-" ?></p> <!-- Mencetak Jumlah pembelian -->
-                                <button type="submit" class="btn btn-lg float-right" style="color: white;background: linear-gradient(to right, #ff99cc 0%, #ff6699 100%); font-size: 18px;">Selesaikan Pesanan</button>
+                                </hr>
+                                <hr>
+                                <h3>Berat</h3>
+                                <p> <?php echo $berat ?> <b>Gram</b></p>
+                                <button type="submit" class="btn btn-lg" style="color: white;background: linear-gradient(to right, #ff99cc 0%, #ff6699 100%); font-size: 15px; margin: auto; position: relative; width: 100%;">Buat Pesanan</button>
                             </form>
                         </div>
                     </div>

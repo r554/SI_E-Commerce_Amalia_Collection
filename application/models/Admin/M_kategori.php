@@ -4,7 +4,7 @@ class M_Kategori extends CI_model
 {
 	private $_table = "tbl_kategori";
 
-	public $id_kategori;
+	//public $id_kategori;
 	public $nama_kategori;
 	public $gambar_kategori;
 

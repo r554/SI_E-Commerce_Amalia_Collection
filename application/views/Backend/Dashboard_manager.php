@@ -74,7 +74,7 @@
 
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Pesanan Masuk</span>
-                                    <span class="info-box-number"><?php echo $maradona?></span>
+                                    <span class="info-box-number"><?php echo $maradona ?></span>
 
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
@@ -93,7 +93,7 @@
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Produk Terjual</span>
-                                    <span class="info-box-number"><?php echo $dora?></span>
+                                    <span class="info-box-number"><?php echo $dora ?></span>
 
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 60%"></div>
@@ -111,17 +111,18 @@
                             <div class="info-box mb-3 bg-success ">
                                 <span class="info-box-icon "><i class="fas fa-chart-pie"></i></span>
 
-                                <?php   
-                                        $total = 0;
-                                        $no = 1;
-                                        foreach($upin as $rows){ 
-                                            $jmlh_stok[] = $rows->qty; $stok_total = array_sum($jmlh_stok);
-                                           
-                                        ?>
+                                <?php
+                                $total = 0;
+                                $no = 1;
+                                foreach ($upin as $rows) {
+                                    $jmlh_stok[] = $rows->qty;
+                                    $stok_total = array_sum($jmlh_stok);
+
+                                ?>
                                 <?php } ?>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Stok Produk</span>
-                                    <span class="info-box-number"><?php echo $stok_total?></span>
+                                    <span class="info-box-number"><?php echo $stok_total ?></span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 90%"></div>
                                     </div>
@@ -138,7 +139,7 @@
                                 <span class="info-box-icon"><i class="fas fa-user-plus"></i></span>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Customer</span>
-                                    <span class="info-box-number"><?php echo $ipin?></span>
+                                    <span class="info-box-number"><?php echo $ipin ?></span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 50%"></div>
                                     </div>
@@ -155,7 +156,7 @@
                                 <span class="info-box-icon"><i class="fas fa-users"></i></span>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Karyawan</span>
-                                    <span class="info-box-number"><?php echo $indah?></span>
+                                    <span class="info-box-number"><?php echo $indah ?></span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 85%"></div>
                                     </div>
@@ -207,7 +208,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php                                            
+                                            <?php
                                             $no = 1;
                                             foreach ($user2 as $a) {
                                             ?>
@@ -293,10 +294,10 @@
                                         <tbody>
                                             <?php
 
-                                                                                      
-		                                        $no = 1;
-		                                        foreach ($messi as $d) {
-		                                    	?>
+
+                                            $no = 1;
+                                            foreach ($messi as $d) {
+                                            ?>
                                             <tr>
                                                 <td>
                                                     <?php echo $no++ ?>
@@ -382,32 +383,7 @@
 
 
 
-    <!-- Data Table-->
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script>
 
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
-    </script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
-    </script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jszip/jszip.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/adminlte.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script>
-
-
-    <!-- Data Table-->
 
     <script>
     $(function() {

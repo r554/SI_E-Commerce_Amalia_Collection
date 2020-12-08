@@ -123,9 +123,8 @@
         </div>
     </div>
     <!-- Main Footer -->
-    <footer class=" main-footer text-sm">
-        <strong>Copyright &copy; INDANAH GROUP</strong>
-    </footer>
+
+    <?php $this->load->view('Backend/template/footer'); ?>
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->

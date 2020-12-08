@@ -35,7 +35,7 @@ class Auth_Admin extends CI_Controller
             if ($password == $user->password_admin) { // Jika password yang diinput sama dengan password yang didatabase
                 $session = array(
                     'authenticated' => true, // Buat session authenticated dengan value true
-                    'username' => $user->username,  // Buat session username
+                    'username' => $user->username_admin,  // Buat session username
                     'nama' => $user->nama_admin, // Buat session nama
                     'role' => $user->role, // Buat session role
                     'kd_pengguna' => $user->id_admin, // Buat session role

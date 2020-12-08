@@ -119,8 +119,8 @@
         <li class="nav-item">
 
             <a class="nav-link" data-toggle="dropdown" href="#">
-
-                <img src="<?php echo base_url() ?>assets/Admin/dist/img/user4-128x128.jpg"
+                <?php $foto_admin = $this->session->userdata('foto_admin') ?>
+                <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $foto_admin?>"
                     class="img-circle elevation-20 " width="30px">
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="<?php echo base_url('Page') ?>">

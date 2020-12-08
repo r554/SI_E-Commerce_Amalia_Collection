@@ -64,7 +64,7 @@
                             <!-- small card -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3><?php echo $kaka?></h3>
+                                    <h3><?php echo $kaka ?></h3>
                                     <p>Pesanan Masuk</p>
                                 </div>
                                 <div class="icon">
@@ -81,7 +81,7 @@
                             <!-- small card -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3><?php echo $dora?></h3>
+                                    <h3><?php echo $dora ?></h3>
                                     <p>Produk Terjual</p>
                                 </div>
                                 <div class="icon">
@@ -98,17 +98,18 @@
                             <!-- small card -->
 
 
-                            <?php   
-                                        $total = 0;
-                                        $no = 1;
-                                        foreach($jarjit as $rows){ 
-                                            $jmlh_stok[] = $rows->qty; $stok_total = array_sum($jmlh_stok);
-                                           
-                                        ?>
+                            <?php
+                            $total = 0;
+                            $no = 1;
+                            foreach ($jarjit as $rows) {
+                                $jmlh_stok[] = $rows->qty;
+                                $stok_total = array_sum($jmlh_stok);
+
+                            ?>
                             <?php } ?>
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3><?php echo $stok_total?><sup style="font-size: 20px"></sup></h3>
+                                    <h3><?php echo $stok_total ?><sup style="font-size: 20px"></sup></h3>
                                     <p>Jumlah Stok</p>
 
 
@@ -162,10 +163,10 @@
                                         <tbody>
                                             <?php
 
-                                                                                      
-		                                        $no = 1;
-		                                        foreach ($user as $d) {
-		                                    	?>
+
+                                            $no = 1;
+                                            foreach ($user as $d) {
+                                            ?>
                                             <tr>
                                                 <td>
                                                     <?php echo $no++ ?>
@@ -253,7 +254,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php                                            
+                                            <?php
                                             $no = 1;
                                             foreach ($user2 as $a) {
                                             ?>
@@ -307,53 +308,12 @@
 
 
         </div>
-
-
-
-
-
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="https://adminlte.io">Indanah Group</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.1.0-pre
-            </div>
-        </footer>
+        <?php $this->load->view('Backend/template/footer'); ?>
     </div>
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
     <?php $this->load->view('Backend/template/js'); ?>
-
-
-
-    <!-- Data Table-->
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
-    </script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
-    </script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jszip/jszip.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/adminlte.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script>
-
-
 
 
     <script>

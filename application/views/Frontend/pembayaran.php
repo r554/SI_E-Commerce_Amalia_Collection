@@ -17,13 +17,14 @@
             <div class="col-md-7">
                 <h3 class="title">Terima Kasih Telah Berbelanja di Amalia Collection</h3>
                 <hr>
-                <h4>Kode Pesanan Anda adalah INI KODE PESANAN</h4>
+                <h4>Kode Pesanan Anda adalah <b><?php echo $this->session->userdata('id_order') ?></b> Simpan KODE PESANAN Ini</h4>
                 <p>Kami telah mengirimkan email kepada Anda yang berisi tagihan pesanan. Cek folder Inbox atau Spam
                     untuk
                     melihat email yang kami kirim.</p>
                 <hr>
-                <strong>Mohon untuk melakukan pembayaran sebesar
-                    <h5 class="text-primary">Rp 420000</h5>
+                <strong>Mohon Untuk Melakukan Pembayaran Sebesar
+                    <h2 class="text-primary"><?php echo "Rp. "   . number_format($data_order['0']->total) . ",-" ?></h2>
+                    <p> </p>
                     <p>ke rekening
                         dibawah
                         ini (pilih salah satu): </p>
@@ -37,10 +38,8 @@
                 <p><strong>OVO</strong><br />
                     Atas Nama : Amalia<br />
                     No Rekening : 081333768257</p>
-                <p>Jika sudah melakukan pembayaran, silakan melakukan konfirmasi pembayaran <a
-                        href="<?= base_url(); ?>payment/confirmation" class="btn btn-info btn-sm">dengan klik disini</a>
-                    atau bisa melalui Whatsapp <?= $this->config->item('whatsapp') ?> atau <a
-                        href="https://wa.me/<?= $this->config->item('whatsappv2') ?>" target="_blank">klik disini</a>
+                <p>Jika sudah melakukan pembayaran, silakan melakukan konfirmasi pembayaran <a href="<?= base_url('keranjang/buktipembayaran'); ?>"><button type="button" class="btn btn-info btn-lg">klik disini</button></a>
+                    atau bisa melalui Whatsapp <?= $this->config->item('whatsapp') ?> atau <a href="https://wa.me/08984050435<?= $this->config->item('whatsappv2') ?>" target="_blank">klik disini</a>
                     dengan
                     format sebagai berikut:</p>
                 <table>
