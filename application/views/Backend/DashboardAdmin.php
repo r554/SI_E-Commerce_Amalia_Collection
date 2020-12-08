@@ -23,7 +23,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="<?php echo base_url() ?>assets/Admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?php echo base_url() ?>assets/Admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Amalia Collection</span>
             </a>
 
@@ -69,7 +70,8 @@
                                 <div class="icon">
                                     <i class="fas fa-shopping-cart"></i>
                                 </div>
-                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="small-box-footer">
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                    class="small-box-footer">
                                     More info <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -85,7 +87,8 @@
                                 <div class="icon">
                                     <i class="fas fa-chart-pie"></i>
                                 </div>
-                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>" class="small-box-footer">
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>"
+                                    class="small-box-footer">
                                     More info <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -142,7 +145,8 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body  bg-light ">
-                                    <table id="example1" class="table table-bordered table-striped bg-light text-center">
+                                    <table id="example1"
+                                        class="table table-bordered table-striped bg-light text-center">
 
                                         <thead>
                                             <tr>
@@ -163,42 +167,44 @@
                                             $no = 1;
                                             foreach ($user as $d) {
                                             ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $no++ ?>
-                                                    </td>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $no++ ?>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $d->id_produk; ?></p>
+                                                <td>
+                                                    <p><?php echo $d->id_produk; ?></p>
 
-                                                    </td>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $d->nama_produk; ?> </p>
-                                                    </td>
+                                                <td>
+                                                    <p><?php echo $d->nama_produk; ?> </p>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $d->nama_kategori; ?> </p>
-                                                    </td>
+                                                <td>
+                                                    <p><?php echo $d->nama_kategori; ?> </p>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $d->nama_jenis; ?> </p>
-                                                    </td>
+                                                <td>
+                                                    <p><?php echo $d->nama_jenis; ?> </p>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $d->warna; ?> </p>
-                                                    </td>
+                                                <td>
+                                                    <p><?php echo $d->warna; ?> </p>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $d->qty; ?> </p>
-                                                    </td>
-                                                    <td>
+                                                <td>
+                                                    <p><?php echo $d->qty; ?> </p>
+                                                </td>
+                                                <td>
 
-                                                        <a href="<?php echo base_url('data_produk/tampil') ?>" class="btn btn-info btn-sm active" role="button" aria-pressed="true">Detail</a>
-                                                    </td>
+                                                    <a href="<?php echo base_url('data_produk/tampil') ?>"
+                                                        class="btn btn-info btn-sm active" role="button"
+                                                        aria-pressed="true">Detail</a>
+                                                </td>
 
 
-                                                </tr>
+                                            </tr>
                                             <?php } ?>
                                         </tbody>
 
@@ -252,37 +258,39 @@
                                             $no = 1;
                                             foreach ($user2 as $a) {
                                             ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $no++ ?>
-                                                    </td>
-                                                    <td>
-                                                        <p><?php echo $a->id_order; ?></p>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $no++ ?>
+                                                </td>
+                                                <td>
+                                                    <p><?php echo $a->id_order; ?></p>
 
-                                                    </td>
-                                                    <td>
-                                                        <p><?php echo $a->tanggal_order; ?></p>
+                                                </td>
+                                                <td>
+                                                    <p><?php echo $a->tanggal_order; ?></p>
 
-                                                    </td>
-                                                    <td>
-                                                        <p><?php echo $a->nama_penerima; ?></p>
-                                                    </td>
+                                                </td>
+                                                <td>
+                                                    <p><?php echo $a->nama_penerima; ?></p>
+                                                </td>
 
-                                                    <td>
-                                                        <p><?php echo $a->grand_qty; ?> </p>
-                                                    </td>
-                                                    <td>
-                                                        <p><?php echo $a->grand_total; ?> </p>
-                                                    </td>
-                                                    <td>
-                                                        <p><?php echo $a->status; ?> </p>
-                                                    </td>
-                                                    <td>
+                                                <td>
+                                                    <p><?php echo $a->grand_qty; ?> </p>
+                                                </td>
+                                                <td>
+                                                    <p><?php echo $a->grand_total; ?> </p>
+                                                </td>
+                                                <td>
+                                                    <p><?php echo $a->status; ?> </p>
+                                                </td>
+                                                <td>
 
-                                                        <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="btn btn-info btn-sm active" role="button" aria-pressed="true">Detail</a>
-                                                    </td>
+                                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                                        class="btn btn-info btn-sm active" role="button"
+                                                        aria-pressed="true">Detail</a>
+                                                </td>
 
-                                                </tr>
+                                            </tr>
                                             <?php } ?>
                                         </tbody>
 
@@ -300,20 +308,7 @@
 
 
         </div>
-
-
-
-
-
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="https://adminlte.io">Indanah Group</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.1.0-pre
-            </div>
-        </footer>
+        <?php $this->load->view('Backend/template/footer'); ?>
     </div>
     <!-- ./wrapper -->
 
@@ -321,71 +316,43 @@
     <?php $this->load->view('Backend/template/js'); ?>
 
 
-
-    <!-- Data Table-->
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jquery/jquery.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
-    </script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
-    </script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/jszip/jszip.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/adminlte.min.js"></script>
-
-    <script src="<?php echo base_url() ?>assets/Admin/dist/js/demo.js"></script>
-
-
-
-
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["pdf", "print", ]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["pdf", "print", ]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
+    });
     </script>
     <script>
-        $(function() {
-            $("#pesananhari").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["pdf", "print", ]
-            }).buttons().container().appendTo('#pesananhari_wrapper .col-md-6:eq(0)');
-            $('#example4').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    $(function() {
+        $("#pesananhari").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["pdf", "print", ]
+        }).buttons().container().appendTo('#pesananhari_wrapper .col-md-6:eq(0)');
+        $('#example4').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
+    });
     </script>
 
     <!-- Data Table-->

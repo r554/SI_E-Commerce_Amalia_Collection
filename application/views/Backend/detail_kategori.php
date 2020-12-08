@@ -159,13 +159,8 @@ if (!$this->session->userdata('nama')) {
             </section>
         </div>
 
-        <footer class="main-footer text-sm">
-            <strong>Copyright &copy; 2020 <a href="https://adminlte.io">Indanah Group</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 0.1
-            </div>
-        </footer>
+
+        <?php $this->load->view('Backend/template/footer'); ?>
     </div>
 
 
