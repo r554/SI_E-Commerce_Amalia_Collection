@@ -85,6 +85,10 @@ input[type=number] {
                         <td style="text-align:center"><?= $product['berat_produk']; ?> gram</td>
                     </tr>
                     <tr>
+                        <td >Warna</td>
+                        <td style="text-align:center"><?= $product['warna']; ?></td>
+                    </tr>
+                    <tr>
                         <td >Stok</td>
                         <td style="text-align:center"><?= $product['qty']; ?> produk</td>
                     </tr>
