@@ -84,6 +84,7 @@ if (!$this->session->userdata('nama')) {
                                         <th>Nomor Pesanan</th>
                                         <th>Total Qty</th>
                                         <th>Total Pesanan</th>
+                                        <th>Status</th>
                                         <th class="text-center">Pilihan</th>
                                     </tr>
                                 </thead>
@@ -96,18 +97,13 @@ if (!$this->session->userdata('nama')) {
                                             <td><?php echo $pesanan['nama_pelanggan']; ?></td>
                                             <td><?php echo $pesanan['id_order']; ?></td>
                                             <td><?php echo $pesanan['grand_qty']; ?></td>
-                                            <td><?php echo $pesanan['grand_total']; ?></td>
+                                            <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
+                                            <td class="text-center">
+                                                <span class="badge bg-danger text-dark">Dibatalkan</span>
+                                            </td>
                                             <td>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                            Aksi
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="<?php echo base_url('Admin/Pesanan/tampil_detail_pemesanan/' . $pesanan['id_order']) ?>">Detail</a>
-                                                            <a class="dropdown-item" href="#">Kirim Pesan</a>
-                                                        </div>
-                                                    </div>
+                                                <div class="text-center">
+                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_detail_pesanan_dibatalkan/' . $pesanan['id_order']) ?>"><button class="btn btn-warning btn-sm mx-auto">Detail</button></a>
                                                 </div>
                                             </td>
                                         </tr>

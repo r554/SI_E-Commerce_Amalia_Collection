@@ -46,7 +46,7 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Detail Pemesanan <a href="<?php echo base_url('Admin/Pesanan/Tampil_semua_pesanan') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
+                            <h1 class="m-0">Verifikasi Pembayaran <a href="<?php echo base_url('Admin/Pesanan/Tampil_semua_verifikasi_pembayaran') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -102,8 +102,8 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4">Status Pembayaran</label>
                                             <div class="col-sm-7 text-sm">
-                                                <div class="alert alert-warning sm" role="alert">
-                                                    Belum Melakukan Pembayaran
+                                                <div class="alert alert-info" role="alert">
+                                                    Pembayaran Belum Diverifikasi
                                                 </div>
                                             </div>
                                         </div>
@@ -161,6 +161,41 @@ if (!$this->session->userdata('nama')) {
                         <!--col-->
                     </div>
                     <!--Row-->
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="card card-light">
+                                <div class="card-header">
+                                    <h3 class="card-title">Bukti Pembayaran</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-4 ">Tanggal Kirim Pembayaran</label>
+                                            <div class="col-sm-8">
+                                                <p>: <?php echo $bukti_pembayaran['0']->tgl_tf; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-4 "> Foto Bukti Pembayaran </label>
+                                            <div class="col-sm-8">
+                                                <p>: <a href="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order) ?>"><button type="button" class="btn btn-success btn-sm">Terima Pembayaran</button></a> <a href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order) ?>"><button class="btn btn-danger btn-sm" type="button">Tolak Pembayaran</button></a></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-sm-12 text-center">
+                                                <img class="rounded" src="<?= base_url() ?>assets/Gambar/foto_bukti_pembayaran/<?php echo $bukti_pembayaran['0']->foto_bukti ?>" width="600px" height="600px" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.card-body -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-12">

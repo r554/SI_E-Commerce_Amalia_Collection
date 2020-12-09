@@ -19,11 +19,13 @@ class M_Pesanan extends CI_model
         ];
     }
 
-
+    // Model Bagian Pesanan Baru =====================================================================================================
     public function tampil_semua()
     {
+        $pesanan_baru = '1';
         $this->db->from('tbl_order');
         $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_order.status', $pesanan_baru);
 
         $query = $this->db->get();
         return $query->result_array();
@@ -43,10 +45,10 @@ class M_Pesanan extends CI_model
         return $query->result();
     }
 
-
-    public function get_tampil_semua_pesanan_diproses()
+    // Model Bagian Verifikasi Pembayaran =====================================================================================================
+    public function get_tampil_semua_verifikasi_pembayaran()
     {
-        $id = "diproses";
+        $id = "2";
         $this->db->from('tbl_order');
         $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
         $this->db->where('tbl_order.status', $id);
@@ -54,10 +56,58 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
+    public function get_tampil_detail_Verifikasi_pembayaran($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_bukti_pembayaran($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_bukti_pembayaran');
+        $this->db->where('tbl_bukti_pembayaran.id_order', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Model Bagian Perlu Dikirim =====================================================================================================
+    public function get_tampil_semua_perlu_dikirim()
+    {
+        $id = "3";
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_order.status', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_tampil_detail_perlu_dikirim($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
+    // Model Bagain Pesanan dikirim =====================================================================================================
     public function get_tampil_semua_pesanan_dikirim()
     {
-        $id = "dikirim";
+        $id = "4";
         $this->db->from('tbl_order');
         $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
         $this->db->where('tbl_order.status', $id);
@@ -65,10 +115,23 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
+    public function get_tampil_detail_pesanan_dikirim($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Model Bagain Pesanan selesai ======================================================================================
     public function get_tampil_semua_pesanan_selesai()
     {
-        $id = "selesai";
+        $id = "5";
         $this->db->from('tbl_order');
         $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
         $this->db->where('tbl_order.status', $id);
@@ -76,15 +139,41 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
+    public function get_tampil_detail_pesanan_selesai($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Model Bagain Pesanan dibatalkan ======================================================================================
     public function get_tampil_semua_pesanan_dibatalkan()
     {
-        $id = "dibatalkan";
+        $id = "6";
         $this->db->from('tbl_order');
         $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
         $this->db->where('tbl_order.status', $id);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function get_tampil_detail_pesanan_dibatalkan($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
 
