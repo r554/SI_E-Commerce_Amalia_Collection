@@ -80,6 +80,11 @@
                                                         disabled value="<?php echo $u->nama_kategori ?>">
                                                 </div>
                                                 <div class="form-group">
+                                                    <label>Jenis</label>
+                                                    <input type="text" class="form-control" name="nama_jenis" disabled
+                                                        value="<?php echo $u->nama_jenis ?>">
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Nama Produk</label>
                                                     <input type="text" class="form-control" name="nama_produk" disabled
                                                         value="<?php echo $u->nama_produk ?>">
@@ -91,15 +96,48 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Deskripsi</label>
-                                                    <input type="text" class="form-control" name="deskripsi" disabled
-                                                        value="<?php echo $u->deskripsi ?>">
+                                                    <textarea name="deskripsi" id="deskripsi" class="form-control"
+                                                        disabled cols="30" rows="10"
+                                                        style="height: 150px;"><?php echo $u->deskripsi ?></textarea>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class=" form-group">
                                                     <label>Berat Produk</label>
                                                     <input type="text" class="form-control" name="berat_produk" disabled
                                                         value="<?php echo $u->berat_produk ?>">
                                                 </div>
 
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h3 class="card-title">Warna dan Stok</h3>
+                                                    </div>
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body p-0">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width: 10px">No</th>
+                                                                    <th style="width: 200px">Warna</th>
+                                                                    <th style="width: 600px">Stok</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $no = 1;
+                                                                foreach ($attribut as $attribut) {
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo $no++ ?></td>
+                                                                    <td><?php echo $attribut->warna; ?></td>
+                                                                    <td><?php echo $attribut->qty; ?></td>
+                                                                </tr>
+                                                                <?php
+                                                                } ?>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.card-body -->
+                                                </div>
                                                 <!-- <div class="form-group">
                                             <label>Status Produk</label>
                                             <input type="text" class="form-control" name="statusProduk"
@@ -153,8 +191,7 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-        <?php $this->load->view('Backend/template/footer'); ?>
+        <?php $this->load->view("Backend/template/footer"); ?>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">

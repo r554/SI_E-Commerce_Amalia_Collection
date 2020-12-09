@@ -7,6 +7,7 @@ class data_produk extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_data_produk');
+		$this->load->model('Admin/M_warna');
 		$this->load->library('form_validation');
 	}
 
@@ -33,8 +34,11 @@ class data_produk extends CI_Controller
 
 	public function tampil_detail($id)
 	{
+		$data = [
+			"detailProduk" => $this->M_data_produk->tpdetailProduk($id),
+			"attribut" => $this->M_warna->tampil_warna($id),
+		];
 
-		$data['detailProduk'] = $this->M_data_produk->tpdetailProduk($id);
 		$this->load->view('Backend/detail_produk', $data);
 	}
 
@@ -49,13 +53,50 @@ class data_produk extends CI_Controller
 
 	public function tambah_produk()
 	{
+		$id_produk = $this->M_data_produk->get_no_invoice();
 		$product = $this->M_data_produk;
 		$data = [
 			"invoice" => $product->get_no_invoice(),
 			"kategori" => $this->M_data_produk->tampil_kategori(),
+			"attribut" => $this->M_warna->tampil_warna($id_produk),
 		];
 
 		$this->load->view("Backend/data_produk_tambah", $data);
+	}
+
+	public function save_warna()
+	{
+		$id_produk = $this->input->post('id_produk');
+		$product = $this->M_data_produk;
+		$model = $this->M_warna;
+		$data = [
+			"invoice" => $product->get_no_invoice(),
+			"kategori" => $this->M_data_produk->tampil_kategori(),
+			"attribut" => $this->M_warna->tampil_warna($id_produk),
+		];
+
+		if ($model->save_warna()) {
+			//$this->load->view("Backend/data_produk_tambah", $data);
+			redirect(site_url('data_produk/tambah_produk/' . $data));
+		}
+	}
+
+	public function hapus_warna($id = null)
+	{
+
+		$id_produk = $this->uri->segment("4");
+		$product = $this->M_data_produk;
+		$model = $this->M_warna;
+		$data = [
+			"invoice" => $product->get_no_invoice(),
+			"kategori" => $this->M_data_produk->tampil_kategori(),
+			"attribut" => $this->M_warna->tampil_warna($id_produk),
+		];
+		if (!isset($id)) show_404();
+
+		if ($this->M_warna->delete($id)) {
+			redirect(site_url('data_produk/tambah_produk/' . $data));
+		}
 	}
 
 	public function edit($id = null)

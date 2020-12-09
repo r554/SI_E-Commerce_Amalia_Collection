@@ -6,6 +6,7 @@ if (!$this->session->userdata('nama')) {
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,14 @@ if (!$this->session->userdata('nama')) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Amalia Collection</title>
+
+    <script type="text/javascript">
+    setInterval("auto_refresh_function();", 500);
+
+    function auto_refresh_function() {
+        $('#load_content').load('data_produk/save_warna');
+    }
+    </script>
 
     <?php $this->load->view('Backend/template/head'); ?>
 
@@ -47,12 +56,12 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <h1 class="m-0">Edit Produk</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item active">Edit Produk</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -85,14 +94,17 @@ if (!$this->session->userdata('nama')) {
                                 <form action="<?php echo base_url('data_produk/edit'); ?>" method="post" role="form"
                                     enctype="multipart/form-data">
                                     <div class="card-body">
-                                        <input type="text" class="form-control" name="id_produk"
-                                            value="<?php echo $edit[0]->id_produk ?>">
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="id_produk"
+                                                value="<?php echo $edit[0]->id_produk ?>">
+                                        </div>
 
                                         <div class="form-group">
                                             <label>Pilih Kategori</label>
                                             <select class="form-control" id="id_kategori" name="id_kategori"
-                                                style="height: 40px; font-size: medium;" required>
-                                                <option value="" selected disabled><?php echo $edit[0]->nama_kategori ?>
+                                                style="height: 40px; font-size: medium;">
+                                                <option value="" selected disabled>
+                                                    <?php echo $edit[0]->nama_kategori ?>
                                                 </option>
                                                 <?php foreach ($kategori->result() as $row) : ?>
                                                 <option value="<?php echo $row->id_kategori; ?>">
@@ -101,11 +113,15 @@ if (!$this->session->userdata('nama')) {
                                             </select>
                                         </div>
 
+
                                         <div class="form-group">
                                             <label>Pilih Jenis</label>
+                                            <input name="id_jenis" type="hidden"
+                                                value="<?php echo $edit[0]->id_jenis ?>">
                                             <select class="form-control" id="id_jenis" name="id_jenis"
-                                                style="height: 40px; font-size: medium;" required>
-                                                <option value="" selected disabled><?php echo $edit[0]->nama_jenis ?>
+                                                style="height: 40px; font-size: medium;">
+                                                <option value="" selected disabled>
+                                                    <?php echo $edit[0]->nama_jenis ?>
                                                 </option>
                                                 <option value=""></option>
                                             </select>
@@ -118,8 +134,11 @@ if (!$this->session->userdata('nama')) {
                                         </div>
                                         <div class="form-group">
                                             <label>Harga</label>
-                                            <input type="Number" class="form-control" name="harga"
-                                                value="<?php echo $edit[0]->harga ?>">
+                                            <input type="text" class="form-control" name="harga"
+                                                value="<?php echo $edit[0]->harga ?>"
+                                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
+                                                oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label>Deskripsi</label>
@@ -131,25 +150,30 @@ if (!$this->session->userdata('nama')) {
                                             <input type="text" class="form-control" name="berat_produk"
                                                 value="<?php echo $edit[0]->berat_produk ?>">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input name="gambar_produk" type="file"
                                                 value="<?php echo $edit[0]->gambar_produk ?>">
                                             <img width="350px"
                                                 src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $edit[0]->gambar_produk; ?>"
                                                 alt="">
-                                        </div>
+                                        </div> -->
+                                        <label>Gambar Produk</label>
+                                        <input name="gambar_produk" type="file" multiple accept='image/*'
+                                            id="menu_images" value="<?php echo $edit['0']->gambar_produk ?>">
+                                        <input name="gambar_produk" type="hidden"
+                                            value="<?php echo $edit['0']->gambar_produk ?>">
+
+                                        <img src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $edit['0']->gambar_produk ?>"
+                                            alt="" width="200px" hight="200px">
+
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                             <a href="<?= base_url('data_produk/tampil') ?>"><button type="button"
                                                     class="btn btn-success">Kembali</button></a>
-
-
-
-
                                         </div>
-                                        <!-- /.card -->
-                                    </div>
-                                    <!--/.col (right) -->
+
+
+                                        <!--/.col (right) -->
                                 </form>
                                 <!-- /.row -->
                             </div><!-- /.container-fluid -->
