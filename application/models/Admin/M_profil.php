@@ -81,7 +81,7 @@ function do_upload()
 	{
         // setting konfigurasi upload
 		$config['upload_path'] = './assets/Gambar/foto_profil';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
     $config['file_name']           = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
     $config['overwrite'] = true;
         // load library upload
@@ -106,5 +106,3 @@ function do_upload()
   }
 
 }
-
-?>
