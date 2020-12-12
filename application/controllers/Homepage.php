@@ -16,29 +16,12 @@ class Homepage extends CI_Controller
     //redirect(base_url("login0"));
   }
 
-  // function index()
-  // {
-  //   $data['tbl_banner'] = $this->m_data->tampil_slider();
-  //   //var_dump($data);
-  //   //die;
-  //   $this->load->view('Frontend/landing_page', $data);
-
-  // }
-
-
+  // Menampilkan Data Katlog Dengan Menggunakan Pagination
   function index()
   {
-    // $data['tbl_produk'] = $this->m_data->tampil_dataProduk()->result();
-    // $show = $this->M_footer;
-    // $data =
-    //   [
-    //     "footer" => $show->tampil_footer(),
-    //     "tbl_produk" => $this->m_data->tampil_dataProduk()->result(),
-    //     "tbl_banner" => $this->m_data->tampil_slider(),
 
-    //   ];
     $show = $this->M_footer;
-    
+
     $this->load->database();
     $jumlah_data = $this->M_data->jumlah_data();
     $this->load->library('pagination');
@@ -47,25 +30,22 @@ class Homepage extends CI_Controller
     $config['per_page'] = 12;
     $from = $this->uri->segment(3);
     $this->pagination->initialize($config);
-    // $data['data_produk'] = $this->M_data->data_homepage($config['per_page'], $from);
-    $data = 
+    $per_halaman = 6;
+    $data =
       [
         "footer" => $show->tampil_footer(),
         "data_produk" => $this->M_data->data_homepage($config['per_page'], $from),
         "foto_banner" => $this->M_data->tampil_slider(),
         "data_kategori" => $this->M_data->tampil_kategori(),
+        "produk_flash_sale" => $this->M_data->data_flash_sale($per_halaman, $from),
       ];
-
 
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3');
     $this->load->view('Frontend/homepage', $data);
   }
 
-
-
-
-
+  // Menampilkan Semua Data Katlog Dengan Menggunakan Pagination
   function semua_produk()
   {
 
@@ -102,20 +82,23 @@ class Homepage extends CI_Controller
     $this->load->view('Frontend/detailProduk', $data);
   }
 
-  public function detail_product($id){
-		$getProduct = $this->M_data_produk->getProductById($id);
-		
-			// $this->Products_model->updateViewer($slug);
-			// $data['title'] = $getProduct['title'] . ' - ' . $this->config->item('app_name');
-			// $data['css'] = 'detail';
-			// $data['responsive'] = '';
-			$data['product'] = $getProduct;
-			$data['img'] = $this->M_data_produk->getImgProductById($id);
-			$this->load->view('Frontend/template/head1');
-			$this->load->view('Frontend/template/navbar3');
-			$this->load->view('Frontend/detail_produk', $data);			
-		
-	}
+
+  public function detail_product($id)
+  {
+    $getProduct = $this->M_data_produk->getProductById($id);
+
+    // $this->Products_model->updateViewer($slug);
+    // $data['title'] = $getProduct['title'] . ' - ' . $this->config->item('app_name');
+    // $data['css'] = 'detail';
+    // $data['responsive'] = '';
+    $data['product'] = $getProduct;
+    $data['img'] = $this->M_data_produk->getImgProductById($id);
+    $this->load->view('Frontend/template/head1');
+    $this->load->view('Frontend/template/navbar3');
+    $this->load->view('Frontend/detail_produk', $data);
+  }
+
+
   public function cari()
   {
     $keyword = $this->input->post('cari');
@@ -153,5 +136,17 @@ class Homepage extends CI_Controller
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3');
     $this->load->view('Frontend/tampilan_data_katalog', $data);
+  }
+
+  public function promo_akhir()
+  {
+    $status = '0';
+    $id = '1';
+
+    $this->db->set('status_promo', $status);
+    $this->db->where('id_promo', $id);
+    $this->db->update('tbl_promo');
+
+    // redirect(site_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan'));
   }
 }

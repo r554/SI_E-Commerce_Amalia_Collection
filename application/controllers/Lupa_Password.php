@@ -46,6 +46,7 @@ class Lupa_Password extends CI_Controller
         }
     }
 
+    // Method Untuk Mengecek Apakah Data yang dikirim pada url sesuai dengan yang ada di database
     public function resetpassword()
     {
         $email = $this->input->get('email');
@@ -68,6 +69,7 @@ class Lupa_Password extends CI_Controller
         }
     }
 
+    // Method Merubah pasword yang ada di database
     public function changePassword()
     {
 

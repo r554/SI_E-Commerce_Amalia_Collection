@@ -46,12 +46,12 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Detail Pemesanan <a href="<?php echo base_url('Admin/Pesanan/Tampil_semua_pesanan') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
+                            <h1 class="m-0">Detail Pesanan <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Detail Pemesanan</li>
+                                <li class="breadcrumb-item active">Pemesanan Selesai</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -100,10 +100,22 @@ if (!$this->session->userdata('nama')) {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="inputEmail3" class="col-sm-4">Status Pembayaran</label>
+                                            <label for="inputEmail3" class="col-sm-4 ">Kurir Pengiriman</label>
+                                            <div class="col-sm-8">
+                                                <p>: <?php echo $pesanan['0']->jasa_pengiriman; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-4 ">Nomor Resi</label>
+                                            <div class="col-sm-8">
+                                                <p>: <?php echo $pesanan['0']->nomor_resi; ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-4">Status</label>
                                             <div class="col-sm-7 text-sm">
-                                                <div class="alert alert-warning sm" role="alert">
-                                                    Belum Melakukan Pembayaran
+                                                <div class="alert alert-success" role="alert">
+                                                    Selesai
                                                 </div>
                                             </div>
                                         </div>

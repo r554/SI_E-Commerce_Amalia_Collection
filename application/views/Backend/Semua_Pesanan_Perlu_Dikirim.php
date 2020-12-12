@@ -50,12 +50,12 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Pesanan Dikirim</h1>
+                            <h1 class="m-0">Pesanan Perlu Dikirim</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Semua Pesanan</li>
+                                <li class="breadcrumb-item active">Pesanan Perlu Dikirim</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -73,7 +73,7 @@ if (!$this->session->userdata('nama')) {
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Pesanan Dikirim</h3>
+                            <h3 class="card-title">Daftar Pesanan</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -84,13 +84,13 @@ if (!$this->session->userdata('nama')) {
                                         <th>Nomor Pesanan</th>
                                         <th>Total Qty</th>
                                         <th>Total Pesanan</th>
-                                        <th>Status</th>
+                                        <th class="text-center">Status</th>
                                         <th class="text-center">Pilihan</th>
                                     </tr>
                                 </thead>
                                 <?php
                                 $no = 1;
-                                foreach ($pesanan_dikirim as $pesanan) {
+                                foreach ($pesanan_perlu_dikirim as $pesanan) {
                                 ?>
                                     <tbody>
                                         <tr>
@@ -99,11 +99,13 @@ if (!$this->session->userdata('nama')) {
                                             <td><?php echo $pesanan['grand_qty']; ?></td>
                                             <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
                                             <td class="text-center">
-                                                <span class="badge bg-success text-dark">Dikirim</span>
+                                                <span class="badge bg-success text-dark">Perlu Dikirim</span>
                                             </td>
                                             <td>
                                                 <div class="input-group">
-                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_detail_semua_pesanan_dikirim/' . $pesanan['id_order']) ?>"><button class="btn btn-warning btn-sm mx-auto">Detail</button></a>
+                                                    <button class="btn btn-warning btn-xs mx-auto" data-toggle="modal" data-target="#modal-kirim">Kirim Paket</button>
+                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_detail_perlu_dikirim/' . $pesanan['id_order']) ?>"><button class="btn btn-info btn-xs mx-auto">Detail</button></a>
+
                                                 </div>
                                             </td>
                                         </tr>
@@ -122,6 +124,7 @@ if (!$this->session->userdata('nama')) {
 
                     <!-- Main Footer -->
                     <?php $this->load->view('Backend/template/footer'); ?>
+                    <!-- End Main Footer -->
 
                 </div>
                 <!-- ./wrapper -->
@@ -168,6 +171,38 @@ if (!$this->session->userdata('nama')) {
 
             </section>
         </div>
+
+        <!-- /.modal -->
+        <div class="modal fade" id="modal-kirim">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Masukan Nomor Resi Pengiriman</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('Admin/Pesanan/simpan_resi') ?>" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="hidden" name="id_order" id="" value="<?= $pesanan['id_order'] ?>">
+                                <label for="exampleInputEmail1">Nomor Resi</label>
+                                <input type="text" class="form-control" id="nomor_resi" name="nomor_resi">
+                                <small class="form-text text-muted">Pastikan Nomor Resi Benar</small>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
 </body>
 
 </html>

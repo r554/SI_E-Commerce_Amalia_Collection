@@ -46,7 +46,7 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Detail Pemesanan <a href="<?php echo base_url('Admin/Pesanan/Tampil_semua_pesanan') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
+                            <h1 class="m-0">Detail Pesanan <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_perlu_dikirim') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -102,8 +102,8 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4">Status Pembayaran</label>
                                             <div class="col-sm-7 text-sm">
-                                                <div class="alert alert-warning sm" role="alert">
-                                                    Belum Melakukan Pembayaran
+                                                <div class="alert alert-success" role="alert">
+                                                    Menunggu Dikirim
                                                 </div>
                                             </div>
                                         </div>

@@ -50,11 +50,11 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Semua Pesanan</h1>
+                            <h1 class="m-0">Pesanan Baru</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="<?= base_url('Manager/Dashboard_Manager/tampil_manager') ?>">Home</a></li>
                                 <li class="breadcrumb-item active">Semua Pesanan</li>
                             </ol>
                         </div><!-- /.col -->
@@ -73,7 +73,7 @@ if (!$this->session->userdata('nama')) {
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Daftar Pesanan</h3>
+                            <h3 class="card-title">Daftar Pesanan Baru</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -84,6 +84,7 @@ if (!$this->session->userdata('nama')) {
                                         <th>Nomor Pesanan</th>
                                         <th>Total Qty</th>
                                         <th>Total Pesanan</th>
+                                        <th class="text-center">Status</th>
                                         <th class="text-center">Pilihan</th>
                                     </tr>
                                 </thead>
@@ -97,7 +98,11 @@ if (!$this->session->userdata('nama')) {
                                             <td><?php echo $pesanan['nama_pelanggan']; ?></td>
                                             <td><?php echo $pesanan['id_order']; ?></td>
                                             <td><?php echo $pesanan['grand_qty']; ?></td>
-                                            <td><?php echo $pesanan['total']; ?></td>
+                                            <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
+                                            <td class="text-center">
+                                                <span class="badge bg-warning text-dark">Belum Bayar</span>
+                                            </td>
+
                                             <td>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">

@@ -45,6 +45,7 @@ class M_data_produk extends CI_model
 
 		return $this->db->insert($this->_table, $this);
 	}
+
 	function get_no_invoice()
 	{
 		$q = $this->db->query("SELECT MAX(RIGHT(id_produk,4)) AS kd_max FROM tbl_produk WHERE DATE(tanggal)=CURDATE()");
@@ -76,7 +77,7 @@ class M_data_produk extends CI_model
 	{
 		// setting konfigurasi upload
 		$config['upload_path'] = './assets/Gambar/foto_produk';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['file_name']            = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 		// load library upload
 		$this->load->library('upload', $config);
@@ -85,6 +86,7 @@ class M_data_produk extends CI_model
 		$result1 = $this->upload->data('file_name');
 		return $result1;
 	}
+
 
 
 	public function tampil_data()
@@ -115,17 +117,27 @@ class M_data_produk extends CI_model
 	{
 		return $this->db->get_where($this->_table, ["id_produk" => $id])->row();
 	}
+
 	//edit produk
 	public function update()
 	{
 		$post = $this->input->post();
 		$this->id_produk = $post["id_produk"];
+		$this->id_jenis = $post["id_jenis"];
 		$this->nama_produk = $post["nama_produk"];
 		$this->harga = $post["harga"];
 		$this->deskripsi = $post["deskripsi"];
 		$this->berat_produk = $post["berat_produk"];
-		$this->gambar_produk = $this->do_upload();
+		$this->gambar_produk = $post["gambar_produk"];
+		//$this->gambar_produk = $this->do_upload();
+		// var_dump($this);
+		// die;
 
+		if (!empty($_FILES["gambar_produk"]["name"])) {
+			$this->gambar_produk = $this->do_upload();
+		} else {
+			$this->gambar_produk = $post["gambar_produk"];
+		}
 
 		return $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
 	}
@@ -136,9 +148,11 @@ class M_data_produk extends CI_model
 		$this->db->from('tbl_produk');
 		//$this->db->join('tbl_foto_produk', 'tbl_foto_produk.id_produk = tbl_produk.id_produk');
 		$this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+		$this->db->join('tbl_jenis', 'tbl_jenis.id_jenis = tbl_produk.id_jenis');
 		$this->db->where('tbl_produk.id_produk', $id);
 		return $this->db->get()->result();
 	}
+
 	public function getProductById($id)
 	{
 		$this->db->select("*,tbl_produk.id_produk AS produkId");

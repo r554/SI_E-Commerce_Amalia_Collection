@@ -1,3 +1,11 @@
+<?php
+
+// if (!$this->session->userdata('nama')) {
+//     redirect(base_url("Auth_Admin"));
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +15,13 @@
     <title>Amalia Collection</title>
 
     <?php $this->load->view('Backend/template/head'); ?>
+    <!-- DataTables -->
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 </head>
 
@@ -43,8 +58,8 @@
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Data Produk</a></li>
-                                <li class="breadcrumb-item active">Tambah Produk</li>
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Data Produk</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -58,98 +73,166 @@
             <section class="content">
                 <div class="container-fluid">
                     <!-- Ini Bagian Konten -->
+
                     <div class="row">
-                        <div class="col">
+                        <!-- Kolom Kiri -->
+                        <div class="col-md-6">
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">Tambah Data Produk</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form action="<?php echo base_url('data_produk/save') ?> " method="POST"
+                                <form action="<?php echo base_url("data_produk/save") ?>" method="POST"
                                     enctype="multipart/form-data">
-
                                     <div class="card-body">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>ID Produk</label>
-                                                        <input name="id_produk" type="teks" class="form-control"
-                                                            value="<?php echo $invoice ?>">
-                                                        <input name="status_produk" type="hidden" class="form-control"
-                                                            value="1">
-                                                        <input name="status_promo" type="hidden" class="form-control"
-                                                            value="0">
+                                        <label>ID Produk</label>
+                                        <input name="id_produk" type="teks" class="form-control"
+                                            value="<?php echo $invoice ?>">
+                                        <input name="status_produk" type="hidden" class="form-control" value="1">
+                                        <input name="status_promo" type="hidden" class="form-control" value="0">
 
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Pilih Kategori</label>
-                                                        <select class="form-control" id="id_kategori" name="id_kategori"
-                                                            style="height: 40px; font-size: medium;" required>
-                                                            <option value="" selected disabled>Kategori</option>
-                                                            <?php foreach ($kategori->result() as $row) : ?>
-                                                            <option value="<?php echo $row->id_kategori; ?>">
-                                                                <?php echo $row->nama_kategori; ?></option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Pilih Jenis</label>
-                                                        <select class="form-control" id="id_jenis" name="id_jenis"
-                                                            style="height: 40px; font-size: medium;" required>
-                                                            <option value="" selected disabled>Jenis</option>
-                                                            <option value=""></option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Nama Produk</label>
-                                                        <input name="nama_produk" type="teks" class="form-control"
-                                                            placeholder="Enter Nama Produk">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Harga</label>
-                                                        <input name="harga" type="teks" class="form-control"
-                                                            placeholder="Enter Harga">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Deskripsi</label>
-                                                        <input name="deskripsi" type="teks" class="form-control"
-                                                            placeholder="Enter Deskripsi">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Berat Produk</label>
-                                                        <input name="berat_produk" type="teks" class="form-control"
-                                                            placeholder="Enter Berat Produk">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input name="gambar_produk" type="file">
-                                                    </div>
-
-                                                    <!-- /.card-body -->
-
-                                                    <div class="card-footer">
-                                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="form-group">
+                                            <label>Pilih Kategori</label>
+                                            <select class="form-control" id="id_kategori" name="id_kategori"
+                                                style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Kategori</option>
+                                                <?php foreach ($kategori->result() as $row) :
+                                                ?>
+                                                <option value="<?php echo $row->id_kategori;
+                                                                    ?>">
+                                                    <?php echo $row->nama_kategori;
+                                                        ?></option>
+                                                <?php endforeach;
+                                                ?>
+                                            </select>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Pilih Jenis</label>
+                                            <select class="form-control" id="id_jenis" name="id_jenis"
+                                                style="height: 40px; font-size: medium;" required>
+                                                <option value="" selected disabled>Jenis</option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Nama Produk</label>
+                                            <input name="nama_produk" type="teks" class="form-control"
+                                                placeholder="Enter Nama Produk" required
+                                                oninvalid="this.setCustomValidity('Nama Produk Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Harga</label>
+                                            <input name="harga" type="teks" class="form-control"
+                                                placeholder="Enter Harga" required
+                                                oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <input name="deskripsi" type="teks" class="form-control"
+                                                placeholder="Enter Deskripsi" required
+                                                oninvalid="this.setCustomValidity('Deskripsi Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Berat Produk</label>
+                                            <input name="berat_produk" type="teks" class="form-control"
+                                                placeholder="Enter Berat Produk" required
+                                                oninvalid="this.setCustomValidity('Berat Produk Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input name="gambar_produk" type="file" required
+                                                oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <?php
+                                        if (!$attribut) {
+                                            echo "Anda Belum Menambahkan Warna Produk";
+                                        } else { ?>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                        <?php }
+                                        ?>
+
+                                        <!-- /.card-footer -->
+                                    </div>
                                 </form>
                             </div>
+                        </div>
 
+                        <!-- Kolom Kanan -->
+                        <div class="col-md-6">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Warna dan Stok</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <div class="card-body table-responsive p-0">
 
+                                    <input type="hidden" required>
+                                    <table class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Warna</th>
+                                                <th>Stok</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($attribut as $attribut) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $attribut->warna; ?></td>
+                                                <td><?php echo $attribut->qty; ?></td>
+                                                <td>
+                                                    <a
+                                                        href="<?php echo base_url("data_produk/hapus_warna/" . $attribut->id_attribut . "/" . $attribut->id_produk) ?>"><button
+                                                            type="button"
+                                                            class="btn btn-danger btn-sm">Hapus</button></a>
+                                                </td>
+
+                                            </tr>
+                                            <?php
+                                            } ?>
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#modal-stok">
+                                        Tambah
+                                    </button>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
                     <!-- /Ini Akhir Konten -->
 
 
 
                     <!-- Main Footer -->
-
-                    <?php $this->load->view('Backend/template/footer'); ?>
+                    <?php $this->load->view("Backend/template/footer"); ?>
                 </div>
                 <!-- ./wrapper -->
 
@@ -179,6 +262,9 @@
                     for (i = 0; i < data.length; i++) {
                         html += '<option value=' + data[i].id_jenis + '>' + data[i]
                             .nama_jenis +
+
+
+
                             '</option>';
                     }
                     $('#id_jenis').html(html);
@@ -190,6 +276,40 @@
 
     });
     </script>
+
+    <div class="modal fade" id="modal-stok">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Warna dan Stok</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo base_url("data_produk/save_warna") ?>" method="post" role="form"
+                        enctype="multipart/form-data">
+                        <input type="hidden" name="id_produk" value="<?php echo $invoice ?>">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Warna</label>
+                            <input type="text" class="form-control" name="warna">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Stok</label>
+                            <input type="text" class="form-control" name="qty">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </body>
 
 </html>

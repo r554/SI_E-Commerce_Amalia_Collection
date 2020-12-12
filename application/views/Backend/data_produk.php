@@ -150,8 +150,7 @@
 
 
                     <!-- Main Footer -->
-
-                    <?php $this->load->view('Backend/template/footer'); ?>
+                    <?php $this->load->view("Backend/template/footer"); ?>
                 </div>
                 <!-- ./wrapper -->
 
