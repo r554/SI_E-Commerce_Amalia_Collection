@@ -84,7 +84,7 @@
                                     <?php foreach($product_order->result_array() as $p): ?>
                                         <div class="item-product">
                                             <!-- <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $p['gambar_produk']; ?>" alt="produk <?= $p['nama_produk']; ?>"> -->
-                                            <a href="#"><h3 class="product_name mb-0"><?= $p['nama_produk']; ?></h3></a>
+                                            <a href="<?= base_url('homepage/detail_product/') ?><?= $p['id_produk']; ?>"><h3 class="product_name mb-0"><?= $p['nama_produk']; ?></h3></a>                                            
                                             <p class="mb-0">Jumlah: <?= $p['jumlah']; ?></p>
                                             <p class="mb-0 price">Rp<?= number_format($p['harga'] * $p['jumlah'],0,",","."); ?></p>
                                             <div class="clearfix"></div>
@@ -131,27 +131,10 @@
                                 $satuj = 100;
                             }
                             ?>
-                            <h2 class="title mb-3">Status Pengiriman</h2>
+                            <!-- <h2 class="title mb-3">Status Pengiriman</h2>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <p class="text-muted mb-1">Sedang diproses</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $sedpros; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $sedpros; ?>%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <p class="text-muted mb-1">Dalam pengiriman</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $dalpen; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $dalpen; ?>%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <p class="text-muted mb-1">Sampai Tujuan</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $satuj; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $satuj; ?>%"></div>
-                                    </div>
-                                </div>
-                            </div>
+                                
+                            </div> -->
                             
                         </div>
                     </div>

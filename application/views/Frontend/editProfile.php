@@ -25,8 +25,8 @@
                         <?php foreach($dataprofile->result_array() as $d): ?>
                             <div class="form-group">
                                 <label for="Username">Username</label>
-                                <input type="hidden" name="id_pelanggan" value="<?= $d['id_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>
-                                <input type="text" name="username_pelanggan" value="<?= $d['username_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
+                                <input type="hidden"  name="id_pelanggan" value="<?= $d['id_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>
+                                <input type="text" style="height: 40px; font-size: medium;"  name="username_pelanggan" value="<?= $d['username_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
                             </div>
                             <div class="form-group">
                                 <label for="Email">Email</label>

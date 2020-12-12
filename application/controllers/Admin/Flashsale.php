@@ -51,7 +51,7 @@ class Flashsale extends CI_Controller
             }else{*/
 		    $this->m_data->input_data($data,'tbl_promo');
             $this->session->set_userdata('tambah_sukses', 'tambah');
-            redirect('flashsale/produkflashsale');
+            redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus1($id)
     {    
@@ -62,7 +62,7 @@ class Flashsale extends CI_Controller
             'id_promo' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_promo');
-        redirect('flashsale/produkflashsale');
+        redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus0($id)
     {    
@@ -73,7 +73,7 @@ class Flashsale extends CI_Controller
             'id_promo' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_promo');
-        redirect('flashsale/produkflashsale');
+        redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus2($id)
     {    
@@ -84,7 +84,7 @@ class Flashsale extends CI_Controller
             'id_produk' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_produk');
-        redirect('flashsale/produkflashsale');
+        redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus3($id)
     {    
@@ -95,13 +95,13 @@ class Flashsale extends CI_Controller
             'id_produk' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_produk');
-        redirect('flashsale/produkflashsale');
+        redirect('admin/flashsale/produkflashsale');
     }
     function updatehargaDiskon($idp){
         $hardis=$this->input->post('hargaDiskon');      
         $this->m_data->update_hargaDiskon($hardis,$idp);
   
-        redirect('flashsale/produkflashsale');
+        redirect('admin/flashsale/produkflashsale');
     }
 
     
