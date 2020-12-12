@@ -199,14 +199,19 @@
     <?php $this->load->view('Frontend/template/footer') ?>
     <!-- End Footer -->
 
+    <!-- SweetAlert JS -->
+    <script src="<?= base_url() ?>assets/sweetalert/sweetalert2.min.js"></script>
+    <!-- SweetAlert JS -->
+
 
     <!-- Java Script -->
     <?php $this->load->view('Frontend/template/js') ?>
     <!-- End Java Script -->
 
-
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="<?= base_url() ?>assets/js_custom/myscript.js"></script>
+
+
+
 
     <script type="text/javascript" language="Javascript">
         function OnChange(value) {
@@ -222,6 +227,18 @@
                 ribuan_ongkir = reverse.match(/\d{1,3}/g);
             ribuan_ongkir = ribuan_ongkir.join(',').split('').reverse().join('');
             $("#total").val("Rp. " + ribuan_ongkir); // Menampilkan Data Ke tag input
+        }
+
+        // SweetAlert
+        const flashData = $('.flash-data').data('flashdata');
+
+        if (flashData) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Produk Ditambahkan ke Keranjang',
+
+            })
         }
     </script>
 
