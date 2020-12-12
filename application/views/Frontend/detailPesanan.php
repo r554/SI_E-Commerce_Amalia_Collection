@@ -57,23 +57,23 @@
                             <table class="table table-sm table-borderless">
                                 <tr>
                                     <td>Nama Penerima</td>
-                                    <td><?= $_SESSION["nama"]; ?></td>
+                                    <td><?= $ord['nama_penerima']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td><?= $_SESSION["alamat"]; ?></td>
+                                    <td><?= $ord['alamat_penerima']; ?></td>
+                                </tr>                                
+                                <tr>
+                                    <td></td>
+                                    <td><?= $_SESSION["kabupaten"]; ?> <?= $_SESSION["provinsi"]; ?> - <?= $ord['kode_pos']; ?></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>Desa - Dusun</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><?= $_SESSION["kabupaten"]; ?> <?= $_SESSION["provinsi"]; ?> - <?= $_SESSION["kodePos"]; ?></td>
+                                    <td><?= $ord['kabupaten_penerima']; ?> - <?= $ord['provinsi_penerima']; ?> - <?= $ord['kode_pos']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Telepon</td>
-                                    <td><?= $_SESSION["no_hp"]; ?></td>
+                                    <td><?= $ord['no_penerima']; ?></td>
                                 </tr>
                             </table>
                             <hr>
@@ -85,8 +85,8 @@
                                         <div class="item-product">
                                             <!-- <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $p['gambar_produk']; ?>" alt="produk <?= $p['nama_produk']; ?>"> -->
                                             <a href="<?= base_url('homepage/detail_product/') ?><?= $p['id_produk']; ?>"><h3 class="product_name mb-0"><?= $p['nama_produk']; ?></h3></a>                                            
-                                            <p class="mb-0">Jumlah: <?= $p['jumlah']; ?></p>
-                                            <p class="mb-0 price">Rp<?= number_format($p['harga'] * $p['jumlah'],0,",","."); ?></p>
+                                            <p class="mb-0">Jumlah: <?= $p['sub_qty']; ?></p>
+                                            <p class="mb-0 price">Rp<?= number_format($p['harga_final'] * $p['sub_qty'],0,",","."); ?></p>
                                             <div class="clearfix"></div>
                                         </div>
                                     <?php endforeach; ?>
@@ -95,7 +95,7 @@
                                     <h2 class="title">Ringkasan Pembayaran</h2>
                                     <table class="table table-sm table-borderless">
                                         <tr>
-                                            <td>Jumlah Produk</td>
+                                            <td>Jumlah Jenis Produk</td>
                                             <td>: <?= $product_order->num_rows(); ?></td>
                                         </tr>
                                         <tr>
@@ -103,8 +103,12 @@
                                             <td>: Rp<?= number_format($ord['grand_total'],0,",","."); ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Jasa</td>
+                                            <td><?= $ord['jasa_pengiriman']; ?> - <?= $ord['jenis_layanan']; ?></td>
+                                        </tr>
+                                        <tr>
                                             <td>Ongkis Kirim</td>
-                                            <td>ONGKIR TBD</td>
+                                            <td>: Rp<?= number_format($ord['biaya_pengiriman'],0,",","."); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Total Belanja</td>

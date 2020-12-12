@@ -5,11 +5,11 @@ $order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->us
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">Dashboard</a> 
   <?php if($order->num_rows() > 0){ ?>
-  <a href="#" class="list-group-item list-group-item-action">Transaksi <span class="badge badge-info"><?= $order->num_rows(); ?></span></a>
+  <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi <span class="badge badge-info"><?= $order->num_rows(); ?></span></a>
   <?php }else{ ?>
-    <a href="#" class="list-group-item list-group-item-action">Transaksi</a>
+    <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi</a>
   <?php } ?>
   <a href="#" class="list-group-item list-group-item-action">Riwayat Transaksi</a>
-  <a href="#" class="list-group-item list-group-item-action">Edit Profil</a>
-  <a href="#" class="list-group-item list-group-item-action">Ganti Kata Sandi</a>
+  <a href="<?php echo base_url("profile") ?>" class="list-group-item list-group-item-action">Edit Profil</a>
+  <a href="<?php echo base_url("login0/logout") ?>" class="list-group-item list-group-item-action">Keluar</a>
   </div>
