@@ -20,11 +20,19 @@
 </style>
 
 <body>
-    <!-- Pre Loader -->
-    <div class="preloader" id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- End Pre Loader -->
+
+    <?php
+    if ($this->session->flashdata('success')) { ?>
+        <!-- swetalert -->
+        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('success') ?>"> </div>
+        <!-- End swetalert -->
+    <?php } else { ?>
+        <!-- Pre Loader -->
+        <div class="preloader" id="preloader">
+            <div class="loader"></div>
+        </div>
+        <!-- End Pre Loader -->
+    <?php } ?>
 
     <!-- Adverts -->
     <div class="adverts">
@@ -32,10 +40,7 @@
     </div>
     <!-- End Adverts -->
 
-
     <!-- Bagian Content -->
-
-
     <div class="container">
         <div class="navigation">
             <a href="<?= base_url(); ?>">Home</a>
@@ -102,12 +107,11 @@
                                 <?php } ?>
                                 <td>Jumlah</td>
                                 <td style="text-align:center">
-                                    <span><input type="number" min="1" max="<?= $product['qty']; ?>" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" /></span>
+                                    <span><input type="number" min="1" max="<?= $product['qty']; ?>" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required /></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-
                                 <td>
                                     <input type="text" name="totalharga" id="total" placeholder="<?php echo "Rp. "   . number_format($product['harga']) . ",-" ?>" disabled>
                                 </td>
@@ -202,6 +206,7 @@
 
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="<?= base_url() ?>assets/js_custom/myscript.js"></script>
 
     <script type="text/javascript" language="Javascript">
         function OnChange(value) {

@@ -21,6 +21,11 @@
 
     <!-- StyleSheet -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Bootstrap/css/bootstrap.min.css">
-     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Frontend/styles.css" />
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Frontend/styles.css" />
     <title>Amalia</title>
+
+    <!-- Sweetalert -->
+    <!-- <script src="<?= base_url() ?>assets/sweetalert/sweetalert2.all.min.js"></script> -->
+    <script src="<?= base_url() ?>assets/sweetalert/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url() ?>assets/sweetalert/sweetalert2.min.css">
 </head>

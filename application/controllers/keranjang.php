@@ -36,6 +36,7 @@ class keranjang extends CI_Controller
         $id_produk = $this->input->post('id_produk');
 
         if ($model->tambah_keranjang()) {
+            $this->session->set_flashdata('success', 'success');
             redirect(site_url('Homepage/detail_product/' . $id_produk));
         }
     }
