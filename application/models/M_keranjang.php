@@ -183,7 +183,33 @@ class M_keranjang extends CI_model
         return $this->db->get()->result();
     }
 
+    // Method Untuk Menambahkan Ke Keranajang
+    public function tambah_keranjang()
+    {
 
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $id_produk = $this->input->post('id_produk');
+        $warna = $this->input->post('warna');
+
+        if ($this->input->post('jumlah1')) {
+            $jumlah = $this->input->post('jumlah1');
+        } else {
+            $jumlah = $this->input->post('jumlah2');
+        }
+
+        $berat = $this->input->post('berat_produk');
+
+        $data = array(
+            'id_pelanggan' => $id_pelanggan,
+            'id_produk' => $id_produk,
+            'warna' => $warna,
+            'jumlah' => $jumlah,
+            'berat' => $berat,
+        );
+
+
+        return $this->db->insert($this->_table, $data);
+    }
 
 
 

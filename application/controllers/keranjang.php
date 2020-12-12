@@ -12,8 +12,9 @@ class keranjang extends CI_Controller
     }
 
     // Method untuk menampilkan keranjang berdasarkan Login
-    public function tampil_semua_keranjang($id = null)
+    public function tampil_semua_keranjang()
     {
+        $id = $this->session->userdata('id'); // Menangkap ID yang dikirim dari session
         if (!isset($id)) {
             redirect(site_url('Login0'));
         } else {
@@ -27,6 +28,28 @@ class keranjang extends CI_Controller
             $this->load->view('Frontend/keranjang', $data);
         }
     }
+
+    // Method Tambah Keranjang
+    public function save_keranjang()
+    {
+        $model = $this->M_keranjang;
+        $id_produk = $this->input->post('id_produk');
+
+        if ($model->tambah_keranjang()) {
+            redirect(site_url('Homepage/detail_product/' . $id_produk));
+        }
+    }
+
+    // Method Tambah Keranjang klik beli
+    public function save_keranjang_beli()
+    {
+        $model = $this->M_keranjang;
+
+        if ($model->tambah_keranjang()) {
+            redirect(site_url('keranjang/tampil_semua_keranjang'));
+        }
+    }
+
 
     // Method untuk menyimpan ke tabel order
     public function save_order($id)
