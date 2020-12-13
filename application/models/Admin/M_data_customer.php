@@ -15,7 +15,7 @@ class M_data_customer extends CI_model
     public $username_pelanggan;
     public $password_pelanggan;
     public $tanggal_daftar;
-    public $foto_pelanggan = 'default.jpg';
+    public $foto_pelanggan = 'default.png';
     public $Status;
 
 

@@ -67,7 +67,7 @@
                                 foreach ($detailCustomer as $u) {
                                     // $u->id_produk
                                 ?>
-                                <img width="230px" height="230px"
+                                <img width="230px" height="230px" class="img-circle"
                                     src="<?php echo base_url() ?>assets/Gambar/foto_customer/<?php echo $u->foto_pelanggan ?>">
 
                             </div>

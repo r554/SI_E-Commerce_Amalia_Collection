@@ -60,8 +60,8 @@
                                 foreach ($detailKaryawan as $u) {
                                     // $u->id_produk
                                 ?>
-                                <img width="230px" height="230px"
-                                    src="<?php echo base_url() ?>assets/Gambar/foto_karyawan/<?php echo $u->foto_admin ?>">
+                                <img width="230px" height="300px"
+                                    src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $u->foto_admin ?>">
                             </div>
                             <div class=" col-md-9">
                                 <div class="card-body">
@@ -102,8 +102,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="text" class="form-control" name="password_admin"
-                                                        disabled value="<?php echo $u->password_admin ?>">
+                                                    <input type="password" class="form-control" name="password_admin"
+                                                        disabled value="<?php echo md5($u->password_admin) ?>">
                                                 </div>
 
                                                 <!-- <div class="form-group">

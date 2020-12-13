@@ -81,9 +81,7 @@
                                                 <th>Alamat</th>
                                                 <th>No HP</th>
                                                 <th>Email</th>
-                                                <th>Username</th>
-                                                <th>Password</th>
-                                                <th style="width: 40px">Aksi</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -111,21 +109,19 @@
                                                     <p><?php echo $a['email_admin']; ?></p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a['username_admin']; ?></p>
-                                                </td>
-                                                <td>
-                                                    <p><?php echo $a['password_admin']; ?></p>
-                                                </td>
-                                                <td>
                                                     <a
                                                         href="<?= base_url('Admin/data_karyawan/tampil_detail/' . $a['id_admin']) ?>"><button
-                                                            type="button">Detail</button></a>
+                                                            class="btn btn-primary btn-xs" type="button"><i
+                                                                class="fas fa-info-circle"> Detail</i></button></a>
                                                     <a
                                                         href="<?= base_url('Admin/data_karyawan/edit/' . $a['id_admin']) ?>"><button
-                                                            type="button">Edit</button></a>
+                                                            class="btn btn-success btn-xs" type="button"><i
+                                                                class="far fa-edit"> Edit</i></button></a>
                                                     <a
                                                         href="<?= base_url('Admin/data_karyawan/delete/' . $a['id_admin']) ?>"><button
-                                                            type="button">Hapus</button></a>
+                                                            class="btn btn-danger btn-xs" type="button "><i
+                                                                class="fas fa-trash-alt">
+                                                                Hapus</i></button></a>
 
                                                 </td>
 

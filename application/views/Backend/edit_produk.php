@@ -158,8 +158,9 @@ if (!$this->session->userdata('nama')) {
                                                 alt="">
                                         </div> -->
                                         <label>Gambar Produk</label>
-                                        <input name="gambar_produk" type="file" multiple accept='image/*'
-                                            id="menu_images" value="<?php echo $edit['0']->gambar_produk ?>">
+                                        <input name="gambar_produk" id="menu_images" type="file" multiple
+                                            accept='image/*' id="menu_images"
+                                            value="<?php echo $edit['0']->gambar_produk ?>">
                                         <input name="gambar_produk" type="hidden"
                                             value="<?php echo $edit['0']->gambar_produk ?>">
 

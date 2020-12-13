@@ -18,9 +18,9 @@ class M_data_karyawan extends CI_model
     {
         return [
             [
-                'field' => 'nama_admin',
-                'label' => 'nama_admin',
-                'rules' => 'required'
+                'field' => 'email_admin',
+                'label' => 'email_admin',
+                'rules' => 'valid_email'
             ]
 
         ];
@@ -67,8 +67,8 @@ class M_data_karyawan extends CI_model
     function do_upload()
     {
         // setting konfigurasi upload
-        $config['upload_path'] = './assets/Gambar/foto_karyawan';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['upload_path'] = './assets/Gambar/foto_profil';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['file_name']            = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
         // load library upload
         $this->load->library('upload', $config);
@@ -117,8 +117,12 @@ class M_data_karyawan extends CI_model
         $this->email_admin = $post["email_admin"];
         $this->username_admin = $post["username_admin"];
         $this->password_admin = $post["password_admin"];
-        $this->foto_admin = $this->do_upload();
-
+        $this->foto_admin = $post["foto_admin"];
+        if (!empty($_FILES["foto_admin"]["name"])) {
+            $this->foto_admin = $this->do_upload();
+        } else {
+            $this->foto_admin = $post["foto_admin"];
+        }
 
         return $this->db->update($this->_table, $this, array('id_admin' => $post['id_admin']));
     }

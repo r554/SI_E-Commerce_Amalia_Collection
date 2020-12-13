@@ -53,6 +53,7 @@
 
                 <div class="container-fluid">
 
+
                     <div class="row">
                         <!-- left column -->
                         <div class="col-md-12">
@@ -76,37 +77,58 @@
                                         <div class="form-group">
                                             <label>Nama Karyawan</label>
                                             <input type="text" class="form-control" name="nama_admin"
-                                                value="<?php echo $edit[0]->nama_admin ?>">
+                                                value="<?php echo $edit[0]->nama_admin ?>" required
+                                                oninvalid="this.setCustomValidity('Nama Karyawan Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
                                             <input type="text" class="form-control" name="alamat_admin"
-                                                value="<?php echo $edit[0]->alamat_admin ?>">
+                                                value="<?php echo $edit[0]->alamat_admin ?>" required
+                                                oninvalid="this.setCustomValidity('Alamat Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label>No HP</label>
-                                            <input type="number" class="form-control" name="no_admin"
-                                                value="<?php echo $edit[0]->no_admin ?>">
+                                            <input type="number" class="form-control" name="no_admin" minlength="9"
+                                                min="9" maxlength="14" value="<?php echo $edit[0]->no_admin ?>"
+                                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
+                                                oninvalid="this.setCustomValidity('No HP Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="text" class="form-control" name="email_admin"
-                                                value="<?php echo $edit[0]->email_admin ?>">
+                                            <input type="email" class="form-control" name="email_admin"
+                                                value="<?php echo $edit[0]->email_admin ?>" required>
+                                            <div class="input-group">
+                                                <?php echo form_error('email', '<small class="text-danger">', '</small>'); ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Username</label>
                                             <input type="text" class="form-control" name="username_admin"
-                                                value="<?php echo $edit[0]->username_admin ?>">
+                                                value="<?php echo $edit[0]->username_admin ?>" required
+                                                oninvalid="this.setCustomValidity('Username Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" class="form-control" name="password_admin"
-                                                value="<?php echo $edit[0]->password_admin ?>">
+                                                value="<?php echo $edit[0]->password_admin ?>" required
+                                                oninvalid="this.setCustomValidity('Password Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
-                                            <input name="foto_admin" type="file"
+                                            <input name="foto_admin" id="menu_images" type="hidden"
                                                 value="<?php echo $edit[0]->foto_admin ?>">
+                                            <input name="foto_admin" id="menu_images" type="file"
+                                                value="<?php echo $edit[0]->foto_admin ?>">
+
+                                            <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $edit[0]->foto_admin ?>"
+                                                alt="" width="200px" hight="200px">
+
                                         </div>
+
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                             <a href="<?= base_url('Admin/data_karyawan/tampil') ?>"><button

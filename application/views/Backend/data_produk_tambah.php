@@ -150,7 +150,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input name="gambar_produk" type="file" required
+                                            <input name="gambar_produk" id="menu_images" type="file" required
                                                 oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
