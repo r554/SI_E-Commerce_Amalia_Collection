@@ -26,7 +26,8 @@ class M_data extends CI_Model
     $this->db->where('tbl_produk.id_produk', $id);
     return $this->db->get()->result();
   }
-  public function getProductById($id){
+  public function getProductById($id)
+  {
     $this->db->select("*,tbl_produk.id_produk AS produkId");
     $this->db->from("tbl_produk");
     $this->db->join("tbl_attribut", "tbl_produk.id_produk=tbl_attribut.id_produk");
@@ -34,9 +35,10 @@ class M_data extends CI_Model
     $this->db->where('tbl_produk.id_produk', $id);
     return $this->db->get()->row_array();
   }
-  public function getImgProductById($id){
-      $product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
-      return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
+  public function getImgProductById($id)
+  {
+    $product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
+    return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
   }
   function cek_data($id, $id_db, $database)
   { //cek database
@@ -87,7 +89,7 @@ class M_data extends CI_Model
 
   function data_homepage($number, $offset)
   {
-    $status_produk = "1";
+    $status_produk = "0";
     $this->db->like('status_produk', $status_produk);
 
     return $query = $this->db->get('tbl_produk', $number, $offset)->result();
@@ -128,4 +130,23 @@ class M_data extends CI_Model
     $query = $this->db->get('tbl_kategori');
     return $query->result();
   }
+
+
+  // Function Flash Sale ==============================================================================================
+  function jumlah_data_flash_sale()
+  {
+    return $this->db->get('tbl_produk')->num_rows();
+  }
+
+  function data_flash_sale($number, $offset)
+  {
+    $status_produk = "1";
+    $this->db->where('status_produk', $status_produk);
+
+    return $query = $this->db->get('tbl_produk', $number, $offset)->result();
+  }
+
+  // End Function Flash Sale ==============================================================================================
+
+
 }

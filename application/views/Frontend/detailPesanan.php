@@ -33,16 +33,19 @@
                                 </tr>
                                 <tr>
                                     <td>Status</td>
-                                    <?php if($ord['status'] == 0){ ?>
-                                        <td>Belum dibayar</td>
-                                    <?php }else if($ord['status'] == 1){ ?>
-                                        <td>Menunggu konfirmasi</td>
+                                    <?php if($ord['status'] == 1){ ?>
+                                        <td>Belum Dibayar</td>
                                     <?php }else if($ord['status'] == 2){ ?>
-                                        <td>Sedang diproses</td>
+                                        <td>Menunggu konfirmasi</td>
                                     <?php }else if($ord['status'] == 3){ ?>
-                                        <td>Sedang dikirim</td>
-                                    <?php }else{ ?>
+                                        <td>Sedang Diproses</td>
+                                    <?php }else if($ord['status'] == 4){ ?>
+                                        <td>Sedang Dikirim</td>
+                                    <?php }else if($ord['status'] == 5){ ?>
                                         <td>Selesai</td>
+                                    <?php }else if($ord['status'] == 6){ ?>
+                                        <td>Dibatalkan</td>      
+                                    
                                     <?php } ?>
                                 </tr>
                                 <tr>
@@ -57,23 +60,23 @@
                             <table class="table table-sm table-borderless">
                                 <tr>
                                     <td>Nama Penerima</td>
-                                    <td><?= $_SESSION["nama"]; ?></td>
+                                    <td><?= $ord['nama_penerima']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td><?= $_SESSION["alamat"]; ?></td>
+                                    <td><?= $ord['alamat_penerima']; ?></td>
+                                </tr>                                
+                                <tr>
+                                    <td></td>
+                                    <td><?= $_SESSION["kabupaten"]; ?> <?= $_SESSION["provinsi"]; ?> - <?= $ord['kode_pos']; ?></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>Desa - Dusun</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><?= $_SESSION["kabupaten"]; ?> <?= $_SESSION["provinsi"]; ?> - <?= $_SESSION["kodePos"]; ?></td>
+                                    <td><?= $ord['kabupaten_penerima']; ?> - <?= $ord['provinsi_penerima']; ?> - <?= $ord['kode_pos']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Telepon</td>
-                                    <td><?= $_SESSION["no_hp"]; ?></td>
+                                    <td><?= $ord['no_penerima']; ?></td>
                                 </tr>
                             </table>
                             <hr>
@@ -84,9 +87,9 @@
                                     <?php foreach($product_order->result_array() as $p): ?>
                                         <div class="item-product">
                                             <!-- <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $p['gambar_produk']; ?>" alt="produk <?= $p['nama_produk']; ?>"> -->
-                                            <a href="#"><h3 class="product_name mb-0"><?= $p['nama_produk']; ?></h3></a>
-                                            <p class="mb-0">Jumlah: <?= $p['jumlah']; ?></p>
-                                            <p class="mb-0 price">Rp<?= number_format($p['harga'] * $p['jumlah'],0,",","."); ?></p>
+                                            <a href="<?= base_url('homepage/detail_product/') ?><?= $p['id_produk']; ?>"><h3 class="product_name mb-0"><?= $p['nama_produk']; ?></h3></a>                                            
+                                            <p class="mb-0">Jumlah: <?= $p['sub_qty']; ?></p>
+                                            <p class="mb-0 price">Rp<?= number_format($p['harga_final'] * $p['sub_qty'],0,",","."); ?></p>
                                             <div class="clearfix"></div>
                                         </div>
                                     <?php endforeach; ?>
@@ -95,7 +98,7 @@
                                     <h2 class="title">Ringkasan Pembayaran</h2>
                                     <table class="table table-sm table-borderless">
                                         <tr>
-                                            <td>Jumlah Produk</td>
+                                            <td>Jumlah Jenis Produk</td>
                                             <td>: <?= $product_order->num_rows(); ?></td>
                                         </tr>
                                         <tr>
@@ -103,8 +106,12 @@
                                             <td>: Rp<?= number_format($ord['grand_total'],0,",","."); ?></td>
                                         </tr>
                                         <tr>
+                                            <td>Jasa</td>
+                                            <td><?= $ord['jasa_pengiriman']; ?> - <?= $ord['jenis_layanan']; ?></td>
+                                        </tr>
+                                        <tr>
                                             <td>Ongkis Kirim</td>
-                                            <td>ONGKIR TBD</td>
+                                            <td>: Rp<?= number_format($ord['biaya_pengiriman'],0,",","."); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Total Belanja</td>
@@ -131,27 +138,10 @@
                                 $satuj = 100;
                             }
                             ?>
-                            <h2 class="title mb-3">Status Pengiriman</h2>
+                            <!-- <h2 class="title mb-3">Status Pengiriman</h2>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <p class="text-muted mb-1">Sedang diproses</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $sedpros; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $sedpros; ?>%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <p class="text-muted mb-1">Dalam pengiriman</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $dalpen; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $dalpen; ?>%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <p class="text-muted mb-1">Sampai Tujuan</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $satuj; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $satuj; ?>%"></div>
-                                    </div>
-                                </div>
-                            </div>
+                                
+                            </div> -->
                             
                         </div>
                     </div>

@@ -25,40 +25,40 @@
                         <?php foreach($dataprofile->result_array() as $d): ?>
                             <div class="form-group">
                                 <label for="Username">Username</label>
-                                <input type="hidden" name="id_pelanggan" value="<?= $d['id_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>
-                                <input type="text" name="username_pelanggan" value="<?= $d['username_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
+                                <input type="hidden"  name="id_pelanggan" value="<?= $d['id_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>
+                                <input type="text" style="height: 36px; font-size: medium;"  name="username_pelanggan" value="<?= $d['username_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
                             </div>
                             <div class="form-group">
                                 <label for="Email">Email</label>
-                                <input type="email" name="email_pelanggan" value="<?= $d['email_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
+                                <input type="email" style="height: 36px; font-size: medium;" name="email_pelanggan" value="<?= $d['email_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
                             </div>
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
-                                <input type="text" name="nama_pelanggan" value="<?= $d['nama_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="text" style="height: 36px; font-size: medium;" name="nama_pelanggan" value="<?= $d['nama_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>
                             <div class="form-group">
                                 <label for="nohp">No HP</label>
-                                <input type="number" name="no_pelanggan" value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan" value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>
                             <div class="form-group">
                                 <label for="Alamat">Alamat Lengkap</label>
-                                <input type="text" name="alamat_pelanggan" value="<?= $d['alamat_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="text" style="height: 36px; font-size: medium;" name="alamat_pelanggan" value="<?= $d['alamat_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>
                             <div class="form-group">
                                 <label for="Kabupaten">Kabupaten</label>
-                                <input type="text" name="kabupaten" value="<?= $d['kabupaten']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="text" style="height: 36px; font-size: medium;" name="kabupaten" value="<?= $d['kabupaten']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>
                             <div class="form-group">
                                 <label for="Provinsi">Provinsi</label>
-                                <input type="text" name="provinsi" value="<?= $d['provinsi']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="text" style="height: 36px; font-size: medium;" name="provinsi" value="<?= $d['provinsi']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>
                             <div class="form-group">
                                 <label for="Kode Pos">Kode Pos</label>
-                                <input type="number" name="kode_pos" value="<?= $d['kode_pos']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="number" style="height: 36px; font-size: medium;" name="kode_pos" value="<?= $d['kode_pos_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>
                             <div class="form-group">
                                 <label for="Password">Password</label>
-                                <input type="password" name="password_pelanggan" value="<?= $d['password_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
+                                <input type="password" style="height: 36px; font-size: medium;" name="password_pelanggan" value="<?= $d['password_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
                             </div>                            
                             <?php endforeach; ?>
                             <button class="btn btn-dark">Update</button>

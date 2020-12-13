@@ -144,15 +144,15 @@ if (!$this->session->userdata('nama')) {
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-warning btn-sm"
-                                                        <?php echo anchor('Flashsale/detailProduk/'.$u->id_produk,'Edit'); ?></a>
+                                                        <?php echo anchor('admin/Flashsale/detailProduk/'.$u->id_produk,'Edit'); ?></a>
                                                         <a class="btn btn-info btn-sm"
-                                                            <?php echo anchor('Flashsale/detailProduk/'.$u->id_produk,'Detail'); ?></a>
+                                                            <?php echo anchor('admin/Flashsale/detailProduk/'.$u->id_produk,'Detail'); ?></a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-success btn-sm"
-                                                        <?php echo anchor('Flashsale/updatestatus2/'.$u->id_produk,'Promo'); ?></a>
+                                                        <?php echo anchor('admin/Flashsale/updatestatus2/'.$u->id_produk,'Promo'); ?></a>
                                                         <a class="btn btn-danger btn-sm"
-                                                            <?php echo anchor('Flashsale/updatestatus3/'.$u->id_produk,'Tidak Promo'); ?></a>
+                                                            <?php echo anchor('admin/Flashsale/updatestatus3/'.$u->id_produk,'Tidak Promo'); ?></a>
                                                 </td>
                                             </tr>
                                             <?php }}else { ?>
@@ -217,9 +217,9 @@ if (!$this->session->userdata('nama')) {
                             <option value="<?php //echo base_url('Flashsale/updatestatus3/'.$u->id_produk); ?>">Tidak Promo</option>
                         </select>-->
                                                     <a class="btn btn-success btn-sm"
-                                                        <?php echo anchor('Flashsale/updatestatus1/'.$p->id_promo,'Aktifkan'); ?></a>
+                                                        <?php echo anchor('admin/Flashsale/updatestatus1/'.$p->id_promo,'Aktifkan'); ?></a>
                                                         <a class="btn btn-danger btn-sm"
-                                                            <?php echo anchor('Flashsale/updatestatus0/'.$p->id_promo,'Non-Aktifkan'); ?></a>
+                                                            <?php echo anchor('admin/Flashsale/updatestatus0/'.$p->id_promo,'Non-Aktifkan'); ?></a>
                                                 </td>
                                             </tr>
                                             <?php }}else { ?>
@@ -237,7 +237,7 @@ if (!$this->session->userdata('nama')) {
                                     <h3 class="card-title">Tambah Flash Sale</h3>
                                 </div>
                                 <div>
-                                    <form role="form" action="<?php echo base_url(). 'flashsale/tambah_aksiFS'; ?>"
+                                    <form role="form" action="<?php echo base_url(). 'admin/flashsale/tambah_aksiFS'; ?>"
                                         method="post">
                                         <div class="card-body">
                                             <div class="form-group">
