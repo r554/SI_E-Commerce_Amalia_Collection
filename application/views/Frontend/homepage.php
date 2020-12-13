@@ -280,6 +280,7 @@
                         <a href="<?php echo base_url('Page/tentangkami') ?>">Tentang Kami</a>
                         <a href="<?php echo base_url('Page/privasikebijakan') ?>">Privasi Dan Kebijakan</a>
                         <a href="<?php echo base_url('Page/manualbook') ?>">Manual Book</a>
+                        <a href="<?php echo base_url('Page/blog') ?>">Blog</a>
                         <!-- <a href="#">blogletter</a>
                     <a href="#">Returns</a> -->
                     </div>
