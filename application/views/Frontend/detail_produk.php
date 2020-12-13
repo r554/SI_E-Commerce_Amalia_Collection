@@ -62,7 +62,7 @@ input[type=number] {
                 <!-- <p class="subtitle">Terjual <?= $product['transaction']; ?> Produk &bull; <?= $product['viewer']; ?>x Dilihat</p> -->
                 <hr>
                 <table class="table table-borderless">
-                    <?php if($product['status_promo'] == 1){ ?>
+                    <?php if($product['status_promo'] == 0){ ?>
                         <tr>
                             <td >Harga</td>
                             <input type="hidden"  id="harga" name="harga"onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)"

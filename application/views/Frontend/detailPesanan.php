@@ -33,16 +33,19 @@
                                 </tr>
                                 <tr>
                                     <td>Status</td>
-                                    <?php if($ord['status'] == 0){ ?>
-                                        <td>Belum dibayar</td>
-                                    <?php }else if($ord['status'] == 1){ ?>
-                                        <td>Menunggu konfirmasi</td>
+                                    <?php if($ord['status'] == 1){ ?>
+                                        <td>Belum Dibayar</td>
                                     <?php }else if($ord['status'] == 2){ ?>
-                                        <td>Sedang diproses</td>
+                                        <td>Menunggu konfirmasi</td>
                                     <?php }else if($ord['status'] == 3){ ?>
-                                        <td>Sedang dikirim</td>
-                                    <?php }else{ ?>
+                                        <td>Sedang Diproses</td>
+                                    <?php }else if($ord['status'] == 4){ ?>
+                                        <td>Sedang Dikirim</td>
+                                    <?php }else if($ord['status'] == 5){ ?>
                                         <td>Selesai</td>
+                                    <?php }else if($ord['status'] == 6){ ?>
+                                        <td>Dibatalkan</td>      
+                                    
                                     <?php } ?>
                                 </tr>
                                 <tr>

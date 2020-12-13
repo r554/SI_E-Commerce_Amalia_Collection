@@ -17,14 +17,14 @@
         <div class="row mt-5 mb-5">
         <?php $this->load->view('Frontend/template/menu'); ?>
             <div class="col-sm-9 col-md-8 mx-auto text-center">
-                <h1>Area Content</h1>
+                <h1>Pesanan Anda</h1>
                 <div class="wrapper">
                     <div class="core">
-                <h2 class="title">Pesanan Anda</h2>
-                <?php echo $_SESSION["nama"]; ?><p>
+                <!-- <h2 class="title">Pesanan Anda</h2> -->
+                <!-- <?php echo $_SESSION["nama"]; ?><p>
             <?php echo $_SESSION["no_hp"]; ?><p>            
             <?php echo $_SESSION["alamat"]; ?><p>
-            <?php echo $_SESSION["id"]; ?><p>
+            <?php echo $_SESSION["id"]; ?><p> -->
                 <hr>
                 <?php if($order->num_rows() > 0){ ?>
                 <table class="table table-bordered">
@@ -40,7 +40,7 @@
                       <tr>
                         <td><?= $d['id_order']; ?></td>
                         <td><?= $d['tanggal_order']; ?></td>
-                        <td><?= $d['grand_total']; ?></td>
+                        <td>Rp <?= str_replace(",",".",number_format($d['grand_total'])); ?></td>
                         <?php if($d['status'] == 1){ ?>
                             <td>Belum dibayar</td>
                         <?php }else if($d['status'] == 2){ ?>
