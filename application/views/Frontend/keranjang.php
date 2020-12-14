@@ -1,9 +1,17 @@
 <body>
-    <!-- Pre Loader -->
-    <div class="preloader" id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- End Pre Loader -->
+
+    <?php
+    if ($this->session->flashdata('success')) { ?>
+        <!-- swetalert -->
+        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('success') ?>"> </div>
+        <!-- End swetalert -->
+    <?php } else { ?>
+        <!-- Pre Loader -->
+        <div class="preloader" id="preloader">
+            <div class="loader"></div>
+        </div>
+        <!-- End Pre Loader -->
+    <?php } ?>
 
     <!-- Adverts -->
     <div class="adverts">
@@ -68,13 +76,13 @@
                                         <p><?php echo $data_produk->jumlah; ?></p>
                                     </div>
                                 </div>
-                                <form action="<?php echo base_url('keranjang/delete_produk_keranjang/' . $data_produk->id_keranjang) ?>" method="POST">
-                                    <div class="col-md-1 mt-4 text-center">
-                                        <div class="card-body">
-                                            <button type="submit" class="btn btn-danger btn-lg"><i class="fas fa-trash-alt"></i></button>
-                                        </div>
+
+                                <div class="col-md-1 mt-4 text-center">
+                                    <div class="card-body">
+                                        <a href="<?= base_url(); ?>keranjang/delete_produk_keranjang/<?= $data_produk->id_keranjang; ?>" class="btn btn-danger btn-lg tombol-hapus"><i class="fas fa-trash-alt"></i></a>
                                     </div>
-                                </form>
+                                </div>
+
                             </div>
                         </div>
                         <!-- Untuk Menyimpan Data Total -->
@@ -161,7 +169,22 @@
     </main>
     <!-- End Main -->
 
+
+    <!-- Footer -->
+    <?php $this->load->view('Frontend/template/footer') ?>
+    <!-- End Footer -->
+
+    <!-- SweetAlert JS -->
+    <script src="<?= base_url() ?>assets/sweetalert/sweetalert2.min.js"></script>
+    <!-- SweetAlert JS -->
+
+
+    <!-- Java Script -->
+    <?php $this->load->view('Frontend/template/js') ?>
+    <!-- End Java Script -->
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 
     <script type="text/javascript" language="Javascript">
         function OnChange(value) {
@@ -171,19 +194,48 @@
             var total = parseInt(harga) * parseInt(jumlah);
             $("#total").val(total);
         }
+
+        // Tombol Hapus Keranjang
+        $('.tombol-hapus').on('click', function(e) {
+
+            e.preventDefault();
+
+            const href = $(this).attr('href'); // Ambil data dari tombol yang sedang di klik dimana attributnya adalah href
+
+            Swal.fire({
+                title: 'Apa Anda Yakin?',
+                text: "Menghapus Produk Dari Keranjang",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus Produk'
+            }).then((result) => {
+                if (result.value) {
+
+                    document.location.href = href; // Aksi Untuk Melakukan Hyperlink
+                    // Swal.fire(
+                    //     'Deleted!',
+                    //     'Your file has been deleted.',
+                    //     'success'
+                    // )
+                }
+            })
+
+        })
+
+        const flashData = $('.flash-data').data('flashdata');
+
+        if (flashData) {
+            Swal.fire(
+                'Berhasil',
+                'Produk Dihapus Dari Keranjang',
+                'success'
+            )
+        }
     </script>
 
 
-
-
-    <!-- Footer -->
-    <?php $this->load->view('Frontend/template/footer') ?>
-    <!-- End Footer -->
-
-
-    <!-- Java Script -->
-    <?php $this->load->view('Frontend/template/js') ?>
-    <!-- End Java Script -->
 
 
 </body>
