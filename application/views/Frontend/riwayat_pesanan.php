@@ -17,7 +17,7 @@
         <div class="row mt-5 mb-5">
         <?php $this->load->view('Frontend/template/menu'); ?>
             <div class="col-sm-9 col-md-8 mx-auto text-center">
-                <h1>Pesanan Anda</h1>
+                <h1>Riwayat Pesanan</h1>
                 <div class="wrapper">
                     <div class="core">
                 <!-- <h2 class="title">Pesanan Anda</h2> -->
@@ -34,7 +34,7 @@
                     <th>Total Pembayaran</th>
                     <th>Status</th>
                     <th>#</th>
-                    <th>Pembayaran</th>
+                    
                 </tr>
                 <?php foreach($order->result_array() as $d): ?>
                       <tr>
@@ -55,8 +55,7 @@
                             <td>Dibatalkan</td>    
                         <?php } ?>
                         
-                       <td><small><a href="pesanan_saya/detail_order/<?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
-                       <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td>
+                       <td><small><a href="pesanan_saya/detail_order/<?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>                       
                     </tr>
                     <?php endforeach; ?>
                     </table>

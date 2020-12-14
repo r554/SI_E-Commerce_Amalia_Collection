@@ -66,6 +66,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
+                <form action="<?= base_url('keranjang/save_keranjang_beli') ?>" method="POST">
                     <div class="ket">
                         <h1 class="title"><?= $product['nama_produk']; ?></h1>
                         <!-- <p class="subtitle">Terjual <?= $product['transaction']; ?> Produk &bull; <?= $product['viewer']; ?>x Dilihat</p> -->
@@ -119,26 +120,20 @@
 
                             <hr>
                             <tr>
-                                <td>
-                                    <form action="<?= base_url('keranjang/save_keranjang_beli') ?>" method="POST">
+                                <td>                                   
                                         <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
                                         <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
                                         <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
                                         <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
                                         <input type="hidden" name="jumlah1" id="jumlah1" />
-
-                                        <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="<?= base_url('keranjang/save_keranjang') ?>" method="POST">
-                                        <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
-                                        <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
-                                        <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
-                                        <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
                                         <input type="hidden" name="jumlah2" id="jumlah2" />
 
-                                        <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px">Tambah ke Keranjang</button>
+                                        <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
+                                    
+                                </td>
+                                <td>                                                                          
+
+                                        <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
                                     </form>
                                 </td>
                             </tr>

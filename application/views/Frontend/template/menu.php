@@ -9,7 +9,7 @@ $order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->us
   <?php }else{ ?>
     <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi</a>
   <?php } ?>
-  <a href="#" class="list-group-item list-group-item-action">Riwayat Transaksi</a>
+  <a href="<?php echo base_url("riwayat_pesanan") ?>" class="list-group-item list-group-item-action">Riwayat Transaksi</a>
   <a href="<?php echo base_url("profile") ?>" class="list-group-item list-group-item-action">Edit Profil</a>
   <a href="<?php echo base_url("login0/logout") ?>" class="list-group-item list-group-item-action">Keluar</a>
   </div>
