@@ -11,35 +11,61 @@
     </div>
     <!-- End Adverts -->
 
-    <br>
-    <br>
+
     <!-- Bagian Content -->
     <div class="container">
-
+        <br>
+        <br>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $indah[0]->gbr_tentangkami; ?>">
+                        <iframe width="1080" height="500" src="<?php echo $ferdi[0]->link_vidio; ?>" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mb-5 mt-5 ml-3">
+            <h1 class="card-title"> <?php echo $ferdi[0]->judul_tutorial; ?></h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-body"> <?php echo $ferdi[0]->deskripsi_tutorial; ?></h3>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <h1 class="text-center">TENTANG KAM KAMI</h1>
-                <br>
-                <P align="justify">
-                    <?php echo $indah[0]->text_tentangkami; ?>
-                </P>
+
+            <div class="col-md-4">
+                <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $ferdi[0]->gbr_tutorial; ?>">
+
             </div>
 
         </div>
 
 
+
+        <br>
+
+
+
+
+
+
+
+
+
     </div>
     <!-- Akhir Bagian Content -->
 
-    <br>
+
     <main>
         <!-- Facility -->
         <section class="facility section" id="facility">

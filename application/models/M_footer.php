@@ -18,7 +18,7 @@ class M_footer extends CI_model
     public $youtube;
     public $instagram;
 
-
+ 
 
     public function rules()
     {
@@ -56,7 +56,7 @@ class M_footer extends CI_model
         $this->twiter = $post["twiter"];
         $this->youtube = $post["youtube"];
         $this->instagram = $post["instagram"];
-		$this->facebok = $post["facebok"];
+$this->facebok = $post["facebok"];
 
 
 		return $this->db->update($this->_table, $this, array('id_footer' => $post['id_footer']));

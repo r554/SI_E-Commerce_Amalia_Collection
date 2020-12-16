@@ -60,7 +60,7 @@ class kategori extends CI_Controller
 			redirect(site_url('Admin/kategori/tampil_detail_kategori/'.$id2));
 		}
 	}
-
+ 
 	public function tambah_data()
 	{
 		$this->load->view("Backend/tambah_banner");

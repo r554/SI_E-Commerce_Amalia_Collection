@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class footer extends CI_Controller
 {
-
+ 
 	function __construct()
 	{
 		parent::__construct();
@@ -20,8 +20,7 @@ class footer extends CI_Controller
         $data = 
         ["footer" => $show->tampil_footer(),            
       ];
-    //   var_dump($data);
-    //   die;
+    
        $this->load->view('Backend/footer',$data);
         }
         
@@ -45,7 +44,6 @@ class footer extends CI_Controller
       
         }
       
-
-
-
-}
+      }
+    
+  
