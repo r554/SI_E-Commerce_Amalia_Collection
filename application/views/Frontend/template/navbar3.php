@@ -27,11 +27,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#new" class="nav-link scroll-link">New</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#recent" class="nav-link scroll-link">Recent</a>
+                        <!-- <a href="#new" class="nav-link scroll-link">Informasi</a> -->
+                        <a class="nav-link scroll-link" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Informasi
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="<?= base_url('Page/syarat_penggunaan') ?>" style="font-size: 16px;">Syarat Penggunaan</a>
+                            <a class="dropdown-item" href="<?= base_url('Page/ketentuan_pengembalian') ?>" style="font-size: 16px;">Ketentuan Pengembalian</a>
+                            <a class="dropdown-item" href="<?= base_url('Page/ketentuan_pengiriman') ?>" style="font-size: 16px;">Ketentuan Pengiriman</a>
+                        </div>
                     </li>
 
                     <li class="nav-item">
@@ -75,10 +79,11 @@
                 if ($this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
                 ?>
                     <span title="Keluar"><a href="<?php echo base_url('Login0/logout') ?>"><i class="fas fa-sign-out-alt"></i></a></span>
-                    <span title="Akun"><a href=""><i class="fas fa-user"></i></a></span>
+                    <span title="Akun"><a href="<?php echo base_url('Profile') ?>"><i class="fas fa-user"></i></a></span>
 
                 <?php } ?>
-                <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a></span>
+                <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a> 2</span>
+
                 <?php
                 // Cek role user
                 if (!$this->session->userdata('id')) { // Jika sudah bisa mendapatkan session

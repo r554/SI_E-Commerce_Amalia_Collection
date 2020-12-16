@@ -32,6 +32,10 @@ class keranjang extends CI_Controller
     // Method Tambah Keranjang
     public function save_keranjang()
     {
+        if ($this->session->userdata('status') != "login0") {
+            redirect(base_url("login0"));
+        }
+
         $model = $this->M_keranjang;
         $id_produk = $this->input->post('id_produk');
 
@@ -44,6 +48,10 @@ class keranjang extends CI_Controller
     // Method Tambah Keranjang klik beli
     public function save_keranjang_beli()
     {
+        if ($this->session->userdata('status') != "login0") {
+            redirect(base_url("login0"));
+        }
+
         $model = $this->M_keranjang;
 
         if ($model->tambah_keranjang()) {
