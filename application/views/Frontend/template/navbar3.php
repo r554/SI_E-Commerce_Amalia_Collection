@@ -80,9 +80,17 @@
                 ?>
                     <span title="Keluar"><a href="<?php echo base_url('Login0/logout') ?>"><i class="fas fa-sign-out-alt"></i></a></span>
                     <span title="Akun"><a href="<?php echo base_url('Profile') ?>"><i class="fas fa-user"></i></a></span>
-
                 <?php } ?>
-                <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a> 2</span>
+
+
+                <!-- Menghitung Jumlah Keranjang -->
+                <?php if (!empty($jumlah_keranjang)) { ?>
+                    <!-- Memeriksa Apakah Terdapat Data Keranjang -->
+                    <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a> <?= $jumlah_keranjang ?></span>
+                <?php } else { ?>
+                    <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a></span>
+                <?php } ?>
+
 
                 <?php
                 // Cek role user

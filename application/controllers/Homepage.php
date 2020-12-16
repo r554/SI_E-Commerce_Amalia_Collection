@@ -8,6 +8,7 @@ class Homepage extends CI_Controller
     parent::__construct();
     $this->load->model('M_data');
     $this->load->model('M_data_produk');
+    $this->load->model('M_keranjang');
     $this->load->helper('url', 'form');
     $this->load->library(array('form_validation', 'session'));
     $this->load->model('M_footer');
@@ -38,10 +39,12 @@ class Homepage extends CI_Controller
         "foto_banner" => $this->M_data->tampil_slider(),
         "data_kategori" => $this->M_data->tampil_kategori(),
         "produk_flash_sale" => $this->M_data->data_flash_sale($per_halaman, $from),
+        "jumlah_keranjang" => $this->M_keranjang->jumlah_data_keranjang(),
       ];
-
+    // var_dump($data);
+    // die;
     $this->load->view('Frontend/template/head1');
-    $this->load->view('Frontend/template/navbar3');
+    $this->load->view('Frontend/template/navbar3', $data);
     $this->load->view('Frontend/homepage', $data);
   }
 
@@ -91,10 +94,12 @@ class Homepage extends CI_Controller
     // $data['title'] = $getProduct['title'] . ' - ' . $this->config->item('app_name');
     // $data['css'] = 'detail';
     // $data['responsive'] = '';
+
+    $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
     $data['product'] = $getProduct;
     $data['img'] = $this->M_data_produk->getImgProductById($id);
     $this->load->view('Frontend/template/head1');
-    $this->load->view('Frontend/template/navbar3');
+    $this->load->view('Frontend/template/navbar3', $data);
     $this->load->view('Frontend/detail_produk', $data);
   }
 
