@@ -59,13 +59,6 @@ class Page extends CI_Controller
         $this->load->view('Frontend/buktipembayaran');
     }
 
-    public function tentangkami()
-    {
-        $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
-        $this->load->view('Frontend/tentang_kami');
-    }
-
     public function privasikebijakan()
     {
         $this->load->view('Frontend/template/head1');
@@ -107,4 +100,6 @@ class Page extends CI_Controller
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/ketentuan_pengiriman');
     }
+
+    
 }

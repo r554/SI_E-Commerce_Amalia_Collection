@@ -22,8 +22,8 @@ class M_tutorial extends CI_model
             ]
         ];
     }
-
-
+ 
+ 
     public function tampil_tutorial()
     {
         $this->db->from('tbl_tutorial');

@@ -120,7 +120,7 @@ public function edit_blog($id = null)
         //redirect(site_url('Admin/footer/tampilfooter'));
          $this->load->view("Backend/edit_blog/", $data);
     }
-
+ 
  
 	
   public function delete_blog($id = null)

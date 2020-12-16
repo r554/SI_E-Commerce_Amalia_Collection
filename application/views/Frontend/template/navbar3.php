@@ -28,27 +28,31 @@
 
                     <li class="nav-item">
                         <!-- <a href="#new" class="nav-link scroll-link">Informasi</a> -->
-                        <a class="nav-link scroll-link" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link scroll-link" href="javascript:void(0)" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Informasi
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="<?= base_url('Page/syarat_penggunaan') ?>" style="font-size: 16px;">Syarat Penggunaan</a>
-                            <a class="dropdown-item" href="<?= base_url('Page/ketentuan_pengembalian') ?>" style="font-size: 16px;">Ketentuan Pengembalian</a>
-                            <a class="dropdown-item" href="<?= base_url('Page/ketentuan_pengiriman') ?>" style="font-size: 16px;">Ketentuan Pengiriman</a>
+                            <a class="dropdown-item" href="<?= base_url('Page/syarat_penggunaan') ?>"
+                                style="font-size: 16px;">Syarat Penggunaan</a>
+                            <a class="dropdown-item" href="<?= base_url('Page/ketentuan_pengembalian') ?>"
+                                style="font-size: 16px;">Ketentuan Pengembalian</a>
+                            <a class="dropdown-item" href="<?= base_url('Page/ketentuan_pengiriman') ?>"
+                                style="font-size: 16px;">Ketentuan Pengiriman</a>
                         </div>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#blog" class="nav-link scroll-link">Blog </a>
+                        <a href="<?= base_url('blog/tampil_tutorial') ?>" class="nav-link scroll-link">Blog </a>
                     </li>
 
                     <?php
                     // Cek role user
                     if ($this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
                     ?>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('pesanan_saya') ?>" class="nav-link scroll-link">Pesananku</a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('pesanan_saya') ?>" class="nav-link scroll-link">Pesananku</a>
+                    </li>
 
                     <?php } ?>
 
@@ -78,17 +82,22 @@
                 // Cek role user
                 if ($this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
                 ?>
-                    <span title="Keluar"><a href="<?php echo base_url('Login0/logout') ?>"><i class="fas fa-sign-out-alt"></i></a></span>
-                    <span title="Akun"><a href="<?php echo base_url('Profile') ?>"><i class="fas fa-user"></i></a></span>
+                <span title="Keluar"><a href="<?php echo base_url('Login0/logout') ?>"><i
+                            class="fas fa-sign-out-alt"></i></a></span>
+                <span title="Akun"><a href="<?php echo base_url('Profile') ?>"><i class="fas fa-user"></i></a></span>
                 <?php } ?>
 
 
                 <!-- Menghitung Jumlah Keranjang -->
                 <?php if (!empty($jumlah_keranjang)) { ?>
-                    <!-- Memeriksa Apakah Terdapat Data Keranjang -->
-                    <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a> <?= $jumlah_keranjang ?></span>
+                <!-- Memeriksa Apakah Terdapat Data Keranjang -->
+                <span title="Keranjang"><a
+                        href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i
+                            class="fas fa-shopping-basket"></i></a> <?= $jumlah_keranjang ?></span>
                 <?php } else { ?>
-                    <span title="Keranjang"><a href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i class="fas fa-shopping-basket"></i></a></span>
+                <span title="Keranjang"><a
+                        href="<?php echo base_url('keranjang/tampil_semua_keranjang/' . $this->session->userdata('id')) ?>"><i
+                            class="fas fa-shopping-basket"></i></a></span>
                 <?php } ?>
 
 
@@ -96,7 +105,9 @@
                 // Cek role user
                 if (!$this->session->userdata('id')) { // Jika sudah bisa mendapatkan session
                 ?>
-                    <a href="<?php echo base_url('Login0') ?>"><button class="shadow-sm btn btn-lg" style="color: white;background: linear-gradient(to right, #ff99cc 0%, #ff6699 100%); font-size: 15px;"><i class="fas fa-sign-in-alt"></i> Masuk/Daftar</button></a>
+                <a href="<?php echo base_url('Login0') ?>"><button class="shadow-sm btn btn-lg"
+                        style="color: white;background: linear-gradient(to right, #ff99cc 0%, #ff6699 100%); font-size: 15px;"><i
+                            class="fas fa-sign-in-alt"></i> Masuk/Daftar</button></a>
                 <?php } ?>
             </div>
 

@@ -22,7 +22,7 @@ class M_blog extends CI_model
         ];
     }
 
-
+ 
     
     public function tampil_text_tentangkami()
     {

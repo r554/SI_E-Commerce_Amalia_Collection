@@ -12,6 +12,7 @@ class Homepage extends CI_Controller
     $this->load->helper('url', 'form');
     $this->load->library(array('form_validation', 'session'));
     $this->load->model('M_footer');
+    
 
     //if($this->session->userdata('status') != "login0"){
     //redirect(base_url("login0"));
