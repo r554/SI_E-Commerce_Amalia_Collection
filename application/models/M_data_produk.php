@@ -223,4 +223,12 @@ class M_data_produk extends CI_model
 		$product = $this->db->get_where('tbl_foto_produk', ['id_produk' => $id])->row_array();
 		return $this->db->get_where('tbl_foto_produk', ['foto' => $product['id_produk']]);
 	}
+
+	public function getAttributById($id)
+	{
+		$this->db->select("*");
+		$this->db->from("tbl_attribut");
+		$this->db->where('id_produk', $id);
+		return $this->db->get()->result();
+	}
 }

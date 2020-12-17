@@ -66,61 +66,68 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                <form action="<?= base_url('keranjang/save_keranjang_beli') ?>" method="POST">
-                    <div class="ket">
-                        <h1 class="title"><?= $product['nama_produk']; ?></h1>
-                        <!-- <p class="subtitle">Terjual <?= $product['transaction']; ?> Produk &bull; <?= $product['viewer']; ?>x Dilihat</p> -->
-                        <hr>
-                        <table class="table table-borderless">
-                            <?php if ($product['status_promo'] == 0) { ?>
-                                <tr>
-                                    <td>Harga</td>
-                                    <input type="hidden" id="harga" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" value="<?= $product['harga']; ?>" />
-                                    <td style="text-align:center" class="price">Rp <?= str_replace(",", ".", number_format($product['harga'])); ?></td>
-                                </tr>
-                            <?php } else { ?>
-                                <tr>
-                                    <td>Harga</td>
-                                    <td style="text-align:center" class="oldPrice">Rp <?= str_replace(",", ".", number_format($product['harga'])); ?></td>
-                                </tr>
-                                <tr class="newPrice">
-                                    <td>Promo</td><input type="hidden" id="harga" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" value="<?= $product['hargadiskon']; ?>" />
-                                    <td style="text-align:center" class="price">Rp <?= str_replace(",", ".", number_format($product['hargadiskon'])); ?></td>
-                                </tr>
-                            <?php } ?>
-                            <tr>
-                                <td>Berat</td>
-                                <td style="text-align:center"><?= $product['berat_produk']; ?> gram</td>
-                            </tr>
-                            <tr>
-                                <td>Warna</td>
-                                <td style="text-align:center"><?= $product['warna']; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Stok</td>
-                                <td style="text-align:center"><?= $product['qty']; ?> produk</td>
-                            </tr>
-                            <tr>
-                                <?php if ($product['status_promo'] == 0) { ?>
-                                    <?php $priceP = $product['harga']; ?>
-                                <?php } else { ?>
-                                    <?php $priceP = $product['hargadiskon']; ?>
-                                <?php } ?>
-                                <td>Jumlah</td>
-                                <td style="text-align:center">
-                                    <span><input type="number" min="1" max="<?= $product['qty']; ?>" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required /></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>
-                                    <input type="text" name="totalharga" id="total" placeholder="<?php echo "Rp. "   . number_format($product['harga']) . ",-" ?>" disabled>
-                                </td>
-                            </tr>
-
+                    <form action="<?= base_url('keranjang/save_keranjang_beli') ?>" method="POST">
+                        <div class="ket">
+                            <h1 class="title"><?= $product['nama_produk']; ?></h1>
+                            <!-- <p class="subtitle">Terjual <?= $product['transaction']; ?> Produk &bull; <?= $product['viewer']; ?>x Dilihat</p> -->
                             <hr>
-                            <tr>
-                                <td>                                   
+                            <table class="table table-borderless">
+                                <?php if ($product['status_promo'] == 0) { ?>
+                                    <tr>
+                                        <td>Harga</td>
+                                        <input type="hidden" id="harga" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" value="<?= $product['harga']; ?>" />
+                                        <td style="text-align:center" class="price">Rp <?= str_replace(",", ".", number_format($product['harga'])); ?></td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>Harga</td>
+                                        <td style="text-align:center" class="oldPrice">Rp <?= str_replace(",", ".", number_format($product['harga'])); ?></td>
+                                    </tr>
+                                    <tr class="newPrice">
+                                        <td>Promo</td><input type="hidden" id="harga" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" value="<?= $product['hargadiskon']; ?>" />
+                                        <td style="text-align:center" class="price">Rp <?= str_replace(",", ".", number_format($product['hargadiskon'])); ?></td>
+                                    </tr>
+                                <?php } ?>
+                                <tr>
+                                    <td>Berat</td>
+                                    <td style="text-align:center"><?= $product['berat_produk']; ?> gram</td>
+                                </tr>
+                                <tr>
+                                    <td>Warna</td>
+                                    <td style="text-align:center"><?= $product['warna']; ?></td>
+                                    <td><select id="attribut" name="attribut" style="height: 40px; font-size: medium;" required>
+                                            <option value="" selected disabled>Provinsi</option>
+                                            <?php foreach ($attribut as $row) : ?>
+                                                <option value="<?php echo $row->id_attribut; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Stok</td>
+                                    <td style="text-align:center"><?= $product['qty']; ?> produk</td>
+                                </tr>
+                                <tr>
+                                    <?php if ($product['status_promo'] == 0) { ?>
+                                        <?php $priceP = $product['harga']; ?>
+                                    <?php } else { ?>
+                                        <?php $priceP = $product['hargadiskon']; ?>
+                                    <?php } ?>
+                                    <td>Jumlah</td>
+                                    <td style="text-align:center">
+                                        <span><input type="number" min="1" max="<?= $product['qty']; ?>" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required /></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>
+                                        <input type="text" name="totalharga" id="total" placeholder="<?php echo "Rp. "   . number_format($product['harga']) . ",-" ?>" disabled>
+                                    </td>
+                                </tr>
+
+                                <hr>
+                                <tr>
+                                    <td>
                                         <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
                                         <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
                                         <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
@@ -129,27 +136,27 @@
                                         <input type="hidden" name="jumlah2" id="jumlah2" />
 
                                         <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
-                                    
-                                </td>
-                                <td>                                                                          
+
+                                    </td>
+                                    <td>
 
                                         <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    </form>
+                    </td>
+                    </tr>
+                    </table>
                 </div>
             </div>
-            <hr>
-            <div class="description">
-                <h3>
-                    <p>Deskripsi Produk</p>
-                </h3>
-                <?= nl2br($product['deskripsi']); ?>
-            </div>
-            <hr>
         </div>
+        <hr>
+        <div class="description">
+            <h3>
+                <p>Deskripsi Produk</p>
+            </h3>
+            <?= nl2br($product['deskripsi']); ?>
+        </div>
+        <hr>
+    </div>
     </div>
     <!-- Akhir Bagian Content -->
 
@@ -235,6 +242,18 @@
 
             })
         }
+
+
+        $("select[name=attribut]").on("change", function() {
+
+            // UntuK Menampilkan Biaya Ongkir
+            var stok_warna = $("option:selected", this).attr('stok');
+            alert(stok_warna);
+            // UntuK Menampilkan Jenis Layanan
+            //var jenis_layanan = $("option:selected", this).attr('jenis_layanan');
+            //document.getElementById("jenis_layanan").value = jenis_layanan;
+
+        });
     </script>
 
 </body>

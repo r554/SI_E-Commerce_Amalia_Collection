@@ -12,7 +12,7 @@ class Homepage extends CI_Controller
     $this->load->helper('url', 'form');
     $this->load->library(array('form_validation', 'session'));
     $this->load->model('M_footer');
-    
+
 
     //if($this->session->userdata('status') != "login0"){
     //redirect(base_url("login0"));
@@ -100,6 +100,8 @@ class Homepage extends CI_Controller
     $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
     $data['product'] = $getProduct;
     $data['img'] = $this->M_data_produk->getImgProductById($id);
+    $data['attribut'] = $this->M_data_produk->getAttributById($id);
+
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3', $data);
     $this->load->view('Frontend/detail_produk', $data);
@@ -127,7 +129,7 @@ class Homepage extends CI_Controller
     } else {
       $data['keyword'] = $this->session->userdata('keyword');
     }
-    
+
     $this->load->database();
     $jumlah_data = $this->M_data->jumlah_data();
     $this->load->library('pagination');
