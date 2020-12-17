@@ -9,15 +9,18 @@ class Riwayat_pesanan extends CI_Controller
 		$this->load->model('M_user');
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->model('M_footer');
     }
 
     public function index()
     {   
+        $show = $this->M_footer;
         if($this->session->userdata('status') != "login0"){
             redirect(base_url("login0"));
             
           }else {
-        $data['order'] = $this->M_user->getOrderDone();      
+        $data['order'] = $this->M_user->getOrderDone();
+        $data['footer'] = $show->tampil_footer();  
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/riwayat_pesanan', $data); }

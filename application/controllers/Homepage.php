@@ -52,7 +52,7 @@ class Homepage extends CI_Controller
   // Menampilkan Semua Data Katlog Dengan Menggunakan Pagination
   function semua_produk()
   {
-
+    $show = $this->M_footer;
     // Ambil Data Keyword (Search)
     if ($this->input->post('submit')) {
       $data['keyword'] = $this->input->post('keyword'); //Mengambil Name Attribut Input
@@ -73,6 +73,7 @@ class Homepage extends CI_Controller
     $from = $this->uri->segment(3);
     $this->pagination->initialize($config);
     $data['data_produk'] = $this->M_data->data($config['per_page'], $from, $data['keyword']);
+    $data['footer'] = $show->tampil_footer();
 
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3');
@@ -118,6 +119,7 @@ class Homepage extends CI_Controller
   // Method Kategori Hijab
   function kategori_hijab()
   {
+    $show = $this->M_footer;
     // Ambil Data Keyword Kategori
     if ($this->input->post('submit')) {
       $data['keyword'] = $this->input->post('keyword'); //Mengambil Name Attribut Input
@@ -125,7 +127,7 @@ class Homepage extends CI_Controller
     } else {
       $data['keyword'] = $this->session->userdata('keyword');
     }
-
+    
     $this->load->database();
     $jumlah_data = $this->M_data->jumlah_data();
     $this->load->library('pagination');
@@ -138,7 +140,7 @@ class Homepage extends CI_Controller
     $from = $this->uri->segment(3);
     $this->pagination->initialize($config);
     $data['data_produk'] = $this->M_data->data_kategori_hijab($config['per_page'], $from, $data['keyword']);
-
+    $data['footer'] = $show->tampil_footer();
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3');
     $this->load->view('Frontend/tampilan_data_katalog', $data);

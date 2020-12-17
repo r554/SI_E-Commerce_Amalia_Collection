@@ -11,8 +11,10 @@ class blog extends CI_Controller
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('M_blog');
+    $this->load->model('M_footer');
      $this->load->model('M_tutorial');
     $this->load->library('form_validation');
+    
 	}
 
 
@@ -30,8 +32,10 @@ public function tampil_tentangkami()
 public function tampil_tentangkami_frontend()
   {
     $show = $this->M_blog;
+    $show2 = $this->M_footer;
     $data = 
-    ["indah" => $show->tampil_text_tentangkami(),            
+    ["indah" => $show->tampil_text_tentangkami(),
+    "footer" => $show2->tampil_footer(),         
     ];
      $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
@@ -137,9 +141,11 @@ public function edit_blog($id = null)
 
 public function tampil_tutorial()
   {
-    $show = $this->M_tutorial;
+    $show = $this->M_footer;
+    $show2 = $this->M_tutorial;
     $data = 
-    ["haris" => $show->tutorial_frontend(),            
+    ["haris" => $show2->tutorial_frontend(),
+    "footer" => $show->tampil_footer(),     
     ];
      $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
@@ -149,8 +155,10 @@ public function tampil_tutorial()
 public function tampil_detail_tutorial($id)
   {
     $show = $this->M_tutorial;
+    $show2 = $this->M_footer;
     $data = 
-    ["ferdi" => $show->detail_tutorial($id),            
+    ["ferdi" => $show->detail_tutorial($id),
+    "footer" => $show2->tampil_footer(),           
     ];
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');

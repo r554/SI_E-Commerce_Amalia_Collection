@@ -286,9 +286,9 @@
                 <div class="footer-center">
                     <h3>INFORMASI TAMBAHAN</h3>
                     <a href="<?php echo base_url('blog/tampil_tentangkami_frontend') ?>">Tentang Kami</a>
-                    <a href="<?php echo base_url('Page/privasikebijakan') ?>">Privasi Dan Kebijakan</a>
+                    <a href="<?php echo base_url('Page/syarat_penggunaan') ?>">Privasi Dan Kebijakan</a>
                     <a href="<?php echo base_url('Page/manualbook') ?>">Manual Book</a>
-                    <a href="<?php echo base_url('Page/blog') ?>">Blog</a>
+                    <a href="<?php echo base_url('blog/tampil_tutorial') ?>">Blog</a>
                     <!-- <a href="#">blogletter</a>
                     <a href="#">Returns</a> -->
                 </div>

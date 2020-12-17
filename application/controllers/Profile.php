@@ -7,16 +7,19 @@ class profile extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_user');
-		$this->load->library('form_validation');
+    $this->load->library('form_validation');
+    $this->load->model('M_footer');
     }
     
     public function index()
     {
+        $show = $this->M_footer;
         if($this->session->userdata('status') != "login0"){
             redirect(base_url("login0"));
             
           }else {
         $data['dataprofile'] = $this->M_user->getProfile();
+        $data['footer'] = $show->tampil_footer();
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/editProfile',$data);
