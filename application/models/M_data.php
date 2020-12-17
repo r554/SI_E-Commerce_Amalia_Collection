@@ -89,7 +89,7 @@ class M_data extends CI_Model
 
   function data_homepage($number, $offset)
   {
-    $status_produk = "0";
+    $status_produk = "1";
     $this->db->like('status_produk', $status_produk);
 
     return $query = $this->db->get('tbl_produk', $number, $offset)->result();
@@ -140,8 +140,8 @@ class M_data extends CI_Model
 
   function data_flash_sale($number, $offset)
   {
-    $status_produk = "1";
-    $this->db->where('status_produk', $status_produk);
+    $status_promo = "1";
+    $this->db->where('status_promo', $status_promo);
 
     return $query = $this->db->get('tbl_produk', $number, $offset)->result();
   }
