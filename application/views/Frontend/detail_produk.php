@@ -96,7 +96,7 @@
                                     <td>Warna</td>
                                     <td style="text-align:center"><?= $product['warna']; ?></td>
                                     <td><select id="attribut" name="attribut" style="height: 40px; font-size: medium;" required>
-                                            <option value="" selected disabled>Provinsi</option>
+                                            <option value="" selected disabled> - Pilih Warna -</option>
                                             <?php foreach ($attribut as $row) : ?>
                                                 <option value="<?php echo $row->id_attribut; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
                                             <?php endforeach; ?>
@@ -105,7 +105,7 @@
                                 </tr>
                                 <tr>
                                     <td>Stok</td>
-                                    <td style="text-align:center"><?= $product['qty']; ?> produk</td>
+                                    <td style="text-align:center"><label id="stok"></label></td>
                                 </tr>
                                 <tr>
                                     <?php if ($product['status_promo'] == 0) { ?>
@@ -248,7 +248,8 @@
 
             // UntuK Menampilkan Biaya Ongkir
             var stok_warna = $("option:selected", this).attr('stok');
-            alert(stok_warna);
+            //alert(stok_warna);
+            $("#stok").html(stok_warna);
             // UntuK Menampilkan Jenis Layanan
             //var jenis_layanan = $("option:selected", this).attr('jenis_layanan');
             //document.getElementById("jenis_layanan").value = jenis_layanan;
