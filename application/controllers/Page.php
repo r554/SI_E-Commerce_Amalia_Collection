@@ -7,6 +7,7 @@ class Page extends CI_Controller
   {
     parent::__construct();
     $this->load->model('M_footer');
+    $this->load->model('M_keranjang');
   }
 
     public function index()
@@ -88,9 +89,10 @@ class Page extends CI_Controller
     public function syarat_penggunaan()
     {
         $show = $this->M_footer;
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
         $data['footer'] = $show->tampil_footer();
         $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/syarat_penggunaan',$data);
         
     }
@@ -98,18 +100,20 @@ class Page extends CI_Controller
     public function ketentuan_pengembalian()
     {
         $show = $this->M_footer;
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
         $data['footer'] = $show->tampil_footer();
         $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/ketentuan_pengembalian',$data);
     }
 
     public function ketentuan_pengiriman()
     {
         $show = $this->M_footer;
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
         $data['footer'] = $show->tampil_footer();
         $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/ketentuan_pengiriman', $data);
     }
 

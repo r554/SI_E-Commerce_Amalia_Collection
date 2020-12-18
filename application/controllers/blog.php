@@ -12,9 +12,9 @@ class blog extends CI_Controller
     $this->load->library('session');
     $this->load->model('M_blog');
     $this->load->model('M_footer');
-     $this->load->model('M_tutorial');
+    $this->load->model('M_tutorial');
     $this->load->library('form_validation');
-    
+    $this->load->model('M_keranjang');
 	}
 
 
@@ -145,10 +145,11 @@ public function tampil_tutorial()
     $show2 = $this->M_tutorial;
     $data = 
     ["haris" => $show2->tutorial_frontend(),
-    "footer" => $show->tampil_footer(),     
+    "footer" => $show->tampil_footer(),
+    "jumlah_keranjang" => $this->M_keranjang->jumlah_data_keranjang(),     
     ];
      $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/halaman_tutorial',$data);
    }
   
@@ -158,10 +159,11 @@ public function tampil_detail_tutorial($id)
     $show2 = $this->M_footer;
     $data = 
     ["ferdi" => $show->detail_tutorial($id),
-    "footer" => $show2->tampil_footer(),           
+    "footer" => $show2->tampil_footer(),  
+    "jumlah_keranjang" => $this->M_keranjang->jumlah_data_keranjang(),         
     ];
         $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3',$data);
         $this->load->view('Frontend/detail_tutorial',$data);
    }
 

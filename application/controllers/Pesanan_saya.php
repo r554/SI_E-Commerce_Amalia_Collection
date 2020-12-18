@@ -10,6 +10,7 @@ class Pesanan_saya extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('M_footer');
+        $this->load->model('M_keranjang');
     }
 
     public function index()
@@ -20,9 +21,10 @@ class Pesanan_saya extends CI_Controller
             
           }else {
         $data['order'] = $this->M_user->getOrder();
-        $data['footer'] = $show->tampil_footer();      
+        $data['footer'] = $show->tampil_footer();   
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();   
         $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3',$data);
         $this->load->view('Frontend/pesanan_saya', $data); }
     }
 
