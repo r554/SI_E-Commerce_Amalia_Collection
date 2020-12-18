@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | DataTables</title>
+    <title>Amalia Collection</title>
 
     <?php
 
@@ -213,10 +213,9 @@ if (!$this->session->userdata('nama')) {
                             <option value="<?php //echo base_url('Flashsale/updatestatus2/'.$u->id_produk); ?>">Promo</option>
                             <option value="<?php //echo base_url('Flashsale/updatestatus3/'.$u->id_produk); ?>">Tidak Promo</option>
                         </select>-->
-                                                    <a class="btn btn-success btn-sm"
-                                                        <?php echo anchor('admin/Flashsale/updatestatus1/'.$p->id_promo,'Aktifkan'); ?></a>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            <?php echo anchor('admin/Flashsale/updatestatus0/'.$p->id_promo,'Non-Aktifkan'); ?></a>
+                                                    <a class="btn btn-success btn-sm" <?php echo anchor('admin/Flashsale/updatestatus1/'.$p->id_promo,'Aktifkan'); ?></a>
+                                                    <a class="btn btn-danger btn-sm" <?php echo anchor('admin/Flashsale/updatestatus0/'.$p->id_promo,'Non-Aktifkan'); ?></a>
+                                                    <a class="btn btn-danger btn-sm" <?php echo anchor('admin/Flashsale/hapuspromo/'.$p->id_promo,'Hapus Promo'); ?></a>
                                                 </td>
                                             </tr>
                                             <?php }}else { ?>

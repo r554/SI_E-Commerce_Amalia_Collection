@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | General Form Elements</title>
+    <title>Amalia Collection</title>
 
     <?php $this->load->view('Backend/template/head'); ?>
 </head>

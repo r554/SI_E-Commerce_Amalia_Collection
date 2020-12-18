@@ -94,11 +94,16 @@
                                 </tr>
                                 <tr>
                                     <td>Warna</td>
-                                    <td style="text-align:center"><?= $product['warna']; ?></td>
-                                    <td><select id="attribut" name="attribut" style="height: 40px; font-size: medium;" required>
-                                            <option value="" selected disabled> - Pilih Warna -</option>
+                                    <!-- <td style="text-align:center"><?= $product['warna']; ?></td> -->
+                                    <td><select id="attribut" name="attribut" style="height: 40px; font-size: medium;" required>                                    
+                                            <option value="" selected disabled> - Pilih Warna -</option>                                            
                                             <?php foreach ($attribut as $row) : ?>
+                                                <?php if ($row->qty >= 1) { ?>
                                                 <option value="<?php echo $row->id_attribut; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
+                                                <?php } else { ?>
+                                                <option value="" disabled> ---STOK KOSONG---</option>
+                                                <option value="<?php echo $row->id_attribut; ?>" disabled stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
+                                                <?php } ?>
                                             <?php endforeach; ?>
                                         </select>
                                     </td>
@@ -115,7 +120,7 @@
                                     <?php } ?>
                                     <td>Jumlah</td>
                                     <td style="text-align:center">
-                                        <span><input type="number" min="1" max="<?= $product['qty']; ?>" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required /></span>
+                                    <input type="number" min="1" max="" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required />
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,23 +132,36 @@
 
                                 <hr>
                                 <tr>
+                            <?php if ($product['qty'] == 0) { ?>
+                                <td>
+                                    <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
+                                    <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
+                                    <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
+                                    <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
+                                    <input type="hidden" name="jumlah1" id="jumlah1" />
+                                    <input type="hidden" name="jumlah2" id="jumlah2" />
+                                    <button type="submit" disabled class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
+                                </td>
+                                <td>                                                                          
+                                    <button type="submit" disabled class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
+                                </form>
+                               </td>
+                                <?php } else { ?>
                                     <td>
-                                        <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
-                                        <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
-                                        <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
-                                        <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
-                                        <input type="hidden" name="jumlah1" id="jumlah1" />
-                                        <input type="hidden" name="jumlah2" id="jumlah2" />
-
-                                        <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
-
-                                    </td>
-                                    <td>
-
-                                        <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
-                    </form>
-                    </td>
-                    </tr>
+                                    <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
+                                    <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
+                                    <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
+                                    <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
+                                    <input type="hidden" name="jumlah1" id="jumlah1" />
+                                    <input type="hidden" name="jumlah2" id="jumlah2" />
+                                    <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
+                                </td>
+                                <td>                                                                          
+                                    <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
+                                </form>
+                               </td>    
+                                <?php } ?>
+                            </tr>
                     </table>
                 </div>
             </div>
@@ -250,6 +268,8 @@
             var stok_warna = $("option:selected", this).attr('stok');
             //alert(stok_warna);
             $("#stok").html(stok_warna);
+            //$("#max").html(stok_warna);
+            document.getElementById("jumlah").max = stok_warna;
             // UntuK Menampilkan Jenis Layanan
             //var jenis_layanan = $("option:selected", this).attr('jenis_layanan');
             //document.getElementById("jenis_layanan").value = jenis_layanan;

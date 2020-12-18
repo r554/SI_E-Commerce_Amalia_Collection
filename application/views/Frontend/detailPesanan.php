@@ -124,24 +124,53 @@
                             <?php if($ord['status'] != "cod"){ ?>
                             <hr>
                             <?php
-                            if($ord['status'] == 2){
+                            if($ord['status'] == 3){
                                 $sedpros = 100;
                                 $dalpen = 0;
-                                $satuj = 0;
-                            }else if($ord['status'] == 3){
-                                $sedpros = 100;
-                                $dalpen = 100;
                                 $satuj = 0;
                             }else if($ord['status'] == 4){
                                 $sedpros = 100;
                                 $dalpen = 100;
+                                $satuj = 0;
+                            }else if($ord['status'] == 5){
+                                $sedpros = 100;
+                                $dalpen = 100;
                                 $satuj = 100;
+                            }else if($ord['status'] == 6){
+                                $batal = 100;                                
                             }
                             ?>
-                            <!-- <h2 class="title mb-3">Status Pengiriman</h2>
+                            <h2 class="title mb-3">Status Pengiriman</h2>
                             <div class="row">
+                            <?php if($ord['status'] <= 5){ ?>
+                                <div class="col-md-4">
+                                    <p class="text-muted mb-1">Sedang diproses</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $sedpros; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $sedpros; ?>%"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="text-muted mb-1">Dalam pengiriman</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $dalpen; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $dalpen; ?>%"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="text-muted mb-1">Sampai Tujuan</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $satuj; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $satuj; ?>%"></div>
+                                    </div>
+                                </div>
+                                    <?php }else if($ord['status'] == 6){ ?>
+                                <div class="col-md-12">
+                                    <p class="text-muted mb-1">Dibatalkan</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="<?= $batal; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $batal; ?>%"></div>
+                                    </div>
+                                </div>       
+                                    <?php } ?>
                                 
-                            </div> -->
+                            </div>
                             
                         </div>
                     </div>

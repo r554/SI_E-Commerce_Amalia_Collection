@@ -103,6 +103,12 @@ class Flashsale extends CI_Controller
   
         redirect('admin/flashsale/produkflashsale');
     }
+    function hapuspromo($id){
+        $where = array('id_promo' => $id);
+        $this->m_data->hapus_data($where,'tbl_promo');
+		$this->session->set_userdata('hapus_sukses', 'ubah');
+    redirect('admin/flashsale/produkflashsale');
+        }
 
     
   }   
