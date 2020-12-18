@@ -20,7 +20,7 @@
            m con font library -->
             <?php
             // Cek role user
-            if ($this->session->userdata('2')) { // Jika sudah bisa mendapatkan session
+            if ($this->session->userdata('role') == 2) { // Jika sudah bisa mendapatkan session
             ?>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Dashboard/tampil') ?>" class="nav-link">
@@ -33,15 +33,21 @@
             <?php
             }
             ?>
-
-            <li class="nav-item">
-                <a href="<?php echo base_url('Manager/Dashboard_Manager/tampil_manager') ?>" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
+            <?php
+            // Cek role user
+            if ($this->session->userdata('role') == 1) { // Jika sudah bisa mendapatkan session
+            ?>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('Manager/Dashboard_Manager/tampil_manager') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+            <?php
+            }
+            ?>
 
             <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -103,7 +109,7 @@
 
             <?php
             // Cek role user
-            if ($this->session->userdata('2')) { // Jika sudah bisa mendapatkan session
+            if ($this->session->userdata('role') == 1) { // Jika sudah bisa mendapatkan session
             ?>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/data_karyawan/tampil') ?>" class="nav-link ">
