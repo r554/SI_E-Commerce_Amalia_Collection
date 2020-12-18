@@ -52,6 +52,16 @@ class M_keranjang extends CI_model
         return $this->db->get()->result();
     }
 
+    // Function Untuk Menghitung Jumlah Data Keranjang Berdasarkan User Login
+    function jumlah_data_keranjang()
+    {
+        $id = $this->session->userdata('id');
+        $this->db->select('*');
+        $this->db->from('tbl_keranjang');
+        $this->db->where('tbl_keranjang.id_pelanggan', $id);
+        return $this->db->get()->num_rows();
+    }
+
     // Function Untuk Menyimpan Data Ke Tabel Order
     public function save_order()
     {

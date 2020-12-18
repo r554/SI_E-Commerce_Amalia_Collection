@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Page extends CI_Controller
 {
+    function __construct()
+  {
+    parent::__construct();
+    $this->load->model('M_footer');
+  }
 
     public function index()
     {
@@ -59,13 +64,6 @@ class Page extends CI_Controller
         $this->load->view('Frontend/buktipembayaran');
     }
 
-    public function tentangkami()
-    {
-        $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
-        $this->load->view('Frontend/tentang_kami');
-    }
-
     public function privasikebijakan()
     {
         $this->load->view('Frontend/template/head1');
@@ -79,7 +77,7 @@ class Page extends CI_Controller
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/manual_book');
     }
-    
+
     public function blog()
     {
         $this->load->view('Frontend/template/head1');
@@ -87,4 +85,33 @@ class Page extends CI_Controller
         $this->load->view('Frontend/blog');
     }
 
+    public function syarat_penggunaan()
+    {
+        $show = $this->M_footer;
+        $data['footer'] = $show->tampil_footer();
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/syarat_penggunaan',$data);
+        
+    }
+
+    public function ketentuan_pengembalian()
+    {
+        $show = $this->M_footer;
+        $data['footer'] = $show->tampil_footer();
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/ketentuan_pengembalian',$data);
+    }
+
+    public function ketentuan_pengiriman()
+    {
+        $show = $this->M_footer;
+        $data['footer'] = $show->tampil_footer();
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/ketentuan_pengiriman', $data);
+    }
+
+    
 }

@@ -9,11 +9,13 @@ class keranjang extends CI_Controller
         parent::__construct();
         $this->load->model('M_keranjang');
         $this->load->library('form_validation');
+        $this->load->model('M_footer');
     }
 
     // Method untuk menampilkan keranjang berdasarkan Login
     public function tampil_semua_keranjang()
     {
+        $show = $this->M_footer;
         $id = $this->session->userdata('id'); // Menangkap ID yang dikirim dari session
         if (!isset($id)) {
             redirect(site_url('Login0'));
@@ -21,8 +23,9 @@ class keranjang extends CI_Controller
             $data = [
                 "data_produk" => $this->M_keranjang->getById_keranjang($id),
                 "id_order" => $this->M_keranjang->id_order(),
+                "footer" => $show->tampil_footer(),
             ];
-
+            
             $this->load->view('Frontend/template/head1');
             $this->load->view('Frontend/template/navbar3');
             $this->load->view('Frontend/keranjang', $data);
@@ -32,6 +35,10 @@ class keranjang extends CI_Controller
     // Method Tambah Keranjang
     public function save_keranjang()
     {
+        if ($this->session->userdata('status') != "login0") {
+            redirect(base_url("login0"));
+        }
+
         $model = $this->M_keranjang;
         $id_produk = $this->input->post('id_produk');
 
@@ -44,6 +51,10 @@ class keranjang extends CI_Controller
     // Method Tambah Keranjang klik beli
     public function save_keranjang_beli()
     {
+        if ($this->session->userdata('status') != "login0") {
+            redirect(base_url("login0"));
+        }
+
         $model = $this->M_keranjang;
 
         if ($model->tambah_keranjang()) {

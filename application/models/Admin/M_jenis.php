@@ -19,7 +19,7 @@ class M_jenis extends CI_model
 
 		];
 	}
-
+ 
 	public function save_kategori_jenis()
 	{
 		$post = $this->input->post();

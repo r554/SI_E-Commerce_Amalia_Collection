@@ -11,35 +11,42 @@
     </div>
     <!-- End Adverts -->
 
-    <br>
-    <br>
+
     <!-- Bagian Content -->
     <div class="container">
-
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $indah[0]->gbr_tentangkami; ?>">
-                    </div>
-                </div>
+        <br>
+        <br>
+        <div class="row mt-5 mb-5">
+            <div class="col-sm-9 col-md-8 mx-auto text-center">
+                <h1>KETENTUAN PENGEMBALIAN</h1>
+                <hr>
             </div>
-
-            <div class="col-md-8">
-                <h1 class="text-center">TENTANG KAM KAMI</h1>
-                <br>
-                <P align="justify">
-                    <?php echo $indah[0]->text_tentangkami; ?>
-                </P>
-            </div>
-
         </div>
+        <div class="row">
+            <div class="col-md-12">
 
+                <h3><b>SYARAT DAN KETENTUAN PENGEMBALIAN :</b></h3>
+                <br>
+                <p>1. Anda dapat melakukan pengembalian barang dalam jangka waktu 14 hari (termasuk hari libur) terhitung sejak barang Anda terima. Saat Anda menerima barang sudah terhitung sebagai 1 hari.<br>
+                    2. Produk harus dikirimkan dalam kondisi asli dan berada dalam kotak kemasan lengkap dengan aksesoris terkait dan "hang tags".<br>
+                    3. Produk tidak dalam keadaan rusak, kotor, telah dipakai, dan tercelup/terkena air.<br>
+                    4. Kemasan utuh dan tidak rusak, penyok, pecah, sobek, terlipat atau tergores.<br>
+                    5. Harap tidak mengisolasi kotak secara berlebihan tetapi cukup membungkusnya untuk mencegah kerusakan. Barang tersebut tetap menjadi tanggung jawab Anda sampai Hijabneka menerimanya.<br>
+                    6. Mohon bantuan Anda untuk mengembalikan paket dengan hati-hati.<br>
+                    7. Pengembalian poduk tidak berlaku untuk kategori lingerie dan beauty.<br>
+                    8. Pihak Hijabenka akan melakukan pengecekan kembali akan kualitas produk yang dikembalikan. Apabila ada persyaratan yang tidak dipenuhi, Hijabenka berhak menolak pengembalian produk tersebut.<br>
+                    9. Mengisi formulir pengembalian barang dengan lengkap dan benar sesuai dengan petunjuk pengisian.<br>
+                    10. 1 nomor pesanan hanya dapat memilih 1 jenis metode pengembalian (tukar barang/refund/kredit)<br>
 
+                </p>
+
+                <br>
+            </div>
+        </div>
     </div>
     <!-- Akhir Bagian Content -->
 
-    <br>
+
     <main>
         <!-- Facility -->
         <section class="facility section" id="facility">

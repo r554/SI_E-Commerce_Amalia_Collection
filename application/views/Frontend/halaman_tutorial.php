@@ -11,35 +11,46 @@
     </div>
     <!-- End Adverts -->
 
-    <br>
-    <br>
+
     <!-- Bagian Content -->
     <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-sm-9 col-md-8 mx-auto text-center">
+                <h1>Halaman Blog</h1>
+
+            </div>
+        </div>
+
 
         <div class="row">
-            <div class="col-sm-4">
+
+            <?php
+            $no = 1;
+            foreach ($haris as $p) {
+            ?>
+            <div class="col-md-3 mt-5">
                 <div class="card">
+                    <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $p->gbr_tutorial; ?>">
                     <div class="card-body">
-                        <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $indah[0]->gbr_tentangkami; ?>">
+                        <h5 class="card-title"> <?php echo $p->judul_tutorial; ?></h5>
+                        <a href="<?php echo base_url("blog/tampil_detail_tutorial/$p->id_tutorial")?>"
+                            class="btn btn-primary">Selengkapnya</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <h1 class="text-center">TENTANG KAM KAMI</h1>
-                <br>
-                <P align="justify">
-                    <?php echo $indah[0]->text_tentangkami; ?>
-                </P>
-            </div>
 
+
+            <?php
+            } ?>
         </div>
 
 
+        <br>
     </div>
     <!-- Akhir Bagian Content -->
 
-    <br>
+
     <main>
         <!-- Facility -->
         <section class="facility section" id="facility">
