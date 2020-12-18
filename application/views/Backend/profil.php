@@ -67,11 +67,11 @@
                                 <div class="card-body box-profile">
                                     <div class="text-center">
                                         <img class="profile-user-img img-fluid img-circle"
-                                            src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin?>"
+                                            src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin ?>"
                                             alt="User profile picture">
                                     </div>
-                                    <h3 class="profile-username text-center"><?php echo $user->nama_admin?></h3>
-                                    <p class="text-muted text-center">Login sebagai <?php echo $user->role?></p>
+                                    <h3 class="profile-username text-center"><?php echo $user->nama_admin ?></h3>
+                                    <p class="text-muted text-center">Login sebagai <?php echo $user->role ?></p>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -84,8 +84,8 @@
 
 
                             <div class="card card-primary">
-                                <?php $id_user = $this->session->userdata('kd_pengguna')?>
-                                <form action="<?php echo base_url('Admin/profil/edit/'.$id_user)?>" method="POST"
+                                <?php $id_user = $this->session->userdata('kd_pengguna') ?>
+                                <form action="<?php echo base_url('Admin/profil/edit/' . $id_user) ?>" method="POST"
                                     role="form" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -106,9 +106,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
-                                            <input name="no_admin" maxlength="13" value="<?php echo $user->no_admin; ?>"
-                                                type="text" class="form-control" id="exampleInputNomorTelepon1"
-                                                onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                            <input name="no_admin" type="text" class="form-control" minlength="9"
+                                                min="9" maxlength="14" placeholder="Enter No HP (Harus Angka)"
+                                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
+                                                oninvalid="this.setCustomValidity('No HP Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
@@ -121,7 +123,7 @@
                                             <input name="foto_admin" value="<?php echo $user->foto_admin; ?>"
                                                 type="file" multiple accept='image/*' id="menu_images">
                                             <input name="foto_admin" type="hidden"
-                                                value="<?php echo $user->foto_admin?>">
+                                                value="<?php echo $user->foto_admin ?>">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

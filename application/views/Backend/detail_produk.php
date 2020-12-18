@@ -60,7 +60,7 @@
                                 foreach ($detailProduk as $u) {
                                     // $u->id_produk
                                 ?>
-                                <img width="230px" height="230px"
+                                <img width="220px" height="260px"
                                     src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $u->gambar_produk ?>">
                             </div>
                             <div class=" col-md-9">

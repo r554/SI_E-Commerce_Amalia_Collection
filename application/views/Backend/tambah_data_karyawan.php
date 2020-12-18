@@ -120,11 +120,11 @@ if (!$this->session->userdata('nama')) {
                                                     <div class="form-group">
                                                         <label>No HP</label>
                                                         <input name="no_admin" type="text" class="form-control"
-                                                            minlength="9" min="9" maxlength="14"
+                                                            pattern=".{9,}" maxlength="14"
                                                             placeholder="Enter No HP (Harus Angka)"
                                                             onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
-                                                            required
-                                                            oninvalid="this.setCustomValidity('No HP Tidak Boleh Kosong!')"
+                                                            required title="3 characters minimum"
+                                                            oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
                                                             oninput="setCustomValidity('')">
                                                     </div>
                                                     <div class="form-group">

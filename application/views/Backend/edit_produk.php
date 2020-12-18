@@ -79,7 +79,7 @@ if (!$this->session->userdata('nama')) {
 
                     <div class="row">
                         <!-- left column -->
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -142,21 +142,14 @@ if (!$this->session->userdata('nama')) {
                                         </div>
                                         <div class="form-group">
                                             <label>Deskripsi</label>
-                                            <input type="text" class="form-control" name="deskripsi"
-                                                value="<?php echo $edit[0]->deskripsi ?>">
+                                            <textarea class="form-control"
+                                                name="deskripsi"><?php echo $edit[0]->deskripsi ?> </textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Berat Produk</label>
-                                            <input type="text" class="form-control" name="berat_produk"
+                                            <input type="number" class="form-control" name="berat_produk"
                                                 value="<?php echo $edit[0]->berat_produk ?>">
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <input name="gambar_produk" type="file"
-                                                value="<?php echo $edit[0]->gambar_produk ?>">
-                                            <img width="350px"
-                                                src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $edit[0]->gambar_produk; ?>"
-                                                alt="">
-                                        </div> -->
                                         <label>Gambar Produk</label>
                                         <input name="gambar_produk" id="menu_images" type="file" multiple
                                             accept='image/*' id="menu_images"
@@ -165,25 +158,120 @@ if (!$this->session->userdata('nama')) {
                                             value="<?php echo $edit['0']->gambar_produk ?>">
 
                                         <img src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $edit['0']->gambar_produk ?>"
-                                            alt="" width="200px" hight="200px">
+                                            alt="" width="200px" height="200px">
 
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                             <a href="<?= base_url('data_produk/tampil') ?>"><button type="button"
                                                     class="btn btn-success">Kembali</button></a>
                                         </div>
-
-
-                                        <!--/.col (right) -->
+                                    </div>
+                                    <!--/.col (right) -->
                                 </form>
                                 <!-- /.row -->
                             </div><!-- /.container-fluid -->
                         </div>
+                        <!-- Kolom Kanan -->
+                        <div class="col-md-6">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Warna dan Stok</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <div class="card-body table-responsive p-0">
+
+                                    <input type="hidden" required>
+                                    <table class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Warna</th>
+                                                <th>Stok</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($warnastok as $attribut) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $attribut->warna; ?></td>
+                                                <td><?php echo $attribut->qty; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                        data-toggle="modal" data-target="#myModal" type="button "><i
+                                                            class="far fa-edit">
+                                                            Edit</i></button>
+                                                    <a
+                                                        href="<?= base_url('data_produk/hapus_warna/' . $attribut->id_produk) ?>"><button
+                                                            class="btn btn-danger btn-xs" type="button "><i
+                                                                class="fas fa-trash-alt">
+                                                                Hapus</i></button></a>
+
+                                                </td>
+
+                                            </tr>
+                                            <?php
+                                            } ?>
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </section>
             <!-- /Ini Akhir Konten -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Warna dan Stok</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <hr>
+                            <form
+                                action="<?php echo base_url("data_produk/update_warna/") ?><?php echo $attribut->id_attribut; ?>"
+                                method="POST" enctype="multipart/form-data">
+                                <h4>Warna dan Stok</h4>
+                                <div class="col xm-8 col-md-12">
+                                    <p>
+                                        <input type="hidden" name="id_attribut"
+                                            value="<?php echo $attribut->id_attribut; ?>">
+
+                                    </p>
+                                    <p>
+                                    <p>
+                                        <input type="hidden" name="id_produk"
+                                            value="<?php echo $attribut->id_produk; ?>">
+                                    </p>
+                                    <p>Warna :
+                                        <input type="text" name="warna" value="<?php echo $attribut->warna; ?>">
+                                    </p>
+                                    <p>Stok :
+                                        <input type="text" name="qty" value="<?php echo $attribut->qty; ?>">
+                                    </p>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary btn-lg" value="Simpan">
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
 
 
 

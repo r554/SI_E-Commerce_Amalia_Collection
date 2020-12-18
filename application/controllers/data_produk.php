@@ -115,6 +115,29 @@ class data_produk extends CI_Controller
 		$data = [
 			"edit" => $model->getById($id),
 			"kategori" => $this->M_data_produk->tampil_kategori(),
+			"warnastok" => $this->M_data_produk->edit_warna_stok($id),
+		];
+		// var_dump($data);
+		// die;
+		$this->load->view("Backend/edit_produk", $data);
+	}
+
+	public function edit_warna_stok($id = null)
+	{
+
+		$model = $this->M_data_produk;
+		$validation = $this->form_validation;
+		$validation->set_rules($model->rules());
+
+
+		if ($validation->run()) {
+			$model->update();
+			$this->session->set_flashdata('success', 'Berhasil disimpan');
+			redirect(site_url('data_produk/tampil'));
+		}
+		$data = [
+			"edit" => $model->getById($id),
+			"warnastok" => $this->M_data_produk->edit_warna_stok($id),
 		];
 		// var_dump($data);
 		// die;
@@ -144,5 +167,35 @@ class data_produk extends CI_Controller
 		$id = $this->input->post('id');
 		$data = $this->M_data_produk->get_jenis($id)->result();
 		echo json_encode($data);
+	}
+
+	//Tambah Foto yang simpan
+	function tambah_foto()
+	{
+		$model = $this->M_data_produk;
+
+		if ($model->save_gambar()) {
+			redirect(site_url('data_produk/tampil_foto/' . $this->input->post('id_produk')));
+		}
+	}
+
+	//Menampilkan tambah foto 
+	public function tampil_foto($id)
+	{
+		$data = [
+			"foto_produk" => $this->M_data_produk->tampil_gambar($id),
+		];
+
+		$this->load->view('Backend/tambah_foto_produk', $data);
+	}
+
+	//hapus gambar tambahan
+	public function delete_foto($id = null, $id2)
+	{
+		if (!isset($id)) show_404();
+
+		if ($this->M_data_produk->delete_foto($id)) {
+			redirect(site_url('data_produk/tampil_foto/' . $id2));
+		}
 	}
 }

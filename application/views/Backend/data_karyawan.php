@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="mx-3 mt-3 ">
                                     <a class="btn btn-primary btn-sm center-block"
-                                        href="<?php echo base_url() ?>Admin/data_karyawan/tambah_karyawan"><i
+                                        href="<?php echo base_url('Admin/data_karyawan/tambah_karyawan') ?>"><i
                                             class="fa fa-plus ">Tambah Data</i>
                                     </a>
                                 </div>

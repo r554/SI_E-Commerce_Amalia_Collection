@@ -90,10 +90,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>No HP</label>
-                                            <input type="number" class="form-control" name="no_admin" minlength="9"
-                                                min="9" maxlength="14" value="<?php echo $edit[0]->no_admin ?>"
+                                            <input type="text" class="form-control" name="no_admin" pattern=".{9,}"
+                                                maxlength="14" value="<?php echo $edit[0]->no_admin ?>"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
-                                                oninvalid="this.setCustomValidity('No HP Tidak Boleh Kosong!')"
+                                                title="3 characters minimum"
+                                                oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">

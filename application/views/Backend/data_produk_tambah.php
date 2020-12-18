@@ -127,8 +127,9 @@
 
                                         <div class="form-group">
                                             <label>Harga</label>
-                                            <input name="harga" type="teks" class="form-control"
-                                                placeholder="Enter Harga" required
+                                            <input name="harga" type="number" class="form-control"
+                                                placeholder="Enter Harga (Harus Angka)"
+                                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
@@ -150,9 +151,14 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input name="gambar_produk" id="menu_images" type="file" required
+                                            <!-- <input name="gambar_produk" id="menu_images" type="file" required
                                                 oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
-                                                oninput="setCustomValidity('')">
+                                                oninput="setCustomValidity('')"> -->
+                                            <input type='file' id="file" name="gambar_produk" required
+                                                oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')" />
+                                            <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
+                                                OnError=" $(this).hide();" height="500px" width="500px" />
                                         </div>
 
                                         <?php
@@ -310,6 +316,24 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#gambar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#file").change(function() {
+        $('#gambar').show();
+        readURL(this);
+    });
+    </script>
 </body>
 
 </html>

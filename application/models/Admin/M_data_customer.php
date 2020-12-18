@@ -9,7 +9,7 @@ class M_data_customer extends CI_model
     public $no_pelanggan;
     public $email_pelanggan;
     public $alamat_pelanggan;
-    public $kode_pos;
+    public $kode_pos_pelanggan;
     public $kabupaten;
     public $provinsi;
     public $username_pelanggan;
@@ -40,7 +40,7 @@ class M_data_customer extends CI_model
         $this->no_pelanggan = $post["no_pelanggan"];
         $this->email_pelanggan = $post["email_pelanggan"];
         $this->alamat_pelanggan = $post["alamat_pelanggan"];
-        $this->kode_pos = $post["kode_pos"];
+        $this->kode_pos_pelanggan = $post["kode_pos"];
         $this->kabupaten = $post["kabupaten"];
         $this->provinsi = $post["provinsi"];
         $this->username_pelanggan = $post["username_pelanggan"];

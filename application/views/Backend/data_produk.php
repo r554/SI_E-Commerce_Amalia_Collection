@@ -80,7 +80,7 @@
                                                 <th>Nama Produk</th>
                                                 <th>Gambar Produk</th>
                                                 <th>Harga</th>
-                                                <th>Aksi</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -107,10 +107,15 @@
                                                 <td>
                                                     <p><?php echo $a['harga']; ?></p>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
+                                                    <a
+                                                        href="<?= base_url('data_produk/tampil_foto/' . $a['id_produk']) ?>"><button
+                                                            class="btn btn-primary btn-xs" type="button "><i
+                                                                class="fa fa-plus">
+                                                                Tambah Foto</i></button></a>
                                                     <a
                                                         href="<?= base_url('data_produk/tampil_detail/' . $a['id_produk']) ?>"><button
-                                                            class="btn btn-primary btn-xs" type="button"><i
+                                                            class="btn btn-info btn-xs" type="button"><i
                                                                 class="fas fa-info-circle"> Detail</i></button></a>
                                                     <a href="<?= base_url('data_produk/edit/' . $a['id_produk']) ?>"><button
                                                             class="btn btn-success btn-xs" type="button"><i
