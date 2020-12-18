@@ -24,10 +24,11 @@ class keranjang extends CI_Controller
                 "data_produk" => $this->M_keranjang->getById_keranjang($id),
                 "id_order" => $this->M_keranjang->id_order(),
                 "footer" => $show->tampil_footer(),
+                "jumlah_keranjang" => $this->M_keranjang->jumlah_data_keranjang(),
             ];
             
             $this->load->view('Frontend/template/head1');
-            $this->load->view('Frontend/template/navbar3');
+            $this->load->view('Frontend/template/navbar3', $data);
             $this->load->view('Frontend/keranjang', $data);
         }
     }
