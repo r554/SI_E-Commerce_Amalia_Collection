@@ -9,6 +9,7 @@ class profile extends CI_Controller
 		$this->load->model('M_user');
     $this->load->library('form_validation');
     $this->load->model('M_footer');
+    $this->load->model('M_keranjang');
     }
     
     public function index()
@@ -20,8 +21,9 @@ class profile extends CI_Controller
           }else {
         $data['dataprofile'] = $this->M_user->getProfile();
         $data['footer'] = $show->tampil_footer();
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
         $this->load->view('Frontend/template/head1');
-        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/template/navbar3',$data);
         $this->load->view('Frontend/editProfile',$data);
         }
     }

@@ -74,9 +74,10 @@ class Homepage extends CI_Controller
     $this->pagination->initialize($config);
     $data['data_produk'] = $this->M_data->data($config['per_page'], $from, $data['keyword']);
     $data['footer'] = $show->tampil_footer();
+    $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
 
     $this->load->view('Frontend/template/head1');
-    $this->load->view('Frontend/template/navbar3');
+    $this->load->view('Frontend/template/navbar3',$data);
     $this->load->view('Frontend/tampilan_data_katalog', $data);
   }
 
@@ -143,8 +144,9 @@ class Homepage extends CI_Controller
     $this->pagination->initialize($config);
     $data['data_produk'] = $this->M_data->data_kategori_hijab($config['per_page'], $from, $data['keyword']);
     $data['footer'] = $show->tampil_footer();
+    $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
     $this->load->view('Frontend/template/head1');
-    $this->load->view('Frontend/template/navbar3');
+    $this->load->view('Frontend/template/navbar3', $data);
     $this->load->view('Frontend/tampilan_data_katalog', $data);
   }
 
