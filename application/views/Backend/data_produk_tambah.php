@@ -144,17 +144,16 @@
 
                                         <div class="form-group">
                                             <label>Berat Produk</label>
-                                            <input name="berat_produk" type="teks" class="form-control"
-                                                placeholder="Enter Berat Produk" required
-                                                oninvalid="this.setCustomValidity('Berat Produk Tidak Boleh Kosong!')"
+                                            <input name="berat_produk" type="number" class="form-control"
+                                                placeholder="Enter Berat Produk (Harus Angka)"
+                                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
+                                                oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
 
                                         <div class="form-group">
-                                            <!-- <input name="gambar_produk" id="menu_images" type="file" required
-                                                oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
-                                                oninput="setCustomValidity('')"> -->
-                                            <input type='file' id="file" name="gambar_produk" required
+                                            <input type='file' multiple accept='image/*' id="menu_images"
+                                                name="gambar_produk" required
                                                 oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')" />
                                             <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
@@ -329,11 +328,13 @@
         }
     }
 
-    $("#file").change(function() {
+    $("#menu_images").change(function() {
         $('#gambar').show();
         readURL(this);
     });
     </script>
+    <!-- REQUIRED SCRIPTS -->
+    <?php $this->load->view('Backend/template/js'); ?>
 </body>
 
 </html>

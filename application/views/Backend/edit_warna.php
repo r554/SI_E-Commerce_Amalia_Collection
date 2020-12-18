@@ -61,43 +61,39 @@
                     <div class="row">
                         <div class="col-md-10 mx-auto">
                             <!-- Form Element sizes -->
-                            <form action="<?php echo base_url('Admin/kategori/edit_kategori') ?>" method="POST"
-                                role="form" enctype="multipart/form-data">
+                            <form
+                                action="<?php echo base_url('data_produk/edit_warna_stok/' . $warnastok['0']->id_attribut) ?>"
+                                method="POST" role="form" enctype="multipart/form-data">
                                 <div class="card card-success">
                                     <div class="card-header">
                                         <h3 class="card-title">Edit Banner</h3>
                                     </div>
 
                                     <div class="card-body">
-                                        <!-- <label for="">ID Banner</label> -->
+                                        <!-- <label for="">ID Attribut</label> -->
                                         <input class="form-control" type="hidden" placeholder="Default input"
-                                            name="id_kategori" value="<?php echo $edit_kategori['0']->id_kategori ?>">
+                                            name="id_attribut" value="<?php echo $warnastok['0']->id_attribut ?>">
                                         <!-- <br> -->
-                                        <label for="">Nama Kategori</label>
-                                        <input class="form-control" type="text" placeholder="Default input"
-                                            name="nama_kategori"
-                                            value="<?php echo $edit_kategori['0']->nama_kategori ?>">
+                                        <!-- <label for="">ID Produk</label> -->
+                                        <input class="form-control" type="hidden" placeholder="Default input"
+                                            name="id_produk" value="<?php echo $warnastok['0']->id_produk  ?>">
+                                        <!-- <br> -->
+                                        <label for="">Warna</label>
+                                        <input class="form-control" type="text" placeholder="Default input" name="warna"
+                                            value="<?php echo $warnastok['0']->warna ?>">
                                         <br>
-                                        <!-- <label for="" class="mr-4"> Gambar Kategori </label>
-                                        <img src="<?php echo base_url() ?>assets/Frontend/images/<?php echo $edit_kategori['0']->gambar_kategori ?>"
-                                            alt="" width="200px" hight="200px" name="gambar_kategori">
+                                        <label for="">Stok</label>
+                                        <input class="form-control" type="text" placeholder="Default input" name="qty"
+                                            value="<?php echo $warnastok['0']->qty ?>">
                                         <br>
-                                        <input type="file" name="gambar_kategori" class="mt-4"> -->
 
-                                        <label>Gambar Kategori</label>
-                                        <input name="gambar_kategori" type="file" multiple accept='image/*'
-                                            id="menu_images" value="<?php echo $edit_kategori['0']->gambar_kategori ?>">
-                                        <input name="gambar_kategori" type="hidden"
-                                            value="<?php echo $edit_kategori['0']->gambar_kategori ?>">
-
-                                        <img src="<?php echo base_url() ?>assets/Frontend/images/<?php echo $edit_kategori['0']->gambar_kategori ?>"
-                                            alt="" width="200px" hight="200px">
                                     </div>
 
 
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success float-right">
                                             Simpan</button>
+
                                         <a href="<?= base_url('Admin/kategori/tampil_kategori') ?>"><button
                                                 type="button" class="btn btn-primary">Kembali</button></a>
                                     </div>

@@ -177,17 +177,30 @@ class M_data_produk extends CI_model
 
 	public function update_warna()
 	{
-		$post = $this->input->post();
-		$this->id_attribut = $post["id_attribut"];
-		$this->id_produk = $post["id_produk"];
-		$this->warna = $post["warna"];
-		$this->qty = $post["qty"];
+
 		// var_dump($this);
 		// die;
+		$data = array(
+			'id_produk' => $_POST["id_produk"],
+			'warna' => $_POST["warna"],
+			'qty' => $_POST["qty"],
+		);
 
-		return $this->db->update($this->_table, $this, array('id_attribut' => $post['id_attribut']));
+
+		return $this->db->update('tbl_attribut', $data, array('id_attribut' =>  $_POST["id_attribut"]));
 	}
 
+	//tampilan edit kseluruhan
+	public function edit($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_produk');
+		$this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+		$this->db->join('tbl_jenis', 'tbl_jenis.id_jenis = tbl_produk.id_jenis');
+		$this->db->where('tbl_kategori.id_produk', $id);
+		return $this->db->get()->result();
+	}
+	//nampilkan warna dan stok
 	public function edit_warna_stok($id)
 	{
 		$this->db->select('*');
@@ -195,6 +208,16 @@ class M_data_produk extends CI_model
 		// $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
 		// $this->db->join('tbl_jenis', 'tbl_jenis.id_jenis = tbl_produk.id_jenis');
 		$this->db->where('tbl_attribut.id_produk', $id);
+		return $this->db->get()->result();
+	}
+	//merubah warna dan stok
+	public function edit_warna_stok2($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_attribut');
+		// $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+		// $this->db->join('tbl_jenis', 'tbl_jenis.id_jenis = tbl_produk.id_jenis');
+		$this->db->where('id_attribut', $id);
 		return $this->db->get()->result();
 	}
 
@@ -223,7 +246,6 @@ class M_data_produk extends CI_model
 		$product = $this->db->get_where('tbl_foto_produk', ['id_produk' => $id])->row_array();
 		return $this->db->get_where('tbl_foto_produk', ['foto' => $product['id_produk']]);
 	}
-
 	public function getAttributById($id)
 	{
 		$this->db->select("*");

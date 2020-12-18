@@ -68,6 +68,18 @@ if (!$this->session->userdata('nama')) {
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        // Cek apakah terdapat session nama message
+                        if ($this->session->flashdata('success')) { // Jika ada
+                            echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>'; // Tampilkan pesannya
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -152,8 +164,7 @@ if (!$this->session->userdata('nama')) {
                                         </div>
                                         <label>Gambar Produk</label>
                                         <input name="gambar_produk" id="menu_images" type="file" multiple
-                                            accept='image/*' id="menu_images"
-                                            value="<?php echo $edit['0']->gambar_produk ?>">
+                                            accept='image/*' value="<?php echo $edit['0']->gambar_produk ?>">
                                         <input name="gambar_produk" type="hidden"
                                             value="<?php echo $edit['0']->gambar_produk ?>">
 
@@ -201,10 +212,11 @@ if (!$this->session->userdata('nama')) {
                                                 <td><?php echo $attribut->warna; ?></td>
                                                 <td><?php echo $attribut->qty; ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-success btn-xs"
-                                                        data-toggle="modal" data-target="#myModal" type="button "><i
-                                                            class="far fa-edit">
-                                                            Edit</i></button>
+                                                    <a
+                                                        href="<?= base_url('data_produk/edit_warna_stok/' . $attribut->id_attribut) ?>">
+                                                        <button type="button" class="btn btn-success btn-xs"
+                                                            type="button "><i class="far fa-edit">
+                                                                Edit</i></button></a>
                                                     <a
                                                         href="<?= base_url('data_produk/hapus_warna/' . $attribut->id_produk) ?>"><button
                                                             class="btn btn-danger btn-xs" type="button "><i
@@ -231,48 +243,6 @@ if (!$this->session->userdata('nama')) {
                 </div>
             </section>
             <!-- /Ini Akhir Konten -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Edit Warna dan Stok</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <hr>
-                            <form
-                                action="<?php echo base_url("data_produk/update_warna/") ?><?php echo $attribut->id_attribut; ?>"
-                                method="POST" enctype="multipart/form-data">
-                                <h4>Warna dan Stok</h4>
-                                <div class="col xm-8 col-md-12">
-                                    <p>
-                                        <input type="hidden" name="id_attribut"
-                                            value="<?php echo $attribut->id_attribut; ?>">
-
-                                    </p>
-                                    <p>
-                                    <p>
-                                        <input type="hidden" name="id_produk"
-                                            value="<?php echo $attribut->id_produk; ?>">
-                                    </p>
-                                    <p>Warna :
-                                        <input type="text" name="warna" value="<?php echo $attribut->warna; ?>">
-                                    </p>
-                                    <p>Stok :
-                                        <input type="text" name="qty" value="<?php echo $attribut->qty; ?>">
-                                    </p>
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Simpan">
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-
 
 
             <!-- Main Footer -->
@@ -315,6 +285,8 @@ if (!$this->session->userdata('nama')) {
 
     });
     </script>
+    <!-- REQUIRED SCRIPTS -->
+    <?php $this->load->view('Backend/template/js'); ?>
 </body>
 
 </html>

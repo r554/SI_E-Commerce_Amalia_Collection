@@ -127,21 +127,21 @@ class data_produk extends CI_Controller
 
 		$model = $this->M_data_produk;
 		$validation = $this->form_validation;
-		$validation->set_rules($model->rules());
+		$id_produk = $this->input->post('id_produk');
 
+		$this->form_validation->set_rules('warna', 'warna', 'required');
 
 		if ($validation->run()) {
-			$model->update();
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
-			redirect(site_url('data_produk/tampil'));
+			$model->update_warna();
+			$this->session->set_flashdata('success', 'Berhasil Diupdate');
+			redirect(site_url('data_produk/edit/' . $id_produk));
 		}
 		$data = [
-			"edit" => $model->getById($id),
-			"warnastok" => $this->M_data_produk->edit_warna_stok($id),
+			"warnastok" => $this->M_data_produk->edit_warna_stok2($id),
 		];
 		// var_dump($data);
 		// die;
-		$this->load->view("Backend/edit_produk", $data);
+		$this->load->view("Backend/edit_warna", $data);
 	}
 
 	public function detail_product($id)
