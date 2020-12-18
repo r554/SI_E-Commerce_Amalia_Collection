@@ -67,7 +67,7 @@
                 $u->id_produk 
                     ?>
                                 <!-- form start -->
-                                <form action="<?php echo base_url('Flashsale/updatehargaDiskon/'.$u->id_produk); ?>"
+                                <form action="<?php echo base_url('admin/Flashsale/updatehargaDiskon/'.$u->id_produk); ?>"
                                     method="post">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -78,17 +78,17 @@
                                                 placeholder="Enter email" disabled
                                                 value="<?php echo $u->nama_produk ?>">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label>Jumlah Produk</label>
                                             <input type="number" class="form-control" name="jumlahProduk"
                                                 laceholder="Enter email" disabled
-                                                value="<?php echo $u->jumlah_produk ?>">
-                                        </div>
-                                        <div class="form-group">
+                                                value="<?php //echo $u->jumlah_produk ?>">
+                                        </div> -->
+                                        <!-- <div class="form-group">
                                             <label>Warna</label>
                                             <input type="text" class="form-control" name="warna"
-                                                placeholder="Enter email" disabled value="<?php echo $u->warna ?>">
-                                        </div>
+                                                placeholder="Enter email" disabled value="<?php //echo $u->warna ?>">
+                                        </div> -->
                                         <div class="form-group">
                                             <label>Deskripsi</label>
                                             <input type="text" class="form-control" name="desk"
@@ -104,7 +104,7 @@
                                             <label>Dibuat Tanggal</label>
                                             <input type="text" class="form-control" name="dibuattanggal"
                                                 placeholder="Enter email" disabled
-                                                value="<?php echo $u->dibuat_tanggal ?>">
+                                                value="<?php echo $u->tanggal ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Status Produk</label>

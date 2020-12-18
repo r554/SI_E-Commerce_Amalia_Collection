@@ -113,8 +113,7 @@ if (!$this->session->userdata('nama')) {
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Produk</th>
-                                                <th>Jumlah</th>
+                                                <th>Nama Produk</th>                                                
                                                 <th>Harga Lama</th>
                                                 <th>Harga Diskon</th>
                                                 <th>Status</th>
@@ -131,8 +130,7 @@ if (!$this->session->userdata('nama')) {
                   ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><?php echo $u->nama_produk ?></td>
-                                                <td><?php echo $u->jumlah_produk ?></td>
+                                                <td><?php echo $u->nama_produk ?></td>                                                
                                                 <td>Rp.<?php echo $u->harga ?></td>
                                                 <td>Rp.<?php echo $u->hargadiskon ?></td>
                                                 <td>
@@ -162,8 +160,7 @@ if (!$this->session->userdata('nama')) {
                                         <tfoot>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Produk</th>
-                                                <th>Jumlah</th>
+                                                <th>Nama Produk</th>                                                
                                                 <th>Tanggal</th>
                                                 <th>Harga</th>
                                                 <th>Status</th>

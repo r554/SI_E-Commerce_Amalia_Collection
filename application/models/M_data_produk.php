@@ -164,7 +164,7 @@ class M_data_produk extends CI_model
 	}
 	public function getImgProductById($id)
 	{
-		$product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
-		return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
+		$product = $this->db->get_where('tbl_foto_produk', ['id_produk' => $id])->row_array();
+		return $this->db->get_where('tbl_foto_produk', ['foto' => $product['id_produk']]);
 	}
 }
