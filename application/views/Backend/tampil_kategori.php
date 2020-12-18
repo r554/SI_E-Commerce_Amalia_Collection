@@ -107,6 +107,10 @@
                                                                 href="<?php echo base_url("Admin/kategori/edit_kategori/".$kategori['id_kategori'])?>"><button
                                                                     type="button"
                                                                     class="btn btn-info btn-sm">Edit</button></a>
+                                                            <a
+                                                                href="<?php echo base_url("Admin/kategori/hapus_kategori/".$kategori['id_kategori'])?>"><button
+                                                                    type="button"
+                                                                    class="btn btn-danger btn-sm">Hapus</button></a>
                                                         </td>
                                                     </tr>
                                                     <?php

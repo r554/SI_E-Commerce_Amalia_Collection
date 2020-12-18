@@ -71,7 +71,11 @@
                                             alt="User profile picture">
                                     </div>
                                     <h3 class="profile-username text-center"><?php echo $user->nama_admin ?></h3>
-                                    <p class="text-muted text-center">Login sebagai <?php echo $user->role ?></p>
+                                    <?php if($user->role == "1"){?>
+                                    <p class="text-muted text-center">Login sebagai <?php echo "admin" ?></p>
+                                    <?php } else{?>
+                                    <p class="text-muted text-center">Login sebagai <?php echo "manager" ?></p>
+                                    <?php }?>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -106,7 +110,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
-                                            <input name="no_admin" type="text" class="form-control" minlength="9"
+                                            <input value="<?php echo $user->no_admin; ?>" name="no_admin" type="text" class="form-control" minlength="9"
                                                 min="9" maxlength="14" placeholder="Enter No HP (Harus Angka)"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('No HP Tidak Boleh Kosong!')"

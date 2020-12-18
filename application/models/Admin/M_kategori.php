@@ -22,7 +22,9 @@ class M_Kategori extends CI_model
 
     public function tampil_kategori()
 	{
-		$query = $this->db->get('tbl_kategori');
+		$this->db->from('tbl_kategori');
+		$this->db->where('status', '0');
+		$query = $this->db->get();
 		return $query->result_array();
 	}
 
