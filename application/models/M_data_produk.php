@@ -46,6 +46,17 @@ class M_data_produk extends CI_model
 		return $this->db->insert($this->_table, $this);
 	}
 
+	//save untuk foto produk tambahan
+	public function save_gambar()
+	{
+		$data = array(
+			'id_produk' => $_POST["id_produk"],
+			'foto' =>  $this->do_upload_gambar(),
+		);
+
+		return $this->db->insert('tbl_foto_produk', $data);
+	}
+
 	function get_no_invoice()
 	{
 		$q = $this->db->query("SELECT MAX(RIGHT(id_produk,4)) AS kd_max FROM tbl_produk WHERE DATE(tanggal)=CURDATE()");
@@ -87,7 +98,29 @@ class M_data_produk extends CI_model
 		return $result1;
 	}
 
+	//do upload untuk nambah gambar tambahan 
+	function do_upload_gambar()
+	{
+		// setting konfigurasi upload
+		$config['upload_path'] = './assets/Gambar/foto_produk';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['file_name']            = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+		// load library upload
+		$this->load->library('upload', $config);
+		// upload gambar 1
+		$this->upload->do_upload('gambar_produk');
+		$result1 = $this->upload->data('file_name');
+		return $result1;
+	}
 
+	//tampil gambar foto 
+	public function tampil_gambar($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_foto_produk');
+		$this->db->where('id_produk', $id);
+		return $this->db->get()->result();
+	}
 
 	public function tampil_data()
 	{
@@ -140,6 +173,29 @@ class M_data_produk extends CI_model
 		}
 
 		return $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
+	}
+
+	public function update_warna()
+	{
+		$post = $this->input->post();
+		$this->id_attribut = $post["id_attribut"];
+		$this->id_produk = $post["id_produk"];
+		$this->warna = $post["warna"];
+		$this->qty = $post["qty"];
+		// var_dump($this);
+		// die;
+
+		return $this->db->update($this->_table, $this, array('id_attribut' => $post['id_attribut']));
+	}
+
+	public function edit_warna_stok($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_attribut');
+		// $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+		// $this->db->join('tbl_jenis', 'tbl_jenis.id_jenis = tbl_produk.id_jenis');
+		$this->db->where('tbl_attribut.id_produk', $id);
+		return $this->db->get()->result();
 	}
 
 	public function tpdetailProduk($id)
