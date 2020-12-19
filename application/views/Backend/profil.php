@@ -71,7 +71,7 @@
                                             alt="User profile picture">
                                     </div>
                                     <h3 class="profile-username text-center"><?php echo $user->nama_admin ?></h3>
-                                    <?php if($user->role == "1"){?>
+                                    <?php if($user->role == "2"){?>
                                     <p class="text-muted text-center">Login sebagai <?php echo "admin" ?></p>
                                     <?php } else{?>
                                     <p class="text-muted text-center">Login sebagai <?php echo "manager" ?></p>
