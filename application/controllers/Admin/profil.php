@@ -16,6 +16,7 @@ class profil extends CI_Controller
 		$model = $this->MP;
 		
 		if ($model->save()) {
+			$this->session->set_flashdata('success', 'Berhasil Mengubah Data');
 			redirect(site_url('crud/tampil'));
 		}
 	}

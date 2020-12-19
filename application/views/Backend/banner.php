@@ -37,6 +37,24 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
+                <?php
+                    // Cek apakah terdapat session nama message
+                    if ($this->session->flashdata('success')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Data Berhasil Di Tambahkan</h5>
+                    </div>
+                    <?php }
+                    ?>
+                 <?php
+                    // Cek apakah terdapat session nama message
+                    if ($this->session->flashdata('hapus')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Data Berhasil Dihapus</h5>
+                    </div>
+                    <?php }
+                    ?>
                     <div class="row mb-2">
                         <div class="col-sm-6">
 

@@ -39,6 +39,7 @@ class kategori extends CI_Controller
 		$model = $this->M_jenis;
 	
 		if ($model->save_kategori_jenis()) {
+			$this->session->set_flashdata('success', 'Berhasil Menambahkan Data');
 			redirect(site_url('Admin/kategori/tampil_detail_kategori/'.$id));
 		}
 	}
@@ -48,6 +49,7 @@ class kategori extends CI_Controller
 		$model = $this->M_kategori;
 	
 		if ($model->save_kategori()) {
+			$this->session->set_flashdata('success', 'Berhasil Menambahkan Data');
 			redirect(site_url('Admin/kategori/tampil_kategori/'));
 		}
 	}
@@ -58,6 +60,7 @@ class kategori extends CI_Controller
 		$id2 = $this->uri->segment('5');
 
 		if ($this->M_jenis->delete($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Data');
 			redirect(site_url('Admin/kategori/tampil_detail_kategori/'.$id2));
 		}
 	}
@@ -77,6 +80,7 @@ class kategori extends CI_Controller
 
 		if ($validation->run()) {
 			$model->update_kategori();
+			$this->session->set_flashdata('edit', 'Berhasil Mengubah Data');
 			redirect(site_url('Admin/kategori/tampil_kategori/'));
 			$this->session->set_flashdata('message', 'Berhasil Disimpan');
 		}
@@ -101,7 +105,7 @@ class kategori extends CI_Controller
 		$this->db->set('status', '1');
 		$this->db->where('id_kategori', $id);
 		$this->db->update('tbl_kategori');
-
+		$this->session->set_flashdata('hapus', 'Berhasil Menghapus Data');
 		redirect(site_url('Admin/kategori/tampil_kategori/'));
 	}
 	

@@ -16,6 +16,7 @@ class Banner extends CI_Controller
 		$model = $this->M_Banner;
 
 		if ($model->save()) {
+			$this->session->set_flashdata('success', 'Berhasil Menambahkan Data');
 			redirect(site_url('Admin/Banner/tampil'));
 		}
 	}
@@ -47,6 +48,7 @@ class Banner extends CI_Controller
 		if ($validation->run()) {
 			$model->update_banner();
 			//$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$this->session->set_flashdata('edit', 'Berhasil Mengubah Data');
 			$this->session->set_flashdata('message', 'Berhasil Disimpan');
 		}
 
@@ -62,6 +64,7 @@ class Banner extends CI_Controller
 		if (!isset($id)) show_404();
 
 		if ($this->M_Banner->delete($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Data');
 			redirect(site_url('Admin/Banner/tampil'));
 		}
 	}
