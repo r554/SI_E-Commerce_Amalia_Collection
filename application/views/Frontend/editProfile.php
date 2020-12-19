@@ -15,54 +15,72 @@
     <!-- Bagian Content -->
     <div class="container">
         <div class="row mt-5 mb-5">
-        <?php $this->load->view('Frontend/template/menu'); ?>
+            <?php $this->load->view('Frontend/template/menu'); ?>
             <div class="col-sm-9 col-md-8">
                 <?php echo $this->session->flashdata('success'); ?>
-                 <h2 class="title">Edit Profil</h2>
-                        <hr>
-                        <?php echo $this->session->flashdata('failed'); ?>                        
-                        <form action="<?= base_url(); ?>profile/updateProfile/<?php echo $_SESSION["id"]; ?>" method="post" enctype="multipart/form-data">
-                        <?php foreach($dataprofile->result_array() as $d): ?>
-                            <div class="form-group">
-                                <label for="Username">Username</label>
-                                <input type="hidden"  name="id_pelanggan" value="<?= $d['id_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>
-                                <input type="text" style="height: 36px; font-size: medium;"  name="username_pelanggan" value="<?= $d['username_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
-                            </div>
-                            <div class="form-group">
-                                <label for="Email">Email</label>
-                                <input type="email" style="height: 36px; font-size: medium;" name="email_pelanggan" value="<?= $d['email_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off" disabled>                                
-                            </div>
-                            <div class="form-group">
-                                <label for="nama">Nama Lengkap</label>
-                                <input type="text" style="height: 36px; font-size: medium;" name="nama_pelanggan" value="<?= $d['nama_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>
-                            <div class="form-group">
-                                <label for="nohp">No HP</label>
-                                <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan" value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>
-                            <div class="form-group">
-                                <label for="Alamat">Alamat Lengkap</label>
-                                <input type="text" style="height: 36px; font-size: medium;" name="alamat_pelanggan" value="<?= $d['alamat_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>
-                            <div class="form-group">
-                                <label for="Kabupaten">Kabupaten</label>
-                                <input type="text" style="height: 36px; font-size: medium;" name="kabupaten" value="<?= $d['kabupaten']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>
-                            <div class="form-group">
-                                <label for="Provinsi">Provinsi</label>
-                                <input type="text" style="height: 36px; font-size: medium;" name="provinsi" value="<?= $d['provinsi']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>
-                            <div class="form-group">
-                                <label for="Kode Pos">Kode Pos</label>
-                                <input type="number" style="height: 36px; font-size: medium;" name="kode_pos" value="<?= $d['kode_pos_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>
-                            <div class="form-group">
-                                <label for="Password">Password</label>
-                                <input type="password" style="height: 36px; font-size: medium;" name="password_pelanggan" value="<?= $d['password_pelanggan']; ?>" class="form-control" id="name" required autocomplete="off">                                
-                            </div>                            
-                            <?php endforeach; ?>
-                            <button class="btn btn-dark">Update</button>
-                        </form>                         
+                <h2 class="title">Edit Profil</h2>
+                <hr>
+                <?php echo $this->session->flashdata('failed'); ?>
+                <form action="<?= base_url(); ?>profile/updateProfile/<?php echo $_SESSION["id"]; ?>" method="post"
+                    enctype="multipart/form-data">
+                    <?php foreach ($dataprofile->result_array() as $d) : ?>
+                    <div class="form-group">
+                        <label for="Username">Username</label>
+                        <input type="hidden" name="id_pelanggan" value="<?= $d['id_pelanggan']; ?>" class="form-control"
+                            id="name" required autocomplete="off" disabled>
+                        <input type="text" style="height: 36px; font-size: medium;" name="username_pelanggan"
+                            value="<?= $d['username_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" style="height: 36px; font-size: medium;" name="email_pelanggan"
+                            value="<?= $d['email_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" style="height: 36px; font-size: medium;" name="nama_pelanggan"
+                            value="<?= $d['nama_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="nohp">No HP</label>
+                        <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan"
+                            value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="Alamat">Alamat Lengkap</label>
+                        <input type="text" style="height: 36px; font-size: medium;" name="alamat_pelanggan"
+                            value="<?= $d['alamat_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="Kabupaten">Kabupaten</label>
+                        <input type="text" style="height: 36px; font-size: medium;" name="kabupaten"
+                            value="<?= $d['kabupaten']; ?>" class="form-control" id="name" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="Provinsi">Provinsi</label>
+                        <input type="text" style="height: 36px; font-size: medium;" name="provinsi"
+                            value="<?= $d['provinsi']; ?>" class="form-control" id="name" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="Kode Pos">Kode Pos</label>
+                        <input type="number" style="height: 36px; font-size: medium;" name="kode_pos_pelanggan"
+                            value="<?= $d['kode_pos_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="password" style="height: 36px; font-size: medium;" name="password_pelanggan"
+                            value="<?= $d['password_pelanggan']; ?>" class="form-control" id="name" required
+                            autocomplete="off">
+                    </div>
+                    <?php endforeach; ?>
+                    <button class="btn btn-dark">Update</button>
+                </form>
             </div>
         </div>
     </div>
