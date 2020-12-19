@@ -128,6 +128,9 @@
                                                 type="file" multiple accept='image/*' id="menu_images">
                                             <input name="foto_admin" type="hidden"
                                                 value="<?php echo $user->foto_admin ?>">
+
+                                            <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin ?>"
+                                            alt="" width="200px" hight="200px">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
