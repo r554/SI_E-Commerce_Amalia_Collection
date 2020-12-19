@@ -7,13 +7,11 @@
     <title>Amalia Collection</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>assets/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/dist/css/adminlte.min.css">
 </head>
@@ -28,11 +26,11 @@
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
                 <?php
-        // Cek apakah terdapat session nama message
-        if ($this->session->flashdata('message')) { // Jika ada
-          echo '<div class="alert alert-danger">' . $this->session->flashdata('message') . '</div>'; // Tampilkan pesannya
-        }
-        ?>
+                // Cek apakah terdapat session nama message
+                if ($this->session->flashdata('message')) { // Jika ada
+                    echo '<div class="alert alert-danger">' . $this->session->flashdata('message') . '</div>'; // Tampilkan pesannya
+                }
+                ?>
                 <form action="<?php echo base_url('Auth_Admin/login'); ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Username" name="username">
@@ -53,7 +51,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" id="remember" required>
+                                <input type="checkbox" id="remember">
                                 <label for="remember">
                                     Remember Me
                                 </label>
