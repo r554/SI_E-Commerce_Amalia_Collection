@@ -43,4 +43,44 @@ class profile extends CI_Controller
     $this->session->set_flashdata('edit', 'Berhasil disimpan');
     redirect('profile');
   }
+
+
+  //untuk mengecek data password lama dengan database yg sudah ada
+  function ubah_password()
+  {
+    $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]');
+    // $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]|matches[password1]');
+    // $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[3]|matches[password]');
+    if ($this->form_validation->run() == false) {
+      $this->load->view('Frontend/template/head1');
+      $this->load->view('Frontend/template/navbar3');
+      $this->load->view('Frontend/ubah_pass1');
+    } else {
+      $password = md5($this->input->post('password'));
+
+      $user = $this->db->get_where('tbl_pelanggan', ['password_pelanggan' => $password])->row_array();
+      if ($user) {
+        redirect(base_url("Profile/ubah_password_baru"));
+      } else {
+        $this->session->set_flashdata('message', '<div>Password Anda Tidak Cocok </div>');
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/ubah_pass1');
+      }
+    }
+  }
+
+  function ubah_password_baru()
+  {
+
+    $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]|matches[password1]');
+    $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[3]|matches[password]');
+    if ($this->form_validation->run() == false) {
+      $this->load->view('Frontend/template/head1');
+      $this->load->view('Frontend/template/navbar3');
+      $this->load->view('Frontend/ubah_pass2');
+    } else {
+      echo "kk";
+    }
+  }
 }

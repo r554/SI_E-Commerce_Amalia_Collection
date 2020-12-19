@@ -4,11 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Page extends CI_Controller
 {
     function __construct()
-  {
-    parent::__construct();
-    $this->load->model('M_footer');
-    $this->load->model('M_keranjang');
-  }
+    {
+        parent::__construct();
+        $this->load->model('M_footer');
+        $this->load->model('M_keranjang');
+    }
 
     public function index()
     {
@@ -93,8 +93,7 @@ class Page extends CI_Controller
         $data['footer'] = $show->tampil_footer();
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3', $data);
-        $this->load->view('Frontend/syarat_penggunaan',$data);
-        
+        $this->load->view('Frontend/syarat_penggunaan', $data);
     }
 
     public function ketentuan_pengembalian()
@@ -104,7 +103,7 @@ class Page extends CI_Controller
         $data['footer'] = $show->tampil_footer();
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3', $data);
-        $this->load->view('Frontend/ketentuan_pengembalian',$data);
+        $this->load->view('Frontend/ketentuan_pengembalian', $data);
     }
 
     public function ketentuan_pengiriman()
@@ -116,6 +115,4 @@ class Page extends CI_Controller
         $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/ketentuan_pengiriman', $data);
     }
-
-    
 }

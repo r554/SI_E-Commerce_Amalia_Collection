@@ -56,9 +56,6 @@
                     </div>
                     <div class="form-group">
                         <label for="nohp">No HP</label>
-                        <!-- <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan"
-                            value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name"
-                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required autocomplete="off"> -->
                         <input type="text" class="form-control" style="height: 36px; font-size: medium;"
                             name="no_pelanggan" pattern=".{9,}" maxlength="14" value="<?php echo $d['no_pelanggan'] ?>"
                             onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required title="3 characters minimum"

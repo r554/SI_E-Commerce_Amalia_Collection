@@ -7,11 +7,13 @@
     <title>Amalia Collection</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/dist/css/adminlte.min.css">
 </head>
@@ -31,9 +33,21 @@
                     echo '<div class="alert alert-info">' . $this->session->flashdata('message') . '</div>'; // Tampilkan pesannya
                 }
                 ?>
-                <form action="<?php echo base_url('Lupa_Password/changePassword'); ?>" method="post">
+                <form action="<?php echo base_url('Profile/ubah_password_baru'); ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Masukkan Password Baru" name="password1">
+                        <input type="password" class="form-control" placeholder="Masukkan Password Baru"
+                            name="password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <?php echo form_error('password', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Ulangi Password Baru" name="password1">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -42,17 +56,6 @@
                     </div>
                     <div class="input-group">
                         <?php echo form_error('password1', '<small class="text-danger">', '</small>'); ?>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Ulangi Password Baru" name="password2">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <?php echo form_error('password2', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="social-auth-links text-center mt-2 mb-3">
                         <button type="submit" class="btn btn-primary btn-block">Ubah</button>
