@@ -37,6 +37,16 @@ class M_Kategori extends CI_model
 
         $query = $this->db->get();
         return $query->result();
+	}
+	
+	public function get_tampil_detail_kategori2($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_kategori');
+        $this->db->where('tbl_kategori.id_kategori', $id);
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
 	public function save_kategori_jenis()

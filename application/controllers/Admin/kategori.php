@@ -26,7 +26,8 @@ class kategori extends CI_Controller
     {
         $show = $this->M_kategori;
         $data = [
-            "kategori" => $show->get_tampil_detail_kategori($id),
+			"kategori" => $show->get_tampil_detail_kategori($id),
+			"kategori2" => $show->get_tampil_detail_kategori2($id),
         ];
         // var_dump($data);
         // die;
