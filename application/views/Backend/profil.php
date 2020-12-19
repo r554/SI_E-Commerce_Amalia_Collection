@@ -71,7 +71,7 @@
                                             alt="User profile picture">
                                     </div>
                                     <h3 class="profile-username text-center"><?php echo $user->nama_admin ?></h3>
-                                    <?php if($user->role == "1"){?>
+                                    <?php if($user->role == "2"){?>
                                     <p class="text-muted text-center">Login sebagai <?php echo "admin" ?></p>
                                     <?php } else{?>
                                     <p class="text-muted text-center">Login sebagai <?php echo "manager" ?></p>
@@ -128,6 +128,9 @@
                                                 type="file" multiple accept='image/*' id="menu_images">
                                             <input name="foto_admin" type="hidden"
                                                 value="<?php echo $user->foto_admin ?>">
+
+                                            <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin ?>"
+                                            alt="" width="200px" hight="200px">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

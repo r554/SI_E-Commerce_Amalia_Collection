@@ -80,20 +80,20 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 ">Id Kategori</label>
                                             <div class="col-sm-8">
-                                                <p>: <?php echo $kategori['0']->id_kategori ?></p>
+                                                <p>: <?php echo $kategori2['0']->id_kategori ?></p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 ">Nama Kategori</label>
                                             <div class="col-sm-8">
-                                                <p>: <?php echo $kategori['0']->nama_kategori ?></p>
+                                                <p>: <?php echo $kategori2['0']->nama_kategori ?></p>
                                             </div>
 
                                         </div>
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 ">Foto Kategori</label>
                                             <div class="col-sm-8">
-                                                <p> <img src="<?php echo base_url()?>/assets/Frontend/images/<?php echo $kategori['0']->gambar_kategori ?>"
+                                                <p> <img src="<?php echo base_url()?>/assets/Frontend/images/<?php echo $kategori2['0']->gambar_kategori ?>"
                                                         alt="" width="200px"></p>
                                             </div>
 
@@ -175,12 +175,12 @@ if (!$this->session->userdata('nama')) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo base_url("Admin/kategori/save_kategori_jenis/".$kategori->id_kategori)?>"
+                <form action="<?php echo base_url("Admin/kategori/save_kategori_jenis/".$kategori2['0']->id_kategori)?>"
                     method="post">
                     <div class="modal-body">
                         <p>Nama Jenis</p>
 
-                        <input type="hidden" name="id_kategori" value="<?php echo $kategori->id_kategori?>">
+                        <input type="hidden" name="id_kategori" value="<?php echo $kategori2['0']->id_kategori?>">
                         <input type="text" name="nama_jenis">
 
                     </div>
