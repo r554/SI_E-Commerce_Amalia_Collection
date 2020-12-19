@@ -77,11 +77,13 @@ class keranjang extends CI_Controller
     // Method untuk menampilkan detail pemesanan berdasarkan Login
     public function tampil_buat_pesanan()
     {
+        $show = $this->M_footer;
         $id = $this->session->userdata('id');
 
         $data = [
             "data_produk" => $this->M_keranjang->getById_keranjang($id),
             "data_provinsi" => $this->M_keranjang->get_provinsi(),
+            "footer" => $show->tampil_footer(),
         ];
 
         $id_order = $this->uri->segment(3);
@@ -177,8 +179,10 @@ class keranjang extends CI_Controller
     // Method Untuk Menampilkan pembayaran
     public function pembayaran()
     {
+        $show = $this->M_footer;
         $id_order = $this->session->userdata('id_order');
         $data = [
+            "footer" => $show->tampil_footer(),
             "data_order" => $this->M_keranjang->getById_pembayaran($id_order),
         ];
 
