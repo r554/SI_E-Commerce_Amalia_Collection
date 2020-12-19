@@ -14,6 +14,15 @@
 
     <!-- Bagian Content -->
     <div class="container">
+        <?php
+        // Cek apakah terdapat session nama message
+        if ($this->session->flashdata('edit')) { ?>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-check"></i> Data Berhasil Di Ubah</h5>
+        </div>
+        <?php }
+        ?>
         <div class="row mt-5 mb-5">
             <?php $this->load->view('Frontend/template/menu'); ?>
             <div class="col-sm-9 col-md-8">
@@ -47,8 +56,13 @@
                     <div class="form-group">
                         <label for="nohp">No HP</label>
                         <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan"
-                            value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name" required
-                            autocomplete="off">
+                            value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name"
+                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required autocomplete="off">
+                        <!-- <input name="no_pelanggan" type="text" style="height: 36px; font-size: medium;"
+                            class="form-control" pattern=".{9,}" maxlength="14" placeholder="Enter No HP (Harus Angka)"
+                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required title="3 characters minimum"
+                            oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
+                            oninput="setCustomValidity('')"> -->
                     </div>
                     <div class="form-group">
                         <label for="Alamat">Alamat Lengkap</label>
@@ -79,7 +93,7 @@
                             autocomplete="off">
                     </div>
                     <?php endforeach; ?>
-                    <button class="btn btn-dark">Update</button>
+                    <button class="btn btn-success">Update</button>
                 </form>
             </div>
         </div>

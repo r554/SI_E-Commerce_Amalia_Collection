@@ -40,6 +40,7 @@ class profile extends CI_Controller
     $pwd = $this->input->post('password_pelanggan');
     $this->M_user->updateProfile($username, $email, $nama, $no, $alamat, $kab, $prov, $kodepos, $pwd, $idp);
 
+    $this->session->set_flashdata('edit', 'Berhasil disimpan');
     redirect('profile');
   }
 }
