@@ -296,12 +296,13 @@
                         enctype="multipart/form-data">
                         <input type="hidden" name="id_produk" value="<?php echo $invoice ?>">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Warna</label>
+                            <label for="exampleInputWarna">Warna</label>
                             <input type="text" class="form-control" name="warna">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Stok</label>
-                            <input type="text" class="form-control" name="qty">
+                            <label for="exampleInputStok">Stok</label>
+                            <input type="number" class="form-control" name="qty"
+                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

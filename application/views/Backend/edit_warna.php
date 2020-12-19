@@ -83,7 +83,8 @@
                                             value="<?php echo $warnastok['0']->warna ?>">
                                         <br>
                                         <label for="">Stok</label>
-                                        <input class="form-control" type="text" placeholder="Default input" name="qty"
+                                        <input class="form-control" type="number" placeholder="Default input" name="qty"
+                                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
                                             value="<?php echo $warnastok['0']->qty ?>">
                                         <br>
 
