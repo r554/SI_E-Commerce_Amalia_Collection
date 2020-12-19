@@ -118,9 +118,6 @@
                                 oninvalid="this.setCustomValidity('Nama tidak boleh kosong')"
                                 oninput="setCustomValidity('')">
                         </div>
-
-
-
                         <div class="col-lg-9  form-group" data-for="email">
                             <input type="email" name="email" placeholder="Email" data-form-field="email"
                                 class="form-control" value="" id="email" required
@@ -142,7 +139,7 @@
                         </div>
                         <div class="col-lg-9  form-group">
                             <input type="text" name="username" placeholder="Username" data-form-field="username"
-                                class="form-control" value="" id="username" required
+                                class="form-control" value="" id="username" minlength="5" maxlength="30" required
                                 oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
                                 oninput="setCustomValidity('')">
                         </div>
