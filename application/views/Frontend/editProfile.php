@@ -14,6 +14,7 @@
 
     <!-- Bagian Content -->
     <div class="container">
+        <br>
         <?php
         // Cek apakah terdapat session nama message
         if ($this->session->flashdata('edit')) { ?>
@@ -55,14 +56,14 @@
                     </div>
                     <div class="form-group">
                         <label for="nohp">No HP</label>
-                        <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan"
+                        <!-- <input type="number" style="height: 36px; font-size: medium;" name="no_pelanggan"
                             value="<?= $d['no_pelanggan']; ?>" class="form-control" id="name"
-                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required autocomplete="off">
-                        <!-- <input name="no_pelanggan" type="text" style="height: 36px; font-size: medium;"
-                            class="form-control" pattern=".{9,}" maxlength="14" placeholder="Enter No HP (Harus Angka)"
+                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required autocomplete="off"> -->
+                        <input type="text" class="form-control" style="height: 36px; font-size: medium;"
+                            name="no_pelanggan" pattern=".{9,}" maxlength="14" value="<?php echo $d['no_pelanggan'] ?>"
                             onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required title="3 characters minimum"
                             oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
-                            oninput="setCustomValidity('')"> -->
+                            oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="Alamat">Alamat Lengkap</label>
@@ -87,8 +88,8 @@
                             autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="Password">Password</label>
-                        <input type="password" style="height: 36px; font-size: medium;" name="password_pelanggan"
+                        <!-- <label for="Password">Password</label> -->
+                        <input type="hidden" style="height: 36px; font-size: medium;" name="password_pelanggan"
                             value="<?= $d['password_pelanggan']; ?>" class="form-control" id="name" required
                             autocomplete="off">
                     </div>
