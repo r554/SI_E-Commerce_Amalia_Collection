@@ -80,7 +80,7 @@ if (!$this->session->userdata('nama')) {
                                     <div class="card-body">
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <!-- <div class="form-group">
                                                         <label>ID Karyawan</label>
                                                         <input name="id_admin" type="teks" class="form-control"
@@ -151,10 +151,16 @@ if (!$this->session->userdata('nama')) {
                                                             oninput="setCustomValidity('')">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input name="foto_admin" id="menu_images" type="file" required
+                                                        <input name="foto_admin" multiple accept='image/*'
+                                                            id="menu_images" type="hidden" required
                                                             oninvalid="this.setCustomValidity('Foto Tidak Boleh Kosong!')"
                                                             oninput="setCustomValidity('')">
+                                                        <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
+                                                            OnError=" $(this).hide();" height="500px" width="500px" />
                                                     </div>
+
+
+
 
                                                     <!-- /.card-body -->
 
@@ -182,11 +188,16 @@ if (!$this->session->userdata('nama')) {
                 </div>
                 <!-- ./wrapper -->
 
+
                 <!-- REQUIRED SCRIPTS -->
-                <?php $this->load->view('Backend/template/js'); ?>
-                <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+                <!-- <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> -->
+            </section>
+        </div>
+    </div>
 
 
+    <?php $this->load->view('Backend/template/js'); ?>
 </body>
 
 </html>

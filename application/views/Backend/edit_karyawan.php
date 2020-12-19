@@ -33,6 +33,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
+
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Edit Karyawan</h1>
@@ -119,16 +120,16 @@
                                                 oninvalid="this.setCustomValidity('Password Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input name="foto_admin" id="menu_images" type="hidden"
                                                 value="<?php echo $edit[0]->foto_admin ?>">
-                                            <input name="foto_admin" id="menu_images" type="file"
+                                            <input name="foto_admin" id="menu_images" type="hidden"
                                                 value="<?php echo $edit[0]->foto_admin ?>">
 
                                             <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $edit[0]->foto_admin ?>"
                                                 alt="" width="200px" hight="200px">
 
-                                        </div>
+                                        </div> -->
 
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Simpan</button>

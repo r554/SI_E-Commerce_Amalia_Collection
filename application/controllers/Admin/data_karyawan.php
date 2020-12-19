@@ -16,6 +16,7 @@ class data_karyawan extends CI_Controller
 		$model = $this->M_data_karyawan;
 
 		if ($model->save()) {
+			$this->session->set_flashdata('success', 'Data Karyawan Berhasil Ditambahkan');
 			redirect(site_url('Admin/data_karyawan/tampil'));
 		}
 	}
@@ -43,6 +44,7 @@ class data_karyawan extends CI_Controller
 		if (!isset($id)) show_404();
 
 		if ($this->M_data_karyawan->delete($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Produk');
 			redirect(site_url('Admin/data_karyawan/tampil'));
 		}
 	}
@@ -68,13 +70,14 @@ class data_karyawan extends CI_Controller
 
 		if ($validation->run()) {
 			$model->update();
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$this->session->set_flashdata('edit', 'Berhasil disimpan');
 			redirect(site_url('Admin/data_karyawan/tampil'));
 		}
 
 		$data["edit"] = $model->getById($id);
 		//var_dump($data);
 		//die;
+
 		$this->load->view("Backend/edit_karyawan", $data);
 	}
 }

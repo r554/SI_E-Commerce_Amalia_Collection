@@ -70,6 +70,15 @@
                         ?>
                         <?php
                         // Cek apakah terdapat session nama message
+                        if ($this->session->flashdata('edit')) { ?>
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-check"></i> Data Berhasil Di Ubah</h5>
+                        </div>
+                        <?php }
+                        ?>
+                        <?php
+                        // Cek apakah terdapat session nama message
                         if ($this->session->flashdata('hapus')) { ?>
                         <div class="alert alert-success alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

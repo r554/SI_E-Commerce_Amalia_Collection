@@ -137,7 +137,7 @@ class data_produk extends CI_Controller
 
 		if ($validation->run()) {
 			$model->update();
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$this->session->set_flashdata('edit', 'Berhasil disimpan');
 			redirect(site_url('data_produk/tampil'));
 		}
 		$data = [
@@ -162,7 +162,7 @@ class data_produk extends CI_Controller
 
 		if ($validation->run()) {
 			$model->update_warna();
-			$this->session->set_flashdata('success', 'Data Produk Berhasil Diupdate');
+			$this->session->set_flashdata('edit', 'Data Produk Berhasil Diupdate');
 			redirect(site_url('data_produk/edit/' . $id_produk));
 		}
 		$data = [
@@ -205,6 +205,7 @@ class data_produk extends CI_Controller
 		$model = $this->M_data_produk;
 
 		if ($model->save_gambar()) {
+			$this->session->set_flashdata('success', 'Berhasil Menambah Produk');
 			redirect(site_url('data_produk/tampil_foto/' . $this->input->post('id_produk')));
 		}
 	}
@@ -225,6 +226,7 @@ class data_produk extends CI_Controller
 		if (!isset($id)) show_404();
 
 		if ($this->M_data_produk->delete_foto($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Produk');
 			redirect(site_url('data_produk/tampil_foto/' . $id2));
 		}
 	}

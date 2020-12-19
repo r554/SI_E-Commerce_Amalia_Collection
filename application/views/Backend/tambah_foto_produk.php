@@ -65,6 +65,24 @@ if (!$this->session->userdata('nama')) {
             <!-- Main content Ini Bagian Content -->
             <section class="content">
                 <div class="container-fluid">
+                    <?php
+                    // Cek apakah terdapat session nama message
+                    if ($this->session->flashdata('success')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Foto Produk Berhasil Di Tambahkan</h5>
+                    </div>
+                    <?php }
+                    ?>
+                    <?php
+                    // Cek apakah terdapat session nama message
+                    if ($this->session->flashdata('hapus')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Foto Produk Berhasil Di Hapus</h5>
+                    </div>
+                    <?php }
+                    ?>
                     <!-- Ini Bagian Konten -->
 
                     <div class="row">
@@ -104,7 +122,8 @@ if (!$this->session->userdata('nama')) {
                                     <div class="card-body">
                                         <input type="hidden" value="<?php echo $this->uri->segment("3") ?>"
                                             name="id_produk">
-                                        <input type='file' id="file" name="gambar_produk" />
+                                        <input type='file' multiple accept='image/*' id="menu_images"
+                                            name="gambar_produk" />
                                         <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
                                             OnError=" $(this).hide();" height="500px" width="500px" />
                                     </div>
