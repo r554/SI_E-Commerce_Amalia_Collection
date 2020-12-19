@@ -105,15 +105,7 @@ if (!$this->session->userdata('nama')) {
 
                                             <td>
                                                 <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                            Aksi
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="<?php echo base_url('Admin/Pesanan/tampil_detail_pemesanan/' . $pesanan['id_order']) ?>">Detail</a>
-                                                            <a class="dropdown-item" href="#">Kirim Pesan</a>
-                                                        </div>
-                                                    </div>
+                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_detail_pemesanan/' . $pesanan['id_order']) ?>"><button class="btn btn-info btn-xs ml-5">Detail</button></a>
                                                 </div>
                                             </td>
                                         </tr>
