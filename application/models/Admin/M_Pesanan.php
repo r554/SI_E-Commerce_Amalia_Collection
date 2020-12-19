@@ -71,9 +71,9 @@ class M_Pesanan extends CI_model
 
     public function get_bukti_pembayaran($id)
     {
-        $this->db->select('*');
+      //  $this->db->select('*');
         $this->db->from('tbl_bukti_pembayaran');
-        $this->db->where('tbl_bukti_pembayaran.id_order', $id);
+        $this->db->where('id_order', $id);
 
         $query = $this->db->get();
         return $query->result();

@@ -17,7 +17,8 @@
             <div class="col-md-7">
                 <h3 class="title">Terima Kasih Telah Berbelanja di Amalia Collection</h3>
                 <hr>
-                <h4>Kode Pesanan Anda adalah <b><?php echo $this->session->userdata('id_order') ?></b> Simpan KODE PESANAN Ini</h4>
+                <h4>Kode Pesanan Anda adalah <b><?php echo $this->session->userdata('id_order') ?></b> Simpan KODE
+                    PESANAN Ini</h4>
                 <p>Kami telah mengirimkan email kepada Anda yang berisi tagihan pesanan. Cek folder Inbox atau Spam
                     untuk
                     melihat email yang kami kirim.</p>
@@ -38,8 +39,12 @@
                 <p><strong>OVO</strong><br />
                     Atas Nama : Amalia<br />
                     No Rekening : 081333768257</p>
-                <p>Jika sudah melakukan pembayaran, silakan melakukan konfirmasi pembayaran <a href="<?= base_url('keranjang/buktipembayaran'); ?>"><button type="button" class="btn btn-info btn-lg">klik disini</button></a>
-                    atau bisa melalui Whatsapp <?= $this->config->item('whatsapp') ?> atau <a href="https://wa.me/08984050435<?= $this->config->item('whatsappv2') ?>" target="_blank">klik disini</a>
+                <p>Jika sudah melakukan pembayaran, silakan melakukan konfirmasi pembayaran <a
+                        href="<?= base_url('pesanan_saya'); ?>"><button type="button" class="btn btn-info btn-lg">klik
+                            disini</button></a>
+                    atau bisa melalui Whatsapp <?= $this->config->item('whatsapp') ?> atau <a
+                        href="https://wa.me/08984050435<?= $this->config->item('whatsappv2') ?>" target="_blank">klik
+                        disini</a>
                     dengan
                     format sebagai berikut:</p>
                 <table>

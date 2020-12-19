@@ -29,7 +29,8 @@ if (!$this->session->userdata('nama')) {
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
 
@@ -46,7 +47,10 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Verifikasi Pembayaran <a href="<?php echo base_url('Admin/Pesanan/Tampil_semua_verifikasi_pembayaran') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
+                            <h1 class="m-0">Verifikasi Pembayaran <a
+                                    href="<?php echo base_url('Admin/Pesanan/Tampil_semua_verifikasi_pembayaran') ?>">
+                                    <button class="btn btn-info btn-sm rounded-pill"><span
+                                            class="fa fa-arrow-left"></span> kembali </button></a></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -90,7 +94,8 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 ">Total Produk</label>
                                             <div class="col-sm-8">
-                                                <p>: <?php echo "Rp. "   . number_format($pesanan['0']->grand_total) . ",-" ?></p>
+                                                <p>: <?php echo "Rp. "   . number_format($pesanan['0']->grand_total) . ",-" ?>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -181,12 +186,20 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 "> Foto Bukti Pembayaran </label>
                                             <div class="col-sm-8">
-                                                <p>: <a href="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order) ?>"><button type="button" class="btn btn-success btn-sm">Terima Pembayaran</button></a> <a href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order) ?>"><button class="btn btn-danger btn-sm" type="button">Tolak Pembayaran</button></a></p>
+                                                <p>: <a
+                                                        href="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order) ?>"><button
+                                                            type="button" class="btn btn-success btn-sm">Terima
+                                                            Pembayaran</button></a> <a
+                                                        href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order) ?>"><button
+                                                            class="btn btn-danger btn-sm" type="button">Tolak
+                                                            Pembayaran</button></a></p>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-sm-12 text-center">
-                                                <img class="rounded" src="<?= base_url() ?>assets/Gambar/foto_bukti_pembayaran/<?php echo $bukti_pembayaran['0']->foto_bukti ?>" width="600px" height="600px" alt="">
+                                                <img class="rounded"
+                                                    src="<?= base_url() ?>assets/Gambar/foto_bukti_pembayaran/<?php echo $bukti_pembayaran['0']->foto_bukti ?>"
+                                                    width="600px" height="600px" alt="">
                                             </div>
                                         </div>
 
@@ -221,14 +234,14 @@ if (!$this->session->userdata('nama')) {
                                             $no = 1;
                                             foreach ($pesanan as $tampil_pesanan) {
                                             ?>
-                                                <tr>
-                                                    <td><?php echo $no++ ?></td>
-                                                    <td><?php echo $tampil_pesanan->nama_produk; ?></td>
-                                                    <td><?php echo $tampil_pesanan->warna; ?></td>
-                                                    <td><?php echo $tampil_pesanan->deskripsi; ?></td>
-                                                    <td class="text-center"><?php echo $tampil_pesanan->sub_qty; ?></td>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $tampil_pesanan->nama_produk; ?></td>
+                                                <td><?php echo $tampil_pesanan->warna; ?></td>
+                                                <td><?php echo $tampil_pesanan->deskripsi; ?></td>
+                                                <td class="text-center"><?php echo $tampil_pesanan->sub_qty; ?></td>
 
-                                                </tr>
+                                            </tr>
                                             <?php
                                             } ?>
                                         </tbody>

@@ -68,8 +68,10 @@
                                 <i class="fa fa-search"></i>
                             </button>
                         </div> -->
-                        <input class="col-md-11 col-10 rounded-pill" type="text" value="" name="keyword" placeholder="Cari Produk" style="height:60px;font-size:14pt;">
-                        <input type="submit" class="col-2 col-md-1 btn btn-danger btn-s fa fa-search" name="submit" value="Cari">
+                        <input class="col-md-11 col-10 rounded-pill" type="text" value="" name="keyword"
+                            placeholder="Cari Produk" style="height:60px;font-size:14pt;">
+                        <input type="submit" class="col-2 col-md-1 btn btn-danger btn-s fa fa-search" name="submit"
+                            value="Cari">
                     </div>
                 </form>
             </div>
@@ -98,20 +100,20 @@
 
             <!-- Alert Untuk Menampilkan Apabila Pencarian Tidak ditemukan -->
             <?php if (empty($data_produk)) : ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-warning" role="alert">
-                                <b>Pencarian Yang Anda Cari Tidak ditemukan !!!</b> Silahkan Cari kembali.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-5 mt-5">
-                        <div class="col-8 mx-auto">
-                            <img src="<?= base_url() ?>assets/Frontend/images/data.svg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning" role="alert">
+                            <b>Pencarian Yang Anda Cari Tidak ditemukan !!!</b> Silahkan Cari kembali.
                         </div>
                     </div>
                 </div>
+                <div class="row mb-5 mt-5">
+                    <div class="col-8 mx-auto">
+                        <img src="<?= base_url() ?>assets/Frontend/images/data.svg" alt="">
+                    </div>
+                </div>
+            </div>
             <?php endif; ?>
             <!-- END Alert Untuk Menampilkan Apabila Pencarian Tidak ditemukan -->
 
@@ -120,30 +122,31 @@
                 $no = $this->uri->segment('3') + 1;
                 foreach ($data_produk as $data_produk) {
                 ?>
-                    <div class="product">
-                        <div class="product-header">
-                            <img src="<?= base_url() ?>assets/Gambar/foto_produk/<?= $data_produk->gambar_produk; ?>" alt="product">
-                        </div>
-                        <div class="product-footer">
-                            <h3><?= $data_produk->nama_produk; ?></h3>
-                            <div class="rating">
-                                <!-- <i class="fas fa-star"></i>
+                <div class="product">
+                    <div class="product-header">
+                        <img src="<?= base_url() ?>assets/Gambar/foto_produk/<?= $data_produk->gambar_produk; ?>"
+                            alt="product">
+                    </div>
+                    <div class="product-footer">
+                        <h3><?= $data_produk->nama_produk; ?></h3>
+                        <div class="rating">
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i> -->
-                            </div>
-                            <div class="product-price">
-                                <h4><?= $data_produk->harga; ?></h4>
-                            </div>
                         </div>
-                        <ul>
-                            <li>
+                        <div class="product-price">
+                            <h4><?= $data_produk->harga; ?></h4>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
                             <a href="<?= base_url('homepage/detail_product/'.$data_produk->id_produk) ?>">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                            </li>
-                            <li>
+                                <i class="far fa-eye"></i>
+                            </a>
+                        </li>
+                        <!-- <li>
                                 <a href="#">
                                     <i class="far fa-heart"></i>
                                 </a>
@@ -152,9 +155,9 @@
                                 <a href="#">
                                     <i class="fas fa-sync"></i>
                                 </a>
-                            </li>
-                        </ul>
-                    </div>
+                            </li> -->
+                    </ul>
+                </div>
                 <?php } ?>
             </div>
         </section>
@@ -286,8 +289,8 @@
     <!-- End Footer -->
 
     <script>
-        // Material Select
-        $('.mdb-select').materialSelect({});
+    // Material Select
+    $('.mdb-select').materialSelect({});
     </script>
 
 
@@ -297,9 +300,15 @@
     <script src="<?php echo base_url() ?>assets/Frontend/js/index.js"></script>
     <script src="<?php echo base_url() ?>assets/Frontend/js/product.js"></script>
     <script src="<?php echo base_url() ?>assets/Frontend/js/slider.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
