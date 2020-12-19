@@ -16,7 +16,7 @@ class bukti_pembayaran extends CI_Controller
         $model = $this->M_bukti_pembayaran;
 
         if ($model->save()) {
-            redirect(site_url('data_produk/tampil'));
+            redirect(site_url('pesanan_saya'));
         }
     }
 }
