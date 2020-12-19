@@ -61,7 +61,9 @@ class M_dashboard_manager extends CI_model
     // menghitung card pesanan masuk
     function jumlah_data_order()
     {
-          return $this->db->get('tbl_order')->num_rows();
+        $this->db->from('tbl_order');
+        $this->db->where('tbl_order.status', '1');
+        return $this->db->get()->num_rows();
     }
 
     // menghitung card produk terjual
@@ -114,7 +116,7 @@ class M_dashboard_manager extends CI_model
         $this->db->join('tbl_kategori','tbl_kategori.id_kategori = tbl_produk.id_kategori');
         //$this->db->join('tbl_jenis','tbl_jenis.id_kategori = tbl_kategori.id_kategori');
         $this->db->join('tbl_attribut','tbl_attribut.id_produk = tbl_produk.id_produk');
-        
+         
        
         $query = $this->db->get();
         return $query->result();
@@ -123,10 +125,11 @@ class M_dashboard_manager extends CI_model
     public function pesanan_masuk_manager()
     {
         $this->db->select('*');
-         $this->db->from('tbl_order');
-        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_order');
-        //  $this->db->join('tbl_detail_order','tbl_detail_order.id_detail_order = tbl_order.id_detail_order');
- 
+        $this->db->from('tbl_order');
+        $this->db->like('tbl_order.status', '1');
+        $this->db->or_like('tbl_order.status', '2');
+        $this->db->or_like('tbl_order.status', '3');
+        
          $query = $this->db->get();
          return $query->result();
     }

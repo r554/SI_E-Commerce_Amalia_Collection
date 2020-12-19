@@ -235,7 +235,20 @@
                                                     <p><?php echo $a->grand_total; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a->status; ?> </p>
+
+                                                    <p><?php 
+                                                    
+                                                    if ( $a->status == 1){
+                                                        echo "Pesanan Belum Dibayar";
+                                                    
+                                                    } elseif ( $a->status == 2 ) {
+                                                        echo "Pembeyaran Sedang diverifikasi ";
+                                                    }elseif ( $a->status == 3 ) {
+                                                        echo "Pesanan sedang diproses ";
+                                                    }elseif ( $a->status == 4 )
+                                                     
+
+                                                    ?> </p>
                                                 </td>
                                                 <td>
 
