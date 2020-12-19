@@ -171,6 +171,6 @@
     </div>
 </body>
 <!-- REQUIRED SCRIPTS -->
-<?php $this->load->view('Backend/template/js'); ?>
+
 
 </html>
