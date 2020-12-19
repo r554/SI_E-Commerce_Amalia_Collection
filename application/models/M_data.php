@@ -127,8 +127,10 @@ class M_data extends CI_Model
   // Kategori hijab
   public function tampil_kategori()
   {
-    $query = $this->db->get('tbl_kategori');
-    return $query->result();
+    $this->db->from('tbl_kategori');
+		$this->db->where('status', '0');
+		$query = $this->db->get();
+		return $query->result();
   }
 
 

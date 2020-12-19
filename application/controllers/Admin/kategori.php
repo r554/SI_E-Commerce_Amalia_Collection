@@ -94,7 +94,15 @@ class kategori extends CI_Controller
 	}
 
 	
+	public function hapus_kategori($id)
+	{
 
+		$this->db->set('status', '1');
+		$this->db->where('id_kategori', $id);
+		$this->db->update('tbl_kategori');
+
+		redirect(site_url('Admin/kategori/tampil_kategori/'));
+	}
 	
 
 	
