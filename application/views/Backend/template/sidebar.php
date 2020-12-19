@@ -3,7 +3,8 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <?php $foto_admin = $this->session->userdata('foto_admin') ?>
         <div class="image">
-            <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $foto_admin ?>" class="img-circle elevation-2" alt="User Image">
+            <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $foto_admin ?>"
+                class="img-circle elevation-2" alt="User Image">
         </div>
         <?php $nama = $this->session->userdata('nama') ?>
         <div class="info">
@@ -14,7 +15,8 @@
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+            data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icdf
            m con font library -->
@@ -66,7 +68,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_verifikasi_pembayaran') ?>" class="nav-link">
+                        <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_verifikasi_pembayaran') ?>"
+                            class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Verifikasi Pembayaran</p>
                         </a>
@@ -90,7 +93,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan') ?>" class="nav-link">
+                        <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan') ?>"
+                            class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pesanan Dibatalkan</p>
                         </a>
@@ -106,6 +110,16 @@
                     </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="<?php echo base_url('data_produk/tampil_manajer') ?>" class="nav-link">
+                    <i class="nav-icon far fa-list-alt"></i>
+                    <p>
+                        Data Produk M
+                    </p>
+                </a>
+            </li>
+
 
             <?php
             // Cek role user
@@ -128,6 +142,15 @@
                     <i class="nav-icon far fa-user"></i>
                     <p>
                         Data Pelanggan
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="<?php echo base_url('Admin/data_customer/tampil_manajer') ?>" class="nav-link ">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                        Data Pelanggan M
                     </p>
                 </a>
             </li>

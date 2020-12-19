@@ -40,9 +40,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="input-group">
+                    <div class="input-group">
                         <?php echo form_error('password', '<small class="text-danger">', '</small>'); ?>
-                    </div> -->
+                    </div>
                     <div class="input-group mb-3">
                         <input type="password" style="height: 36px; font-size: medium;" class="form-control"
                             placeholder="Ulangi Password Baru" name="password1">
@@ -52,9 +52,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="input-group">
+                    <div class="input-group">
                         <?php echo form_error('password1', '<small class="text-danger">', '</small>'); ?>
-                    </div> -->
+                    </div>
                     <button class="btn btn-success">Ubah</button>
                 </form>
 

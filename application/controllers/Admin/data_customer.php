@@ -32,6 +32,17 @@ class data_customer extends CI_Controller
         $this->load->view("Backend/data_customer", $data);
     }
 
+    public function tampil_manajer()
+    {
+        $show = $this->M_data_customer;
+        $data = [
+            "customer" => $show->tampil_data(),
+            //"invoice" => $show->get_no_invoice(),           
+        ];
+
+        $this->load->view("Backend/data_customer_manajer", $data);
+    }
+
 
     public function tampil_detail($id)
     {

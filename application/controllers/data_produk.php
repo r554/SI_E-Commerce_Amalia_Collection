@@ -32,6 +32,16 @@ class data_produk extends CI_Controller
 		];
 		$this->load->view("Backend/data_produk", $data);
 	}
+	//untuk menampilkan data produk pada manajer 
+	public function tampil_manajer()
+	{
+		$show = $this->M_data_produk;
+		$data = [
+			"produk" => $show->tampil_data(),
+			"invoice" => $show->get_no_invoice(),
+		];
+		$this->load->view("Backend/data_produk_manajer", $data);
+	}
 
 	// untuk menampilkan detail produk sesuai id 
 	public function tampil_detail($id)
@@ -42,6 +52,17 @@ class data_produk extends CI_Controller
 		];
 
 		$this->load->view('Backend/detail_produk', $data);
+	}
+
+	// untuk menampilkan detail produk sesuai id 
+	public function tampil_detail_manajer($id)
+	{
+		$data = [
+			"detailProduk" => $this->M_data_produk->tpdetailProduk($id),
+			"attribut" => $this->M_warna->tampil_warna($id),
+		];
+
+		$this->load->view('Backend/detail_produk_manajer', $data);
 	}
 
 	// untuk menghapus produk 

@@ -69,18 +69,24 @@ class profile extends CI_Controller
       }
     }
   }
-
+  //untuk mencocokkan password baru 
   function ubah_password_baru()
   {
 
-    $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]|matches[password1]');
-    $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[3]|matches[password]');
+    $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[6]|matches[password1]');
+    $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[6]|matches[password]');
     if ($this->form_validation->run() == false) {
       $this->load->view('Frontend/template/head1');
       $this->load->view('Frontend/template/navbar3');
       $this->load->view('Frontend/ubah_pass2');
     } else {
-      echo "kk";
+      $password_baru = md5($this->input->post('password'));
+      $id_pelanggan = $this->session->userdata('id');
+      $this->db->set('password_pelanggan', $password_baru);
+      $this->db->where('id_pelanggan', $id_pelanggan);
+      $this->db->update('tbl_pelanggan');
+      $this->session->sess_destroy();
+      redirect(base_url('Homepage'));
     }
   }
 }
