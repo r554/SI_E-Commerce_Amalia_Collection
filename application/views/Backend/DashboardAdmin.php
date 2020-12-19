@@ -154,7 +154,7 @@
                                                 <th>ID Produk</th>
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
-                                                <th>Jenis</th>
+                                                <!-- <th>Jenis</th> -->
                                                 <th>Warna</th>
                                                 <th>Stok Tersedia</th>
                                                 <th>Aksi</th>
@@ -185,9 +185,9 @@
                                                     <p><?php echo $d->nama_kategori; ?> </p>
                                                 </td>
 
-                                                <td>
+                                                <!-- <td>
                                                     <p><?php echo $d->nama_jenis; ?> </p>
-                                                </td>
+                                                </td> -->
 
                                                 <td>
                                                     <p><?php echo $d->warna; ?> </p>
@@ -198,9 +198,9 @@
                                                 </td>
                                                 <td>
 
-                                                    <a href="<?php echo base_url('data_produk/tampil') ?>"
+                                                    <a href="<?php echo base_url('data_produk/edit/'.$d->id_produk) ?>"
                                                         class="btn btn-info btn-sm active" role="button"
-                                                        aria-pressed="true">Detail</a>
+                                                        aria-pressed="true">Edit Stok</a>
                                                 </td>
 
 

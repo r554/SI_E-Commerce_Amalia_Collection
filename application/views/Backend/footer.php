@@ -105,13 +105,6 @@ if (!$this->session->userdata('nama')) {
                                     <div class="card-body">
 
                                         <div class="toastsDefaultWarning">
-                                            <?php
-                                       
-                                                // Cek apakah terdapat session nama message
-                                                if ($this->session->flashdata('message')) { // Jika ada ?>
-                                            <div class="alert alert-success">Data Berhasil Diubah</div>
-
-                                            <?php  }?>
                                         </div>
 
                                         <div class="form-group">
@@ -121,8 +114,8 @@ if (!$this->session->userdata('nama')) {
                                                 value="<?php echo $z->id_footer; ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Link Map</label>
-                                            <input name="link_map" class="form-control"
+
+                                            <input name="link_map" class="form-control" type="hidden"
                                                 value="<?php echo $z->link_map; ?>">
                                         </div>
                                         <div class="form-group">
@@ -131,8 +124,11 @@ if (!$this->session->userdata('nama')) {
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">No Telepon</label>
-                                            <input name="no_telepon" class="form-control"
-                                                value="<?php echo $z->no_telepon; ?>">
+                                            <input name="no_telepon" class="form-control" pattern=".{9,}" maxlength="14"
+                                                onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
+                                                title="3 characters minimum"
+                                                oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
+                                                oninput="setCustomValidity('')" value="<?php echo $z->no_telepon; ?> ">
                                         </div>
 
                                     </div>
@@ -236,10 +232,10 @@ if (!$this->session->userdata('nama')) {
 
                     $('.toastsDefaultWarning').click(function() {
                         $(document).Toasts('create', {
-                            class: 'bg-warning',
-                            title: 'Toast Title',
-                            subtitle: 'Subtitle',
-                            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                            class: 'bg-success',
+                            title: 'Info',
+                            subtitle: 'Update',
+                            body: 'Data berhasil diubah.'
                         })
                     });
 

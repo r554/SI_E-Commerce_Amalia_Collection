@@ -18,7 +18,7 @@ class M_dashboard_manager extends CI_model
     public $status_promo;
     public $dibuat_tanggal;
 
-
+ 
 
     public function rules()
     {
@@ -112,7 +112,7 @@ class M_dashboard_manager extends CI_model
         $this->db->select('*');
         $this->db->from('tbl_produk');
         $this->db->join('tbl_kategori','tbl_kategori.id_kategori = tbl_produk.id_kategori');
-        $this->db->join('tbl_jenis','tbl_jenis.id_kategori = tbl_kategori.id_kategori');
+        //$this->db->join('tbl_jenis','tbl_jenis.id_kategori = tbl_kategori.id_kategori');
         $this->db->join('tbl_attribut','tbl_attribut.id_produk = tbl_produk.id_produk');
         
        

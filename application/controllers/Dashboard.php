@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller
 		$this->load->model('M_dashboard');
 		$this->load->library('form_validation');
 	}
-
+ 
 
 	public function save()
 	{
