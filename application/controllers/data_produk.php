@@ -11,16 +11,18 @@ class data_produk extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
-
+	//untuk menyimpan tambah data produk
 	public function save()
 	{
 		$model = $this->M_data_produk;
 
 		if ($model->save()) {
+			$this->session->set_flashdata('success', 'Berhasil Menambah Produk');
 			redirect(site_url('data_produk/tampil'));
 		}
 	}
 
+	//untuk menampilkan produk keseluruhan 
 	public function tampil()
 	{
 		$show = $this->M_data_produk;
@@ -28,10 +30,10 @@ class data_produk extends CI_Controller
 			"produk" => $show->tampil_data(),
 			"invoice" => $show->get_no_invoice(),
 		];
-
 		$this->load->view("Backend/data_produk", $data);
 	}
 
+	// untuk menampilkan detail produk sesuai id 
 	public function tampil_detail($id)
 	{
 		$data = [
@@ -42,15 +44,18 @@ class data_produk extends CI_Controller
 		$this->load->view('Backend/detail_produk', $data);
 	}
 
+	// untuk menghapus produk 
 	public function delete($id = null)
 	{
 		if (!isset($id)) show_404();
 
 		if ($this->M_data_produk->delete($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Produk');
 			redirect(site_url('data_produk/tampil'));
 		}
 	}
 
+	//untuk menambahkan produk 
 	public function tambah_produk()
 	{
 		$id_produk = $this->M_data_produk->get_no_invoice();
@@ -64,6 +69,7 @@ class data_produk extends CI_Controller
 		$this->load->view("Backend/data_produk_tambah", $data);
 	}
 
+	//untuk menyimpan warna dan stok produk 
 	public function save_warna()
 	{
 		$id_produk = $this->input->post('id_produk');
@@ -81,24 +87,46 @@ class data_produk extends CI_Controller
 		}
 	}
 
-	public function hapus_warna($id = null)
+	//untuk menyimpan warna dan stok produk pada edit
+	public function save_warna_edit()
 	{
-
-		$id_produk = $this->uri->segment("4");
+		$id_produk = $this->input->post('id_produk');
 		$product = $this->M_data_produk;
 		$model = $this->M_warna;
-		$data = [
-			"invoice" => $product->get_no_invoice(),
-			"kategori" => $this->M_data_produk->tampil_kategori(),
-			"attribut" => $this->M_warna->tampil_warna($id_produk),
-		];
-		if (!isset($id)) show_404();
+		// $data = [
+		// 	"edit" => $product->getById($id_produk),
+		// 	"kategori" => $this->M_data_produk->tampil_kategori(),
+		// 	"warnastok" => $this->M_data_produk->edit_warna_stok($id_produk),
+		// ];
 
-		if ($this->M_warna->delete($id)) {
-			redirect(site_url('data_produk/tambah_produk/' . $data));
+		if ($model->save_warna()) {
+			//$this->load->view("Backend/data_produk_tambah", $data);
+			redirect(site_url('data_produk/edit/' . $id_produk));
 		}
 	}
 
+	//untuk menghapus warna dan stok 
+	public function hapus_warna($id = null)
+	{
+
+		$id_produk = $this->uri->segment('4');
+		//echo $id_produk;
+		$model = $this->M_data_produk;
+
+		$data = [
+			"edit" => $model->getById($id_produk),
+			"kategori" => $this->M_data_produk->tampil_kategori(),
+			"warnastok" => $this->M_data_produk->edit_warna_stok($id_produk),
+		];
+
+		if ($this->M_warna->delete($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Produk');
+			//$this->load->view("Backend/edit_produk", $data);
+			redirect(site_url('data_produk/edit/' . $id_produk));
+		}
+	}
+
+	//untuk menampilkan view edit 
 	public function edit($id = null)
 	{
 
@@ -122,6 +150,7 @@ class data_produk extends CI_Controller
 		$this->load->view("Backend/edit_produk", $data);
 	}
 
+	//untuk menampilkan tampilan warna dan stok 
 	public function edit_warna_stok($id = null)
 	{
 
@@ -133,7 +162,7 @@ class data_produk extends CI_Controller
 
 		if ($validation->run()) {
 			$model->update_warna();
-			$this->session->set_flashdata('success', 'Berhasil Diupdate');
+			$this->session->set_flashdata('success', 'Data Produk Berhasil Diupdate');
 			redirect(site_url('data_produk/edit/' . $id_produk));
 		}
 		$data = [
@@ -143,6 +172,7 @@ class data_produk extends CI_Controller
 		// die;
 		$this->load->view("Backend/edit_warna", $data);
 	}
+
 
 	public function detail_product($id)
 	{

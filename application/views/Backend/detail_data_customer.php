@@ -114,8 +114,8 @@
                                                 <div class="form-group">
                                                     <label>Kode Pos</label>
                                                     <input type="hidden" name="kode_pos"
-                                                        value="<?php echo $u->kode_pos ?>">
-                                                    <p class="form-control"><?php echo $u->kode_pos ?></p>
+                                                        value="<?php echo $u->kode_pos_pelanggan ?>">
+                                                    <p class="form-control"><?php echo $u->kode_pos_pelanggan ?></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Kabupaten</label>

@@ -28,6 +28,7 @@ if (!$this->session->userdata('nama')) {
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <!-- <div class="flash-data" data-flashdata="<?= $this->session->flashdata('success') ?>"> -->
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -71,12 +72,7 @@ if (!$this->session->userdata('nama')) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <?php
-                        // Cek apakah terdapat session nama message
-                        if ($this->session->flashdata('success')) { // Jika ada
-                            echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>'; // Tampilkan pesannya
-                        }
-                        ?>
+
                     </div>
                 </div>
             </div>
@@ -87,6 +83,25 @@ if (!$this->session->userdata('nama')) {
             <section class="content">
                 <div class="container-fluid">
                     <!-- Ini Bagian Konten -->
+                    <?php
+                    // Cek apakah terdapat session nama message
+                    if ($this->session->flashdata('success')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Data Berhasil Di Ubah</h5>
+                    </div>
+                    <?php }
+                    ?>
+                    <?php
+                    // Cek apakah terdapat session nama message
+                    if ($this->session->flashdata('hapus')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Data Berhasil Di Hapus</h5>
+                    </div>
+                    <?php }
+                    ?>
+
 
 
                     <div class="row">
@@ -94,12 +109,12 @@ if (!$this->session->userdata('nama')) {
                         <div class="col-md-6">
                             <!-- general form elements -->
                             <div class="card card-primary">
+
                                 <div class="card-header">
                                     <h3 class="card-title">Edit Produk</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <?php
-
 
                                 ?>
                                 <!-- form start -->
@@ -212,18 +227,20 @@ if (!$this->session->userdata('nama')) {
                                                 <td><?php echo $attribut->warna; ?></td>
                                                 <td><?php echo $attribut->qty; ?></td>
                                                 <td>
+
                                                     <a
                                                         href="<?= base_url('data_produk/edit_warna_stok/' . $attribut->id_attribut) ?>">
                                                         <button type="button" class="btn btn-success btn-xs"
                                                             type="button "><i class="far fa-edit">
                                                                 Edit</i></button></a>
                                                     <a
-                                                        href="<?= base_url('data_produk/hapus_warna/' . $attribut->id_produk) ?>"><button
+                                                        href="<?= base_url('data_produk/hapus_warna/' . $attribut->id_attribut . '/' .  $attribut->id_produk) ?>"><button
                                                             class="btn btn-danger btn-xs" type="button "><i
                                                                 class="fas fa-trash-alt">
                                                                 Hapus</i></button></a>
 
                                                 </td>
+
 
                                             </tr>
                                             <?php
@@ -231,6 +248,13 @@ if (!$this->session->userdata('nama')) {
                                         </tbody>
 
                                     </table>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#modal-stok">
+                                        Tambah
+                                    </button>
 
                                 </div>
                                 <!-- /.card-body -->
@@ -253,6 +277,39 @@ if (!$this->session->userdata('nama')) {
 
         <!-- REQUIRED SCRIPTS -->
         <?php $this->load->view('Backend/template/js'); ?>
+    </div>
+    <div class="modal fade" id="modal-stok">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Warna dan Stok</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo base_url("data_produk/save_warna_edit") ?>" method="post" role="form"
+                        enctype="multipart/form-data">
+                        <input type="hidden" name="id_produk" value="<?php echo $edit[0]->id_produk ?>">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Warna</label>
+                            <input type="text" class="form-control" name="warna">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Stok</label>
+                            <input type="text" class="form-control" name="qty">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
     <script type="text/javascript">
     $(document).ready(function() {
@@ -284,9 +341,18 @@ if (!$this->session->userdata('nama')) {
         });
 
     });
+
+
+    // const flashData = $('.flash-data').data('flashdata');
+
+    // if (flashData) {
+    //     Swal.fire(
+    //         'Berhasil',
+    //         'Berhasil Ubah Data Produk',
+    //         'success'
+    //     )
+    // }
     </script>
-    <!-- REQUIRED SCRIPTS -->
-    <?php $this->load->view('Backend/template/js'); ?>
 </body>
 
 </html>

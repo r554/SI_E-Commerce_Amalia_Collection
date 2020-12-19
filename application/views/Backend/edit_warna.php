@@ -64,9 +64,9 @@
                             <form
                                 action="<?php echo base_url('data_produk/edit_warna_stok/' . $warnastok['0']->id_attribut) ?>"
                                 method="POST" role="form" enctype="multipart/form-data">
-                                <div class="card card-success">
+                                <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Edit Banner</h3>
+                                        <h3 class="card-title">Edit Warna dan Stok Produk</h3>
                                     </div>
 
                                     <div class="card-body">
@@ -94,7 +94,8 @@
                                         <button type="submit" class="btn btn-success float-right">
                                             Simpan</button>
 
-                                        <a href="<?= base_url('Admin/kategori/tampil_kategori') ?>"><button
+                                        <a
+                                            href="<?= base_url('data_produk/edit/') ?><?php echo $warnastok['0']->id_produk ?>"><button
                                                 type="button" class="btn btn-primary">Kembali</button></a>
                                     </div>
                                 </div>
