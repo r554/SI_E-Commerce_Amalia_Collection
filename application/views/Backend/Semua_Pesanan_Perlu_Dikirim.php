@@ -186,6 +186,8 @@ if (!$this->session->userdata('nama')) {
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="hidden" name="id_order" id="" value="<?= $pesanan['id_order'] ?>">
+                                <input type="hidden" name="no_penerima" id="" value="<?= $pesanan['no_penerima'] ?>">
+                                <input type="hidden" name="jasa_pengiriman" id="" value="<?= $pesanan['jasa_pengiriman'] ?>">
                                 <label for="exampleInputEmail1">Nomor Resi</label>
                                 <input type="text" class="form-control" id="nomor_resi" name="nomor_resi">
                                 <small class="form-text text-muted">Pastikan Nomor Resi Benar</small>

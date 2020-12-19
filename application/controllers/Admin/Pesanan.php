@@ -103,14 +103,49 @@ class Pesanan extends CI_Controller
 
         $id_order = $this->input->post('id_order');
         $nomor_resi = $this->input->post('nomor_resi');
+
         $status = '4';
 
         $this->db->set('nomor_resi', $nomor_resi);
         $this->db->set('status', $status);
         $this->db->where('id_order', $id_order);
         $this->db->update('tbl_order');
+        $this->_sendWA();
 
         redirect(site_url('Admin/Pesanan/tampil_semua_pesanan_dikirim'));
+    }
+
+    private function _sendWA()
+    {
+
+        $nomor_resi = $_POST["nomor_resi"];
+        $jasa_pengiriman = $_POST["jasa_pengiriman"];
+        $curl = curl_init();
+        $sender = "6281333992731"; // nomor Server 
+        $dest = $_POST["no_penerima"]; // nomor tujuan, pake kode negara 
+        $isiPesan = "Terimakasih Sudah berbelanja Di Amalia Collection. <br>Pesanan Anda sudah kami kirim, Berikut Nomor Resi Pengiriman Anda : *" . $nomor_resi . "*<br>dengan Menggunakan Jasa Pengiriman *" . $jasa_pengiriman . "* <br>Anda Dapat Melacak Pengiriman Dari Situs Resmi Jasa Pengiriman";
+
+        curl_setopt_array($curl, array(
+
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => "https://whapi.io/api/send",
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: text/plain",
+                "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
     }
 
 
