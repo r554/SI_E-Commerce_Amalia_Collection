@@ -10,7 +10,7 @@ class M_register extends CI_model
     public $no_pelanggan;
     public $email_pelanggan;
     public $alamat_pelanggan;
-    public $kode_pos;
+    public $kode_pos_pelanggan;
     public $kabupaten;
     public $provinsi;
     public $foto_pelanggan = "default.jpg";

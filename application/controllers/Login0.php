@@ -39,7 +39,7 @@ class Login0 extends CI_Controller
 				$NAMA = $N->nama_pelanggan;
 				$ALAMAT = $N->alamat_pelanggan;
 				$nohp = $N->no_pelanggan;
-				$kdPos = $N->kode_pos;
+				$kdPos = $N->kode_pos_pelanggan;
 				$kab = $N->kabupaten;
 				$prov = $N->provinsi;
 			}

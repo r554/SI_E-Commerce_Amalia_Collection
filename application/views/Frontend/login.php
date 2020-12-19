@@ -28,8 +28,7 @@
                     ?>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="USERNAME_PELANGGAN" placeholder="Username" minlength="5" maxlength="25"
-                            required />
+                        <input type="text" name="USERNAME_PELANGGAN" placeholder="Username" maxlength="25" required />
 
                     </div>
                     <div class="input-field">
