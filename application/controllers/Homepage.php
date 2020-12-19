@@ -91,6 +91,7 @@ class Homepage extends CI_Controller
 
   public function detail_product($id)
   {
+    $show = $this->M_footer;
     $getProduct = $this->M_data_produk->getProductById($id);
 
     // $this->Products_model->updateViewer($slug);
@@ -102,7 +103,7 @@ class Homepage extends CI_Controller
     $data['product'] = $getProduct;
     $data['img'] = $this->M_data_produk->getImgProductById($id);
     $data['attribut'] = $this->M_data_produk->getAttributById($id);
-
+    $data['footer'] = $show->tampil_footer();
     $this->load->view('Frontend/template/head1');
     $this->load->view('Frontend/template/navbar3', $data);
     $this->load->view('Frontend/detail_produk', $data);
