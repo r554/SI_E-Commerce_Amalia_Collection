@@ -29,7 +29,7 @@ if (!$this->session->userdata('nama')) {
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= base_url('Homepage') ?>" class="brand-link">
                 <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
@@ -74,16 +74,17 @@ if (!$this->session->userdata('nama')) {
                             <i class="fas fa-times"></i>
                         </button> -->
                         <?php
-                        if ($this->session->flashdata('message')) { // Jika ada ?>
+                        if ($this->session->flashdata('message')) { // Jika ada 
+                        ?>
                         <div class="alert alert-info alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <h5><i class="icon fas fa-info"></i> Info!</h5>
                             Data Berhasil diubah.
                         </div>
-                        <?php  }?>
+                        <?php  } ?>
                     </div>
 
-                    <form action="<?php echo base_url('blog/edit_tentangkami/'. $kirana[0]->kd_blog); ?>" method="post"
+                    <form action="<?php echo base_url('blog/edit_tentangkami/' . $kirana[0]->kd_blog); ?>" method="post"
                         role="form" enctype="multipart/form-data">
 
                         <input name="kd_blog" type="hidden" class="form-control"

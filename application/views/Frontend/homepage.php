@@ -106,7 +106,8 @@
                             <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4><?= $data_produk->harga; ?></h4>
+                            <h4>
+                                <?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?></h4>
                         </div>
                     </div>
                     <ul>

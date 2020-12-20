@@ -25,7 +25,7 @@ if (!$this->session->userdata('nama')) {
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= base_url('Homepage') ?>" class="brand-link">
                 <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
@@ -100,7 +100,7 @@ if (!$this->session->userdata('nama')) {
                                                 <div class="form-group">
                                                     <label>Harga</label>
                                                     <input type="text" class="form-control" name="harga" disabled
-                                                        value="<?php echo $u->harga ?>">
+                                                        value="<?php echo "Rp. "   . number_format($u->harga) . ",-" ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Deskripsi</label>

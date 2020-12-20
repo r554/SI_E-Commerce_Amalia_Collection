@@ -23,7 +23,7 @@
                 <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $foto_admin ?>"
                     class="img-circle elevation-20 " width="30px">
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="<?php echo base_url('Page') ?>">
+                    <a href="<?php echo base_url('Homepage') ?>">
                         <span class="dropdown-item dropdown-header">Amalia Collection</span>
                     </a>
                     <div class="dropdown-divider dropdown-menu dropdown-menu-lg dropdown-menu-right"></div>

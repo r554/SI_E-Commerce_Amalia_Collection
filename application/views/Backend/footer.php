@@ -1,7 +1,7 @@
 <?php
 
 if (!$this->session->userdata('nama')) {
-  redirect(base_url("Auth_Admin"));
+    redirect(base_url("Auth_Admin"));
 }
 
 ?>
@@ -45,7 +45,7 @@ if (!$this->session->userdata('nama')) {
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= base_url('Homepage') ?>" class="brand-link">
                 <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
@@ -84,7 +84,7 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <!-- Ini Bagian Konten -->
 
-                    <?php                                            
+                    <?php
                     $no = 1;
                     foreach ($footer as $z) {
                     ?>
@@ -99,7 +99,7 @@ if (!$this->session->userdata('nama')) {
                                 <!-- /.card-header -->
                                 <!-- form start -->
 
-                                <form action="<?php echo base_url('Admin/footer/editfooter/'.$z->id_footer); ?>"
+                                <form action="<?php echo base_url('Admin/footer/editfooter/' . $z->id_footer); ?>"
                                     method="post" role="form" enctype="multipart/form-data">
 
                                     <div class="card-body">

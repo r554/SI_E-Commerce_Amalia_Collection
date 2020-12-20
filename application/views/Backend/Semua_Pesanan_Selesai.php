@@ -16,9 +16,12 @@ if (!$this->session->userdata('nama')) {
 
     <?php $this->load->view('Backend/template/head'); ?>
     <!-- DataTables -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 </head>
 
@@ -32,8 +35,9 @@ if (!$this->session->userdata('nama')) {
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="<?= base_url('Homepage') ?>" class="brand-link">
+                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
 
@@ -92,22 +96,24 @@ if (!$this->session->userdata('nama')) {
                                 $no = 1;
                                 foreach ($pesanan_selesai as $pesanan) {
                                 ?>
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $pesanan['nama_pelanggan']; ?></td>
-                                            <td><?php echo $pesanan['id_order']; ?></td>
-                                            <td><?php echo $pesanan['grand_qty']; ?></td>
-                                            <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
-                                            <td class="text-center">
-                                                <span class="badge bg-success text-dark">Selesai<span>
-                                            </td>
-                                            <td>
-                                                <div class="text-center">
-                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_detail_pesanan_selesai/' . $pesanan['id_order']) ?>"><button class="btn btn-warning btn-sm mx-auto">Detail</button></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $pesanan['nama_pelanggan']; ?></td>
+                                        <td><?php echo $pesanan['id_order']; ?></td>
+                                        <td><?php echo $pesanan['grand_qty']; ?></td>
+                                        <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
+                                        <td class="text-center">
+                                            <span class="badge bg-success text-dark">Selesai<span>
+                                        </td>
+                                        <td>
+                                            <div class="text-center">
+                                                <a
+                                                    href=" <?= base_url('Admin/Pesanan/tampil_detail_pesanan_selesai/' . $pesanan['id_order']) ?>"><button
+                                                        class="btn btn-warning btn-sm mx-auto">Detail</button></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
                                 <?php
                                 } ?>
                             </table>
@@ -134,36 +140,49 @@ if (!$this->session->userdata('nama')) {
                 <!-- <script src="Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
                 <!-- DataTables  & Plugins -->
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+                <script
+                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js">
+                </script>
+                <script
+                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
+                </script>
+                <script
+                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
+                </script>
+                <script
+                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js">
+                </script>
+                <script
+                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js">
+                </script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/jszip/jszip.min.js"></script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/pdfmake.min.js"></script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js">
+                </script>
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js">
+                </script>
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js">
+                </script>
                 <!-- Page specific script -->
                 <script>
-                    $(function() {
-                        $("#example1").DataTable({
-                            "responsive": true,
-                            "lengthChange": false,
-                            "autoWidth": false,
-                            "buttons": ["excel", "pdf", "print"]
-                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                        $('#example2').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": false,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false,
-                            "responsive": true,
-                        });
+                $(function() {
+                    $("#example1").DataTable({
+                        "responsive": true,
+                        "lengthChange": false,
+                        "autoWidth": false,
+                        "buttons": ["excel", "pdf", "print"]
+                    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
                     });
+                });
                 </script>
 
             </section>
