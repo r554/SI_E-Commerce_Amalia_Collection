@@ -26,7 +26,7 @@ class keranjang extends CI_Controller
                 "footer" => $show->tampil_footer(),
                 "jumlah_keranjang" => $this->M_keranjang->jumlah_data_keranjang(),
             ];
-            
+
             $this->load->view('Frontend/template/head1');
             $this->load->view('Frontend/template/navbar3', $data);
             $this->load->view('Frontend/keranjang', $data);
@@ -253,7 +253,7 @@ class keranjang extends CI_Controller
         $curl = curl_init();
         $sender = "6281333992731"; // nomor Server 
         $dest = $_POST["no_penerima"]; // nomor tujuan, pake kode negara 
-        $isiPesan = "Terimakasih sudah membeli produk kami. Saat ini kami sedang menunggu pembayaran dari anda sebelum kami memprosesnya. Sebagai informasi, berikut *detail pesananmu*. <br> <br> No Invoice:" . $_POST["id_order"] . " <br> Total Pesanan:" . $_POST["total"] . " <br>Ongkos Kirim:" . $_POST["biaya_ongkir"] . "<br> Kurir Pengiriman:" . $_POST["jasa_pengiriman"] . "<br> <br> *Detail Pengiriman* <br> Penerima:" . $_POST["nama_penerima"] . " <br> No HP:" . $_POST["no_penerima"] . "<br> Alamat:" . $_POST["alamat_penerima"] . " <br> <br> Segera lakukan pembayaran agar pesananmu segera diproses <br> *Transfer pembayaran ke rekening berikut:* <br> *BANK BCA* - 1234567890 <br> a/n Amalia <br> *BANK MANDIRI* - 39219302039021 <br> a/n Amalia <br> <br> Informasi cara pembayaran dan status pesananmu langsung di menu: PESANANKU <br> <br> *Pesan Ini Dikirim Otomatis Oleh Sistem Mohon Untuk Tidak Membalas Pesan Ini*"; // isi pesan ente
+        $isiPesan = "Terimakasih sudah membeli produk kami. Saat ini kami sedang menunggu pembayaran dari anda sebelum kami memprosesnya. Sebagai informasi, berikut *detail pesananmu*. <br> <br> No Invoice : " . $_POST["id_order"] . " <br> Total Pesanan : " . $_POST["total"] . " <br>Ongkos Kirim : " . $_POST["biaya_ongkir"] . "<br> Kurir Pengiriman : " . $_POST["jasa_pengiriman"] . "<br> <br> *Detail Pengiriman* <br> Penerima : " . $_POST["nama_penerima"] . " <br> No HP : " . $_POST["no_penerima"] . "<br> Alamat : " . $_POST["alamat_penerima"] . " <br> <br> Segera lakukan pembayaran agar pesananmu segera diproses <br> *Transfer pembayaran ke rekening berikut:* <br> *BANK BCA* - 1234567890 <br> a/n Amalia <br> *BANK MANDIRI* - 39219302039021 <br> a/n Amalia <br> <br> Informasi cara pembayaran dan status pesananmu langsung di menu: PESANANKU <br> <br> *Pesan Ini Dikirim Otomatis Oleh Sistem Mohon Untuk Tidak Membalas Pesan Ini*"; // isi pesan ente
 
         curl_setopt_array($curl, array(
 

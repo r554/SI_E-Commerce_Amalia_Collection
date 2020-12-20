@@ -141,7 +141,7 @@ if (!$this->session->userdata('nama')) {
 
                             <div class="card">
                                 <div class="card-header bg-info">
-                                    <h3 class="card-title">DataTable - STOK PRODUK</h3>
+                                    <h3 class="card-title">DATA STOK PRODUK</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
@@ -236,7 +236,7 @@ if (!$this->session->userdata('nama')) {
 
                             <div class="card">
                                 <div class="card-header bg-info">
-                                    <h3 class="card-title">DataTable - Pesanan Masuk</h3>
+                                    <h3 class="card-title">DATA PESANAN MASUK</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
@@ -286,7 +286,8 @@ if (!$this->session->userdata('nama')) {
                                                     <p><?php echo $a->grand_qty; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a->grand_total; ?> </p>
+                                                    <p><?php echo "Rp. "   . number_format($a->grand_total) . ",-" ?>
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <p><?php
@@ -294,7 +295,7 @@ if (!$this->session->userdata('nama')) {
                                                             if ($a->status == 1) {
                                                                 echo "Pesanan Belum Dibayar";
                                                             } elseif ($a->status == 2) {
-                                                                echo "Pembeyaran Sedang diverifikasi ";
+                                                                echo "Pembayaran Sedang diverifikasi ";
                                                             } elseif ($a->status == 3) {
                                                                 echo "Pesanan sedang diproses ";
                                                             } elseif ($a->status == 4)
