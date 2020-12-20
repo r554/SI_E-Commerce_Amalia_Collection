@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-sm-9 col-md-8 mx-auto text-center">
-                <h1>Halaman Blog</h1>
+                <h1>Blog Amalia Collection</h1>
 
             </div>
         </div>
@@ -28,13 +28,14 @@
             $no = 1;
             foreach ($haris as $p) {
             ?>
-            <div class="col-md-3 mt-5">
-                <div class="card">
-                    <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $p->gbr_tutorial; ?>">
+            <div class="col-md-4 mt-5">
+                <div class="card card shadow p-3 mb-5 bg-white rounded">
+                    <img width="2000px" height="300px"
+                        src="<?php echo base_url() ?>assets/Gambar/blog/<?php echo $p->gbr_tutorial; ?>">
                     <div class="card-body">
-                        <h5 class="card-title"> <?php echo $p->judul_tutorial; ?></h5>
-                        <a href="<?php echo base_url("blog/tampil_detail_tutorial/$p->id_tutorial")?>"
-                            class="btn btn-primary">Selengkapnya</a>
+                        <h4 class="card-title"> <?php echo $p->judul_tutorial; ?></h4>
+                        <a href="<?php echo base_url("blog/tampil_detail_tutorial/$p->id_tutorial") ?>"
+                            class="btn btn-primary btn-lg" style="font-size: 15px">Selengkapnya</a>
                     </div>
                 </div>
             </div>

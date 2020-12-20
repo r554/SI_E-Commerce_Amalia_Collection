@@ -75,13 +75,14 @@ if (!$this->session->userdata('nama')) {
                             <i class="fas fa-times"></i>
                         </button> -->
                         <?php
-                        if ($this->session->flashdata('message')) { // Jika ada ?>
+                        if ($this->session->flashdata('message')) { // Jika ada 
+                        ?>
                         <div class="alert alert-info alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <h5><i class="icon fas fa-info"></i> Info!</h5>
                             Data Berhasil Disimpan.
                         </div>
-                        <?php  }?>
+                        <?php  } ?>
                     </div>
 
                     <form action="<?php echo base_url('blog/save_blog') ?> " method="POST"
@@ -109,7 +110,7 @@ if (!$this->session->userdata('nama')) {
                                         <div class="form-group">
                                             <label>Tanggal </label>
                                             <input name="tgl" type="text" class="form-control"
-                                                value="<?php echo date("Y/m/d");?>">
+                                                value="<?php echo date("Y/m/d"); ?>">
                                         </div>
                                     </div>
 
@@ -125,9 +126,7 @@ if (!$this->session->userdata('nama')) {
                                                     <input name="gbr_tutorial" type="file" class="form-control"
                                                         id="file">
                                                 </div>
-                                                <div class="card-footer text-center">
-                                                    Gambar harus berfotmat PNG
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

@@ -37,17 +37,20 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-body"> <?php echo $ferdi[0]->deskripsi_tutorial; ?></h3>
+                        <h3 class="card-body"> <?php echo $ferdi[0]->deskripsi_tutorial; ?>
+
+                        </h3>
+
                     </div>
                 </div>
             </div>
 
 
             <div class="col-md-4">
-                <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $ferdi[0]->gbr_tutorial; ?>">
-
+                <div class="card shadow p-3 mb-5 bg-white rounded ">
+                    <img src="<?php echo base_url() ?>assets/Gambar/blog/<?php echo $ferdi[0]->gbr_tutorial; ?>">
+                </div>
             </div>
-
         </div>
 
 

@@ -31,7 +31,7 @@
                                     <h1><?= $foto_banner->tittle_banner ?></h1>
                                     <h3><?= $foto_banner->deskripsi_banner ?></h3>
                                     <div class="buttons-group">
-                                        <button>Ambil</button>
+                                        <a href="<?= $foto_banner->link_banner ?>"> <button>Ambil</button></a>
                                     </div>
                                 </div>
                                 <img src="<?= base_url() ?>assets/Gambar/foto_banner/<?= $foto_banner->foto_banner ?>"

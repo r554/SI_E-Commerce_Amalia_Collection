@@ -52,7 +52,7 @@ if (!$this->session->userdata('nama')) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active"></li>
+                                <li class="breadcrumb-item"><a href="#">Blog</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -73,21 +73,22 @@ if (!$this->session->userdata('nama')) {
                         <div class="row">
 
                             <div class="navbar-buttons mbr-section-btn ml-5 mb-2">
-                                <a href="<?php echo base_url("blog/tambah_blog")?>"><button type="button"
+                                <a href="<?php echo base_url("blog/tambah_blog") ?>"><button type="button"
                                         class="btn btn-success btn-sm">Tambah Blog</button></a>
                             </div>
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <?php
-                                        if ($this->session->flashdata('message')) { // Jika ada ?>
+                                        if ($this->session->flashdata('message')) { // Jika ada 
+                                        ?>
                                         <div class="alert alert-info alert-dismissible">
                                             <button type="button" class="close" data-dismiss="alert"
                                                 aria-hidden="true">&times;</button>
                                             <h5><i class="far fa-check-circle"></i> Berhasil</h5>
-                                            Data Berhasil dihapus!
+                                            Data Berhasil di Ubah!
                                         </div>
-                                        <?php  }?>
+                                        <?php  } ?>
 
                                         <div class="card-body table-responsive p-0">
                                             <table class="table table-hover text-nowrap text-center">
@@ -105,8 +106,8 @@ if (!$this->session->userdata('nama')) {
 
                                                     <?php
                                                     $no = 1;
-                                                     foreach ($data as $p) {
-                                                        ?>
+                                                    foreach ($data as $p) {
+                                                    ?>
                                                     <tr>
                                                         <td>
                                                             <a><?php echo $no++; ?> </a>
@@ -118,18 +119,18 @@ if (!$this->session->userdata('nama')) {
                                                             <p><?php echo $p->tgl; ?>
                                                         </td>
                                                         <td>
-                                                            <p><img src="<?php echo base_url()?>/assets/Gambar/blog/<?php echo $p->gbr_tutorial; ?>"
+                                                            <p><img src="<?php echo base_url() ?>/assets/Gambar/blog/<?php echo $p->gbr_tutorial; ?>"
                                                                     alt="" width="100px"> </p>
 
                                                         </td>
 
                                                         <td>
                                                             <a
-                                                                href="<?php echo base_url("blog/delete_blog/$p->id_tutorial")?>"><button
+                                                                href="<?php echo base_url("blog/delete_blog/$p->id_tutorial") ?>"><button
                                                                     type="button"
                                                                     class="btn btn-danger btn-sm">Hapus</button></a>
                                                             <a
-                                                                href="<?php echo base_url("blog/tampil_edit_blog/$p->id_tutorial")?>"><button
+                                                                href="<?php echo base_url("blog/tampil_edit_blog/$p->id_tutorial") ?>"><button
                                                                     type="button"
                                                                     class="btn btn-info btn-sm">Edit</button></a>
                                                         </td>
