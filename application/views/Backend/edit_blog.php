@@ -55,7 +55,8 @@ if (!$this->session->userdata('nama')) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active"></li>
+                                <li class="breadcrumb-item"><a href="#">Blog</a></li>
+
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -72,9 +73,9 @@ if (!$this->session->userdata('nama')) {
 
 
                     <?php
-                        $no = 1;
-                        foreach ($semongko as $duren) {
-                        ?>
+                    $no = 1;
+                    foreach ($semongko as $duren) {
+                    ?>
                     <form action="<?php echo base_url('blog/edit_blog') ?> " method="POST"
                         enctype="multipart/form-data">
 
@@ -88,12 +89,12 @@ if (!$this->session->userdata('nama')) {
                                                 value="<?php echo $duren->id_tutorial; ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label>judul_postingan / Blog</label>
+                                            <label>Judul Postingan / Blog</label>
                                             <input name="judul_tutorial" type="teks" class="form-control"
                                                 value="<?php echo $duren->judul_tutorial; ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label>tanggal Postingan</label>
+                                            <label>Tanggal Posting</label>
                                             <input name="tgl" type="date" class="form-control"
                                                 value="<?php echo $duren->tgl; ?>">
                                         </div>
@@ -106,43 +107,53 @@ if (!$this->session->userdata('nama')) {
 
                                     <div class="col-md-4">
                                         <div class="card">
-                                            <div class="card-header text-center">
-                                                <h3 class="card-title">Gambar Blog</h3>
+
+                                            <div class="card card-danger card-outline">
+                                                <div class="card-header text-center">
+                                                    <h3 class="card-title">Gambar Blog</h3>
+                                                </div>
+
+                                                <input class="form-control" type='file' multiple accept='image/*'
+                                                    id="menu_images" name="gbr_tutorial" required
+                                                    oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
+                                                    oninput="setCustomValidity('')" />
+                                                <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
+                                                    OnError=" $(this).hide();" height="250px" width="250px" />
+                                                <br>
+
+                                                <img src="<?php echo base_url() ?>assets/Gambar/blog/<?php echo $duren->gbr_tutorial ?>"
+                                                    alt="" width="200px" height="200px">
+
+                                                <input name="gbr_tutorial" type="hidden" class="form-control"
+                                                    value="<?php echo $duren->gbr_tutorial; ?>">
+
+
                                             </div>
 
-                                            <img src="<?php echo base_url() ?>assets/Gambar/blog/<?php echo $duren->gbr_tutorial; ?>"
-                                                width="150px" class="ml-5">
-                                            <input name="gbr_tutorial" type="file" class="form-control">
-                                            <input name="gbr_tutorial" type="hiden" class="form-control"
-                                                value="<?php echo $duren->gbr_tutorial; ?>">
-
-
                                         </div>
 
                                     </div>
 
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header bg-info">
-                                            <h3 class="card-title">
-                                                Deskripsi Blog / Postingan
-                                            </h3>
-                                        </div>
-                                        <div class="card-body">
-                                            <textarea id="summernote" name="deskripsi_tutorial"
-                                                style="width:100px; height:500px; min-width:100px; min-height:500px">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header bg-info">
+                                                <h3 class="card-title">
+                                                    Deskripsi Blog / Postingan
+                                                </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <textarea id="summernote" name="deskripsi_tutorial"
+                                                    style="width:100px; height:500px; min-width:100px; min-height:500px">
                                                     <?php echo $duren->deskripsi_tutorial; ?>
                                                  </textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
                     </form>
                     <?php
                     } ?>
@@ -165,6 +176,25 @@ if (!$this->session->userdata('nama')) {
 
 
                 })
+                </script>
+
+                <script type="text/javascript">
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            $('#gambar').attr('src', e.target.result);
+                        }
+
+                        reader.readAsDataURL(input.files[0]); // convert to base64 string
+                    }
+                }
+
+                $("#menu_images").change(function() {
+                    $('#gambar').show();
+                    readURL(this);
+                });
                 </script>
 
 

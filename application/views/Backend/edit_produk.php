@@ -178,10 +178,17 @@ if (!$this->session->userdata('nama')) {
                                                 value="<?php echo $edit[0]->berat_produk ?>">
                                         </div>
                                         <label>Gambar Produk</label>
-                                        <input name="gambar_produk" id="menu_images" type="file" multiple
+                                        <!-- <input name="gambar_produk" id="menu_images" type="file" multiple
                                             accept='image/*' value="<?php echo $edit['0']->gambar_produk ?>">
                                         <input name="gambar_produk" type="hidden"
-                                            value="<?php echo $edit['0']->gambar_produk ?>">
+                                            value="<?php echo $edit['0']->gambar_produk ?>"> -->
+                                        <input type='file' multiple accept='image/*' id="menu_images"
+                                            name="gambar_produk" required
+                                            oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
+                                            oninput="setCustomValidity('')" />
+                                        <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
+                                            OnError=" $(this).hide();" height="250px" width="250px" />
+                                        <br>
 
                                         <img src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $edit['0']->gambar_produk ?>"
                                             alt="" width="200px" height="200px">
@@ -353,6 +360,25 @@ if (!$this->session->userdata('nama')) {
     //         'success'
     //     )
     // }
+    </script>
+
+    <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#gambar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#menu_images").change(function() {
+        $('#gambar').show();
+        readURL(this);
+    });
     </script>
 </body>
 

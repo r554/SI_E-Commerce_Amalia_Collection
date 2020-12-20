@@ -37,7 +37,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('success')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -80,11 +80,11 @@
                                             alt="User profile picture">
                                     </div>
                                     <h3 class="profile-username text-center"><?php echo $user->nama_admin ?></h3>
-                                    <?php if($user->role == "2"){?>
+                                    <?php if ($user->role == "2") { ?>
                                     <p class="text-muted text-center">Login sebagai <?php echo "admin" ?></p>
-                                    <?php } else{?>
+                                    <?php } else { ?>
                                     <p class="text-muted text-center">Login sebagai <?php echo "manager" ?></p>
-                                    <?php }?>
+                                    <?php } ?>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -96,7 +96,7 @@
                         <div class="col-md-9">
 
 
-                            <div class="card card-primary">
+                            <div class="card card-primary card-outline">
                                 <?php $id_user = $this->session->userdata('kd_pengguna') ?>
                                 <form action="<?php echo base_url('Admin/profil/edit/' . $id_user) ?>" method="POST"
                                     role="form" enctype="multipart/form-data">
@@ -119,8 +119,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputNomorTelepon1">Nomor Telepon</label>
-                                            <input value="<?php echo $user->no_admin; ?>" name="no_admin" type="text" class="form-control" minlength="9"
-                                                min="9" maxlength="14" placeholder="Enter No HP (Harus Angka)"
+                                            <input value="<?php echo $user->no_admin; ?>" name="no_admin" type="text"
+                                                class="form-control" minlength="9" min="9" maxlength="14"
+                                                placeholder="Enter No HP (Harus Angka)"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('No HP Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
@@ -139,7 +140,7 @@
                                                 value="<?php echo $user->foto_admin ?>">
 
                                             <img src="<?php echo base_url() ?>assets/Gambar/foto_profil/<?php echo $user->foto_admin ?>"
-                                            alt="" width="200px" hight="200px">
+                                                alt="" width="200px" hight="200px">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
