@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

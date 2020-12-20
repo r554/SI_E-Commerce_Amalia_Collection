@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +45,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('success')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -46,7 +54,7 @@
                     </div>
                     <?php }
                     ?>
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('hapus')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -55,7 +63,7 @@
                     </div>
                     <?php }
                     ?>
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('edit')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -85,7 +93,7 @@
             <!-- Main content Ini Bagian Content -->
             <section class="content">
                 <div class="container">
-                    <form action="<?php echo base_url('Admin/profil/edit/')?>" method="POST" role="form"
+                    <form action="<?php echo base_url('Admin/profil/edit/') ?>" method="POST" role="form"
                         enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-12">
@@ -114,34 +122,34 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                            $no = 1;
-                                            foreach ($kategori as $kategori) {
-                                            ?>
+                                                    $no = 1;
+                                                    foreach ($kategori as $kategori) {
+                                                    ?>
                                                     <tr>
                                                         <td>
                                                             <p><?php echo $kategori['nama_kategori']; ?></p>
                                                         </td>
                                                         <td>
-                                                            <img src="<?php echo base_url()?>/assets/Frontend/images/<?php echo $kategori['gambar_kategori']?>"
+                                                            <img src="<?php echo base_url() ?>/assets/Frontend/images/<?php echo $kategori['gambar_kategori'] ?>"
                                                                 alt="" width="100px">
                                                         </td>
                                                         <td>
                                                             <a
-                                                                href="<?php echo base_url("Admin/kategori/tampil_detail_kategori/".$kategori['id_kategori'])?>"><button
+                                                                href="<?php echo base_url("Admin/kategori/tampil_detail_kategori/" . $kategori['id_kategori']) ?>"><button
                                                                     type="button"
                                                                     class="btn btn-success btn-sm">Detail</button></a>
                                                             <a
-                                                                href="<?php echo base_url("Admin/kategori/edit_kategori/".$kategori['id_kategori'])?>"><button
+                                                                href="<?php echo base_url("Admin/kategori/edit_kategori/" . $kategori['id_kategori']) ?>"><button
                                                                     type="button"
                                                                     class="btn btn-info btn-sm">Edit</button></a>
                                                             <a
-                                                                href="<?php echo base_url("Admin/kategori/hapus_kategori/".$kategori['id_kategori'])?>"><button
+                                                                href="<?php echo base_url("Admin/kategori/hapus_kategori/" . $kategori['id_kategori']) ?>"><button
                                                                     type="button"
                                                                     class="btn btn-danger btn-sm">Hapus</button></a>
                                                         </td>
                                                     </tr>
                                                     <?php
-                                            } ?>
+                                                    } ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -169,7 +177,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo base_url("Admin/kategori/save_kategori/")?>" method="post"
+                <form action="<?php echo base_url("Admin/kategori/save_kategori/") ?>" method="post"
                     enctype="multipart/form-data">
                     <div class="container">
                         <div class="form-group row">

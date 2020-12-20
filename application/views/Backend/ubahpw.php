@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,9 +71,9 @@
                         <div class="col-2"> </div>
                         <div class="col-8">
                             <div class="card card-primary">
-                                <?php $id_user = $this->session->userdata('kd_pengguna')?>
-                                <form action="<?php echo base_url('Admin/profil/edit_ubahpw/'.$id_user)?>" method="POST"
-                                    role="form" class="form-horizontal">
+                                <?php $id_user = $this->session->userdata('kd_pengguna') ?>
+                                <form action="<?php echo base_url('Admin/profil/edit_ubahpw/' . $id_user) ?>"
+                                    method="POST" role="form" class="form-horizontal">
                                     <input name="id_admin" value="<?php echo $user->id_admin; ?>" type="hidden">
                                     <input name="nama_admin" value="<?php echo $user->nama_admin; ?>" type="hidden">
                                     <input name="alamat_admin" value="<?php echo $user->alamat_admin; ?>" type="hidden">

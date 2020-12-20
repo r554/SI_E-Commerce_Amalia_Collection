@@ -45,7 +45,7 @@ if (!$this->session->userdata('nama')) {
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('success')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -54,7 +54,7 @@ if (!$this->session->userdata('nama')) {
                     </div>
                     <?php }
                     ?>
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('hapus')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -111,7 +111,7 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 ">Foto Kategori</label>
                                             <div class="col-sm-8">
-                                                <p> <img src="<?php echo base_url()?>/assets/Frontend/images/<?php echo $kategori2['0']->gambar_kategori ?>"
+                                                <p> <img src="<?php echo base_url() ?>/assets/Frontend/images/<?php echo $kategori2['0']->gambar_kategori ?>"
                                                         alt="" width="200px"></p>
                                             </div>
 
@@ -148,7 +148,7 @@ if (!$this->session->userdata('nama')) {
                                                 <td><?php echo $kategori->nama_jenis; ?></td>
                                                 <td>
                                                     <a
-                                                        href="<?php echo base_url("Admin/kategori/delete_kategori/". $kategori->id_jenis .'/'.$kategori->id_kategori)?>"><button
+                                                        href="<?php echo base_url("Admin/kategori/delete_kategori/" . $kategori->id_jenis . '/' . $kategori->id_kategori) ?>"><button
                                                             type="button"
                                                             class="btn btn-danger btn-sm">Hapus</button></a>
                                                 </td>
@@ -193,12 +193,13 @@ if (!$this->session->userdata('nama')) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo base_url("Admin/kategori/save_kategori_jenis/".$kategori2['0']->id_kategori)?>"
+                <form
+                    action="<?php echo base_url("Admin/kategori/save_kategori_jenis/" . $kategori2['0']->id_kategori) ?>"
                     method="post">
                     <div class="modal-body">
                         <p>Nama Jenis</p>
 
-                        <input type="hidden" name="id_kategori" value="<?php echo $kategori2['0']->id_kategori?>">
+                        <input type="hidden" name="id_kategori" value="<?php echo $kategori2['0']->id_kategori ?>">
                         <input type="text" name="nama_jenis">
 
                     </div>

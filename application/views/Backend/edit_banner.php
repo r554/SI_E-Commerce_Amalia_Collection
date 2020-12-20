@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +66,7 @@
             <!-- Main content Ini Bagian Content -->
             <section class="content">
                 <div class="container-fluid">
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('edit')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -71,7 +79,7 @@
                         <div class="col-md-10 mx-auto">
                             <!-- Form Element sizes -->
                             <form
-                                action="<?php echo base_url('Admin/Banner/edit_banner/'.$edit_banner['0']->id_banner)?>"
+                                action="<?php echo base_url('Admin/Banner/edit_banner/' . $edit_banner['0']->id_banner) ?>"
                                 method="POST" role="form" enctype="multipart/form-data">
                                 <div class="card card-success">
                                     <div class="card-header">
@@ -81,32 +89,32 @@
                                     <div class="card-body">
                                         <!-- <label for="">ID Banner</label> -->
                                         <input class="form-control" type="hidden" placeholder="Default input"
-                                            name="id_banner" value="<?php echo $edit_banner['0']->id_banner?>">
+                                            name="id_banner" value="<?php echo $edit_banner['0']->id_banner ?>">
                                         <!-- <br> -->
                                         <label for="">Sub Tittle</label>
                                         <input class="form-control" type="text" placeholder="Default input"
-                                            name="sub_tittle" value="<?php echo $edit_banner['0']->sub_tittle?>">
+                                            name="sub_tittle" value="<?php echo $edit_banner['0']->sub_tittle ?>">
                                         <br>
                                         <label for="">Tittle</label>
                                         <input class=" form-control" type="text" placeholder="Default input"
-                                            name="tittle_banner" value="<?php echo $edit_banner['0']->tittle_banner?>">
+                                            name="tittle_banner" value="<?php echo $edit_banner['0']->tittle_banner ?>">
                                         <br>
                                         <label for="">Deskripsi</label>
                                         <input class="form-control" type="text" placeholder="Default input"
                                             name="deskripsi_banner"
-                                            value="<?php echo $edit_banner['0']->deskripsi_banner?>">
+                                            value="<?php echo $edit_banner['0']->deskripsi_banner ?>">
                                         <br>
                                         <label for="">Link</label>
                                         <input class="form-control" type="text" placeholder="Default input"
-                                            name="link_banner" value="<?php echo $edit_banner['0']->link_banner?>">
+                                            name="link_banner" value="<?php echo $edit_banner['0']->link_banner ?>">
                                         <br>
                                         <label>Foto</label>
                                         <input name="foto_banner" type="file" multiple accept='image/*' id="menu_images"
-                                            value="<?php echo $edit_banner['0']->foto_banner?>">
+                                            value="<?php echo $edit_banner['0']->foto_banner ?>">
                                         <input name="foto" type="hidden"
-                                            value="<?php echo $edit_banner['0']->foto_banner?>">
+                                            value="<?php echo $edit_banner['0']->foto_banner ?>">
 
-                                        <img src="<?php echo base_url() ?>assets/Gambar/foto_banner/<?php echo $edit_banner['0']->foto_banner?>"
+                                        <img src="<?php echo base_url() ?>assets/Gambar/foto_banner/<?php echo $edit_banner['0']->foto_banner ?>"
                                             alt="" width="200px" hight="200px">
                                     </div>
 

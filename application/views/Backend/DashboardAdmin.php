@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -198,7 +206,7 @@
                                                 </td>
                                                 <td>
 
-                                                    <a href="<?php echo base_url('data_produk/edit/'.$d->id_produk) ?>"
+                                                    <a href="<?php echo base_url('data_produk/edit/' . $d->id_produk) ?>"
                                                         class="btn btn-info btn-sm active" role="button"
                                                         aria-pressed="true">Edit Stok</a>
                                                 </td>
@@ -281,19 +289,18 @@
                                                     <p><?php echo $a->grand_total; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <p><?php 
-                                                    
-                                                    if ( $a->status == 1){
-                                                        echo "Pesanan Belum Dibayar";
-                                                    
-                                                    } elseif ( $a->status == 2 ) {
-                                                        echo "Pembeyaran Sedang diverifikasi ";
-                                                    }elseif ( $a->status == 3 ) {
-                                                        echo "Pesanan sedang diproses ";
-                                                    }elseif ( $a->status == 4 )
-                                                     
+                                                    <p><?php
 
-                                                    ?> </p>
+                                                            if ($a->status == 1) {
+                                                                echo "Pesanan Belum Dibayar";
+                                                            } elseif ($a->status == 2) {
+                                                                echo "Pembeyaran Sedang diverifikasi ";
+                                                            } elseif ($a->status == 3) {
+                                                                echo "Pesanan sedang diproses ";
+                                                            } elseif ($a->status == 4)
+
+
+                                                            ?> </p>
                                                 </td>
                                                 <td>
 

@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,13 +69,14 @@
                                     <h3 class="card-title">Edit Produk</h3>
                                 </div>
                                 <!-- /.card-header -->
-                                <?php 
-                //$no = 1;
-                foreach($detailProduk as $u){ 
-                $u->id_produk 
-                    ?>
+                                <?php
+                                //$no = 1;
+                                foreach ($detailProduk as $u) {
+                                    $u->id_produk
+                                ?>
                                 <!-- form start -->
-                                <form action="<?php echo base_url('admin/Flashsale/updatehargaDiskon/'.$u->id_produk); ?>"
+                                <form
+                                    action="<?php echo base_url('admin/Flashsale/updatehargaDiskon/' . $u->id_produk); ?>"
                                     method="post">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -82,12 +91,14 @@
                                             <label>Jumlah Produk</label>
                                             <input type="number" class="form-control" name="jumlahProduk"
                                                 laceholder="Enter email" disabled
-                                                value="<?php //echo $u->jumlah_produk ?>">
+                                                value="<?php //echo $u->jumlah_produk 
+                                                        ?>">
                                         </div> -->
                                         <!-- <div class="form-group">
                                             <label>Warna</label>
                                             <input type="text" class="form-control" name="warna"
-                                                placeholder="Enter email" disabled value="<?php //echo $u->warna ?>">
+                                                placeholder="Enter email" disabled value="<?php //echo $u->warna 
+                                                                                            ?>">
                                         </div> -->
                                         <div class="form-group">
                                             <label>Deskripsi</label>
@@ -103,8 +114,7 @@
                                         <div class="form-group">
                                             <label>Dibuat Tanggal</label>
                                             <input type="text" class="form-control" name="dibuattanggal"
-                                                placeholder="Enter email" disabled
-                                                value="<?php echo $u->tanggal ?>">
+                                                placeholder="Enter email" disabled value="<?php echo $u->tanggal ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Status Produk</label>

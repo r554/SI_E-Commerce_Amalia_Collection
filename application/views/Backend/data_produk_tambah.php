@@ -1,8 +1,8 @@
 <?php
 
-// if (!$this->session->userdata('nama')) {
-//     redirect(base_url("Auth_Admin"));
-// }
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
 
 ?>
 

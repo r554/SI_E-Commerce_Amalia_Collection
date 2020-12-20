@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +45,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('success')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -46,7 +54,7 @@
                     </div>
                     <?php }
                     ?>
-                 <?php
+                    <?php
                     // Cek apakah terdapat session nama message
                     if ($this->session->flashdata('hapus')) { ?>
                     <div class="alert alert-success alert-dismissible">
@@ -76,7 +84,7 @@
             <!-- Main content Ini Bagian Content -->
             <section class="content">
                 <div class="container">
-                    <form action="<?php echo base_url('Admin/profil/edit/')?>" method="POST" role="form"
+                    <form action="<?php echo base_url('Admin/profil/edit/') ?>" method="POST" role="form"
                         enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-12">
@@ -86,7 +94,7 @@
 
                                         <div class="navbar-buttons mbr-section-btn float-right"><a
                                                 class="btn btn-primary display-4"
-                                                href="<?php echo base_url("Admin/Banner/tambah_data")?>">
+                                                href="<?php echo base_url("Admin/Banner/tambah_data") ?>">
                                                 Tambah Data</a></div>
                                         <!-- /.card-header -->
                                         <div class="card-body table-responsive p-0">
@@ -101,9 +109,9 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                            $no = 1;
-                                            foreach ($banner as $a) {
-                                            ?>
+                                                    $no = 1;
+                                                    foreach ($banner as $a) {
+                                                    ?>
                                                     <tr>
                                                         <td>
                                                             <img src="<?php echo base_url() ?>assets/Gambar/foto_banner/<?php echo $a['foto_banner']; ?> "
@@ -114,17 +122,17 @@
                                                         </td>
                                                         <td>
                                                             <a
-                                                                href="<?php echo base_url("Admin/Banner/edit_banner/".$a['id_banner'])?>"><button
+                                                                href="<?php echo base_url("Admin/Banner/edit_banner/" . $a['id_banner']) ?>"><button
                                                                     type="button"
                                                                     class="btn btn-success btn-sm">Edit</button></a>
                                                             <a
-                                                                href="<?php echo base_url("Admin/Banner/delete/".$a['id_banner'])?>"><button
+                                                                href="<?php echo base_url("Admin/Banner/delete/" . $a['id_banner']) ?>"><button
                                                                     type="button"
                                                                     class="btn btn-danger btn-sm">Hapus</button></a>
                                                         </td>
                                                     </tr>
                                                     <?php
-                                            } ?>
+                                                    } ?>
                                                 </tbody>
                                             </table>
                                         </div>

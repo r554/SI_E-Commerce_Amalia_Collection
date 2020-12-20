@@ -1,3 +1,11 @@
+<?php
+
+if (!$this->session->userdata('nama')) {
+    redirect(base_url("Auth_Admin"));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +69,7 @@
                     <div class="row">
                         <div class="col-md-10 mx-auto">
                             <!-- Form Element sizes -->
-                            <form action="<?php echo base_url('Admin/Banner/save_banner/')?>" method="POST" role="form"
+                            <form action="<?php echo base_url('Admin/Banner/save_banner/') ?>" method="POST" role="form"
                                 enctype="multipart/form-data">
                                 <div class="card card-success">
                                     <div class="card-header">
