@@ -126,7 +126,7 @@
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 90%"></div>
                                     </div>
-                                    <a href="<?php echo base_url('data_produk/tampil') ?>"
+                                    <a href="<?php echo base_url('data_produk/tampil_manajer') ?>"
                                         class="small-box-footer text-light">
                                         info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
@@ -143,7 +143,7 @@
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 50%"></div>
                                     </div>
-                                    <a href="<?php echo base_url('Admin/data_customer/tampil') ?>"
+                                    <a href="<?php echo base_url('Admin/data_customer/tampil_manajer') ?>"
                                         class="small-box-footer text-light">
                                         info <i class="fas fa-arrow-circle-right"></i>
                                     </a>
@@ -236,19 +236,18 @@
                                                 </td>
                                                 <td>
 
-                                                    <p><?php 
-                                                    
-                                                    if ( $a->status == 1){
-                                                        echo "Pesanan Belum Dibayar";
-                                                    
-                                                    } elseif ( $a->status == 2 ) {
-                                                        echo "Pembeyaran Sedang diverifikasi ";
-                                                    }elseif ( $a->status == 3 ) {
-                                                        echo "Pesanan sedang diproses ";
-                                                    }elseif ( $a->status == 4 )
-                                                     
+                                                    <p><?php
 
-                                                    ?> </p>
+                                                            if ($a->status == 1) {
+                                                                echo "Pesanan Belum Dibayar";
+                                                            } elseif ($a->status == 2) {
+                                                                echo "Pembeyaran Sedang diverifikasi ";
+                                                            } elseif ($a->status == 3) {
+                                                                echo "Pesanan sedang diproses ";
+                                                            } elseif ($a->status == 4)
+
+
+                                                            ?> </p>
                                                 </td>
                                                 <td>
 
@@ -301,7 +300,7 @@
                                                 <!-- <th>Jenis</th> -->
                                                 <th>Warna</th>
                                                 <th>Stok Tersedia</th>
-                                                <th>Aksi</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -338,11 +337,7 @@
                                                 <td>
                                                     <p><?php echo $d->qty; ?> </p>
                                                 </td>
-                                                <td>
-                                                    <a href="<?php echo base_url('data_produk/edit/'.$d->id_produk) ?>"
-                                                        class="btn btn-info btn-sm active" role="button"
-                                                        aria-pressed="true">Edit Stok</a>
-                                                </td>
+
 
                                             </tr>
                                             <?php } ?>
