@@ -24,7 +24,7 @@ class M_bukti_pembayaran extends CI_model
         $post = $this->input->post();
         $this->id_order = $post["id_order"];
         $this->foto_bukti = $this->do_upload();
-
+        
         return $this->db->insert($this->_table, $this);
     }
 

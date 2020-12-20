@@ -50,7 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td>Total Pembayaran</td>
-                                    <th class="text-primary">Rp<?= number_format($ord['grand_total'],0,",","."); ?></th>
+                                    <th class="text-primary">Rp<?= number_format($ord['total'],0,",","."); ?></th>
                                 </tr>
                             </table>
                             <hr>
@@ -115,7 +115,7 @@
                                         </tr>
                                         <tr>
                                             <td>Total Belanja</td>
-                                            <td>: Rp<?= number_format($ord['grand_total'],0,",","."); ?></td>
+                                            <td>: Rp<?= number_format($ord['total'],0,",","."); ?></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -138,11 +138,29 @@
                                 $satuj = 100;
                             }else if($ord['status'] == 6){
                                 $batal = 100;                                
-                            }
+                            }else if($ord['status'] == 1){
+                                $belumbayar = 100;                                
+                            }else if($ord['status'] == 2){
+                                $menunggukonfirmasi = 100;                                
+                            }                            
                             ?>
-                            <h2 class="title mb-3">Status Pengiriman</h2>
+                            <h2 class="title mb-3">Status Pesanan</h2>
                             <div class="row">
-                            <?php if($ord['status'] <= 5){ ?>
+                            <?php if($ord['status'] == 1){ ?>
+                                <div class="col-md-12">
+                                    <p class="text-muted mb-1">Lakukan Pembayaran</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="<?= $belumbayar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $belumbayar; ?>%"></div>
+                                    </div>                                  
+                                </div>
+                                <?php }else if($ord['status'] == 2){ ?>
+                                <div class="col-md-12">
+                                    <p class="text-muted mb-1">Menunggu Konfirmasi</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="<?= $menunggukonfirmasi; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $menunggukonfirmasi; ?>%"></div>
+                                    </div>                                  
+                                </div>
+                                <?php }else if($ord['status'] <= 5){ ?>
                                 <div class="col-md-4">
                                     <p class="text-muted mb-1">Sedang diproses</p>
                                     <div class="progress">
@@ -160,14 +178,28 @@
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $satuj; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $satuj; ?>%"></div>
                                     </div>
-                                </div>
+                                </div>                                
                                     <?php }else if($ord['status'] == 6){ ?>
                                 <div class="col-md-12">
                                     <p class="text-muted mb-1">Dibatalkan</p>
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="<?= $batal; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $batal; ?>%"></div>
                                     </div>
-                                </div>       
+                                </div>
+                                <!-- <?php }else if($ord['status'] == 1) { ?>
+                                <div class="col-md-12">
+                                    <p class="text-muted mb-1">Lakukan Pembayaran</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="<?= $belumbayar; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $belumbayar; ?>%"></div>
+                                    </div>                                  
+                                </div>
+                                <?php }else if($ord['status'] == 2) { ?>
+                                <div class="col-md-12">
+                                    <p class="text-muted mb-1">Menunggu Konfirmasi</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="<?= $menunggukonfirmasi; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $menunggukonfirmasi; ?>%"></div>
+                                    </div>                                  
+                                </div>        -->
                                     <?php } ?>
                                 
                             </div>

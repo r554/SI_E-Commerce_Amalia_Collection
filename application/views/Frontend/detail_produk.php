@@ -57,12 +57,12 @@
                         <a href="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" data-lightbox="img-1">
                             <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" alt="produk" class="jumbo-thumb">
                         </a>
-                        <!-- <div class="img-slider">
-                        <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" alt="gambar" class="thumb">
+                        <div class="img-slider">
+                        <!-- <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" alt="gambar" class="thumb"> -->
                         <?php foreach ($img->result_array() as $d) : ?>
-                            <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $d['gambar_produk']; ?>" alt="gambar" class="thumb">
+                            <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $d['foto']; ?>" alt="gambar" class="thumb">
                         <?php endforeach; ?>
-                    </div> -->
+                    </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -101,8 +101,7 @@
                                                 <?php if ($row->qty >= 1) { ?>
                                                 <option value="<?php echo $row->id_attribut; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
                                                 <?php } else { ?>
-                                                <option value="" disabled> ---STOK KOSONG---</option>
-                                                <option value="<?php echo $row->id_attribut; ?>" disabled stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
+                                                <option value="<?php echo $row->id_attribut; ?>" disabled stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?> (STOK KOSONG)</option>                                                
                                                 <?php } ?>
                                             <?php endforeach; ?>
                                         </select>

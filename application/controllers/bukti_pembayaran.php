@@ -14,9 +14,12 @@ class bukti_pembayaran extends CI_Controller
     public function save()
     {
         $model = $this->M_bukti_pembayaran;
-
+        $id = $this->input->post('id_order');
         if ($model->save()) {
+            $this->db->set('status', 2);
+            $this->db->where('id_order', $id);
+            $this->db->update('tbl_order');
             redirect(site_url('pesanan_saya'));
         }
-    }
+    }    
 }

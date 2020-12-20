@@ -40,7 +40,7 @@
                       <tr>
                         <td><?= $d['id_order']; ?></td>
                         <td><?= $d['tanggal_order']; ?></td>
-                        <td>Rp <?= str_replace(",",".",number_format($d['grand_total'])); ?></td>
+                        <td>Rp <?= str_replace(",",".",number_format($d['total'])); ?></td>
                         <?php if($d['status'] == 1){ ?>
                             <td>Belum dibayar</td>
                         <?php }else if($d['status'] == 2){ ?>

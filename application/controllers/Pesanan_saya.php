@@ -32,12 +32,24 @@ class Pesanan_saya extends CI_Controller
         $show = $this->M_footer;
         $data['ord'] = $this->M_user->getOrderByInvoice($id);
         if(!$data['ord']){
-            redirect(base_url() . 'profile/transaction');
+            redirect(base_url() . 'pesanan_saya');
         }
         $data['footer'] = $show->tampil_footer();
         $data['product_order'] = $this->M_user->getProductByInvoice($id);
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/detailPesanan', $data);
+    }
+    
+    public function konfirmasibarangsampai($id)
+    {    
+        $data = array(
+            'status' => "5"            
+        );            
+        $where = array(
+            'id_order' => $id
+        );    
+        $this->M_user->update_data($where,$data,'tbl_order');
+        redirect('pesanan_saya');
     }
 }

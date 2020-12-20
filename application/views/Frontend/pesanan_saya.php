@@ -40,7 +40,7 @@
                       <tr>
                         <td><?= $d['id_order']; ?></td>
                         <td><?= $d['tanggal_order']; ?></td>
-                        <td>Rp <?= str_replace(",",".",number_format($d['grand_total'])); ?></td>
+                        <td>Rp <?= str_replace(",",".",number_format($d['total'])); ?></td>
                         <?php if($d['status'] == 1){ ?>
                             <td>Belum dibayar</td>
                         <?php }else if($d['status'] == 2){ ?>
@@ -55,8 +55,14 @@
                             <td>Dibatalkan</td>    
                         <?php } ?>
                         
-                       <td><small><a href="pesanan_saya/detail_order/<?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
-                       <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td>
+                       <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
+                       <?php if($d['status'] <= 2){ ?>
+                            <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td>
+                       <?php }else if($d['status'] >= 4){ ?>
+                            <td><?= $d['nomor_resi']; ?> /<p>Barang Diterima</p>  <a href="<?php echo base_url("pesanan_saya/konfirmasibarangsampai/") ?><?= $d['id_order']; ?>" type="submit" class="btn btn-info btn-lg">Konfirmasi</a></td>
+                       <?php }else if($d['status'] == 3){ ?>
+                            <td>Nomor Resi Masih Belum Tersedia</td>     
+                        <?php } ?>                       
                     </tr>
                     <?php endforeach; ?>
                     </table>
@@ -130,11 +136,12 @@
                     <hr>
         <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
         <h4>Upload Bukti Pembayaran</h4>
-            <div class="col xm-8 col-md-12">                    
+            <div class="col xm-8 col-md-12">                             
                     <p>ID Transaksi Anda :
                         <input type="hidden" name="id_order" value="<?= $d['id_order']; ?>">
                         <input type="text" name="id" value="<?= $d['id_order']; ?>"disabled>
                     </p>
+                    <p><h3>Rp <?= str_replace(",",".",number_format($d['total'])); ?></h3></p>
                     <p>Silahkan Upload Bukti Pembayaran :
                         <input type='file' id="file" name="foto_bukti" />
                         <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();"
