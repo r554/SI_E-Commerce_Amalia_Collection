@@ -71,15 +71,22 @@
                     <input type="hidden" value="<?php echo $id_pelanggan ?>" name="id_pelanggan" required>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username" required />
+                        <input type="text" name="username" placeholder="Username" data-form-field="username"
+                            class="form-control" value="" id="username" minlength="5" maxlength="30" required
+                            oninvalid="this.setCustomValidity('Username tidak boleh kosong')"
+                            oninput="setCustomValidity('')">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email" required />
+                        <input type="email" name="email" placeholder="Email" required
+                            oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
+                            oninput="setCustomValidity('')">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" required />
+                        <input type="password" name="password" placeholder="Password" required
+                            oninvalid="this.setCustomValidity('Password tidak boleh kosong')"
+                            oninput="setCustomValidity('')">
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
 
