@@ -48,16 +48,36 @@ class Pesanan extends CI_Controller
             "bukti_pembayaran" => $show->get_bukti_pembayaran($id),
         ];
 
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+        // die;
+
         $this->load->view("Backend/Semua_Detail_Verifikasi_Pembayaran", $data);
     }
 
     public function terima_pembayaran($id = null)
     {
+        // Method Untuk Mengurangi Stock / Update stok
+        $id_attribut = $this->input->post('id_attribut[]');
+        $pengurangan_stock = $this->input->post('pengurangan_stock[]');
 
+        $i = 1;
+        foreach ($id_attribut as $data_id_attribut) {
+            $where = [
+                'id_attribut' => $data_id_attribut
+            ];
+
+            $data = ['qty' => $pengurangan_stock[$i]];
+            $this->M_Pesanan->update_stock('tbl_attribut', $data, $where);
+            $i++;
+        }
+
+        // Method Untuk Merubah Status Order
         $id_order = $id;
-        $id = '3';
+        $id_status = '3';
 
-        $this->db->set('status', $id);
+        $this->db->set('status', $id_status);
         $this->db->where('id_order', $id_order);
         $this->db->update('tbl_order');
 

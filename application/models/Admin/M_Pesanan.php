@@ -63,15 +63,24 @@ class M_Pesanan extends CI_model
         $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
         $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
         $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->join('tbl_attribut', 'tbl_attribut.id_attribut = tbl_detail_order.id_attribut');
         $this->db->where('tbl_order.id_order', $id);
 
         $query = $this->db->get();
         return $query->result();
     }
 
+    // Function Untuk Mengurangi stok
+    public function update_stock($table, $data, $where)
+    {
+        $this->db->where($where)
+            ->update($table, $data);
+        return true;
+    }
+
     public function get_bukti_pembayaran($id)
     {
-      //  $this->db->select('*');
+        //  $this->db->select('*');
         $this->db->from('tbl_bukti_pembayaran');
         $this->db->where('id_order', $id);
 

@@ -200,6 +200,7 @@ class M_keranjang extends CI_model
         $id_pelanggan = $this->input->post('id_pelanggan');
         $id_produk = $this->input->post('id_produk');
         $warna = $this->input->post('warna');
+        $id_attribut = $this->input->post('attribut');
 
         if ($this->input->post('jumlah1')) {
             $jumlah = $this->input->post('jumlah1');
@@ -215,6 +216,7 @@ class M_keranjang extends CI_model
             'warna' => $warna,
             'jumlah' => $jumlah,
             'berat' => $berat,
+            'id_attribut' => $id_attribut,
         );
 
 

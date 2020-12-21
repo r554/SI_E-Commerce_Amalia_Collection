@@ -29,8 +29,7 @@ if (!$this->session->userdata('nama')) {
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?= base_url('Homepage') ?>" class="brand-link">
-                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
 
@@ -47,10 +46,8 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Verifikasi Pembayaran <a
-                                    href="<?php echo base_url('Admin/Pesanan/Tampil_semua_verifikasi_pembayaran') ?>">
-                                    <button class="btn btn-info btn-sm rounded-pill"><span
-                                            class="fa fa-arrow-left"></span> kembali </button></a></h1>
+                            <h1 class="m-0">Verifikasi Pembayaran <a href="<?php echo base_url('Admin/Pesanan/Tampil_semua_verifikasi_pembayaran') ?>">
+                                    <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span> kembali </button></a></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -175,37 +172,51 @@ if (!$this->session->userdata('nama')) {
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <label for="inputEmail3" class="col-sm-4 ">Tanggal Kirim Pembayaran</label>
-                                            <div class="col-sm-8">
-                                                <p>: <?php echo $bukti_pembayaran['0']->tgl_tf; ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="inputEmail3" class="col-sm-4 "> Foto Bukti Pembayaran </label>
-                                            <div class="col-sm-8">
-                                                <p>: <a
-                                                        href="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order) ?>"><button
-                                                            type="button" class="btn btn-success btn-sm">Terima
-                                                            Pembayaran</button></a> <a
-                                                        href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order) ?>"><button
-                                                            class="btn btn-danger btn-sm" type="button">Tolak
-                                                            Pembayaran</button></a></p>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-sm-12 text-center">
-                                                <img class="rounded"
-                                                    src="<?= base_url() ?>assets/Gambar/foto_bukti_pembayaran/<?php echo $bukti_pembayaran['0']->foto_bukti ?>"
-                                                    width="600px" height="600px" alt="">
-                                            </div>
-                                        </div>
 
+                                <div class="card-body">
+                                    <div class="row">
+                                        <label for="inputEmail3" class="col-sm-4 ">Tanggal Kirim Pembayaran</label>
+                                        <div class="col-sm-8">
+                                            <p>: <?php echo $bukti_pembayaran['0']->tgl_tf; ?></p>
+                                        </div>
                                     </div>
-                                    <!-- /.card-body -->
-                                </form>
+
+                                    <div class="row">
+                                        <label for="inputEmail3" class="col-sm-4 "> Foto Bukti Pembayaran </label>
+                                        <div class="col-md-2">
+                                            <form action="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order) ?>" method="POST">
+                                                <button type="submit" class="btn btn-success btn-sm">Terima Pembayaran</button>
+                                                <?php
+                                                $no = 1;
+                                                $no2 = 1;
+                                                foreach ($pesanan as $tampil_pesanan) {
+                                                ?>
+                                                    <br>
+                                                    <input type="hidden" name="id_attribut[<?= $no++ ?>]" value="<?= $tampil_pesanan->id_attribut; ?>">
+                                                    <input type="hidden" name="pengurangan_stock[<?= $no2++ ?>]" value="<?= $hasil = $tampil_pesanan->qty - $tampil_pesanan->sub_qty; ?>">
+                                                    <input type="hidden" value="<?= $tampil_pesanan->qty; ?>">
+
+                                                <?php
+                                                }
+                                                ?>
+
+                                            </form>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order) ?>"><button class="btn btn-danger btn-sm" type="button">Tolak
+                                                    Pembayaran</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-sm-12 text-center">
+                                            <img class="rounded" src="<?= base_url() ?>assets/Gambar/foto_bukti_pembayaran/<?php echo $bukti_pembayaran['0']->foto_bukti ?>" width="600px" height="600px" alt="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
                             </div>
                         </div>
                     </div>
@@ -226,7 +237,6 @@ if (!$this->session->userdata('nama')) {
                                                 <th>Warna</th>
                                                 <th>Deskripsi</th>
                                                 <th class="text-center">Jumlah</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -234,14 +244,13 @@ if (!$this->session->userdata('nama')) {
                                             $no = 1;
                                             foreach ($pesanan as $tampil_pesanan) {
                                             ?>
-                                            <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $tampil_pesanan->nama_produk; ?></td>
-                                                <td><?php echo $tampil_pesanan->warna; ?></td>
-                                                <td><?php echo $tampil_pesanan->deskripsi; ?></td>
-                                                <td class="text-center"><?php echo $tampil_pesanan->sub_qty; ?></td>
-
-                                            </tr>
+                                                <tr>
+                                                    <td><?php echo $no++ ?></td>
+                                                    <td><?php echo $tampil_pesanan->nama_produk; ?></td>
+                                                    <td><?php echo $tampil_pesanan->warna; ?></td>
+                                                    <td><?php echo $tampil_pesanan->deskripsi; ?></td>
+                                                    <td class="text-center"><?php echo $tampil_pesanan->sub_qty; ?></td>
+                                                </tr>
                                             <?php
                                             } ?>
                                         </tbody>
@@ -253,8 +262,8 @@ if (!$this->session->userdata('nama')) {
                         </div>
                     </div>
                     <!-- /.row -->
-
-                </div> <!-- /Ini Akhir Konten /wrapper -->
+                </div>
+                <!-- /Ini Akhir Konten /wrapper -->
             </section>
         </div>
 

@@ -58,11 +58,11 @@
                             <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" alt="produk" class="jumbo-thumb">
                         </a>
                         <div class="img-slider">
-                        <!-- <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" alt="gambar" class="thumb"> -->
-                        <?php foreach ($img->result_array() as $d) : ?>
-                            <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $d['foto']; ?>" alt="gambar" class="thumb">
-                        <?php endforeach; ?>
-                    </div>
+                            <!-- <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $product['gambar_produk']; ?>" alt="gambar" class="thumb"> -->
+                            <?php foreach ($img->result_array() as $d) : ?>
+                                <img src="<?= base_url(); ?>assets/Gambar/foto_produk/<?= $d['foto']; ?>" alt="gambar" class="thumb">
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -95,13 +95,13 @@
                                 <tr>
                                     <td>Warna</td>
                                     <!-- <td style="text-align:center"><?= $product['warna']; ?></td> -->
-                                    <td><select id="attribut" name="attribut" style="height: 40px; font-size: medium;" required>                                    
-                                            <option value="" selected disabled> - Pilih Warna -</option>                                            
+                                    <td><select id="attribut" name="attribut" style="height: 40px; font-size: medium;" required>
+                                            <option value="" selected disabled> - Pilih Warna -</option>
                                             <?php foreach ($attribut as $row) : ?>
                                                 <?php if ($row->qty >= 1) { ?>
-                                                <option value="<?php echo $row->id_attribut; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
+                                                    <option value="<?php echo $row->id_attribut; ?>" warna="<?php echo $row->warna; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?></option>
                                                 <?php } else { ?>
-                                                <option value="<?php echo $row->id_attribut; ?>" disabled stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?> (STOK KOSONG)</option>                                                
+                                                    <option value="<?php echo $row->id_attribut; ?>" disabled warna="<?php echo $row->warna; ?>" stok="<?php echo $row->qty; ?>"><?php echo $row->warna; ?> (STOK KOSONG)</option>
                                                 <?php } ?>
                                             <?php endforeach; ?>
                                         </select>
@@ -119,7 +119,7 @@
                                     <?php } ?>
                                     <td>Jumlah</td>
                                     <td style="text-align:center">
-                                    <input type="number" min="1" max="" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required />
+                                        <input type="number" min="1" max="" placeholder="QTY" name="jumlah" id="jumlah" onchange="OnChange(this.value)" onfocusout="return isNumberKey(event)" required />
                                     </td>
                                 </tr>
                                 <tr>
@@ -131,37 +131,37 @@
 
                                 <hr>
                                 <tr>
-                            <?php if ($product['qty'] == 0) { ?>
-                                <td>
-                                    <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
-                                    <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
-                                    <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
-                                    <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
-                                    <input type="hidden" name="jumlah1" id="jumlah1" />
-                                    <input type="hidden" name="jumlah2" id="jumlah2" />
-                                    <button type="submit" disabled class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
-                                </td>
-                                <td>                                                                          
-                                    <button type="submit" disabled class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
-                                </form>
-                               </td>
-                                <?php } else { ?>
-                                    <td>
-                                    <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
-                                    <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
-                                    <input type="hidden" name="warna" value="<?php echo $product['warna'] ?>"> <!-- warna Produk -->
-                                    <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
-                                    <input type="hidden" name="jumlah1" id="jumlah1" />
-                                    <input type="hidden" name="jumlah2" id="jumlah2" />
-                                    <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
-                                </td>
-                                <td>                                                                          
-                                    <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
-                                </form>
-                               </td>    
-                                <?php } ?>
-                            </tr>
-                    </table>
+                                    <?php if ($product['qty'] == 0) { ?>
+                                        <td>
+                                            <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
+                                            <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
+                                            <input type="hidden" name="warna1" id="warna1" value=""> <!-- warna Produk -->
+                                            <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
+                                            <input type="hidden" name="jumlah1" id="jumlah1" />
+                                            <input type="hidden" name="jumlah2" id="jumlah2" />
+                                            <button type="submit" disabled class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" disabled class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
+                    </form>
+                    </td>
+                <?php } else { ?>
+                    <td>
+                        <input type="hidden" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>"> <!-- id Pelanggan -->
+                        <input type="hidden" name="id_produk" value="<?php echo $product['id_produk'] ?>"> <!-- id Produk -->
+                        <input type="hidden" name="warna" id="warna" value=""> <!-- warna Produk -->
+                        <input type="hidden" name="berat_produk" value="<?php echo $product['berat_produk'] ?>"> <!-- berat Produk -->
+                        <input type="hidden" name="jumlah1" id="jumlah1" />
+                        <input type="hidden" name="jumlah2" id="jumlah2" />
+                        <button type="submit" class="btn btn-warning pl-5 pr-5 btn-lg" style="font-size: 15px">Beli</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary btn-lg" style="font-size: 15px" formaction="<?= base_url('keranjang/save_keranjang') ?>">Tambah ke Keranjang</button>
+                        </form>
+                    </td>
+                <?php } ?>
+                </tr>
+                </table>
                 </div>
             </div>
         </div>
@@ -264,11 +264,14 @@
         $("select[name=attribut]").on("change", function() {
 
             // UntuK Menampilkan Biaya Ongkir
-            var stok_warna = $("option:selected", this).attr('stok');
+            var stok_warna = $("option:selected", this).attr('stok'); // Menangkap Inputan Dari Dropdown dari atribut stok
+            var warna = $("option:selected", this).attr('warna'); // Menangkap Inputan Dari Dropdown dari atribut warna
             //alert(stok_warna);
             $("#stok").html(stok_warna);
             //$("#max").html(stok_warna);
-            document.getElementById("jumlah").max = stok_warna;
+            document.getElementById("jumlah").max = stok_warna; // Mengambil Inputan Dari Dropdown dan mengirimnya ke Tag Input Atribut max
+            document.getElementById("warna").value = warna; // Mengambil Inputan Dari Dropdown
+            document.getElementById("warna1").value = warna;
             // UntuK Menampilkan Jenis Layanan
             //var jenis_layanan = $("option:selected", this).attr('jenis_layanan');
             //document.getElementById("jenis_layanan").value = jenis_layanan;

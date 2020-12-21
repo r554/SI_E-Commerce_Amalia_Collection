@@ -158,6 +158,7 @@ if (!$data_produk) {
                                     <input type="hidden" name="nama_produk[]" value="<?php echo $data_produk2->nama_produk ?>">
                                     <input type="hidden" name="warna[]" value="<?php echo $data_produk2->warna ?>">
                                     <input type="hidden" name="harga_final[]" value="<?php echo $data_produk2->harga ?>">
+                                    <input type="hidden" name="id_attribut[]" value="<?php echo $data_produk2->id_attribut ?>">
 
                                 <?php
                                 } ?>

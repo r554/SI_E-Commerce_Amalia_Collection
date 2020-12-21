@@ -118,6 +118,7 @@ class keranjang extends CI_Controller
             $sub_qty = $_POST["sub_qty"];
             $harga_final = $_POST["harga_final"];
             $warna = $_POST["warna"];
+            $id_attribut = $_POST["id_attribut"];
 
             $data2 = array();
             $index = 0; // Set index array awal dengan 0
@@ -129,6 +130,7 @@ class keranjang extends CI_Controller
                     'sub_qty' => $sub_qty[$index],
                     'harga_final' => $harga_final[$index],
                     'warna' => $warna[$index],
+                    'id_attribut' => $id_attribut[$index],
                 ));
                 $index++;
             }
