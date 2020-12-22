@@ -110,7 +110,7 @@ class keranjang extends CI_Controller
         //Tahap Untuk Update data di tbl_order
         $ubah_data = $this->M_keranjang->update_tbl_detail(); //untuk menupdate tabel order
         if ($ubah_data) {
-            $this->_sendEmail(); // Mengirimkan Email
+            //$this->_sendEmail(); // Mengirimkan Email
             $this->_sendWA(); // Mengirim Pesan Via WA
             $id_order = $_POST["id_order"];
             $id_produk = $_POST["id_produk"];
@@ -251,32 +251,71 @@ class keranjang extends CI_Controller
 
     private function _sendWA()
     {
+        $no_penerima =  $_POST["no_penerima"]; //Menangkap Inputan Dari Form
+        // cek apakah no hp mengandung karakter + dan 0-9
+        if (!preg_match('/[^+0-9]/', trim($no_penerima))) {
+            // cek apakah no hp karakter 1-3 adalah +62
+            if (substr(trim($no_penerima), 0, 2) == '62') {
+                $hp = trim($no_penerima);
 
-        $curl = curl_init();
-        $sender = "6281333992731"; // nomor Server 
-        $dest = $_POST["no_penerima"]; // nomor tujuan, pake kode negara 
-        $isiPesan = "Terimakasih sudah membeli produk kami. Saat ini kami sedang menunggu pembayaran dari anda sebelum kami memprosesnya. Sebagai informasi, berikut *detail pesananmu*. <br> <br> No Invoice : " . $_POST["id_order"] . " <br> Total Pesanan : " . $_POST["total"] . " <br>Ongkos Kirim : " . $_POST["biaya_ongkir"] . "<br> Kurir Pengiriman : " . $_POST["jasa_pengiriman"] . "<br> <br> *Detail Pengiriman* <br> Penerima : " . $_POST["nama_penerima"] . " <br> No HP : " . $_POST["no_penerima"] . "<br> Alamat : " . $_POST["alamat_penerima"] . " <br> <br> Segera lakukan pembayaran agar pesananmu segera diproses <br> *Transfer pembayaran ke rekening berikut:* <br> *BANK BCA* - 1234567890 <br> a/n Amalia <br> *BANK MANDIRI* - 39219302039021 <br> a/n Amalia <br> <br> Informasi cara pembayaran dan status pesananmu langsung di menu: PESANANKU <br> <br> *Pesan Ini Dikirim Otomatis Oleh Sistem Mohon Untuk Tidak Membalas Pesan Ini*"; // isi pesan ente
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Terimakasih sudah membeli produk kami. Saat ini kami sedang menunggu pembayaran dari anda sebelum kami memprosesnya. Sebagai informasi, berikut *detail pesananmu*. <br> <br> No Invoice : " . $_POST["id_order"] . " <br> Total Pesanan : " . $_POST["total"] . " <br>Ongkos Kirim : " . $_POST["biaya_ongkir"] . "<br> Kurir Pengiriman : " . $_POST["jasa_pengiriman"] . "<br> <br> *Detail Pengiriman* <br> Penerima : " . $_POST["nama_penerima"] . " <br> No HP : " . $_POST["no_penerima"] . "<br> Alamat : " . $_POST["alamat_penerima"] . " <br> <br> Segera lakukan pembayaran agar pesananmu segera diproses <br> *Transfer pembayaran ke rekening berikut:* <br> *BANK BCA* - 1234567890 <br> a/n Amalia <br> *BANK MANDIRI* - 39219302039021 <br> a/n Amalia <br> <br> Informasi cara pembayaran dan status pesananmu langsung di menu: PESANANKU <br> <br> *Pesan Ini Dikirim Otomatis Oleh Sistem Mohon Untuk Tidak Membalas Pesan Ini*"; // isi pesan ente
 
-        curl_setopt_array($curl, array(
+                curl_setopt_array($curl, array(
 
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://whapi.io/api/send",
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: text/plain",
-                "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
-            ),
-        ));
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
 
-        $response = curl_exec($curl);
+                $response = curl_exec($curl);
 
-        curl_close($curl);
-        echo $response;
+                curl_close($curl);
+                echo $response;
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif (substr(trim($no_penerima), 0, 1) == '0') {
+                $hp = '62' . substr(trim($no_penerima), 1);
+
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Terimakasih sudah membeli produk kami. Saat ini kami sedang menunggu pembayaran dari anda sebelum kami memprosesnya. Sebagai informasi, berikut *detail pesananmu*. <br> <br> No Invoice : " . $_POST["id_order"] . " <br> Total Pesanan : " . $_POST["total"] . " <br>Ongkos Kirim : " . $_POST["biaya_ongkir"] . "<br> Kurir Pengiriman : " . $_POST["jasa_pengiriman"] . "<br> <br> *Detail Pengiriman* <br> Penerima : " . $_POST["nama_penerima"] . " <br> No HP : " . $_POST["no_penerima"] . "<br> Alamat : " . $_POST["alamat_penerima"] . " <br> <br> Segera lakukan pembayaran agar pesananmu segera diproses <br> *Transfer pembayaran ke rekening berikut:* <br> *BANK BCA* - 1234567890 <br> a/n Amalia <br> *BANK MANDIRI* - 39219302039021 <br> a/n Amalia <br> <br> Informasi cara pembayaran dan status pesananmu langsung di menu: PESANANKU <br> <br> *Pesan Ini Dikirim Otomatis Oleh Sistem Mohon Untuk Tidak Membalas Pesan Ini*"; // isi pesan ente
+
+                curl_setopt_array($curl, array(
+
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                echo $response;
+            }
+        }
     }
 }

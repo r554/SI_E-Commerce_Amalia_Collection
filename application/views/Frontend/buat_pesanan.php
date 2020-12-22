@@ -43,7 +43,8 @@ if (!$data_produk) {
                                     <input type="hidden" name="status" value="1">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" minlength="9" maxlength="14" name="no_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="No Handphone Penerima" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required>
+                                    <input type="text" minlength="9" maxlength="14" name="no_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="No Handphone Penerima | Contoh: 081333999222" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required>
+                                    <small>Pastikan Nomor Handphone Anda Teraktifasi Dengan Aplikasi Whatsapp</small>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" name="email_penerima" class="form-control" style="height: 40px; font-size: medium;" placeholder="Email Penerima" required>
