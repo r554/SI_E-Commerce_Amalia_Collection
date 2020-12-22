@@ -65,14 +65,26 @@
                                 <div class="col-md-2 text-center mt-2">
                                     <img src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $data_produk->gambar_produk ?>" alt="..." width="80px" height="80px">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo $data_produk->nama_produk ?></h5>
-                                        <p><?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?> </p>
+                                        <?php if ($data_produk->status_promo == 0) { ?>
+                                            <h5 class="card-title"><?php echo $data_produk->nama_produk ?></h5>
+                                            <p><?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?> </p>
+                                        <?php } else { ?>
+                                            <h5 class="card-title"><?php echo $data_produk->nama_produk ?></h5>
+                                            <p><?php echo "Rp. "   . number_format($data_produk->hargadiskon) . ",-" ?> </p>
+                                        <?php } ?>
                                     </div>
                                 </div>
-                                <div class="col-md-2 mt-4 text-center">
+                                <div class="col-md-2 mt-2 text-center">
                                     <div class="card-body">
+                                        <h5 class="card-title">Warna</h5>
+                                        <p><?php echo $data_produk->warna; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-2 text-center">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Kuantitas</h5>
                                         <p><?php echo $data_produk->jumlah; ?></p>
                                     </div>
                                 </div>
@@ -86,7 +98,12 @@
                             </div>
                         </div>
                         <!-- Untuk Menyimpan Data Total -->
-                        <input type="hidden" name="" value="<?php echo $total = $total + ($data_produk->harga * $data_produk->jumlah) ?>">
+                        <?php if ($data_produk->status_promo == 0) { ?>
+                            <input type="hidden" name="" value="<?php echo $total = $total + ($data_produk->harga * $data_produk->jumlah) ?>">
+                        <?php } else { ?>
+                            <input type="hidden" name="" value="<?php echo $total = $total + ($data_produk->hargadiskon * $data_produk->jumlah) ?>">
+                        <?php } ?>
+
                         <!-- Untuk Menyimpan Data Total QTY -->
                         <input type="hidden" name="" value="<?php echo $qty = $qty + ($data_produk->jumlah) ?>">
                         <!-- Untuk Menyimpan Data Total Berat -->

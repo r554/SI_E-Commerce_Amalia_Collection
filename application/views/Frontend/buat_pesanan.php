@@ -147,7 +147,12 @@ if (!$data_produk) {
                                     <input type="hidden" value="<?php echo $data_produk2->jumlah ?>">
                                     <input type="hidden" value="<?php echo $sub_total = $data_produk2->harga * $data_produk2->jumlah ?>">
                                     <!-- Untuk Menyimpan Data Total -->
-                                    <input type="hidden" name="" value="<?php echo $total2 = $total2 + ($data_produk2->harga * $data_produk2->jumlah) ?>">
+                                    <?php if ($data_produk2->status_promo == 0) { ?>
+                                        <input type="hidden" name="" value="<?php echo $total2 = $total2 + ($data_produk2->harga * $data_produk2->jumlah) ?>">
+                                    <?php } else { ?>
+                                        <input type="hidden" name="" value="<?php echo $total2 = $total2 + ($data_produk2->hargadiskon * $data_produk2->jumlah) ?>">
+                                    <?php } ?>
+
                                     <!-- Untuk Menyimpan Data Total QTY -->
                                     <input type="hidden" name="grand_qty" value="<?php echo $qty2 = $qty2 + ($data_produk2->jumlah) ?>">
                                     <!-- Untuk Menyimpan Data Total Berat -->
@@ -157,7 +162,13 @@ if (!$data_produk) {
                                     <input type="hidden" name="id_produk[]" value="<?php echo $data_produk2->id_produk ?>">
                                     <input type="hidden" name="nama_produk[]" value="<?php echo $data_produk2->nama_produk ?>">
                                     <input type="hidden" name="warna[]" value="<?php echo $data_produk2->warna ?>">
-                                    <input type="hidden" name="harga_final[]" value="<?php echo $data_produk2->harga ?>">
+
+                                    <?php if ($data_produk2->status_promo == 0) { ?>
+                                        <input type="hidden" name="harga_final[]" value="<?php echo $data_produk2->harga; ?>">
+                                    <?php } else { ?>
+                                        <input type="hidden" name="harga_final[]" value="<?php echo $data_produk2->hargadiskon; ?>">
+                                    <?php } ?>
+
                                     <input type="hidden" name="id_attribut[]" value="<?php echo $data_produk2->id_attribut ?>">
 
                                 <?php
@@ -223,14 +234,25 @@ if (!$data_produk) {
                             <div class="col-md-2 text-center mt-2">
                                 <img src="<?php echo base_url() ?>assets/Gambar/foto_produk/<?php echo $data_produk->gambar_produk ?>" alt="..." width="80px" height="80px">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $data_produk->nama_produk ?></h5>
-                                    <p><?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?> </p>
+                                    <?php if ($data_produk2->status_promo == 0) { ?>
+                                        <p><?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?> </p>
+                                    <?php } else { ?>
+                                        <p><?php echo "Rp. "   . number_format($data_produk->hargadiskon) . ",-" ?> </p>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-4 text-center">
+                            <div class="col-md-2 mt-2 text-center">
                                 <div class="card-body">
+                                    <h5 class="card-title">Warna</h5>
+                                    <p><?php echo $data_produk->warna; ?></p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 mt-2 text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Kuantitas</h5>
                                     <p><?php echo $data_produk->jumlah; ?> pcs</p>
                                 </div>
                             </div>
