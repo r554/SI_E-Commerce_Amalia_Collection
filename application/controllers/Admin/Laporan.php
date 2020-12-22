@@ -37,7 +37,12 @@ class Laporan extends CI_Controller
       $this->load->view('Backend/laporanDibatalkan',$data);
       
      }    
-  
+  function produk()
+    {
+     $data['laporan'] = $this->m_laporan->show_all_product();      
+     $this->load->view('Backend/laporanproduk',$data);
+      
+    }  
 
     
   }

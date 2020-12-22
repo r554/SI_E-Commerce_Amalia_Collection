@@ -48,7 +48,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Laporan Penjualan</li>
+                                <li class="breadcrumb-item active">Laporan Produk</li>
                             </ol>
                         </div>
                     </div>
@@ -61,15 +61,15 @@
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title"> Laporan Penjualan Produk</h3>
+                                    <h3 class="card-title"> Laporan Produk</h3>
                                 </div>
-                                <!-- /.card-header -->
+                                <!-- /.card-header
                                 <ul class="nav nav-tabs nav-justified">
-                                    <li class="nav-link"><a href="<?php echo base_url("Admin/Laporan/")?>">Semua</a></li>
+                                    <li class="nav-link active"><a href="<?php echo base_url("Admin/Laporan/")?>">Semua</a></li>
                                     <li class="nav-link"><a href="<?php echo base_url("Admin/Laporan/penjualan")?>">Selesai</a></li>
-                                    <li class="nav-link active"><a href="<?php echo base_url("Admin/Laporan/dibatalkan")?>">Dibatalkan</a></li>
+                                    <li class="nav-link"><a href="<?php echo base_url("Admin/Laporan/dibatalkan")?>">Dibatalkan</a></li>
                                     <li class="nav-link"><a href="<?php echo base_url("Admin/Laporan/diproses")?>">DiProses</a></li>
-                                </ul>
+                                </ul> -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-hover">
                                         <thead>
@@ -78,8 +78,8 @@
                                                 <th>Nama Produk</th>
                                                 <th>Jumlah</th>
                                                 <th>Warna</th>                                                
-                                                <th>Status</th>
-                                                <th>Tanggal Pesan</th>
+                                                <th>Kategori</th>
+                                                <th>Tanggal Masuk</th>
                                             </tr>
                                         </thead>
 
@@ -88,28 +88,16 @@
                                             if ($laporan != null) {
                                                 $no = 1;
                                                 foreach ($laporan as $u) {
-                                                    $tanggal_order = date('d-m-Y', strtotime($u->tanggal_order));
+                                                    $tanggal = date('d-m-Y', strtotime($u->tanggal));
                                                     $u->id_produk
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $u->nama_produk ?></td>
-                                                <td><?php echo $u->sub_qty ?></td>
+                                                <td><?php echo $u->qty ?></td>
                                                 <td><?php echo $u->warna ?></td>
-                                                <?php if($u->status == 1){ ?>
-                                                    <td>Belum dibayar</td>
-                                                <?php }else if($u->status == 2){ ?>
-                                                    <td>Menunggu konfirmasi</td>
-                                                <?php }else if($u->status == 3){ ?>
-                                                    <td>Sedang diproses</td>
-                                                <?php }else if($u->status == 4){ ?>
-                                                    <td>Sedang dikirim</td>
-                                                <?php }else if($u->status == 5){ ?>
-                                                    <td>Selesai</td>
-                                                <?php }else if($u->status == 6){ ?>
-                                                    <td>Dibatalkan</td>    
-                                                <?php } ?>
-                                                <td><?php echo $tanggal_order ?></td>
+                                                <td><?php echo $u->nama_kategori ?></td>
+                                                <td><?php echo $tanggal?></td>
                                             </tr>
                                             <?php }
                                             } else { ?>

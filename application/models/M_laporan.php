@@ -16,19 +16,29 @@ class M_laporan extends CI_Model{
       $this->db->from('tbl_order');      
       $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
       $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
-      $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+      // $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
       //$this->db->like("status", '3');     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
-      return $this->db->get()->result();
-      
+      return $this->db->get()->result();      
+    }
+    public function show_all_product()
+    {
+      $this->db->select('*');
+      $this->db->from('tbl_produk');      
+      $this->db->join('tbl_attribut', 'tbl_attribut.id_produk = tbl_produk.id_produk');
+      $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+      // $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+      //$this->db->like("status", '3');     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
+      return $this->db->get()->result();      
     }
     public function penjualan()
     {
+      $statusjual = '5';
       $this->db->select('*');
       $this->db->from('tbl_order');      
       $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
       $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
-      $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
-      $this->db->like("status", '3');     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
+      // $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+      $this->db->where('tbl_order.status', $statusjual);     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
       return $this->db->get()->result();
       /*$query = $this->db->get();      
     foreach ($query->result() as $row) {
@@ -43,22 +53,28 @@ class M_laporan extends CI_Model{
     }
     public function dibatalkan()
     {
+      $statusbatal = '6';
       $this->db->select('*');
       $this->db->from('tbl_order');      
       $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
       $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
-      $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
-      $this->db->like("status", '1');     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
+      // $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+      $this->db->where('status', $statusbatal);     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
       return $this->db->get()->result();      
     }
     public function diproses()
     {
+      $pesanandiproses = '3';
+      //$pesanandiproses1 <= '4';
       $this->db->select('*');
       $this->db->from('tbl_order');      
       $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
       $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
-      $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
-      $this->db->like("status", '2');     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
+      // $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
+      //$this->db->where('status', '3');
+      $this->db->where('status', $pesanandiproses);
+      //$this->db->where('status', $pesanandiproses1);     // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
+           // status 3 Berarti sudah terbayar (status dapat dirembukkan Nanti)
       return $this->db->get()->result();      
     }
 

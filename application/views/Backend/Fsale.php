@@ -154,7 +154,8 @@ if (!$this->session->userdata('nama')) {
                                                         <a class="btn btn-info btn-sm"
                                                             <?php echo anchor('admin/Flashsale/detailProduk/' . $u->id_produk, 'Detail'); ?></a>
                                                 </td>
-                                                <td>
+                                                <td>                                                
+                                                        
                                                     <a class="btn btn-success btn-sm"
                                                         <?php echo anchor('admin/Flashsale/updatestatus2/' . $u->id_produk, 'Promo'); ?></a>
                                                         <a class="btn btn-danger btn-sm"

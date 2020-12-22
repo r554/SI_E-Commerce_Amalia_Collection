@@ -1,5 +1,8 @@
 <?php
-$order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->userdata('id'), 'status !=' => 4]);
+$order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->userdata('id'), 'status !=' => 5]);
+// $order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->userdata('id'), 'status !=' => 3]);
+// $order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->userdata('id'), 'status !=' => 2]);
+// $order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->userdata('id'), 'status !=' => 1]);
 ?>
 
 <div class="list-group">

@@ -65,7 +65,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
+                <nav class="navbar sticky-top navbar-transparent bg-transparent">
+                <div class="card border-white">
                     <form action="<?= base_url('keranjang/save_keranjang_beli') ?>" method="POST">
                         <div class="ket">
                             <h1 class="title"><?= $product['nama_produk']; ?></h1>
@@ -162,6 +164,8 @@
                 <?php } ?>
                 </tr>
                 </table>
+                </div>
+                </nav>
                 </div>
             </div>
         </div>
