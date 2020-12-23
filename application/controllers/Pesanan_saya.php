@@ -40,7 +40,21 @@ class Pesanan_saya extends CI_Controller
         $this->load->view('Frontend/template/navbar3');
         $this->load->view('Frontend/detailPesanan', $data);
     }
+
+    public function buktibayar($id){
+        $show = $this->M_footer;
+        $data['ord'] = $this->M_user->getOrderByInvoice($id);
+        if(!$data['ord']){
+            redirect(base_url() . 'pesanan_saya');
+        }
+        $data['footer'] = $show->tampil_footer();
+        $data['product_order'] = $this->M_user->getProductByInvoice($id);
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3');
+        $this->load->view('Frontend/buktipembayaran2', $data);
+    }
     
+
     public function konfirmasibarangsampai($id)
     {    
         $data = array(

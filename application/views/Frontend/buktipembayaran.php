@@ -12,7 +12,7 @@
     <!-- End Adverts -->
 
     <!-- Bagian Content -->
-    <div class="container mt-5 mb-5">
+    <div class="container">
         <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
 
             <div class="row">
