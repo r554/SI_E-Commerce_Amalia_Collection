@@ -17,6 +17,14 @@ class M_data extends CI_Model
     return $query = $this->db->get();
   }
 
+  function tampil_dataProdukpromo()
+  {
+    $this->db->select('*');
+    $this->db->from('tbl_produk');
+    $this->db->where('status_promo', 1);
+    return $query = $this->db->get();
+  }
+
   public function tpdetailProduk($id)
   {
     $this->db->select('*');

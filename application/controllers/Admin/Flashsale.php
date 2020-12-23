@@ -17,10 +17,12 @@ class Flashsale extends CI_Controller
      {
       $data['tbl_promo'] = $this->m_data->tampil_dataPromo()->result();
       $data['tbl_produk'] = $this->m_data->tampil_dataProduk()->result();
+      $data['produkpromo'] = $this->m_data->tampil_dataProdukpromo()->result();
       $this->load->view('Backend/Fsale',$data);
      }
   function produkflashsale()
      {
+      $data['produkpromo'] = $this->m_data->tampil_dataProdukpromo()->result();
       $data['tbl_promo'] = $this->m_data->tampil_dataPromo()->result();
       $data['tbl_produk'] = $this->m_data->tampil_dataProduk()->result();
       $this->load->view('Backend/Fsale',$data);
@@ -62,6 +64,7 @@ class Flashsale extends CI_Controller
             'id_promo' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_promo');
+        $this->session->set_userdata('ubah_sukses', 'ubah');
         redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus0($id)
@@ -73,6 +76,7 @@ class Flashsale extends CI_Controller
             'id_promo' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_promo');
+        $this->session->set_userdata('ubah_sukses', 'ubah');
         redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus2($id)
@@ -84,6 +88,7 @@ class Flashsale extends CI_Controller
             'id_produk' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_produk');
+        $this->session->set_userdata('ubah_sukses', 'ubah');
         redirect('admin/flashsale/produkflashsale');
     }
     function updatestatus3($id)
@@ -95,12 +100,33 @@ class Flashsale extends CI_Controller
             'id_produk' => $id
         );    
         $this->m_data->update_data($where,$data,'tbl_produk');
+        $this->session->set_userdata('ubah_sukses', 'ubah');
         redirect('admin/flashsale/produkflashsale');
     }
     function updatehargaDiskon($idp){
         $hardis=$this->input->post('hargaDiskon');      
         $this->m_data->update_hargaDiskon($hardis,$idp);
   
+        redirect('admin/flashsale/produkflashsale');
+    }
+    
+    function updatepromo($id)
+    {    
+        $namaPromo = $this->input->post('nama_promo');
+        $durasi = $this->input->post('durasi_promo');
+        $status = $this->input->post('status_promo');
+	
+		
+        $data = array(
+            'nama_promo' => $namaPromo,
+			'durasi_promo' => $durasi,
+			'status_promo' => $status           
+        );            
+        $where = array(
+            'id_promo' => $id
+        );    
+        $this->m_data->update_data($where,$data,'tbl_promo');
+        $this->session->set_userdata('ubah_sukses', 'ubah');
         redirect('admin/flashsale/produkflashsale');
     }
     function hapuspromo($id){

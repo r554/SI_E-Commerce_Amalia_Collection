@@ -1,11 +1,3 @@
-<?php
-
-if (!$this->session->userdata('nama')) {
-    redirect(base_url("Auth_Admin"));
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,14 +102,124 @@ if (!$this->session->userdata('nama')) {
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12">                          
+
+                            <div class="card card-warning">
+                                <div class="card-header">
+                                    <h3 class="card-title">Promo Flash Sale</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Promo</th>
+                                                <th>Waktu Berakhir</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if ($tbl_promo != null) {
+                                                $noP = 1;
+                                                $statuspromo = 0;
+                                                foreach ($tbl_promo as $p) {
+                                                    $p->id_promo
+
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $p->nama_promo ?></td>
+                                                <td><?php echo $p->durasi_promo ?></td>
+                                                <td><?php if ($p->status_promo == 0) {
+                                                                echo "Non Aktif";
+                                                            } else {
+                                                                echo "Aktif";
+                                                            } ?></td>
+                                                <td>                                                    
+                                                    <a href="<?php echo site_url('admin/Flashsale/updatestatus1/' . $p->id_promo); ?>" class="btn btn-success btn-sm">Aktifkan</a>
+                                                    <a href="<?php echo site_url('admin/Flashsale/updatestatus0/' . $p->id_promo); ?>" class="btn btn-danger btn-sm">Non Aktifkan</a>
+                                                    <!-- <a class="btn btn-danger btn-sm"
+                                                     <?php echo anchor('admin/Flashsale/hapuspromo/' . $p->id_promo, 'Hapus Promo'); ?></a> -->
+                                                     <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>
+                                                </td>
+                                            </tr>
+                                            <?php }                                                                                                                                                                                                                                                                                                                                                                                                                                                } else { ?>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div> <!-- /.card-body -->
+                            </div>
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">Produk Promo</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Produk</th>
+                                                <th>Harga Lama</th>
+                                                <th>Harga Diskon</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                                <th>Aksi 2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if ($produkpromo != null) {
+                                                $no = 1;
+                                                foreach ($produkpromo as $pp) {
+                                                   
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $pp->nama_produk ?></td>
+                                                <td>Rp.<?php echo $pp->harga ?></td>
+                                                <td>Rp.<?php echo $pp->hargadiskon ?></td>
+                                                <td>
+                                                    <?php if ($pp->status_promo == 0) {
+                                                                echo "Tidak Promo";
+                                                            } else {
+                                                                echo "Sedang Promo";
+                                                            } ?>
+                                                </td>
+                                                <td> 
+                                                <a href="<?php echo site_url('admin/Flashsale/detailProduk/' . $pp->id_produk); ?>" class="btn btn-info btn-sm">Edit Produk</a>   
+                                                </td>
+                                                <td>                                                
+                                                <a href="<?php echo site_url('admin/Flashsale/updatestatus3/' . $pp->id_produk); ?>" class="btn btn-danger btn-sm">Non Aktifkan</a>                                                       
+                                                
+                                                </td>
+                                            </tr>
+                                            <?php }
+                                                                                                                                                                                                                                                                                                                        } else { ?>
+                                            <?php } ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Produk</th>
+                                                <th>Tanggal</th>
+                                                <th>Harga</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                                <th>Aksi 2</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                </div>
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">Produk</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-hover">
+                                    <table id="example3" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -149,17 +251,11 @@ if (!$this->session->userdata('nama')) {
                                                             } ?>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-warning btn-sm"
-                                                        <?php echo anchor('admin/Flashsale/detailProduk/' . $u->id_produk, 'Edit'); ?></a>
-                                                        <a class="btn btn-info btn-sm"
-                                                            <?php echo anchor('admin/Flashsale/detailProduk/' . $u->id_produk, 'Detail'); ?></a>
+                                                <a href="<?php echo site_url('admin/Flashsale/detailProduk/' . $u->id_produk); ?>" class="btn btn-info btn-sm">Edit Produk</a>
                                                 </td>
                                                 <td>                                                
+                                                <a href="<?php echo site_url('admin/Flashsale/updatestatus2/' . $u->id_produk); ?>" class="btn btn-success btn-sm">Aktifkan</a>                                                 
                                                         
-                                                    <a class="btn btn-success btn-sm"
-                                                        <?php echo anchor('admin/Flashsale/updatestatus2/' . $u->id_produk, 'Promo'); ?></a>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            <?php echo anchor('admin/Flashsale/updatestatus3/' . $u->id_produk, 'Tidak Promo'); ?></a>
                                                 </td>
                                             </tr>
                                             <?php }
@@ -181,93 +277,8 @@ if (!$this->session->userdata('nama')) {
                                 </div>
                                 <!-- /.card-body -->
                             </div>
-
-                            <div class="card card-warning">
-                                <div class="card-header">
-                                    <h3 class="card-title">Promo Flash Sale</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example3" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Promo</th>
-                                                <th>Waktu Berakhir</th>
-                                                <th>Status</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            if ($tbl_promo != null) {
-                                                $noP = 1;
-                                                $statuspromo = 0;
-                                                foreach ($tbl_promo as $p) {
-                                                    $p->id_promo
-
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $noP++ ?></td>
-                                                <td><?php echo $p->nama_promo ?></td>
-                                                <td><?php echo $p->durasi_promo ?></td>
-                                                <td><?php if ($p->status_promo == 0) {
-                                                                echo "Non Aktif";
-                                                            } else {
-                                                                echo "Aktif";
-                                                            } ?></td>
-                                                <td>
-                                                    <!--<select class="form-control select2" id="setstatus1">
-                          <option >--- Pilih Aksi ---</option>
-                            <option value="<?php //echo base_url('Flashsale/updatestatus2/'.$u->id_produk); 
-                                            ?>">Promo</option>
-                            <option value="<?php //echo base_url('Flashsale/updatestatus3/'.$u->id_produk); 
-                                            ?>">Tidak Promo</option>
-                        </select>-->
-                                                    <a class="btn btn-success btn-sm"
-                                                        <?php echo anchor('admin/Flashsale/updatestatus1/' . $p->id_promo, 'Aktifkan'); ?></a>
-                                                        <a class="btn btn-danger btn-sm"
-                                                            <?php echo anchor('admin/Flashsale/updatestatus0/' . $p->id_promo, 'Non-Aktifkan'); ?></a>
-                                                            <a class="btn btn-danger btn-sm"
-                                                                <?php echo anchor('admin/Flashsale/hapuspromo/' . $p->id_promo, 'Hapus Promo'); ?></a>
-                                                </td>
-                                            </tr>
-                                            <?php }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                } else { ?>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div> <!-- /.card-body -->
-                            </div>
-                            <div class="card card-success">
-                                <div class="card-header">
-                                    <h3 class="card-title">Tambah Flash Sale</h3>
-                                </div>
-                                <div>
-                                    <form role="form"
-                                        action="<?php echo base_url() . 'admin/flashsale/tambah_aksiFS'; ?>"
-                                        method="post">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="namaPromo">Nama Promo</label>
-                                                <input type="hidden" class="form-control" id="status"
-                                                    name="status_promo" value="0">
-                                                <input type="text" class="form-control" id="nama" name="nama_promo"
-                                                    placeholder="Masukan Nama Promo" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="durasi">Durasi Promo</label>
-                                                <input type="date" class="form-control" id="fasilitas"
-                                                    name="durasi_promo" placeholder="Tanggal Berakhir Promo" required>
-                                            </div>
-                                            <button type="Tambah" class="btn btn-primary">Tambah</button>
-                                            <!-- /.card-body -->
-                                    </form>
-                                    <!-- /.card -->
-
-                                </div>
-                                <!-- /.col -->
-                            </div>
+                            
+                             
 
                             <!-- /.row -->
                         </div>
@@ -276,6 +287,43 @@ if (!$this->session->userdata('nama')) {
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Konfirmasi Pembayaran</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>          
+                </div>
+                <div class="modal-body">
+                <form role="form" action="<?php echo base_url('admin/flashsale/updatepromo/')?><?php echo $p->id_promo ?>" method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="namaPromo">Nama Promo</label>
+                            <input type="hidden" class="form-control" id="status"
+                                name="status_promo" value="0">
+                            <input type="text" class="form-control" id="nama" name="nama_promo"
+                                placeholder="Masukan Nama Promo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="durasi">Durasi Promo</label>
+                            <input type="datetime-local" class="form-control" id="fasilitas"
+                                 name="durasi_promo" placeholder="Tanggal Berakhir Promo" required>
+                        </div>
+                        
+                                            <!-- /.card-body -->
+                 
+                              
+                </div>
+                    <div class="modal-footer">
+                    <button type="Tambah" class="btn btn-primary">Tambah</button>
+                    </div>        
+            </div>
+                    </form>
+        </div>
+    </div>
+    </div>
 
         <?php $this->load->view('Backend/template/footer'); ?>
 
@@ -306,15 +354,12 @@ if (!$this->session->userdata('nama')) {
             "autoWidth": false,
             "responsive": true,
         });
-        $('#example3').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
+        $("#example3").DataTable({
             "responsive": true,
-        });
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
 
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
