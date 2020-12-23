@@ -26,6 +26,7 @@ class M_data extends CI_Model
     $this->db->where('tbl_produk.id_produk', $id);
     return $this->db->get()->result();
   }
+
   public function getProductById($id)
   {
     $this->db->select("*,tbl_produk.id_produk AS produkId");
@@ -35,11 +36,13 @@ class M_data extends CI_Model
     $this->db->where('tbl_produk.id_produk', $id);
     return $this->db->get()->row_array();
   }
+
   public function getImgProductById($id)
   {
     $product = $this->db->get_where('tbl_produk', ['id_produk' => $id])->row_array();
     return $this->db->get_where('tbl_produk', ['gambar_produk' => $product['id_produk']]);
   }
+
   function cek_data($id, $id_db, $database)
   { //cek database
     $this->db->from($database);
@@ -101,8 +104,6 @@ class M_data extends CI_Model
     if ($keyword) {
       $this->db->like('nama_produk', $keyword);
     }
-
-
     return $query = $this->db->get('tbl_produk', $number, $offset)->result();
   }
 
@@ -128,9 +129,9 @@ class M_data extends CI_Model
   public function tampil_kategori()
   {
     $this->db->from('tbl_kategori');
-		$this->db->where('status', '0');
-		$query = $this->db->get();
-		return $query->result();
+    $this->db->where('status', '0');
+    $query = $this->db->get();
+    return $query->result();
   }
 
 
@@ -147,11 +148,24 @@ class M_data extends CI_Model
 
     return $query = $this->db->get('tbl_produk', $number, $offset)->result();
   }
-  function hapus_data($where,$table)
+
+  function get_data_flash_sale($number, $offset, $keyword = null)
   {
-		$this->db->where($where);
-		$this->db->delete($table);
+
+    if ($keyword) {
+      $this->db->like('status_promo', $keyword);
+    }
+
+    return $query = $this->db->get('tbl_produk', $number, $offset)->result();
   }
+
+  function hapus_data($where, $table)
+  {
+    $this->db->where($where);
+    $this->db->delete($table);
+  }
+
+
   // End Function Flash Sale ==============================================================================================
 
 

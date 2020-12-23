@@ -77,8 +77,37 @@ class Homepage extends CI_Controller
     $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
 
     $this->load->view('Frontend/template/head1');
-    $this->load->view('Frontend/template/navbar3',$data);
+    $this->load->view('Frontend/template/navbar3', $data);
     $this->load->view('Frontend/tampilan_data_katalog', $data);
+  }
+
+  // Menampilkan Semua Data Katlog Promo Dengan Menggunakan Pagination
+  function semua_promo()
+  {
+    $show = $this->M_footer;
+    // Ambil Data Keyword (Search)
+
+    $data['keyword'] = 1;
+
+
+    $this->load->database();
+    $jumlah_data = $this->M_data->jumlah_data();
+    $this->load->library('pagination');
+    $config['base_url'] = base_url() . '/Homepage/semua_promo/';
+    // $config['total_rows'] = $jumlah_data;
+    $this->db->like('status_promo', $data['keyword']);
+    $this->db->from('tbl_produk');
+    $config['total_rows'] = $this->db->count_all_results();
+    $config['per_page'] = 10;
+    $from = $this->uri->segment(3);
+    $this->pagination->initialize($config);
+    $data['data_produk'] = $this->M_data->get_data_flash_sale($config['per_page'], $from, $data['keyword']);
+    $data['footer'] = $show->tampil_footer();
+    $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
+
+    $this->load->view('Frontend/template/head1');
+    $this->load->view('Frontend/template/navbar3', $data);
+    $this->load->view('Frontend/tampilan_semua_promo', $data);
   }
 
 

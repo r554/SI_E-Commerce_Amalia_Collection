@@ -1,4 +1,19 @@
 <body>
+
+    <!-- Data Logic Hidden Promo -->
+    <?php
+    $setting = $this->db->get('tbl_promo')->row_array(); // Mengecek Data Promo Di Database
+    ini_set('date.timezone', 'Asia/Jakarta'); // Sinkron Zona Waktu Indonesia
+    $dateNow = date('Y-m-d H:i'); // Ambil Waktu Saat Ini
+    $dateDB = $setting['durasi_promo'];
+    $dateDBNew = str_replace("T", " ", $dateDB);
+    if ($dateNow >= $dateDBNew) {
+        $this->db->set('status_promo', 0);
+        $this->db->update('tbl_promo');
+    }
+    ?>
+    <!-- End Data Logic Hidden Promo -->
+
     <!-- Pre Loader -->
     <div class="preloader" id="preloader">
         <div class="loader"></div>
@@ -10,8 +25,6 @@
         <span>This website was built by Indanah Group</span>
     </div>
     <!-- End Adverts -->
-
-
 
     <!-- Main -->
     <main>
@@ -129,7 +142,7 @@
         <!-- Akhir Produk Amalia -->
 
         <div class="container">
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col-md-12 text-center">
                     <a href="<?= base_url('Homepage/semua_produk') ?>"><Button class="btn btn-primary btn-lg">Lihat
                             Semua Produk <i class="fa fa-chevron-circle-right"></i></Button></a>
@@ -141,52 +154,57 @@
             </div>
         </div>
 
-        <!-- Flash Sale -->
-        <section class="section latest-products" id="new">
-            <div class="title-container">
-                <div class="section-titles">
-                    <div class="section-title active" data-id="latest">
-                        <!-- <span class="dot"></span> -->
-                        <h1 class="primary-title">Flash Sale
-                            <!-- <p id="demo"></p> -->
-                        </h1>
-                        <h1 class="primary-title" id="demo"> </h1>
+        <?php
+        $data_promo = $this->db->get('tbl_promo')->row_array();
+        $status_promo = $data_promo['status_promo'];
+        if ($status_promo == 1) {
+        ?>
+            <!-- Flash Sale -->
+            <section class="section latest-products" id="new">
+                <div class="title-container">
+                    <div class="section-titles">
+                        <div class="section-title active" data-id="latest">
+                            <!-- <span class="dot"></span> -->
+                            <h1 class="primary-title">Flash Sale
+                                <!-- <p id="demo"></p> -->
+                            </h1>
+                            <h1 class="primary-title"><span id="countdownPromo"></span></h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="latest-center product-center container2">
-                <?php
-                $no = $this->uri->segment('3') + 1;
-                foreach ($produk_flash_sale as $data_produk) {
-                ?>
-                    <div class="product">
-                        <div class="product-header">
-                            <img src="<?= base_url() ?>assets/Gambar/foto_produk/<?= $data_produk->gambar_produk; ?>" alt="product">
-                        </div>
-                        <div class="product-footer">
-                            <h3><?= $data_produk->nama_produk; ?></h3>
-                            <div class="rating">
-                                <!-- <i class="fas fa-star"></i>
+                <div class="latest-center product-center container2">
+                    <?php
+                    $no = $this->uri->segment('3') + 1;
+                    foreach ($produk_flash_sale as $data_produk) {
+                    ?>
+                        <div class="product">
+                            <div class="product-header">
+                                <img src="<?= base_url() ?>assets/Gambar/foto_produk/<?= $data_produk->gambar_produk; ?>" alt="product">
+                            </div>
+                            <div class="product-footer">
+                                <h3><?= $data_produk->nama_produk; ?></h3>
+                                <div class="rating">
+                                    <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i> -->
+                                </div>
+                                <div class="product-price">
+                                    <strong>
+                                        <h4><span style="text-decoration: line-through red;"><?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?></span>
+                                        </h4>
+                                    </strong>
+                                    <h4><?php echo "Rp. "   . number_format($data_produk->hargadiskon) . ",-" ?></h4>
+                                </div>
                             </div>
-                            <div class="product-price">
-                                <strong>
-                                    <h4><span style="text-decoration: line-through red;"><?php echo "Rp. "   . number_format($data_produk->harga) . ",-" ?></span>
-                                    </h4>
-                                </strong>
-                                <h4><?php echo "Rp. "   . number_format($data_produk->hargadiskon) . ",-" ?></h4>
-                            </div>
-                        </div>
-                        <ul>
-                            <li>
-                                <a href="<?= base_url('homepage/detail_product/' . $data_produk->id_produk) ?>">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                            </li>
-                            <!-- <li>
+                            <ul>
+                                <li>
+                                    <a href="<?= base_url('homepage/detail_product/' . $data_produk->id_produk) ?>">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                </li>
+                                <!-- <li>
                                 <a href="#">
                                     <i class="far fa-heart"></i>
                                 </a>
@@ -196,25 +214,26 @@
                                     <i class="fas fa-sync"></i>
                                 </a>
                             </li> -->
-                        </ul>
-                    </div>
-                <?php } ?>
-            </div>
-
-        </section>
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-12 text-center">
-                    <a href="<?= base_url('Homepage/semua_produk') ?>"><Button class="btn btn-primary btn-lg">Lihat
-                            Semua Promo <i class="fa fa-chevron-circle-right"></i></Button></a>
-                    <!-- <h3> <?php
-                                //echo $this->pagination->create_links();
-                                ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
+                </div>
+            </section>
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-12 text-center">
+                        <a href="<?= base_url('Homepage/semua_promo') ?>"><Button class="btn btn-primary btn-lg">Lihat
+                                Semua Promo <i class="fa fa-chevron-circle-right"></i></Button></a>
+                        <!-- <h3> <?php
+                                    //echo $this->pagination->create_links();
+                                    ?>
                     </h3> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Akhir Flash Sale -->
+            <!-- Akhir Flash Sale -->
+        <?php } ?>
+
 
         <!-- Facility -->
         <section class="facility section" id="facility">
@@ -252,9 +271,6 @@
     <!-- End Main -->
 
     <!-- Footer -->
-
-
-
     <footer id="" class="section footer">
         <div class="container2">
             <div class="footer-container">
@@ -332,54 +348,37 @@
     </footer>
     <!-- End Footer -->
 
-
-    <!-- Countdown -->
-    <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("Dec 12, 2020 08:01:00").getTime();
-
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-
-            // Get today's date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Output the result in an element with id="demo"
-            document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
-                minutes + "m " + seconds + "s ";
-
-            // If the count down is over, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "Telah Berakhir";
-
-            }
-        }, 1000);
-    </script>
-    <!-- end Countdown -->
-
-
     <!-- Glide JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
     <!-- Script -->
     <script src="<?= base_url() ?>assets/Frontend/js/index.js"></script>
     <script src="<?= base_url() ?>assets/Frontend/js/product.js"></script>
     <script src="<?= base_url() ?>assets/Frontend/js/slider.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- CountDown FlashSale -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/countdown/dest/jquery.countdown.js"></script>
+    <script type="text/javascript">
+        $('#countdownPromo').countdown({
+            // IMPORTANT: YOU MUST UPDATE CONTEST DATE END = Month Day, Year
+            date: "<?= $setting['durasi_promo']; ?>", // Ambil Durasi Promo Dari Database
+            render: function(data) {
+                var el = $(this.el);
+                el.empty()
+                    // UPDATE THE "d, hrs, mins, s" TEXT IF NEEDED
+                    .append(this.leadingZeros(data.days, 2) + " Hari  ")
+                    .append(this.leadingZeros(data.hours, 2) + " Jam  ")
+                    .append(this.leadingZeros(data.min, 2) + " Menit  ")
+                    .append(this.leadingZeros(data.sec, 2) + " Detik  ");
+            }
+        });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+    <!-- end Countdown -->
+
 </body>
 
 </html>
