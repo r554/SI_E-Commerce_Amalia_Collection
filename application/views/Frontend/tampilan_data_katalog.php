@@ -137,12 +137,12 @@
                             <i class="far fa-star"></i> -->
                         </div>
                         <div class="product-price">
-                            <h4><?= $data_produk->harga; ?></h4>
+                            <h4>Rp <?= str_replace(",", ".", number_format($data_produk->harga)); ?></h4>
                         </div>
                     </div>
                     <ul>
                         <li>
-                            <a href="<?= base_url('homepage/detail_product/'.$data_produk->id_produk) ?>">
+                            <a href="<?= base_url('homepage/detail_product/' . $data_produk->id_produk) ?>">
                                 <i class="far fa-eye"></i>
                             </a>
                         </li>

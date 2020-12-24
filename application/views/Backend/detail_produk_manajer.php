@@ -100,7 +100,7 @@ if (!$this->session->userdata('nama')) {
                                                 <div class="form-group">
                                                     <label>Harga</label>
                                                     <input type="text" class="form-control" name="harga" disabled
-                                                        value="<?php echo "Rp. "   . number_format($u->harga) . ",-" ?>">
+                                                        value="Rp <?= str_replace(",", ".", number_format($u->harga)); ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Deskripsi</label>

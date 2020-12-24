@@ -26,7 +26,7 @@
                 <a href="<?php echo base_url() ?>assets/Admin/index2.html" class="h1"><b>Amalia</b> Collection</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Silahkan Login</p>
                 <?php
                 // Cek apakah terdapat session nama message
                 if ($this->session->flashdata('message')) { // Jika ada
@@ -50,19 +50,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                    </div>
+
                     <div class="social-auth-links text-center mt-2 mb-3">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
                 </form>
 

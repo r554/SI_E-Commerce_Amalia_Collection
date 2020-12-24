@@ -20,13 +20,13 @@
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <img src="<?php echo base_url()?>assets/Gambar/blog/<?php echo $indah[0]->gbr_tentangkami; ?>">
+                        <img src="<?php echo base_url() ?>assets/Gambar/blog/<?php echo $indah[0]->gbr_tentangkami; ?>">
                     </div>
                 </div>
             </div>
 
             <div class="col-md-8">
-                <h1 class="text-center">TENTANG KAM KAMI</h1>
+                <h1 class="text-center">TENTANG KAMI</h1>
                 <br>
                 <P align="justify">
                     <?php echo $indah[0]->text_tentangkami; ?>

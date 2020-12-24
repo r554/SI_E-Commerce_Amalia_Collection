@@ -126,7 +126,7 @@ class data_produk extends CI_Controller
 		}
 	}
 
-	//untuk menghapus warna dan stok 
+	//untuk menghapus warna dan stok edit 
 	public function hapus_warna($id = null)
 	{
 
@@ -144,6 +144,26 @@ class data_produk extends CI_Controller
 			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Produk');
 			//$this->load->view("Backend/edit_produk", $data);
 			redirect(site_url('data_produk/edit/' . $id_produk));
+		}
+	}
+	//untuk menghapus warna dan stok tambah
+	public function hapus_warna_tambah($id = null)
+	{
+
+		$id_produk = $this->uri->segment('4');
+		//echo $id_produk;
+		$model = $this->M_data_produk;
+
+		$data = [
+			"edit" => $model->getById($id_produk),
+			"kategori" => $this->M_data_produk->tampil_kategori(),
+			"warnastok" => $this->M_data_produk->edit_warna_stok($id_produk),
+		];
+
+		if ($this->M_warna->delete($id)) {
+			$this->session->set_flashdata('hapus', 'Berhasil Menghapus Produk');
+			//$this->load->view("Backend/edit_produk", $data);
+			redirect(site_url('data_produk/tambah_produk'));
 		}
 	}
 

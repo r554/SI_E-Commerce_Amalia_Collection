@@ -64,12 +64,12 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Footer Setings</h1>
+                            <h1 class="m-0">Pengaturan Footer</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item active">Footer</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -151,7 +151,7 @@ if (!$this->session->userdata('nama')) {
                                 <div class="card-body">
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Twiter</label>
+                                        <label for="exampleInputPassword1">Twitter</label>
                                         <input name="twiter" class="form-control" value="<?php echo $z->twiter; ?>">
                                     </div>
                                     <div class="form-group">

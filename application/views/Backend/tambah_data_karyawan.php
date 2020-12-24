@@ -106,14 +106,14 @@ if (!$this->session->userdata('nama')) {
                                                     <div class="form-group">
                                                         <label>Nama Karyawan</label>
                                                         <input name="nama_admin" type="teks" class="form-control"
-                                                            placeholder="Enter Nama Karyawan" required
+                                                            placeholder="Masukkan Nama Karyawan" required
                                                             oninvalid="this.setCustomValidity('Nama Karyawan Tidak Boleh Kosong!')"
                                                             oninput="setCustomValidity('')">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Alamat</label>
                                                         <input name="alamat_admin" type="teks" class="form-control"
-                                                            placeholder="Enter Alamat" required
+                                                            placeholder="Masukkan Alamat" required
                                                             oninvalid="this.setCustomValidity('Alamat Tidak Boleh Kosong!')"
                                                             oninput="setCustomValidity('')">
                                                     </div>
@@ -121,7 +121,7 @@ if (!$this->session->userdata('nama')) {
                                                         <label>No HP</label>
                                                         <input name="no_admin" type="text" class="form-control"
                                                             pattern=".{9,}" maxlength="14"
-                                                            placeholder="Enter No HP (Harus Angka)"
+                                                            placeholder="Masukkan No HP (Harus Angka)"
                                                             onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
                                                             required title="3 characters minimum"
                                                             oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
@@ -130,7 +130,7 @@ if (!$this->session->userdata('nama')) {
                                                     <div class="form-group">
                                                         <label>Email</label>
                                                         <input name="email_admin" type="email" class="form-control"
-                                                            placeholder="Enter Email" required>
+                                                            placeholder="Masukkan Email" required>
                                                         <div class="input-group">
                                                             <?php echo form_error('email', '<small class="text-danger">', '</small>'); ?>
                                                         </div>
@@ -138,14 +138,14 @@ if (!$this->session->userdata('nama')) {
                                                     <div class="form-group">
                                                         <label>Username</label>
                                                         <input name="username_admin" type="teks" class="form-control"
-                                                            placeholder="Enter Deskripsi" required
+                                                            placeholder="Masukkan Deskripsi" required
                                                             oninvalid="this.setCustomValidity('Username Tidak Boleh Kosong!')"
                                                             oninput="setCustomValidity('')">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Password</label>
                                                         <input name="password_admin" type="password"
-                                                            class="form-control" placeholder="Enter Password Admin"
+                                                            class="form-control" placeholder="Masukkan Password Admin"
                                                             required
                                                             oninvalid="this.setCustomValidity('Password Tidak Boleh Kosong!')"
                                                             oninput="setCustomValidity('')">

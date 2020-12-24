@@ -242,7 +242,8 @@ if (!$this->session->userdata('nama')) {
                                                                 Edit</i></button></a>
                                                     <a
                                                         href="<?= base_url('data_produk/hapus_warna/' . $attribut->id_attribut . '/' .  $attribut->id_produk) ?>"><button
-                                                            class="btn btn-danger btn-xs" type="button "><i
+                                                            class="btn btn-danger btn-xs" type="button"
+                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Warna Pada Produk Ini?')"><i
                                                                 class="fas fa-trash-alt">
                                                                 Hapus</i></button></a>
 

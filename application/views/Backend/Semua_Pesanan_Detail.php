@@ -94,7 +94,8 @@ if (!$this->session->userdata('nama')) {
                                         <div class="row">
                                             <label for="inputEmail3" class="col-sm-4 ">Total Produk</label>
                                             <div class="col-sm-8">
-                                                <p>: <?php echo "Rp. "   . number_format($pesanan['0']->grand_total) . ",-" ?>
+                                                <p>: Rp
+                                                    <?= str_replace(",", ".", number_format($pesanan['0']->grand_total)); ?>
                                                 </p>
                                             </div>
                                         </div>

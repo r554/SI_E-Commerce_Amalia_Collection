@@ -32,13 +32,10 @@
                 </strong>
                 <p><strong>BRI</strong><br />
                     Atas Nama : Amalia<br />
-                    No Rekening : 7273829372</p>
+                    No Rekening : 0372-04-876907-67-6</p>
                 <p><strong>BCA</strong><br />
                     Atas Nama : Amalia<br />
-                    No Rekening : 567828262819</p>
-                <p><strong>OVO</strong><br />
-                    Atas Nama : Amalia<br />
-                    No Rekening : 081333768257</p>
+                    No Rekening : 731 026 0977</p>
                 <p>Jika sudah melakukan pembayaran, silakan melakukan konfirmasi pembayaran <a
                         href="<?= base_url('pesanan_saya'); ?>"><button type="button" class="btn btn-info btn-lg">klik
                             disini</button></a>

@@ -127,8 +127,8 @@ if (!$this->session->userdata('nama')) {
                                                         <td>
                                                             <a
                                                                 href="<?php echo base_url("blog/delete_blog/$p->id_tutorial") ?>"><button
-                                                                    type="button"
-                                                                    class="btn btn-danger btn-sm">Hapus</button></a>
+                                                                    type="button" class="btn btn-danger btn-sm"
+                                                                    onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">Hapus</button></a>
                                                             <a
                                                                 href="<?php echo base_url("blog/tampil_edit_blog/$p->id_tutorial") ?>"><button
                                                                     type="button"

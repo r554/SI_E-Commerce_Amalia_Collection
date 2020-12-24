@@ -122,8 +122,8 @@ if (!$this->session->userdata('nama')) {
                                                 oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" name="password_admin"
+                                            <!-- <label>Password</label> -->
+                                            <input type="hidden" class="form-control" name="password_admin"
                                                 value="<?php echo $edit[0]->password_admin ?>" required
                                                 oninvalid="this.setCustomValidity('Password Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">

@@ -120,7 +120,7 @@ if (!$this->session->userdata('nama')) {
                                         <div class="form-group">
                                             <label>Nama Produk</label>
                                             <input name="nama_produk" type="teks" class="form-control"
-                                                placeholder="Enter Nama Produk" required
+                                                placeholder="Masukkan Nama Produk" required
                                                 oninvalid="this.setCustomValidity('Nama Produk Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
@@ -128,7 +128,7 @@ if (!$this->session->userdata('nama')) {
                                         <div class="form-group">
                                             <label>Harga</label>
                                             <input name="harga" type="number" class="form-control"
-                                                placeholder="Enter Harga (Harus Angka)"
+                                                placeholder="Masukkan Harga (Harus Angka)"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
@@ -137,7 +137,7 @@ if (!$this->session->userdata('nama')) {
                                         <div class="form-group">
                                             <label>Deskripsi</label>
                                             <input name="deskripsi" type="teks" class="form-control"
-                                                placeholder="Enter Deskripsi" required
+                                                placeholder="Masukkan Deskripsi" required
                                                 oninvalid="this.setCustomValidity('Deskripsi Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
@@ -145,7 +145,7 @@ if (!$this->session->userdata('nama')) {
                                         <div class="form-group">
                                             <label>Berat Produk</label>
                                             <input name="berat_produk" type="number" class="form-control"
-                                                placeholder="Enter Berat Produk (Harus Angka)"
+                                                placeholder="Masukkan Berat Produk (Harus Angka)"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
                                                 oninput="setCustomValidity('')">
@@ -208,9 +208,9 @@ if (!$this->session->userdata('nama')) {
                                                 <td><?php echo $attribut->qty; ?></td>
                                                 <td>
                                                     <a
-                                                        href="<?php echo base_url("data_produk/hapus_warna/" . $attribut->id_attribut . "/" . $attribut->id_produk) ?>"><button
-                                                            type="button"
-                                                            class="btn btn-danger btn-sm">Hapus</button></a>
+                                                        href="<?php echo base_url("data_produk/hapus_warna_tambah/" . $attribut->id_attribut . "/" . $attribut->id_produk) ?>"><button
+                                                            type="button" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Warna Pada Produk Ini?')">Hapus</button></a>
                                                 </td>
 
                                             </tr>

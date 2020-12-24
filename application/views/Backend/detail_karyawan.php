@@ -109,8 +109,8 @@ if (!$this->session->userdata('nama')) {
                                                         disabled value="<?php echo $u->username_admin ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control" name="password_admin"
+                                                    <!-- <label>Password</label> -->
+                                                    <input type="hidden" class="form-control" name="password_admin"
                                                         disabled value="<?php echo md5($u->password_admin) ?>">
                                                 </div>
 

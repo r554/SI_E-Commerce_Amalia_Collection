@@ -136,7 +136,8 @@ if (!$this->session->userdata('nama')) {
                                                             alt="">
                                                     </td>
                                                     <td>
-                                                        <p><?php echo "Rp. "   . number_format($a['harga']) . ",-" ?>
+                                                        <p>Rp
+                                                            <?= str_replace(",", ".", number_format($a['harga'])); ?>
                                                         </p>
                                                     </td>
                                                     <td class="text-center">

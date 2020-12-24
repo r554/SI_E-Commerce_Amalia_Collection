@@ -103,7 +103,8 @@ if (!$this->session->userdata('nama')) {
                                         <td><?php echo $pesanan['nama_pelanggan']; ?></td>
                                         <td><?php echo $pesanan['id_order']; ?></td>
                                         <td><?php echo $pesanan['grand_qty']; ?></td>
-                                        <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
+                                        <td>Rp
+                                            <?= str_replace(",", ".", number_format($pesanan['total'])); ?></td>
                                         <td class="text-center">
                                             <span class="badge bg-warning text-dark">Belum Bayar</span>
                                         </td>

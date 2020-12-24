@@ -154,9 +154,11 @@ if (!$this->session->userdata('nama')) {
                                                                 class="far fa-edit"> Edit</i></button></a>
                                                     <a
                                                         href="<?= base_url('Admin/data_karyawan/delete/' . $a['id_admin']) ?>"><button
-                                                            class="btn btn-danger btn-xs" type="button "><i
-                                                                class="fas fa-trash-alt">
+                                                            class="btn btn-danger btn-xs"
+                                                            onclick="return confirm('Apakah Anda Yakin Menghapus Data Karyawan Ini?')"
+                                                            type="button "><i class="fas fa-trash-alt">
                                                                 Hapus</i></button></a>
+
 
                                                 </td>
 

@@ -240,7 +240,9 @@ if (!$this->session->userdata('nama')) {
                                                     <p><?php echo $a->grand_qty; ?> </p>
                                                 </td>
                                                 <td>
-                                                    <p><?php echo $a->grand_total; ?> </p>
+                                                    <p>Rp
+                                                        <?= str_replace(",", ".", number_format($a->grand_total)); ?>
+                                                    </p>
                                                 </td>
                                                 <td>
 

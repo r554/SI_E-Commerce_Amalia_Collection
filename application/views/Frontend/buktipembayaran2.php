@@ -15,31 +15,32 @@
     <!-- Bagian Content -->
     <div class="container">
         <div class="row mt-5 mb-5">
-        <?php $this->load->view('Frontend/template/menu'); ?>
+            <?php $this->load->view('Frontend/template/menu'); ?>
             <div class="col-sm-9 col-md-8 mx-auto text-center">
                 <h1>Bukti Pembayaran</h1>
-                    <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST"
+                    enctype="multipart/form-data">
                     <div class="row">
                         <div class="col xm-8 col-12">
-                        <hr>
-                        <p><strong>BRI</strong><br />
-                            Atas Nama : Amalia<br />
-                            No Rekening : 7273829372</p>
-                        <p><strong>BCA</strong><br />
-                            Atas Nama : Amalia<br />
-                            No Rekening : 567828262819</p>
-                        <p><strong>OVO</strong><br />
-                            Atas Nama : Amalia<br />
-                            No Rekening : 081333768257</p>
-                            <hr><hr>
+                            <hr>
+                            <p><strong>BRI</strong><br />
+                                Atas Nama : Amalia<br />
+                                No Rekening : 0372-04-876907-67-6</p>
+                            <p><strong>BCA</strong><br />
+                                Atas Nama : Amalia<br />
+                                No Rekening : 731 026 0977</p>
+                            <hr>
+                            <hr>
                             <p>Tagihan Anda
-                            <p><h3>Rp <?= str_replace(",",".",number_format($ord['total'])); ?></h3></p>
+                            <p>
+                            <h3>Rp <?= str_replace(",", ".", number_format($ord['total'])); ?></h3>
+                            </p>
                             </p>
                             <hr>
                             <p>Masukkan ID Transaksi Anda :
                                 <input type="hidden" name="id_order" value="<?= $ord['id_order']; ?>">
-                                <input type="text" name="id" value="<?= $ord['id_order']; ?>"disabled>
-                            </p>                            
+                                <input type="text" name="id" value="<?= $ord['id_order']; ?>" disabled>
+                            </p>
                             <p>Silahkan Upload Bukti Pembayaran :
                                 <input type='file' id="file" name="foto_bukti" />
                                 <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();"

@@ -69,7 +69,7 @@ if (!$this->session->userdata('nama')) {
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Banner</a></li>
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">Banner</li>
 
                             </ol>
@@ -127,8 +127,8 @@ if (!$this->session->userdata('nama')) {
                                                                     class="btn btn-success btn-sm">Edit</button></a>
                                                             <a
                                                                 href="<?php echo base_url("Admin/Banner/delete/" . $a['id_banner']) ?>"><button
-                                                                    type="button"
-                                                                    class="btn btn-danger btn-sm">Hapus</button></a>
+                                                                    type="button" class="btn btn-danger btn-sm"
+                                                                    onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">Hapus</button></a>
                                                         </td>
                                                     </tr>
                                                     <?php

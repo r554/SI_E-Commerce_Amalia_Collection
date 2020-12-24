@@ -141,7 +141,8 @@ if (!$this->session->userdata('nama')) {
                                                             alt="">
                                                     </td>
                                                     <td>
-                                                        <p><?php echo "Rp. "   . number_format($a['harga']) . ",-" ?>
+                                                        <p>Rp
+                                                            <?= str_replace(",", ".", number_format($a['harga'])); ?>
                                                         </p>
 
                                                     </td>
@@ -161,7 +162,8 @@ if (!$this->session->userdata('nama')) {
                                                                     class="far fa-edit"> Edit</i></button></a>
                                                         <a
                                                             href="<?= base_url('data_produk/delete/' . $a['id_produk']) ?>"><button
-                                                                class="btn btn-danger btn-xs" type="button "><i
+                                                                class="btn btn-danger btn-xs" type="button"
+                                                                onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Produk Ini?')"><i
                                                                     class="fas fa-trash-alt">
                                                                     Hapus</i></button></a>
 

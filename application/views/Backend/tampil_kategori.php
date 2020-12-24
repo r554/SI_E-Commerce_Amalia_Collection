@@ -144,8 +144,8 @@ if (!$this->session->userdata('nama')) {
                                                                     class="btn btn-info btn-sm">Edit</button></a>
                                                             <a
                                                                 href="<?php echo base_url("Admin/kategori/hapus_kategori/" . $kategori['id_kategori']) ?>"><button
-                                                                    type="button"
-                                                                    class="btn btn-danger btn-sm">Hapus</button></a>
+                                                                    type="button" class="btn btn-danger btn-sm"
+                                                                    onclick="return confirm('Apakah Anda Yakin Menghapus Kategori Ini?')">Hapus</button></a>
                                                         </td>
                                                     </tr>
                                                     <?php

@@ -149,8 +149,8 @@ if (!$this->session->userdata('nama')) {
                                                 <td>
                                                     <a
                                                         href="<?php echo base_url("Admin/kategori/delete_kategori/" . $kategori->id_jenis . '/' . $kategori->id_kategori) ?>"><button
-                                                            type="button"
-                                                            class="btn btn-danger btn-sm">Hapus</button></a>
+                                                            type="button" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Jenis Produk Ini?')">Hapus</button></a>
                                                 </td>
 
                                             </tr>
