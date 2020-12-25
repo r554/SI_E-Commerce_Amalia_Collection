@@ -18,7 +18,7 @@ class Login0 extends CI_Controller
 		];
 		// var_dump($data);
 		// die;
-		$this->load->view('Frontend/login', $data);
+		$this->load->view('Frontend/v_login', $data);
 	}
 
 	function aksi_login()

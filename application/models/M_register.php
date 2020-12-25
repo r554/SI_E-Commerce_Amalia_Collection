@@ -35,7 +35,10 @@ class M_register extends CI_model
     {
         $post = $this->input->post();
         $this->id_pelanggan = $post["id_pelanggan"];
-        $this->username_pelanggan = $post["username"];
+        $this->nama_pelanggan = $post["nama_pelanggan"];
+        $this->no_pelanggan = $post["no_pelanggan"];
+        $this->email_pelanggan = $post["email_pelanggan"];
+        $this->username_pelanggan = $post["username_pelanggan"];
         $this->email_pelanggan = $post["email"];
         $this->password_pelanggan = md5($post["password"]);
 
@@ -56,5 +59,14 @@ class M_register extends CI_model
         }
         date_default_timezone_set('Asia/Jakarta');
         return date('dmy') . $kd;
+    }
+
+    // Function Untuk Mengecek Username Tersedia Atau Tidak
+    public function get_username_pelanggan($username)
+    {
+        $this->db->where('username_pelanggan', $username); // Untuk menambahkan Where Clause : username='$username_Pelanggan'
+        $result = $this->db->get('tbl_pelanggan')->row(); // Untuk mengeksekusi dan mengambil data hasil query
+
+        return $result;
     }
 }

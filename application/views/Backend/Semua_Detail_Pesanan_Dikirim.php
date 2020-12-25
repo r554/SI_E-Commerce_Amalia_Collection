@@ -1,9 +1,7 @@
 <?php
-
 if (!$this->session->userdata('nama')) {
     redirect(base_url("Auth_Admin"));
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +27,7 @@ if (!$this->session->userdata('nama')) {
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?= base_url('Homepage') ?>" class="brand-link">
-                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
 
@@ -47,9 +44,7 @@ if (!$this->session->userdata('nama')) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Detail Pesanan <a
-                                    href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dikirim') ?>"> <button
-                                        class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span>
+                            <h1 class="m-0">Detail Pesanan <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dikirim') ?>"> <button class="btn btn-info btn-sm rounded-pill"><span class="fa fa-arrow-left"></span>
                                         kembali </button></a></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
@@ -203,14 +198,14 @@ if (!$this->session->userdata('nama')) {
                                             $no = 1;
                                             foreach ($pesanan as $tampil_pesanan) {
                                             ?>
-                                            <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $tampil_pesanan->nama_produk; ?></td>
-                                                <td><?php echo $tampil_pesanan->warna; ?></td>
-                                                <td><?php echo $tampil_pesanan->deskripsi; ?></td>
-                                                <td class="text-center"><?php echo $tampil_pesanan->sub_qty; ?></td>
+                                                <tr>
+                                                    <td><?php echo $no++ ?></td>
+                                                    <td><?php echo $tampil_pesanan->nama_produk; ?></td>
+                                                    <td><?php echo $tampil_pesanan->warna; ?></td>
+                                                    <td><?php echo $tampil_pesanan->deskripsi; ?></td>
+                                                    <td class="text-center"><?php echo $tampil_pesanan->sub_qty; ?></td>
 
-                                            </tr>
+                                                </tr>
                                             <?php
                                             } ?>
                                         </tbody>

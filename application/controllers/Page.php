@@ -108,4 +108,9 @@ class Page extends CI_Controller
         $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/ketentuan_pengiriman', $data);
     }
+
+    public function login()
+    {
+        $this->load->view('Frontend/v_login');
+    }
 }
