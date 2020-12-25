@@ -686,8 +686,19 @@ Sizes: [
 
                                                                                     <br>
                                                                                     <br>
-                                                                                    Harap lakukan pembayaran ke Nomor Rekening/Virtual Account dengan NOMINAL YANG SESUAI, batas maksimal waktu pembayaran: 08 November 2020 14:39
-
+                                                                                    Harap lakukan pembayaran ke Nomor Rekening dengan NOMINAL YANG SUDAH DI TETAPKAN
+                                                                                    <br>
+                                                                                    <strong>BRI</strong>
+                                                                                    <br>
+                                                                                    <p>No Rekening: 0372-04-876907-67-6</p>
+                                                                                    <br>
+                                                                                    <p>Atas Nama : Amalia</p>
+                                                                                    <br>
+                                                                                    <strong>BCA</strong>
+                                                                                    <br>
+                                                                                    <p>No Rekening: 731 026 0977</p>
+                                                                                    <br>
+                                                                                    <p>Atas Nama : Amalia</p>
                                                                                     <br>
                                                                                     <br>
                                                                                     Detail Pesanan<br>
@@ -695,7 +706,6 @@ Sizes: [
                                                                                     Total Pesanan: <?php echo "Rp. "   . number_format($total) . ",-" ?><br>
                                                                                     Ongkos Kirim: <?php echo "Rp. "   . number_format($biaya_ongkir) . ",-" ?><br>
                                                                                     Kurir Pengiriman: <?php echo $jasa_pengiriman ?><br>
-
 
                                                                                     <br>
                                                                                     <br>
