@@ -53,63 +53,52 @@
             // Cek role user
             if ($this->session->userdata('role') == 2) { // Jika sudah bisa mendapatkan session
             ?>
+                <li class="nav-header">Pesanan</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-sticky-note"></i>
-                        <p>
-                            Pesanan
-                            <i class="fas fa-angle-left right"></i>
-                            <!-- <span class="badge badge-info right">6</span> -->
-                        </p>
+                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Pesanan Baru</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pesanan Baru</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_verifikasi_pembayaran') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Verifikasi Pembayaran</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_perlu_dikirim') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Perlu Dikirim</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dikirim') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pesanan Dikirim</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pesanan Selesai</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pesanan Dibatalkan</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_verifikasi_pembayaran') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Verifikasi Pembayaran</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_perlu_dikirim') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Perlu Dikirim</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dikirim') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Pesanan Dikirim</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Pesanan Selesai</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Pesanan Dibatalkan</p>
+                    </a>
                 </li>
             <?php
             }
             ?>
 
-
             <?php
             // Cek role user
             if ($this->session->userdata('role') == 2) { // Jika sudah bisa mendapatkan session
             ?>
+                <li class="nav-header">Kelola Produk</li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('data_produk/tampil') ?>" class="nav-link">
                         <i class="nav-icon far fa-list-alt"></i>
