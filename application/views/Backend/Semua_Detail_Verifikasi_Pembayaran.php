@@ -184,7 +184,7 @@ if (!$this->session->userdata('nama')) {
                                     <div class="row">
                                         <label for="inputEmail3" class="col-sm-4 "> Foto Bukti Pembayaran </label>
                                         <div class="col-md-2">
-                                            <form action="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order) ?>" method="POST">
+                                            <form action="<?= base_url('Admin/Pesanan/terima_pembayaran/' . $pesanan['0']->id_order . '/' . $pesanan['0']->no_penerima) ?>" method="POST">
                                                 <button type="submit" class="btn btn-success btn-sm">Terima Pembayaran</button>
                                                 <?php
                                                 $no = 1;
@@ -203,7 +203,7 @@ if (!$this->session->userdata('nama')) {
                                             </form>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order) ?>"><button class="btn btn-danger btn-sm" type="button">Tolak
+                                            <a href="<?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['0']->id_order . '/' . $pesanan['0']->no_penerima) ?>"><button class="btn btn-danger btn-sm" type="button">Tolak
                                                     Pembayaran</button>
                                             </a>
                                         </div>

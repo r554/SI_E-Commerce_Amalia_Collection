@@ -80,6 +80,7 @@ class Pesanan extends CI_Controller
         $this->db->set('status', $id_status);
         $this->db->where('id_order', $id_order);
         $this->db->update('tbl_order');
+        $this->_sendWAA();
 
         redirect(site_url('Admin/Pesanan/tampil_semua_perlu_dikirim'));
     }
@@ -93,6 +94,7 @@ class Pesanan extends CI_Controller
         $this->db->where('id_order', $id);
         $this->db->update('tbl_order');
 
+        $this->_sendWAAA();
         redirect(site_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan'));
     }
 
@@ -135,37 +137,226 @@ class Pesanan extends CI_Controller
         redirect(site_url('Admin/Pesanan/tampil_semua_pesanan_dikirim'));
     }
 
+
     private function _sendWA()
     {
+        $no_penerima =  $_POST["no_penerima"]; //Menangkap Inputan Dari Form
+        // cek apakah no hp mengandung karakter + dan 0-9
+        if (!preg_match('/[^+0-9]/', trim($no_penerima))) {
+            // cek apakah no hp karakter 1-3 adalah +62
+            if (substr(trim($no_penerima), 0, 2) == '62') {
+                $hp = trim($no_penerima);
 
-        $nomor_resi = $_POST["nomor_resi"];
-        $jasa_pengiriman = $_POST["jasa_pengiriman"];
-        $curl = curl_init();
-        $sender = "6281333992731"; // nomor Server 
-        $dest = $_POST["no_penerima"]; // nomor tujuan, pake kode negara 
-        $isiPesan = "Terimakasih Sudah berbelanja Di Amalia Collection. <br>Pesanan Anda sudah kami kirim, Berikut Nomor Resi Pengiriman Anda : *" . $nomor_resi . "*<br>dengan Menggunakan Jasa Pengiriman *" . $jasa_pengiriman . "* <br>Anda Dapat Melacak Pengiriman Dari Situs Resmi Jasa Pengiriman";
+                $nomor_resi = $_POST["nomor_resi"];
+                $jasa_pengiriman = $_POST["jasa_pengiriman"];
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Terimakasih Sudah berbelanja Di Amalia Collection. <br>Pesanan Anda sudah kami kirim, Berikut Nomor Resi Pengiriman Anda : *" . $nomor_resi . "*<br>dengan Menggunakan Jasa Pengiriman *" . $jasa_pengiriman . "* <br>Anda Dapat Melacak Pengiriman Dari Situs Resmi Jasa Pengiriman";
 
-        curl_setopt_array($curl, array(
+                curl_setopt_array($curl, array(
 
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://whapi.io/api/send",
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: text/plain",
-                "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
-            ),
-        ));
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
 
-        $response = curl_exec($curl);
+                $response = curl_exec($curl);
 
-        curl_close($curl);
-        echo $response;
+                curl_close($curl);
+                //echo $response;
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif (substr(trim($no_penerima), 0, 1) == '0') {
+                $hp = '62' . substr(trim($no_penerima), 1);
+
+                $nomor_resi = $_POST["nomor_resi"];
+                $jasa_pengiriman = $_POST["jasa_pengiriman"];
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Terimakasih Sudah berbelanja Di Amalia Collection. <br>Pesanan Anda sudah kami kirim, Berikut Nomor Resi Pengiriman Anda : *" . $nomor_resi . "*<br>dengan Menggunakan Jasa Pengiriman *" . $jasa_pengiriman . "* <br>Anda Dapat Melacak Pengiriman Dari Situs Resmi Jasa Pengiriman";
+
+                curl_setopt_array($curl, array(
+
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                //echo $response;
+
+            }
+        }
+    }
+
+    // Kirim Notif Terima Pembayaran
+    private function _sendWAA()
+    {
+        $no_penerima =  $this->uri->segment(5); //Menangkap Inputan Dari Form
+        //$no_penerima =  '082232354230'; //Menangkap Inputan Dari Form
+        // cek apakah no hp mengandung karakter + dan 0-9
+        if (!preg_match('/[^+0-9]/', trim($no_penerima))) {
+            // cek apakah no hp karakter 1-3 adalah +62
+            if (substr(trim($no_penerima), 0, 2) == '62') {
+                $hp = trim($no_penerima);
+
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Terimakasih Sudah berbelanja Di Amalia Collection. <br> Pembayaran Anda Sudah Kami Verifikasi.Pesanan Anda Sedang Kami Proses, Kami Akan Mengirimkan Nomor Resi Dalam 1 x 24 Jam";
+
+                curl_setopt_array($curl, array(
+
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                //echo $response;
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif (substr(trim($no_penerima), 0, 1) == '0') {
+                $hp = '62' . substr(trim($no_penerima), 1);
+
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Terimakasih Sudah berbelanja Di Amalia Collection. <br> Pembayaran Anda Sudah Kami Verifikasi.Pesanan Anda Sedang Kami Proses, Kami Akan Mengirimkan Nomor Resi Dalam 1 x 24 Jam";
+
+                curl_setopt_array($curl, array(
+
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                //echo $response;
+
+            }
+        }
+    }
+
+    // Kirm Notif Tolak Pembayaran
+    private function _sendWAAA()
+    {
+        $no_penerima =  $this->uri->segment(5); //Menangkap Inputan Dari Form
+        //$no_penerima =  '082232354230'; //Menangkap Inputan Dari Form
+        // cek apakah no hp mengandung karakter + dan 0-9
+        if (!preg_match('/[^+0-9]/', trim($no_penerima))) {
+            // cek apakah no hp karakter 1-3 adalah +62
+            if (substr(trim($no_penerima), 0, 2) == '62') {
+                $hp = trim($no_penerima);
+
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Mohon maaf pembayaran yang anda lakukan Tidak Berhasil di Verifikasi. Mungkin terjadi kesalahan pada saat melakukan pembayaran/pengiriman bukti pembayaran. Mohon segera melakukan konfirmasi ulang pada nomer ini *081333992731* ";
+
+                curl_setopt_array($curl, array(
+
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                //echo $response;
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif (substr(trim($no_penerima), 0, 1) == '0') {
+                $hp = '62' . substr(trim($no_penerima), 1);
+
+                $curl = curl_init();
+                $sender = "6281333992731"; // nomor Server 
+                $dest = $hp; // nomor tujuan, pake kode negara 
+                $isiPesan = "Mohon maaf pembayaran yang anda lakukan Tidak Berhasil di Verifikasi. Mungkin terjadi kesalahan pada saat melakukan pembayaran/pengiriman bukti pembayaran. Mohon segera melakukan konfirmasi ulang pada nomer ini *081333992731* ";
+
+                curl_setopt_array($curl, array(
+
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_URL => "https://whapi.io/api/send",
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\r\n  \"app\": {\r\n    \"id\": \"$sender\",\r\n    \"time\": \"1605326773\",\r\n    \"data\": {\r\n      \"recipient\": {\r\n        \"id\": \"$dest\"\r\n      },\r\n      \"message\": [\r\n        {\r\n          \"time\": \"1605326773\",\r\n          \"type\": \"text\",\r\n          \"value\": \"$isiPesan\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: text/plain",
+                        "Cookie: __cfduid=d424776e2d5021b158f1e64c99f2d7fce1604293254; ci_session=3b712ap59vc924a9o15j5rti70gif6k0"
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                //echo $response;
+
+            }
+        }
     }
 
 
