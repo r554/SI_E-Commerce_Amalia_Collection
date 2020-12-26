@@ -57,37 +57,55 @@
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>Pesanan Baru</p>
+                        <p>
+                            Pesanan Baru
+                            <span class="badge badge-info right">2</span>
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_verifikasi_pembayaran') ?>" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>Verifikasi Pembayaran</p>
+                        <p>
+                            Verifikasi Pembayaran
+                            <span class="badge badge-info right">2</span>
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_perlu_dikirim') ?>" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>Perlu Dikirim</p>
+                        <p>
+                            Perlu Dikirim
+                            <span class="badge badge-info right">2</span>
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dikirim') ?>" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>Pesanan Dikirim</p>
+                        <p>
+                            Pesanan Dikirim
+                            <span class="badge badge-info right">2</span>
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>Pesanan Selesai</p>
+                        <p>
+                            Pesanan Selesai
+                            <span class="badge badge-info right">2</span>
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan') ?>" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>Pesanan Dibatalkan</p>
+                        <p>
+                            Pesanan Dibatalkan
+                            <span class="badge badge-info right">2</span>
+                        </p>
                     </a>
                 </li>
             <?php
