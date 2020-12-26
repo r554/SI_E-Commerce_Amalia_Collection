@@ -53,14 +53,44 @@
             // Cek role user
             if ($this->session->userdata('role') == 2) { // Jika sudah bisa mendapatkan session
             ?>
-                <li class="nav-header">Pesanan</li>
+                <?php
+
+                $this->db->from('tbl_order');
+                $this->db->where('tbl_order.status', 1);
+                $c_pesanan_baru = $this->db->get()->num_rows();
+
+                $this->db->from('tbl_order');
+                $this->db->where('tbl_order.status', 2);
+                $c_verifikasi_pembayaran = $this->db->get()->num_rows();
+
+                $this->db->from('tbl_order');
+                $this->db->where('tbl_order.status', 3);
+                $c_perlu_dikirim = $this->db->get()->num_rows();
+
+                $this->db->from('tbl_order');
+                $this->db->where('tbl_order.status', 4);
+                $c_pesanan_dikirim = $this->db->get()->num_rows();
+
+                $this->db->from('tbl_order');
+                $this->db->where('tbl_order.status', 5);
+                $c_pesanan_selesai = $this->db->get()->num_rows();
+
+                $this->db->from('tbl_order');
+                $this->db->where('tbl_order.status', 6);
+                $c_pesanan_dibatalkan = $this->db->get()->num_rows();
+
+
+                ?>
+                <li class="nav-header">
+                    <h5>Pesanan</h5>
+                </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>" class="nav-link">
                         <i class="fas fa-envelope-open-text"></i>
                         <p>
                             Pesanan Baru
                             <?php if (!empty($c_pesanan_baru)) { ?>
-                                <span class="badge badge-info right"><?= $c_pesanan_baru ?></span>
+                                <span class="badge badge-info right"><?= $c_pesanan_baru; ?></span>
                             <?php } ?>
                         </p>
                     </a>
@@ -128,7 +158,9 @@
             // Cek role user
             if ($this->session->userdata('role') == 2) { // Jika sudah bisa mendapatkan session
             ?>
-                <li class="nav-header">Kelola Produk</li>
+                <li class="nav-header">
+                    <h5>Kelola Produk</h5>
+                </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('data_produk/tampil') ?>" class="nav-link">
                         <i class="nav-icon far fa-list-alt"></i>

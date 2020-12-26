@@ -31,18 +31,6 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
-    public function count_tampil_semua()
-    {
-        $pesanan_baru = '1';
-        $this->db->from('tbl_order');
-        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
-        $this->db->where('tbl_order.status', $pesanan_baru);
-
-        $query = $this->db->get();
-        return $query->num_rows();
-    }
-
-
     public function get_tampil_detail($id)
     {
         //$this->db->select('*');
@@ -67,16 +55,6 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
-    public function count_verifikasi_pembayaran()
-    {
-        $id = "2";
-        $this->db->from('tbl_order');
-        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
-        $this->db->where('tbl_order.status', $id);
-        $query = $this->db->get();
-
-        return $query->num_rows();
-    }
 
     public function get_tampil_detail_Verifikasi_pembayaran($id)
     {
@@ -121,17 +99,6 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
-    public function count_perlu_dikirim()
-    {
-        $id = "3";
-        $this->db->from('tbl_order');
-        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
-        $this->db->where('tbl_order.status', $id);
-        $query = $this->db->get();
-
-        return $query->num_rows();
-    }
-
     public function get_tampil_detail_perlu_dikirim($id)
     {
         //$this->db->select('*');
@@ -155,17 +122,6 @@ class M_Pesanan extends CI_model
         $this->db->where('tbl_order.status', $id);
         $query = $this->db->get();
         return $query->result_array();
-    }
-
-    public function count_pesanan_dikirim()
-    {
-        $id = "4";
-        $this->db->from('tbl_order');
-        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
-        $this->db->where('tbl_order.status', $id);
-        $query = $this->db->get();
-
-        return $query->num_rows();
     }
 
     public function get_tampil_detail_pesanan_dikirim($id)
@@ -192,17 +148,6 @@ class M_Pesanan extends CI_model
         return $query->result_array();
     }
 
-    public function count_pesanan_selesai()
-    {
-        $id = "5";
-        $this->db->from('tbl_order');
-        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
-        $this->db->where('tbl_order.status', $id);
-        $query = $this->db->get();
-
-        return $query->num_rows();
-    }
-
     public function get_tampil_detail_pesanan_selesai($id)
     {
         //$this->db->select('*');
@@ -225,17 +170,6 @@ class M_Pesanan extends CI_model
         $this->db->where('tbl_order.status', $id);
         $query = $this->db->get();
         return $query->result_array();
-    }
-
-    public function count_pesanan_dibatalkan()
-    {
-        $id = "6";
-        $this->db->from('tbl_order');
-        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
-        $this->db->where('tbl_order.status', $id);
-        $query = $this->db->get();
-
-        return $query->num_rows();
     }
 
     public function get_tampil_detail_pesanan_dibatalkan($id)

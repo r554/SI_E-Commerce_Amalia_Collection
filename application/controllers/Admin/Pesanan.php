@@ -16,12 +16,6 @@ class Pesanan extends CI_Controller
         $show = $this->M_Pesanan;
         $data = [
             "pesanan" => $show->tampil_semua(),
-            "c_pesanan_baru" => $show->count_tampil_semua(),
-            "c_verifikasi_pembayaran" => $show->count_verifikasi_pembayaran(),
-            "c_perlu_dikirim" => $show->count_perlu_dikirim(),
-            "c_pesanan_dikirim" => $show->count_pesanan_dikirim(),
-            "c_pesanan_selesai" => $show->count_pesanan_selesai(),
-            "c_pesanan_dibatalkan" => $show->count_pesanan_dibatalkan(),
         ];
         $this->load->view("Backend/Semua_Pesanan", $data);
     }
