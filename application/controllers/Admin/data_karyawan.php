@@ -80,4 +80,17 @@ class data_karyawan extends CI_Controller
 
 		$this->load->view("Backend/edit_karyawan", $data);
 	}
+
+	//untuk mereset password
+	public function reset_password($id_admin)
+	{
+		$password = md5('adminamalia');
+
+		$this->db->set('password_admin', $password);
+		$this->db->where('id_admin', $id_admin);
+		$this->db->update('tbl_admin');
+
+		$this->session->set_flashdata('reset', 'Password Berhasil di Reset');
+		redirect(site_url('Admin/data_karyawan/tampil'));
+	}
 }

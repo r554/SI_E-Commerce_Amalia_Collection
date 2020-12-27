@@ -11,7 +11,8 @@ class M_data_karyawan extends CI_model
     public $email_admin;
     public $username_admin;
     public $password_admin;
-    public $foto_admin = 'default.jpg';
+    public $foto_admin = 'default.PNG';
+    public $role = '2';
 
 
     public function rules()
@@ -36,7 +37,8 @@ class M_data_karyawan extends CI_model
         $this->email_admin = $post["email_admin"];
         $this->username_admin = $post["username_admin"];
         $this->password_admin = md5($post["password_admin"]);
-        $this->foto_admin = $this->do_upload();
+        $this->foto_admin;
+        $this->role;
 
 
         return $this->db->insert($this->_table, $this);

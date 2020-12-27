@@ -18,7 +18,8 @@
             <?php $this->load->view('Frontend/template/menu'); ?>
             <div class="col-sm-9 col-md-8 mx-auto text-center">
                 <h1>Bukti Pembayaran</h1>
-                <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST"
+                    enctype="multipart/form-data">
                     <div class="row">
                         <div class="col xm-8 col-12">
                             <hr>
@@ -31,9 +32,9 @@
                             <hr>
                             <hr>
                             <p>Tagihan Anda
-                                <p>
-                                    <h3>Rp <?= str_replace(",", ".", number_format($ord['total'])); ?></h3>
-                                </p>
+                            <p>
+                            <h3>Rp <?= str_replace(",", ".", number_format($ord['total'])); ?></h3>
+                            </p>
                             </p>
                             <hr>
                             <p>Masukkan ID Transaksi Anda :
@@ -42,7 +43,8 @@
                             </p>
                             <p>Silahkan Upload Bukti Pembayaran :
                                 <input type='file' multiple accept='image/*' id="menu_images" name="foto_bukti" />
-                                <img class="img-fluid" id="gambar" src="#" OnError=" $(this).hide();" height="500px" width="500px" />
+                                <img class="img-fluid" id="gambar" src="#" OnError=" $(this).hide();" height="500px"
+                                    width="500px" />
                             </p>
                         </div>
                     </div>
@@ -103,22 +105,22 @@
     <?php $this->load->view('Frontend/template/js') ?>
 
     <script type="text/javascript">
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-                reader.onload = function(e) {
-                    $('#gambar').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            reader.onload = function(e) {
+                $('#gambar').attr('src', e.target.result);
             }
-        }
 
-        $("#file").change(function() {
-            $('#gambar').show();
-            readURL(this);
-        });
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#file").change(function() {
+        $('#gambar').show();
+        readURL(this);
+    });
     </script>
     <!-- End Java Script -->
 

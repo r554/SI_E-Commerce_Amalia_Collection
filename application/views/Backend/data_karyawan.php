@@ -72,6 +72,15 @@ if (!$this->session->userdata('nama')) {
                     </div>
                     <?php }
                     ?>
+                    <?php
+                    // alert berhasil reset password
+                    if ($this->session->flashdata('reset')) { ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Password Berhasil Di Reset</h5>
+                    </div>
+                    <?php }
+                    ?>
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0">Data Karyawan</h1>
@@ -148,6 +157,10 @@ if (!$this->session->userdata('nama')) {
                                                         href="<?= base_url('Admin/data_karyawan/tampil_detail/' . $a['id_admin']) ?>"><button
                                                             class="btn btn-primary btn-xs" type="button"><i
                                                                 class="fas fa-info-circle"> Detail</i></button></a>
+                                                    <a
+                                                        href="<?= base_url('Admin/data_karyawan/reset_password/' . $a['id_admin']) ?>"><button
+                                                            class="btn btn-info btn-xs" type="button"><i
+                                                                class="fas fa-sync"> Reset Password</i></button></a>
                                                     <a
                                                         href="<?= base_url('Admin/data_karyawan/edit/' . $a['id_admin']) ?>"><button
                                                             class="btn btn-success btn-xs" type="button"><i
