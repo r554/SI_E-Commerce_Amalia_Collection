@@ -98,7 +98,6 @@ if ($dateNow >= $dateDBNew) {
                                         <th>Total Qty</th>
                                         <th>Total Pesanan</th>                                        
                                         <th class="text-center">Status</th>
-                                        <th>#</th>
                                         <th class="text-center">Pilihan</th>
                                     </tr>
                                 </thead>
@@ -121,8 +120,6 @@ if ($dateNow >= $dateDBNew) {
                                         <td class="text-center">
                                         <span class="badge bg-warning text-dark">Belum Bayar</span>
                                         </td>
-                                        <td><?php echo $pesanan['tanggal_order'];?></td>
-
                                         <td>
                                             <div class="input-group">
                                                 <a
