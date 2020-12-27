@@ -3,7 +3,15 @@
 if (!$this->session->userdata('nama')) {
     redirect(base_url("Auth_Admin"));
 }
-
+foreach ($pesanan as $tglcek) {
+$dateNow = date('Y-m-d H:i'); // Ambil Waktu Saat Ini
+$dateDB = $tglcek['tanggal_order'];
+$dateDBNew = str_replace("T", " ", $dateDB);
+if ($dateNow >= $dateDBNew) {
+    $this->db->set('status', 6);
+    $this->db->update('tbl_order');
+}
+}
 ?>
 
 <!DOCTYPE html>
@@ -88,15 +96,20 @@ if (!$this->session->userdata('nama')) {
                                         <th>Nama Pelanggan</th>
                                         <th>Nomor Pesanan</th>
                                         <th>Total Qty</th>
-                                        <th>Total Pesanan</th>
+                                        <th>Total Pesanan</th>                                        
                                         <th class="text-center">Status</th>
+                                        <th>#</th>
                                         <th class="text-center">Pilihan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
+                                    
                                     $no = 1;
                                     foreach ($pesanan as $pesanan) {
+                                        //$tglsekarang = date("Y-m-d H:i:s");
+                                        //$tglorder = $pesanan['tanggal_order'];
+                                        
                                     ?>
 
                                     <tr>
@@ -106,8 +119,9 @@ if (!$this->session->userdata('nama')) {
                                         <td>Rp
                                             <?= str_replace(",", ".", number_format($pesanan['total'])); ?></td>
                                         <td class="text-center">
-                                            <span class="badge bg-warning text-dark">Belum Bayar</span>
+                                        <span class="badge bg-warning text-dark">Belum Bayar</span>
                                         </td>
+                                        <td><?php echo $pesanan['tanggal_order'];?></td>
 
                                         <td>
                                             <div class="input-group">
