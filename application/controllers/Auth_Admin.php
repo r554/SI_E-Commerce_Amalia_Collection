@@ -43,8 +43,12 @@ class Auth_Admin extends CI_Controller
                 );
 
                 $this->session->set_userdata($session); // Buat session sesuai $session
+                if ($user->role == 1 ){
+                    redirect(site_url('Manager/Dashboard_Manager/tampil_manager'));
+                } else {
+                    redirect(site_url('Dashboard/tampil'));
+                }
                 //redirect('page/home'); // Redirect ke halaman home
-                redirect(site_url('Dashboard/tampil'));
             } else {
                 $this->session->set_flashdata('message', 'Username atau Password Salah'); // Buat session flashdata
                 redirect('Auth_Admin'); // Redirect ke halaman login
