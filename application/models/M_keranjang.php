@@ -139,8 +139,8 @@ class M_keranjang extends CI_model
         $this->kode_pos = $post["kode_pos"];
         $this->provinsi_penerima = $post["provinsi_penerima"];
         $this->kabupaten_penerima = $post["kabupaten_penerima"];
-        $this->kecamatan_penerima = $post["kecamatan_penerima"];
-        $this->kelurahan_penerima = $post["kelurahan_penerima"];
+        //$this->kecamatan_penerima = $post["kecamatan_penerima"];
+        //$this->kelurahan_penerima = $post["kelurahan_penerima"];
         $this->status = $post["status"];
 
         return $this->db->update('tbl_order', $this, array('id_order' => $post['id_order']));

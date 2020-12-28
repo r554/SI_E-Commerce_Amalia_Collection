@@ -54,24 +54,26 @@ if (!$data_produk) {
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-6 mt-3">
-                                            <select class="form-control" id="provinsi_penerima" name="provinsi_penerima" style="height: 40px; font-size: medium;" required>
+                                        <div class="col-md-6">
+                                            <!-- <select class="form-control" id="provinsi_penerima" name="provinsi_penerima" style="height: 40px; font-size: medium;" required>
                                                 <option value="" selected disabled>Provinsi</option>
                                                 <?php foreach ($data_provinsi->result() as $row) : ?>
                                                     <option value="<?php echo $row->id; ?>"><?php echo $row->nama; ?></option>
                                                 <?php endforeach; ?>
-                                            </select>
+                                            </select> -->
+                                            <input type="hidden" id="provinsi_nama" name="provinsi_penerima" value="">
                                         </div>
-                                        <div class="col-md-6 mt-3">
-                                            <select class="form-control" id="kabupaten_penerima" name="kabupaten_penerima" style="height: 40px; font-size: medium;" required>
+                                        <div class="col-md-6">
+                                            <!-- <select class="form-control" id="kabupaten_penerima" name="kabupaten_penerima" style="height: 40px; font-size: medium;" required>
                                                 <option value="" selected disabled>Kabupaten</option>
                                                 <option value=""></option>
-                                            </select>
+                                            </select> -->
+                                            <input type="hidden" id="kota_nama" name="kabupaten_penerima" value="">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6 mt-3">
                                             <select class="form-control" id="kecamatan_penerima" name="kecamatan_penerima" style="height: 40px; font-size: medium;" required>
@@ -86,27 +88,29 @@ if (!$data_produk) {
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <input type="text" minlength="5" maxlength="7" name="kode_pos" class="form-control" style="height: 40px; font-size: medium;" placeholder="Kode POS" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required>
                                 </div>
 
                                 <div class="form-group mt-5">
-                                    <label for="exampleInputEmail1"><strong>Kurir Pengiriman</strong></label>
                                     <div class="row">
                                         <div class="col-md-6 mb-2 mt-2">
                                             <b><label for="">Provinsi</label></b>
                                             <select class="form-control" id="provinsi" name="provinsi" style="height: 40px; font-size: medium;" required></select>
+
                                         </div>
                                         <div class="col-md-6 mt-2">
                                             <b><label for="">Kabupaten/Kota</label></b>
                                             <select class="form-control" id="kota" name="kota" style="height: 40px; font-size: medium;" required></select>
+
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group ">
+                                    <label for="exampleInputEmail1"><strong>Kurir Pengiriman</strong></label>
                                     <div class="row">
                                         <div class="col-md-6 mb-2 mt-2">
                                             <b><label for="">Expedisi</label></b>
@@ -489,6 +493,14 @@ if (!$data_produk) {
                 // Untuk Mendapatkan Expedisi yang terpilih
                 var expedisi_final = $("select[name=expedisi]").val()
                 document.getElementById("jasa_pengiriman").value = expedisi_final;
+
+                // Untuk Mendapatkan Nama Provinsi yang terpilih
+                var nama_prov = $("option:selected", "select[name=provinsi]").attr('nama_provinsi');
+                document.getElementById("provinsi_nama").value = nama_prov;
+
+                // Untuk Mendapatkan Nama Kabupaten yang terpilih
+                var nama_kab = $("option:selected", "select[name=kota]").attr('nama_kota');
+                document.getElementById("kota_nama").value = nama_kab;
 
                 // Untuk input ke attribut input Biaya Ongkir
                 document.getElementById("biaya_ongkir").value = dataongkir;
