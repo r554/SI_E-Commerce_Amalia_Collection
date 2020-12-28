@@ -25,9 +25,12 @@ class Login0 extends CI_Controller
 	{
 		$USERNAME_PELANGGAN = $this->input->post('USERNAME_PELANGGAN');
 		$PASSWORD_PELANGGAN = $this->input->post('PASSWORD_PELANGGAN');
+		$statusPelanggan = 1 ;
 		$where = array(
 			'username_pelanggan' => $USERNAME_PELANGGAN,
-			'password_pelanggan' => md5($PASSWORD_PELANGGAN)
+			'password_pelanggan' => md5($PASSWORD_PELANGGAN),
+			'status' => $statusPelanggan
+
 		);
 		$cek = $this->m_login->cek_login("tbl_pelanggan", $where)->num_rows();
 		$data_pelanggan = $this->m_login->data_pelanggan("tbl_pelanggan", $where)->result();

@@ -35,7 +35,7 @@
                             <?php
                             if (isset($_SESSION["logingagal"])) { ?>
                                 <div class="alert alert-danger alert-dismissible fade show">
-                                    <strong>Login Gagal</strong> username atau password salah.
+                                    <strong>Login Gagal</strong> Username dan Password salah <strong>Atau</strong> akun Non aktif.
                                     <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

@@ -120,6 +120,16 @@ class Pesanan extends CI_Controller
         $this->load->view("Backend/Semua_Detail_Perlu_Dikirim", $data);
     }
 
+    public function tampil_invoice_perlu_dikirim($id)
+    {
+        $show = $this->M_Pesanan;
+        $data = [
+            "pesanan" => $show->get_tampil_detail_perlu_dikirim($id),
+        ];
+
+        $this->load->view("Backend/printInvoice", $data);
+    }
+
     public function simpan_resi()
     {
 
