@@ -18,7 +18,7 @@ class M_dashboard_manager extends CI_model
     public $status_promo;
     public $dibuat_tanggal;
 
- 
+  
 
     public function rules()
     {
@@ -69,7 +69,7 @@ class M_dashboard_manager extends CI_model
     // menghitung card produk terjual
     function jumlah_data_produk_terjual()
     {
-        $id="3";
+        $id="5";
         $this->db->from('tbl_order');
         $this->db->where('status', $id); 
             $query = $this->db->get();
