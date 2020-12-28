@@ -111,7 +111,9 @@ if (!$this->session->userdata('nama')) {
                                                     data-target="#modal-kirim">Kirim Paket</button>
                                                 <a
                                                     href=" <?= base_url('Admin/Pesanan/tampil_detail_perlu_dikirim/' . $pesanan['id_order']) ?>"><button
-                                                        class="btn btn-info btn-xs mx-auto">Detail</button></a>
+                                                        class="btn btn-info btn-xs mx-auto">Detail</button></a>    
+                                                <a href=" <?= base_url('Admin/Pesanan/tampil_invoice_perlu_dikirim/' . $pesanan['id_order']) ?>"><button
+                                                        class="btn btn-info btn-xs mx-auto">Invoice</button></a>         
 
                                             </div>
                                         </td>
