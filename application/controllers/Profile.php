@@ -56,7 +56,7 @@ class profile extends CI_Controller
       $data['footer'] = $show->tampil_footer();
       $this->load->view('Frontend/template/head1');
       $this->load->view('Frontend/template/navbar3');
-      $this->load->view('Frontend/ubah_pass1',$data);
+      $this->load->view('Frontend/ubah_pass1', $data);
     } else {
       $password = md5($this->input->post('password'));
 
@@ -68,10 +68,9 @@ class profile extends CI_Controller
         $this->session->set_flashdata('message', '<div>Password Anda Tidak Cocok </div>');
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
-        $this->load->view('Frontend/ubah_pass1',$data);
+        $this->load->view('Frontend/ubah_pass1', $data);
       }
     }
-    
   }
   //untuk mencocokkan password baru 
   function ubah_password_baru()
@@ -83,7 +82,7 @@ class profile extends CI_Controller
       $data['footer'] = $show->tampil_footer();
       $this->load->view('Frontend/template/head1');
       $this->load->view('Frontend/template/navbar3');
-      $this->load->view('Frontend/ubah_pass2',$data);
+      $this->load->view('Frontend/ubah_pass2', $data);
     } else {
       $password_baru = md5($this->input->post('password'));
       $id_pelanggan = $this->session->userdata('id');
@@ -91,7 +90,7 @@ class profile extends CI_Controller
       $this->db->where('id_pelanggan', $id_pelanggan);
       $this->db->update('tbl_pelanggan');
       $this->session->sess_destroy();
-      redirect(base_url('Homepage'));
+      redirect(base_url('Login0'));
     }
   }
 }
