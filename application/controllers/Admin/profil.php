@@ -7,7 +7,8 @@ class profil extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Admin/M_profil');
-        $this->load->library('form_validation');
+		$this->load->library('form_validation');
+		$this->load->model('M_footer');
 	}
 
 
@@ -37,11 +38,12 @@ class profil extends CI_Controller
     
     public function ubah_password($id)
 	{
-        
+        $show2 = $this->M_footer;
         $show = $this->M_profil;
 
 		$data = [
-		"user" => $show->getById($id)
+		"user" => $show->getById($id),
+		"footer" => $show2->tampil_footer()
         ];
         
     
