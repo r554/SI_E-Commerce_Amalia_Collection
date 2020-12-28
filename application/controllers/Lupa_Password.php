@@ -59,6 +59,7 @@ class Lupa_Password extends CI_Controller
             if ($user_token) {
                 $this->session->set_userdata('reset_email', $email);
                 $this->changePassword();
+                $hasil = $this->db->query("DELETE FROM user_token WHERE token='$token'");
             } else {
                 $this->session->set_flashdata('message', '<div>Token Tidak Valid</div>');
                 redirect('Lupa_Password/forgotPassword');
@@ -73,8 +74,8 @@ class Lupa_Password extends CI_Controller
     public function changePassword()
     {
 
-        $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[3]|matches[password2]');
-        $this->form_validation->set_rules('password2', 'password2', 'trim|required|min_length[3]|matches[password1]');
+        $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[3]|matches[password]');
+        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]|matches[password1]');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('Frontend/lupa_pass2');
@@ -88,7 +89,7 @@ class Lupa_Password extends CI_Controller
 
             $this->session->unset_userdata('reset_email'); // Menghaspus Session reset_email
 
-            $this->session->set_flashdata('message', '<div>Berhasil Merubah Password. Silahkan Login</div>');
+            $this->session->set_flashdata('ubah_password', '<div>Berhasil Merubah Password. Silahkan Login</div>');
             redirect('Login0');
         }
     }
@@ -99,7 +100,7 @@ class Lupa_Password extends CI_Controller
         $config = [
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'amaliacollection87@gmail.com',
+            'smtp_user' => 'indanahgroup@gmail.com',
             'smtp_pass' => 'indah12345',
             'smtp_port' => '465',
             'mailtype' => 'html',
@@ -115,7 +116,8 @@ class Lupa_Password extends CI_Controller
 
         if ($type == 'verify') {
             $this->email->subject('Reset Password');
-            $this->email->message('click : <a href="' . base_url() . 'Lupa_Password/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">activate</a>');
+            $this->email->message('Klik Disini Untuk Merubah Password Akun Amalia : <a href="' . base_url() . 'Lupa_Password/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Ubah Password Baru</a>');
+            //$this->email->message('click : <a href="' . base_url() . 'Lupa_Password/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">activate</a>');
         }
 
         if ($this->email->send()) {

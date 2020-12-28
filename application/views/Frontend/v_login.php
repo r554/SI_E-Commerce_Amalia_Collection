@@ -53,7 +53,19 @@
                                     </button>
                                 </div>
                             <?php }
-                            $this->session->unset_userdata('logingagal');
+                            $this->session->unset_userdata('message1');
+                            ?>
+
+                            <?php
+                            if (isset($_SESSION["ubah_password"])) { ?>
+                                <div class="alert alert-success alert-dismissible fade show">
+                                    <strong>Reset Password Berhasil</strong> Silahkan Login Untuk Melanjutkan.
+                                    <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php }
+                            $this->session->unset_userdata('ubah_password');
                             ?>
 
                             <form action="<?php echo base_url('login0/aksi_login'); ?>" method="post">

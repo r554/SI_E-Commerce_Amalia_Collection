@@ -31,7 +31,7 @@
                     echo '<div class="alert alert-info">' . $this->session->flashdata('message') . '</div>'; // Tampilkan pesannya
                 }
                 ?>
-                <form action="<?php echo base_url('Profile/ubah_password_baru'); ?>" method="post">
+                <form action="<?php echo base_url('Lupa_Password/changePassword'); ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" placeholder="Masukkan Password Baru" name="password">
                         <div class="input-group-append">
