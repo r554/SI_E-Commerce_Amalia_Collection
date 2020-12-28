@@ -78,7 +78,7 @@ if (!$this->session->userdata('nama')) {
                     <div class="row">
                         <div class="col-md-2 ">
                             <div class="info-box bg-danger">
-                                <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+                                <span class="info-box-icon"> <i class="fas fa-cart-plus"></i></i></span>
 
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Pesanan Masuk</span>
@@ -97,7 +97,7 @@ if (!$this->session->userdata('nama')) {
 
                         <div class="col-md-2 col-sm-6 col-12">
                             <div class="info-box bg-warning">
-                                <span class="info-box-icon"><i class="fas fa-shopping-cart"></i></span>
+                                <span class="info-box-icon"> <i class="fas fa-people-carry"></i></i></span>
 
                                 <div class="info-box-content">
                                     <span class="info-box-text">Produk Terjual</span>
@@ -117,7 +117,7 @@ if (!$this->session->userdata('nama')) {
 
                         <div class="col-md-2">
                             <div class="info-box mb-3 bg-success ">
-                                <span class="info-box-icon "><i class="fas fa-chart-pie"></i></span>
+                                <span class="info-box-icon "> <i class="fas fa-cubes"></i></i></span>
 
                                 <?php
                                 $total = 0;
@@ -144,7 +144,7 @@ if (!$this->session->userdata('nama')) {
 
                         <div class="col-md-2">
                             <div class="info-box mb-3 bg-info">
-                                <span class="info-box-icon"><i class="fas fa-user-plus"></i></span>
+                                <span class="info-box-icon"><i class="fas fa-users"></i></span>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Customer</span>
                                     <span class="info-box-number"><?php echo $ipin ?></span>
@@ -161,7 +161,7 @@ if (!$this->session->userdata('nama')) {
 
                         <div class="col-md-2">
                             <div class="info-box mb-3 bg-primary">
-                                <span class="info-box-icon"><i class="fas fa-users"></i></span>
+                                <span class="info-box-icon"><i class="fas fa-user-tie"></i></i></span>
                                 <div class="info-box-content text-dark">
                                     <span class="info-box-text">Karyawan</span>
                                     <span class="info-box-number"><?php echo $indah ?></span>
