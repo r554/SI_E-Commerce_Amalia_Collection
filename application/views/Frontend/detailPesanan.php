@@ -66,10 +66,10 @@
                                     <td>Alamat</td>
                                     <td><?= $ord['alamat_penerima']; ?></td>
                                 </tr>                                
-                                <tr>
+                                <!-- <tr>
                                     <td></td>
                                     <td><?= $_SESSION["kabupaten"]; ?> <?= $_SESSION["provinsi"]; ?> - <?= $ord['kode_pos']; ?></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td></td>
                                     <td><?= $ord['kabupaten_penerima']; ?> - <?= $ord['provinsi_penerima']; ?> - <?= $ord['kode_pos']; ?></td>
