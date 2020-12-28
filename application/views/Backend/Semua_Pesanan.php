@@ -3,15 +3,8 @@
 if (!$this->session->userdata('nama')) {
     redirect(base_url("Auth_Admin"));
 }
-foreach ($pesanan as $tglcek) {
-$dateNow = date('Y-m-d H:i'); // Ambil Waktu Saat Ini
-$dateDB = $tglcek['tanggal_order'];
-$dateDBNew = str_replace("T", " ", $dateDB);
-if ($dateNow >= $dateDBNew) {
-    $this->db->set('status', 6);
-    $this->db->update('tbl_order');
-}
-}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -90,11 +83,14 @@ if ($dateNow >= $dateDBNew) {
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                        <?php $tglsekarang = date("Y-m-d H:i:s");
+                        echo $tglsekarang; ?>
                             <table id="semua_pesanan" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nama Pelanggan</th>
                                         <th>Nomor Pesanan</th>
+                                        <th>Tanggal Pesan</th>
                                         <th>Total Qty</th>
                                         <th>Total Pesanan</th>                                        
                                         <th class="text-center">Status</th>
@@ -106,14 +102,14 @@ if ($dateNow >= $dateDBNew) {
                                     
                                     $no = 1;
                                     foreach ($pesanan as $pesanan) {
-                                        //$tglsekarang = date("Y-m-d H:i:s");
-                                        //$tglorder = $pesanan['tanggal_order'];
+                                        
                                         
                                     ?>
 
                                     <tr>
                                         <td><?php echo $pesanan['nama_pelanggan']; ?></td>
                                         <td><?php echo $pesanan['id_order']; ?></td>
+                                        <td><?php echo $pesanan['tanggal_order']; ?></td>
                                         <td><?php echo $pesanan['grand_qty']; ?></td>
                                         <td>Rp
                                             <?= str_replace(",", ".", number_format($pesanan['total'])); ?></td>
@@ -124,7 +120,10 @@ if ($dateNow >= $dateDBNew) {
                                             <div class="input-group">
                                                 <a
                                                     href=" <?= base_url('Admin/Pesanan/tampil_detail_pemesanan/' . $pesanan['id_order']) ?>"><button
-                                                        class="btn btn-info btn-xs ml-5">Detail</button></a>
+                                                        class="btn btn-info btn-xs ml-3">Detail</button></a>
+                                                        <a
+                                                    href=" <?= base_url('Admin/Pesanan/tolak_pembayaran/' . $pesanan['id_order']) ?>"><button
+                                                        class="btn btn-danger btn-xs ml-3">Dibatalkan</button></a>
                                             </div>
                                         </td>
                                     </tr>
