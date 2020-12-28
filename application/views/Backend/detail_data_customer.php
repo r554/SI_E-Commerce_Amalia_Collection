@@ -143,12 +143,12 @@ if (!$this->session->userdata('nama')) {
                                                         value="<?php echo $u->username_pelanggan ?>">
                                                     <p class="form-control"><?php echo $u->username_pelanggan ?></p>
                                                 </div>
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label>Password</label>
                                                     <input type="hidden" name="password_pelanggan"
                                                         value="<?php echo $u->password_pelanggan ?>">
                                                     <p class="form-control"><?php echo $u->password_pelanggan ?></p>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-group">
                                                     <label>Tanggal Daftar</label>
                                                     <input type="hidden" name="tanggal_daftar"

@@ -122,13 +122,17 @@ if (!$this->session->userdata('nama')) {
                                     <div class="card-body">
                                         <input type="hidden" value="<?php echo $this->uri->segment("3") ?>"
                                             name="id_produk">
-                                        <input type='file' multiple accept='image/*' id="menu_images"
-                                            name="gambar_produk" required
-                                            oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
-                                            oninput="setCustomValidity('')" />
-                                        <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
-                                            OnError=" $(this).hide();" height="500px" width="500px" />
+                                        <div class="form-group">
+                                            <input type='file' multiple accept='image/*' id="menu_images"
+                                                name="gambar_produk" required
+                                                oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
+                                                oninput="setCustomValidity('')" />
+                                            <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
+                                                OnError=" $(this).hide();" height="500px" width="500px" />
+                                        </div>
+
                                     </div>
+
                                     <!-- /.card-body -->
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">
@@ -153,26 +157,28 @@ if (!$this->session->userdata('nama')) {
                 <!-- REQUIRED SCRIPTS -->
                 <?php $this->load->view('Backend/template/js'); ?>
             </section>
-            <script type="text/javascript">
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
 
-                    reader.onload = function(e) {
-                        $('#gambar').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]); // convert to base64 string
-                }
-            }
-
-            $("#file").change(function() {
-                $('#gambar').show();
-                readURL(this);
-            });
-            </script>
         </div>
     </div>
+    <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#gambar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#menu_images").change(function() {
+        $('#gambar').show();
+        readURL(this);
+    });
+    </script>
+    <?php $this->load->view('Backend/template/js'); ?>
 </body>
 
 </html>
