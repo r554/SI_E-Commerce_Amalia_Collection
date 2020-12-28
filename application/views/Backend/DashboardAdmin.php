@@ -73,7 +73,7 @@ if (!$this->session->userdata('nama')) {
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3><?php echo $kaka ?></h3>
-                                    <p>Pesanan Masuk</p>
+                                    <p>Pesanan Baru</p>
                                 </div>
 
                                 <div class="icon">

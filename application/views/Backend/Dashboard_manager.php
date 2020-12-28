@@ -81,7 +81,7 @@ if (!$this->session->userdata('nama')) {
                                 <span class="info-box-icon"> <i class="fas fa-cart-plus"></i></i></span>
 
                                 <div class="info-box-content text-dark">
-                                    <span class="info-box-text">Pesanan Masuk</span>
+                                    <span class="info-box-text">Pesanan Baru</span>
                                     <span class="info-box-number"><?php echo $maradona ?></span>
 
                                     <div class="progress">
