@@ -25,9 +25,11 @@
                         <input type="text" name="id_order">
                     </p>
                     <p>Silahkan Upload Bukti Pembayaran :
-                        <input type='file' id="file" name="foto_bukti" />
-                        <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();"
-                            height="500px" width="500px" />
+                        <input type='file' multiple accept='image/*' id="menu_images" name="foto_bukti" />
+                        <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();" />
+                        <!-- <input type='file' multiple accept='image/*' id="menu_images" name="foto_bukti" />
+                        <img class="img-fluid" id="gambar" src="#" OnError=" $(this).hide();" height="500px"
+                            width="500px" /> -->
                     </p>
                 </div>
             </div>
@@ -81,10 +83,6 @@
     <!-- End Footer -->
 
 
-    <!-- Java Script -->
-    <?php $this->load->view('Frontend/template/js') ?>
-    <!-- End Java Script -->
-
     <script type="text/javascript">
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -98,11 +96,15 @@
         }
     }
 
-    $("#file").change(function() {
+    $("#menu_images").change(function() {
         $('#gambar').show();
         readURL(this);
     });
     </script>
+
+    <!-- Java Script -->
+    <?php $this->load->view('Frontend/template/js') ?>
+    <!-- End Java Script -->
 </body>
 
 </html>

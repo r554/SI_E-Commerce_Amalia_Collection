@@ -123,7 +123,9 @@ if (!$this->session->userdata('nama')) {
                                         <input type="hidden" value="<?php echo $this->uri->segment("3") ?>"
                                             name="id_produk">
                                         <input type='file' multiple accept='image/*' id="menu_images"
-                                            name="gambar_produk" />
+                                            name="gambar_produk" required
+                                            oninvalid="this.setCustomValidity('Gambar Tidak Boleh Kosong!')"
+                                            oninput="setCustomValidity('')" />
                                         <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar"
                                             OnError=" $(this).hide();" height="500px" width="500px" />
                                     </div>

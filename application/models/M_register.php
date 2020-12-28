@@ -16,6 +16,7 @@ class M_register extends CI_model
     public $foto_pelanggan = "default.png";
     public $username_pelanggan;
     public $password_pelanggan;
+    public $status;
 
 
 
@@ -41,6 +42,7 @@ class M_register extends CI_model
         $this->username_pelanggan = $post["username_pelanggan"];
         $this->email_pelanggan = $post["email"];
         $this->password_pelanggan = md5($post["password"]);
+        $this->status = 1;
 
         return $this->db->insert($this->_table, $this);
     }

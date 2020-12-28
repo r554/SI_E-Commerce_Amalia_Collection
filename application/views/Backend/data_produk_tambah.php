@@ -86,8 +86,8 @@ if (!$this->session->userdata('nama')) {
                                 <form action="<?php echo base_url("data_produk/save") ?>" method="POST"
                                     enctype="multipart/form-data">
                                     <div class="card-body">
-                                        <label>ID Produk</label>
-                                        <input name="id_produk" type="teks" class="form-control"
+                                        <!-- <label>ID Produk</label> -->
+                                        <input name="id_produk" type="hidden" class="form-control"
                                             value="<?php echo $invoice ?>">
                                         <input name="status_produk" type="hidden" class="form-control" value="1">
                                         <input name="status_promo" type="hidden" class="form-control" value="0">
@@ -127,7 +127,7 @@ if (!$this->session->userdata('nama')) {
 
                                         <div class="form-group">
                                             <label>Harga</label>
-                                            <input name="harga" type="number" class="form-control"
+                                            <input name="harga" min="1" type="number" class="form-control"
                                                 placeholder="Masukkan Harga (Harus Angka)"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
@@ -144,7 +144,7 @@ if (!$this->session->userdata('nama')) {
 
                                         <div class="form-group">
                                             <label>Berat Produk</label>
-                                            <input name="berat_produk" type="number" class="form-control"
+                                            <input name="berat_produk" min="1" type="number" class="form-control"
                                                 placeholder="Masukkan Berat Produk (Harus Angka)"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 oninvalid="this.setCustomValidity('Harga Tidak Boleh Kosong!')"
