@@ -99,7 +99,7 @@ class Lupa_Password extends CI_Controller
         $config = [
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'indanahgroup@gmail.com',
+            'smtp_user' => 'amaliacollection87@gmail.com',
             'smtp_pass' => 'indah12345',
             'smtp_port' => '465',
             'mailtype' => 'html',
@@ -109,7 +109,7 @@ class Lupa_Password extends CI_Controller
 
         $this->load->library('email', $config);
 
-        $this->email->from('Indanahgroup@gmail.com', 'Indanah Group');
+        $this->email->from('amaliacollection87@gmail.com', 'Amalia Collection');
         $this->email->to($this->input->post('email'));
 
 
