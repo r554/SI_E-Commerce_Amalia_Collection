@@ -81,13 +81,13 @@ if (!$this->session->userdata('nama')) {
                                 <span class="info-box-icon"> <i class="fas fa-cart-plus"></i></i></span>
 
                                 <div class="info-box-content text-dark">
-                                    <span class="info-box-text">Pesanan Baru</span>
+                                    <span class="info-box-text">Pesanan Masuk</span>
                                     <span class="info-box-number"><?php echo $maradona ?></span>
 
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 70%"></div>
                                     </div>
-                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
+                                    <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_manajer') ?>"
                                         class="small-box-footer text-light">
                                         Detail <i class="fas fa-arrow-circle-right"></i>
                                     </a>
@@ -212,7 +212,7 @@ if (!$this->session->userdata('nama')) {
                                                 <th>Jumlah Produk Dipesan</th>
                                                 <th>Total Harga </th>
                                                 <th>Status Pemesanan</th>
-                                                <th>Aksi</th>
+                                                <!-- <th>Aksi</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -259,12 +259,12 @@ if (!$this->session->userdata('nama')) {
 
                                                             ?> </p>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
 
                                                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
                                                         class="btn btn-info btn-sm active" role="button"
                                                         aria-pressed="true">Detail</a>
-                                                </td>
+                                                </td> -->
 
                                             </tr>
                                             <?php } ?>

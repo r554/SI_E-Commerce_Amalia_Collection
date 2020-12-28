@@ -104,7 +104,7 @@ if (!$this->session->userdata('nama')) {
                     <!-- Ini Bagian Konten -->
                     <div class="row">
                         <div class="col">
-                            <div class="card">
+                            <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">Data Karyawan</h3>
                                 </div>

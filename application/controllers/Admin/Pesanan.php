@@ -20,6 +20,15 @@ class Pesanan extends CI_Controller
         $this->load->view("Backend/Semua_Pesanan", $data);
     }
 
+    public function tampil_semua_pesanan_manajer()
+    {
+        $show = $this->M_Pesanan;
+        $data = [
+            "pesanan" => $show->tampil_semua(),
+        ];
+        $this->load->view("Backend/Semua_Pesanan_Manajer", $data);
+    }
+
 
     public function tampil_detail_pemesanan($id)
     {
