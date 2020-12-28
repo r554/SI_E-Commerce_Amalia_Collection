@@ -16,12 +16,9 @@ if (!$this->session->userdata('nama')) {
 
     <?php $this->load->view('Backend/template/head'); ?>
     <!-- DataTables -->
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 </head>
 
@@ -36,8 +33,7 @@ if (!$this->session->userdata('nama')) {
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?= base_url('Homepage') ?>" class="brand-link">
-                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?= base_url() ?>assets/Frontend_mobi/assets/images/amalialogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Amalia</b> Collection</span>
             </a>
 
@@ -96,29 +92,25 @@ if (!$this->session->userdata('nama')) {
                                 $no = 1;
                                 foreach ($pesanan_perlu_dikirim as $pesanan) {
                                 ?>
-                                <tbody>
-                                    <tr>
-                                        <td><?php echo $pesanan['nama_pelanggan']; ?></td>
-                                        <td><?php echo $pesanan['id_order']; ?></td>
-                                        <td><?php echo $pesanan['grand_qty']; ?></td>
-                                        <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
-                                        <td class="text-center">
-                                            <span class="badge bg-success text-dark">Perlu Dikirim</span>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <button class="btn btn-warning btn-xs mx-auto" data-toggle="modal"
-                                                    data-target="#modal-kirim">Kirim Paket</button>
-                                                <a
-                                                    href=" <?= base_url('Admin/Pesanan/tampil_detail_perlu_dikirim/' . $pesanan['id_order']) ?>"><button
-                                                        class="btn btn-info btn-xs mx-auto">Detail</button></a>    
-                                                <a href=" <?= base_url('Admin/Pesanan/tampil_invoice_perlu_dikirim/' . $pesanan['id_order']) ?>"><button
-                                                        class="btn btn-info btn-xs mx-auto">Invoice</button></a>         
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $pesanan['nama_pelanggan']; ?></td>
+                                            <td><?php echo $pesanan['id_order']; ?></td>
+                                            <td><?php echo $pesanan['grand_qty']; ?></td>
+                                            <td><?php echo "Rp. "   . number_format($pesanan['total']) . ",-" ?></td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success text-dark">Perlu Dikirim</span>
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <button class="btn btn-warning btn-xs ml-3" data-toggle="modal" data-target="#modal-kirim">Kirim Paket</button>
+                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_detail_perlu_dikirim/' . $pesanan['id_order']) ?>"><button class="btn btn-info btn-xs ml-3">Detail</button></a>
+                                                    <a href=" <?= base_url('Admin/Pesanan/tampil_invoice_perlu_dikirim/' . $pesanan['id_order']) ?>"><button class="btn btn-info btn-xs ml-3">Invoice</button></a>
 
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 <?php
                                 } ?>
                             </table>
@@ -146,20 +138,15 @@ if (!$this->session->userdata('nama')) {
                 <!-- <script src="Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
                 <!-- DataTables  & Plugins -->
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-                <script
-                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js">
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js">
                 </script>
-                <script
-                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js">
                 </script>
-                <script
-                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
                 </script>
-                <script
-                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js">
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js">
                 </script>
-                <script
-                    src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js">
+                <script src="<?php echo base_url() ?>assets/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js">
                 </script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/jszip/jszip.min.js"></script>
                 <script src="<?php echo base_url() ?>assets/Admin/plugins/pdfmake/pdfmake.min.js"></script>
@@ -172,23 +159,23 @@ if (!$this->session->userdata('nama')) {
                 </script>
                 <!-- Page specific script -->
                 <script>
-                $(function() {
-                    $("#example1").DataTable({
-                        "responsive": true,
-                        "lengthChange": false,
-                        "autoWidth": false,
-                        "buttons": ["excel", "pdf", "print"]
-                    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                    $('#example2').DataTable({
-                        "paging": true,
-                        "lengthChange": false,
-                        "searching": false,
-                        "ordering": true,
-                        "info": true,
-                        "autoWidth": false,
-                        "responsive": true,
+                    $(function() {
+                        $("#example1").DataTable({
+                            "responsive": true,
+                            "lengthChange": false,
+                            "autoWidth": false,
+                            "buttons": ["excel", "pdf", "print"]
+                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                        $('#example2').DataTable({
+                            "paging": true,
+                            "lengthChange": false,
+                            "searching": false,
+                            "ordering": true,
+                            "info": true,
+                            "autoWidth": false,
+                            "responsive": true,
+                        });
                     });
-                });
                 </script>
 
             </section>
@@ -204,14 +191,12 @@ if (!$this->session->userdata('nama')) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="<?= base_url('Admin/Pesanan/simpan_resi') ?>" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="<?= base_url('Admin/Pesanan/simpan_resi') ?>" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="hidden" name="id_order" id="" value="<?= $pesanan['id_order'] ?>">
                                 <input type="hidden" name="no_penerima" id="" value="<?= $pesanan['no_penerima'] ?>">
-                                <input type="hidden" name="jasa_pengiriman" id=""
-                                    value="<?= $pesanan['jasa_pengiriman'] ?>">
+                                <input type="hidden" name="jasa_pengiriman" id="" value="<?= $pesanan['jasa_pengiriman'] ?>">
                                 <label for="exampleInputEmail1">Nomor Resi</label>
                                 <input type="text" class="form-control" id="nomor_resi" name="nomor_resi">
                                 <small class="form-text text-muted">Pastikan Nomor Resi Benar</small>
