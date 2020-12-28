@@ -55,9 +55,11 @@
                             <td>Dibatalkan</td>    
                         <?php } ?>
                         
-                       <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
-                       <?php if($d['status'] == 2){ ?>
-                        <td>Telah Melakukan Pembayaran</td>
+                        <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
+                       <?php if($d['status'] == 1){ ?>
+                       <td><a href="<?php echo base_url("pesanan_saya/buktibayar/") ?><?= $d['id_order']; ?>"class="btn btn-info btn-lg">Bayar</a></td>
+                       <?php }else if($d['status'] == 2){ ?>
+                            <td>Telah Melakukan Pembayaran</td>
                             <!-- <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td> --> 
                        <?php }else if($d['status'] >= 4){ ?>
                             <td><?= $d['nomor_resi']; ?> /<p>Barang Diterima</p>  <a href="<?php echo base_url("pesanan_saya/konfirmasibarangsampai/") ?><?= $d['id_order']; ?>" type="submit" class="btn btn-info btn-lg">Konfirmasi</a></td>
