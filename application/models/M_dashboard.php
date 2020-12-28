@@ -63,7 +63,7 @@ class M_dashboard extends CI_model
         $this->db->where('tbl_order.status', '1');
             return $this->db->get()->num_rows();
       }
-
+ 
       // menghitung card produk terjual
     function produk_terjual()
     {
@@ -83,6 +83,36 @@ class M_dashboard extends CI_model
             return $this->db->get();
             
         }
+
+         // menghitung card verifikasi pembayaran
+        function verifikasi()
+        {
+        $id="2";
+        $this->db->from('tbl_order'); 
+        $this->db->where('status', $id); 
+            $query = $this->db->get();
+            return $query->num_rows();
+    }
+
+         // menghitung card barang dikirim
+        function barangperlu_dikirim()
+         {
+        $id="3";
+        $this->db->from('tbl_order'); 
+        $this->db->where('status', $id); 
+            $query = $this->db->get();
+            return $query->num_rows();
+    }
+
+      // menghitung card pesanan dibatalkan
+        function pesanan_dibatalkan()
+         {
+        $id="6";
+        $this->db->from('tbl_order'); 
+        $this->db->where('status', $id); 
+            $query = $this->db->get();
+            return $query->num_rows();
+    }
 
 
 }

@@ -57,7 +57,7 @@ class M_dashboard_manager extends CI_model
     $query = $this->db->get();
     return $query->result();
     }
- 
+  
     // menghitung card pesanan masuk
     function jumlah_data_order()
     {

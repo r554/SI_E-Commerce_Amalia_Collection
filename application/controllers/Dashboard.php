@@ -30,6 +30,9 @@ class Dashboard extends CI_Controller
 			"kaka" => $show->order_masuk(),
 			"dora" => $show->produk_terjual(),
 			"jarjit" => $show->stok()->result(),
+			"user3" => $show->verifikasi(),
+			"user4" => $show->barangperlu_dikirim(),
+			"user5" => $show->pesanan_dibatalkan(),
 		];
 	
 		$this->load->view("Backend/DashboardAdmin", $data);
@@ -45,7 +48,7 @@ class Dashboard extends CI_Controller
 			redirect(site_url('crud/tampil'));
 		}
 	}
-
+ 
 	public function edit($id = null)
 	{
 		if (!isset($id)) redirect('welcome');

@@ -68,15 +68,16 @@ if (!$this->session->userdata('nama')) {
                     <!-- Info boxes -->
 
                     <div class="row">
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-2 col-6">
                             <!-- small card -->
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3><?php echo $kaka ?></h3>
                                     <p>Pesanan Masuk</p>
                                 </div>
+
                                 <div class="icon">
-                                    <i class="fas fa-shopping-cart"></i>
+                                    <i class="fas fa-cart-plus"></i>
                                 </div>
                                 <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
                                     class="small-box-footer">
@@ -84,16 +85,53 @@ if (!$this->session->userdata('nama')) {
                                 </a>
                             </div>
                         </div>
-                        <!-- ./col -->
-                        <div class="col-lg-4 col-6">
+
+
+                        <div class="col-lg-2 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-warning">
+                                <div class="inner  text-white">
+                                    <h3><?php echo $user3 ?></h3>
+                                    <h6 class="text-white">Verifikasi Pembayaran</h6>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-file-invoice"></i>
+                                </div>
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_verifikasi_pembayaran') ?>"
+                                    class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-2 col-6">
                             <!-- small card -->
                             <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3><?php echo $user4 ?></h3>
+                                    <h6 class="text-white">Pesanan Perlu Dikirim</h6>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_perlu_dikirim') ?>"
+                                    class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3><?php echo $dora ?></h3>
                                     <p>Produk Terjual</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-chart-pie"></i>
+                                    <i class="fas fa-people-carry"></i>
                                 </div>
                                 <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>"
                                     class="small-box-footer">
@@ -101,8 +139,30 @@ if (!$this->session->userdata('nama')) {
                                 </a>
                             </div>
                         </div>
+
                         <!-- ./col -->
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-2 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-secondary">
+                                <div class="inner">
+                                    <h3><?php echo $user5 ?></h3>
+                                    <p>Pesanan Dibatalkan</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-window-close"></i>
+                                </div>
+                                <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_dibatalkan') ?>"
+                                    class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
                             <!-- small card -->
 
 
@@ -115,21 +175,22 @@ if (!$this->session->userdata('nama')) {
 
                             ?>
                             <?php } ?>
-                            <div class="small-box bg-success">
+                            <div class="small-box bg-primary">
                                 <div class="inner">
                                     <h3><?php echo $stok_total ?><sup style="font-size: 20px"></sup></h3>
-                                    <p>Jumlah Stok</p>
+                                    <p>Stok Produk</p>
 
 
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="fas fa-cubes"></i>
                                 </div>
                                 <a href="<?php echo base_url('data_produk/tampil') ?>" class="small-box-footer">
                                     More info <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
+
 
                     </div>
 
