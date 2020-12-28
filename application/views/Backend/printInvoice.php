@@ -125,11 +125,10 @@
                     <table>
                         <tr>
                             <td>
-                               <?php echo $pesanan['0']->nama_penerima; ?><br>
-                               <?php echo $pesanan['0']->email_penerima ?><br>
-                               <?php echo $pesanan['0']->no_penerima ?><br>
-                               <?php echo $pesanan['0']->alamat_penerima ?><br>
-                                Kode Pos <?php echo $pesanan['0']->kode_pos ?>                                
+                               Amalia Collection<br>
+                               Jl Semeru 14 Ponjen Lor, Kamaran, Kencong<br>
+                               Kabupaten Jember, Jawa Timur 68167<br>
+                               085707954941<br>                                                           
                             </td>
                             <td>
                                <?php echo $pesanan['0']->nama_penerima; ?><br>
@@ -169,7 +168,7 @@
                 </td>
                 
                 <td>
-                    Harga
+                    Qty
                 </td>
             </tr>
             <?php
@@ -178,11 +177,11 @@
             ?>
             <tr class="item">
                 <td>
-                <?php echo $tampil_pesanan->nama_produk; ?> qty <?php echo $tampil_pesanan->sub_qty; ?>
+                <?php echo $tampil_pesanan->nama_produk; ?>
                 </td>
                 
                 <td>
-                <?php echo "Rp. "   . number_format($tampil_pesanan->harga_final) . ",-" ?>
+                <?php echo $tampil_pesanan->sub_qty; ?>
                 </td>
             </tr>
             <?php } ?>
@@ -190,7 +189,7 @@
                 <td></td>
                 
                 <td>
-                <?php echo "Rp. "   . number_format($pesanan['0']->total) . ",-" ?>
+                <?php echo $pesanan['0']->grand_qty ?>
                 </td>
             </tr>
         </table>
