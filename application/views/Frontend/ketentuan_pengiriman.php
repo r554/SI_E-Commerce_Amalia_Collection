@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-sm-9 col-md-8 mx-auto text-center">
-                <h1>KETENTUAN PENGEMBALIAN</h1>
+                <h1>KETENTUAN PENGIRIMAN</h1>
                 <hr>
             </div>
         </div>
