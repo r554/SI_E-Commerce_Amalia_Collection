@@ -89,7 +89,7 @@ if (!$this->session->userdata('nama')) {
                                     </div>
                                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan') ?>"
                                         class="small-box-footer text-light">
-                                        More info <i class="fas fa-arrow-circle-right"></i>
+                                        Detail <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@ if (!$this->session->userdata('nama')) {
                                     </div>
                                     <a href="<?php echo base_url('Admin/Pesanan/tampil_semua_pesanan_selesai') ?>"
                                         class="small-box-footer text-light">
-                                        More info <i class="fas fa-arrow-circle-right"></i>
+                                        Detail<i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@ if (!$this->session->userdata('nama')) {
                                     </div>
                                     <a href="<?php echo base_url('data_produk/tampil_manajer') ?>"
                                         class="small-box-footer text-light">
-                                        info <i class="fas fa-arrow-circle-right"></i>
+                                        Detail <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@ if (!$this->session->userdata('nama')) {
                                     </div>
                                     <a href="<?php echo base_url('Admin/data_customer/tampil_manajer') ?>"
                                         class="small-box-footer text-light">
-                                        info <i class="fas fa-arrow-circle-right"></i>
+                                        Detail <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@ if (!$this->session->userdata('nama')) {
                                     </div>
                                     <a href="<?php echo base_url('Admin/data_karyawan/tampil') ?>"
                                         class="small-box-footer text-light">
-                                        info <i class="fas fa-arrow-circle-right"></i>
+                                        Detail <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
                             </div>
