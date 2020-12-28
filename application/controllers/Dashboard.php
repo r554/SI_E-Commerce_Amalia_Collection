@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller
 		$this->load->library('form_validation');
 	}
  
-
+ 
 	public function save()
 	{
 		$model = $this->MP;
@@ -34,24 +34,6 @@ class Dashboard extends CI_Controller
 	
 		$this->load->view("Backend/DashboardAdmin", $data);
 	}
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -18,7 +18,9 @@
                 <a href="https://line.me/id/<?php echo $z->fax; ?>/"> Line</a>
                 <a href="https://mail.google.com/<?php echo $z->email; ?>/">
                     Email</a>
-                <a href="https://wa.me/<?php echo $z->no_telepon; ?>/"> WhatsApp </a>
+                <a href="https://api.whatsapp.com/send/?phone=<?php echo $z->no_telepon; ?>">
+                    WhatsApp </a>
+
             </div>
             <div class="footer-center">
                 <h3>INFORMASI TAMBAHAN</h3>

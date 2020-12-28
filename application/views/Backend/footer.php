@@ -127,6 +127,7 @@ if (!$this->session->userdata('nama')) {
                                             <input name="no_telepon" class="form-control" pattern=".{9,}" maxlength="14"
                                                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" required
                                                 title="3 characters minimum"
+                                                placeholder="Nomer berformat kode negara (62)"
                                                 oninvalid="this.setCustomValidity('No HP Minimal 9 Karakter!')"
                                                 oninput="setCustomValidity('')" value="<?php echo $z->no_telepon; ?> ">
                                         </div>

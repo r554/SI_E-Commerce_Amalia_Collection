@@ -15,7 +15,7 @@ class M_dashboard extends CI_model
     public $gambar_produk;
     public $dibuat_tanggal;
 
- 
+  
 
     public function rules()
     {
