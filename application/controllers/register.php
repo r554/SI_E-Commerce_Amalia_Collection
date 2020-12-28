@@ -25,13 +25,27 @@ class register extends CI_Controller
             $username = $this->input->post('username_pelanggan'); // Ambil isi dari inputan username pada form 
             $user = $this->M_register->get_username_pelanggan($username); // Panggil fungsi get yang ada di M_register.php
 
+            $email = $this->input->post('email_pelanggan'); // Ambil isi dari inputan username pada form 
+            $email_pelanggan = $this->M_register->get_email_pelanggan($email); // Panggil fungsi get yang ada di M_register.php
+
+
             if (empty($user)) {
-                $simpan = $this->M_register->save_register();
-                $this->session->set_flashdata('message1', 'Berhasil disimpan');
-                redirect(base_url("Login0"));
+                $email = $this->input->post('username_pelanggan'); // Ambil isi dari inputan username pada form 
+                $user = $this->M_register->get_username_pelanggan($username); // Panggil fungsi get yang ada di M_register.php
+
+                if (empty($email_pelanggan)) {
+                    $simpan = $this->M_register->save_register();
+                    $this->session->set_flashdata('message1', 'Berhasil disimpan');
+                    redirect(base_url("Login0"));
+                } else {
+                    $data2['kd_pelanggan'] = $this->M_register->get_no_invoice();
+                    $this->session->set_flashdata('message2', 'Email Sudah Terdaftar');
+                    $this->load->view('Frontend/v_register', $data2);
+                }
             } else {
+                $data2['kd_pelanggan'] = $this->M_register->get_no_invoice();
                 $this->session->set_flashdata('message', 'Username Sudah Terdaftar');
-                $this->load->view('Frontend/v_register');
+                $this->load->view('Frontend/v_register', $data2);
             }
         }
     }

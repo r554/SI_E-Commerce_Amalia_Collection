@@ -40,6 +40,18 @@
                                     <?php }
                                     $this->session->unset_userdata('message');
                                     ?>
+
+                                    <?php
+                                    if (isset($_SESSION["message2"])) { ?>
+                                        <div class="alert alert-danger alert-dismissible fade show">
+                                            <strong>Register Gagal</strong> Email Sudah Terdaftar
+                                            <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <?php }
+                                    $this->session->unset_userdata('message');
+                                    ?>
                                 </div>
 
                                 <div class="row">

@@ -43,6 +43,19 @@
                             <?php }
                             $this->session->unset_userdata('logingagal');
                             ?>
+
+                            <?php
+                            if (isset($_SESSION["message1"])) { ?>
+                                <div class="alert alert-success alert-dismissible fade show">
+                                    <strong>Registrasi Berhasil</strong> Silahkan Login Untuk Melanjutkan.
+                                    <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php }
+                            $this->session->unset_userdata('logingagal');
+                            ?>
+
                             <form action="<?php echo base_url('login0/aksi_login'); ?>" method="post">
                                 <div class="form-group position-relative has-icon-left">
                                     <label for="username">Username</label>
