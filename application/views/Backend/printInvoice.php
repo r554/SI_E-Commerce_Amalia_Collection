@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Invoice <?php echo $pesanan['0']->id_order ?> </title>
     
     <style>
     .invoice-box {
@@ -100,7 +100,7 @@
 </head>
 
 <body>
-    <div class="invoice-box">
+    <div class="invoice-box" id="print">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="2">
@@ -124,6 +124,13 @@
                 <td colspan="2">
                     <table>
                         <tr>
+                            <td>
+                               <?php echo $pesanan['0']->nama_penerima; ?><br>
+                               <?php echo $pesanan['0']->email_penerima ?><br>
+                               <?php echo $pesanan['0']->no_penerima ?><br>
+                               <?php echo $pesanan['0']->alamat_penerima ?><br>
+                                Kode Pos <?php echo $pesanan['0']->kode_pos ?>                                
+                            </td>
                             <td>
                                <?php echo $pesanan['0']->nama_penerima; ?><br>
                                <?php echo $pesanan['0']->email_penerima ?><br>
@@ -158,7 +165,7 @@
             
             <tr class="heading">
                 <td>
-                    Barang
+                    Produk
                 </td>
                 
                 <td>
@@ -188,5 +195,6 @@
             </tr>
         </table>
     </div>
+    <button onclick="window.print()">Cetak</button>
 </body>
 </html>
