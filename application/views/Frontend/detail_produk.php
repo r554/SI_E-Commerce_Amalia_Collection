@@ -90,7 +90,7 @@ input[type=number] {
                                         <?php } else { ?>
                                         <tr>
                                             <td>Harga</td>
-                                            <td style="text-align:center" class="oldPrice">Rp
+                                            <td style="text-align:center; text-decoration: line-through red;" class="oldPrice">Rp
                                                 <?= str_replace(",", ".", number_format($product['harga'])); ?></td>
                                         </tr>
                                         <tr class="newPrice">
