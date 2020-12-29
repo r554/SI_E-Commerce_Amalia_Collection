@@ -48,13 +48,15 @@ class profile extends CI_Controller
   //untuk mengecek data password lama dengan database yg sudah ada
   function ubah_password()
   {
+    $show = $this->M_footer;
     $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]');
     // $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[3]|matches[password1]');
     // $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[3]|matches[password]');
     if ($this->form_validation->run() == false) {
+      $data['footer'] = $show->tampil_footer();
       $this->load->view('Frontend/template/head1');
       $this->load->view('Frontend/template/navbar3');
-      $this->load->view('Frontend/ubah_pass1');
+      $this->load->view('Frontend/ubah_pass1', $data);
     } else {
       $password = md5($this->input->post('password'));
 
@@ -62,23 +64,25 @@ class profile extends CI_Controller
       if ($user) {
         redirect(base_url("Profile/ubah_password_baru"));
       } else {
+        $data['footer'] = $show->tampil_footer();
         $this->session->set_flashdata('message', '<div>Password Anda Tidak Cocok </div>');
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3');
-        $this->load->view('Frontend/ubah_pass1');
+        $this->load->view('Frontend/ubah_pass1', $data);
       }
     }
   }
   //untuk mencocokkan password baru 
   function ubah_password_baru()
   {
-
+    $show = $this->M_footer;
     $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[6]|matches[password1]');
     $this->form_validation->set_rules('password1', 'password1', 'trim|required|min_length[6]|matches[password]');
     if ($this->form_validation->run() == false) {
+      $data['footer'] = $show->tampil_footer();
       $this->load->view('Frontend/template/head1');
       $this->load->view('Frontend/template/navbar3');
-      $this->load->view('Frontend/ubah_pass2');
+      $this->load->view('Frontend/ubah_pass2', $data);
     } else {
       $password_baru = md5($this->input->post('password'));
       $id_pelanggan = $this->session->userdata('id');
