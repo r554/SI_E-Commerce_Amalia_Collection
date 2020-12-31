@@ -10,6 +10,9 @@
     if ($dateNow >= $dateDBNew) {
         $this->db->set('status_promo', 0);
         $this->db->update('tbl_promo');
+        $this->db->get('tbl_produk')->row_array();
+        $this->db->set('status_promo', 0);
+        $this->db->update('tbl_produk');
     }
     ?>
     <!-- End Data Logic Hidden Promo -->
