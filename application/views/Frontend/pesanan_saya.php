@@ -15,65 +15,73 @@
     <!-- Bagian Content -->
     <div class="container">
         <div class="row mt-5 mb-5">
-        <?php $this->load->view('Frontend/template/menu'); ?>
-            <div class="col-sm-9 col-md-8 mx-auto text-center">
+            <?php $this->load->view('Frontend/template/menu'); ?>
+            <div class="col-sm-9 col-md-10 mx-auto text-center">
                 <h1>Pesanan Anda</h1>
                 <div class="wrapper">
                     <div class="core">
-                <!-- <h2 class="title">Pesanan Anda</h2> -->
-                <!-- <?php echo $_SESSION["nama"]; ?><p>
-            <?php echo $_SESSION["no_hp"]; ?><p>            
-            <?php echo $_SESSION["alamat"]; ?><p>
-            <?php echo $_SESSION["id"]; ?><p> -->
-                <hr>
-                <?php if($order->num_rows() > 0){ ?>
-                <table class="table table-bordered">
-                <tr>
-                    <th>Order ID</th>
-                    <th>Tanggal Pesan</th>
-                    <th>Total Pembayaran</th>
-                    <th>Status</th>
-                    <th>#</th>
-                    <th>Pembayaran</th>
-                </tr>
-                <?php foreach($order->result_array() as $d): ?>
-                      <tr>
-                        <td><?= $d['id_order']; ?></td>
-                        <td><?= $d['tanggal_order']; ?></td>
-                        <td>Rp <?= str_replace(",",".",number_format($d['total'])); ?></td>
-                        <?php if($d['status'] == 1){ ?>
-                            <td>Belum dibayar</td>
-                        <?php }else if($d['status'] == 2){ ?>
-                            <td>Menunggu konfirmasi</td>
-                        <?php }else if($d['status'] == 3){ ?>
-                            <td>Sedang diproses</td>
-                        <?php }else if($d['status'] == 4){ ?>
-                            <td>Sedang dikirim</td>
-                        <?php }else if($d['status'] == 5){ ?>
-                            <td>Selesai</td>
-                        <?php }else if($d['status'] == 6){ ?>
-                            <td>Dibatalkan</td>    
+                        <!-- <h2 class="title">Pesanan Anda</h2> -->
+                        <!-- <?php echo $_SESSION["nama"]; ?><p>
+                        <?php echo $_SESSION["no_hp"]; ?><p>            
+                        <?php echo $_SESSION["alamat"]; ?><p>
+                        <?php echo $_SESSION["id"]; ?><p> -->
+                        <hr>
+                        <?php if ($order->num_rows() > 0) { ?>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Tanggal Pesan</th>
+                                    <th>Total Pembayaran</th>
+                                    <th>Status</th>
+                                    <th>#</th>
+                                    <th>Pembayaran</th>
+                                </tr>
+                                <?php foreach ($order->result_array() as $d) : ?>
+                                    <tr>
+                                        <td><?= $d['id_order']; ?></td>
+                                        <td><?= $d['tanggal_order']; ?></td>
+                                        <td>Rp <?= str_replace(",", ".", number_format($d['total'])); ?></td>
+                                        <?php if ($d['status'] == 1) { ?>
+                                            <td>Belum dibayar</td>
+                                        <?php } else if ($d['status'] == 2) { ?>
+                                            <td>Menunggu konfirmasi</td>
+                                        <?php } else if ($d['status'] == 3) { ?>
+                                            <td>Sedang diproses</td>
+                                        <?php } else if ($d['status'] == 4) { ?>
+                                            <td>Sedang dikirim</td>
+                                        <?php } else if ($d['status'] == 5) { ?>
+                                            <td>Selesai</td>
+                                        <?php } else if ($d['status'] == 6) { ?>
+                                            <td>Dibatalkan</td>
+                                        <?php } ?>
+
+                                        <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
+                                        <?php if ($d['status'] == 1) { ?>
+                                            <td><a href="<?php echo base_url("pesanan_saya/buktibayar/") ?><?= $d['id_order']; ?>" class="btn btn-info btn-lg">Bayar</a></td>
+                                        <?php } else if ($d['status'] == 2) { ?>
+                                            <td>Telah Melakukan Pembayaran</td>
+                                            <!-- <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td> -->
+                                        <?php } else if ($d['status'] >= 4) { ?>
+                                            <td>
+                                                <h5>No. Resi</h5>
+                                                <b><?= $d['nomor_resi']; ?><br></b>
+                                                <small>Beritahu kami Jika Telah Sampai</small><br>
+                                                <p>Barang Diterima ?</p>
+
+                                                <a href="<?php echo base_url("pesanan_saya/konfirmasibarangsampai/") ?><?= $d['id_order']; ?>" type="submit" class="btn btn-info btn-lg">Konfirmasi</a>
+                                                <a href="<?php echo base_url("pesanan_saya/persetujuan_refund") ?>"><button class="btn btn-warning btn-lg">Refund Pesanan</button></a>
+                                            </td>
+                                        <?php } else if ($d['status'] == 3) { ?>
+                                            <td>Nomor Resi Masih Belum Tersedia</td>
+                                        <?php } ?>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        <?php } else { ?>
+                            <div class="alert alert-warning">Tidak ada pesanan. Yuk Belanja.</div>
                         <?php } ?>
-                        
-                        <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
-                       <?php if($d['status'] == 1){ ?>
-                       <td><a href="<?php echo base_url("pesanan_saya/buktibayar/") ?><?= $d['id_order']; ?>"class="btn btn-info btn-lg">Bayar</a></td>
-                       <?php }else if($d['status'] == 2){ ?>
-                            <td>Telah Melakukan Pembayaran</td>
-                            <!-- <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td> --> 
-                       <?php }else if($d['status'] >= 4){ ?>
-                            <td><?= $d['nomor_resi']; ?> /<p>Barang Diterima</p>  <a href="<?php echo base_url("pesanan_saya/konfirmasibarangsampai/") ?><?= $d['id_order']; ?>" type="submit" class="btn btn-info btn-lg">Konfirmasi</a></td>
-                       <?php }else if($d['status'] == 3){ ?>
-                            <td>Nomor Resi Masih Belum Tersedia</td>     
-                        <?php } ?>                       
-                    </tr>
-                    <?php endforeach; ?>
-                    </table>
-                    <?php }else{ ?>
-                    <div class="alert alert-warning">Tidak ada pesanan. Yuk Belanja.</div>
-        <?php } ?>       
-    </div>
-</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -116,49 +124,50 @@
     </main>
     <!-- End Main -->
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-        <h4 class="modal-title">Konfirmasi Pembayaran</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>          
-        </div>
-        <div class="modal-body">
-        <p><strong>BRI</strong><br />
-                    Atas Nama : Amalia<br />
-                    No Rekening : 7273829372</p>
-                <p><strong>BCA</strong><br />
-                    Atas Nama : Amalia<br />
-                    No Rekening : 567828262819</p>
-                <p><strong>OVO</strong><br />
-                    Atas Nama : Amalia<br />
-                    No Rekening : 081333768257</p>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Konfirmasi Pembayaran</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>BRI</strong><br />
+                        Atas Nama : Amalia<br />
+                        No Rekening : 7273829372</p>
+                    <p><strong>BCA</strong><br />
+                        Atas Nama : Amalia<br />
+                        No Rekening : 567828262819</p>
+                    <p><strong>OVO</strong><br />
+                        Atas Nama : Amalia<br />
+                        No Rekening : 081333768257</p>
                     <hr>
-        <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
-        <h4>Upload Bukti Pembayaran</h4>
-            <div class="col xm-8 col-md-12">                             
-                    <p>ID Transaksi Anda :
-                        <input type="hidden" name="id_order" value="<?= $d['id_order']; ?>">
-                        <input type="text" name="id" value="<?= $d['id_order']; ?>"disabled>
-                    </p>
-                    <p><h3>Rp <?= str_replace(",",".",number_format($d['total'])); ?></h3></p>
-                    <p>Silahkan Upload Bukti Pembayaran :
-                        <input type='file' id="file" name="foto_bukti" />
-                        <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();"
-                            height="500px" width="500px" />
-                    </p>
-            </div>          
+                    <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
+                        <h4>Upload Bukti Pembayaran</h4>
+                        <div class="col xm-8 col-md-12">
+                            <p>ID Transaksi Anda :
+                                <input type="hidden" name="id_order" value="<?= $d['id_order']; ?>">
+                                <input type="text" name="id" value="<?= $d['id_order']; ?>" disabled>
+                            </p>
+                            <p>
+                                <h3>Rp <?= str_replace(",", ".", number_format($d['total'])); ?></h3>
+                            </p>
+                            <p>Silahkan Upload Bukti Pembayaran :
+                                <input type='file' id="file" name="foto_bukti" />
+                                <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();" height="500px" width="500px" />
+                            </p>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-lg" value="Kirim">
+                </div>
+            </div>
+            </form>
         </div>
-        <div class="modal-footer">
-        <input type="submit" class="btn btn-success btn-lg" value="Kirim">
-        </div>        
-      </div>
-      </form>
     </div>
-  </div>
     <!-- Footer -->
     <?php $this->load->view('Frontend/template/footer') ?>
     <!-- End Footer -->
@@ -168,22 +177,22 @@
     <?php $this->load->view('Frontend/template/js') ?>
     <!-- End Java Script -->
     <script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('#gambar').attr('src', e.target.result);
+                reader.onload = function(e) {
+                    $('#gambar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
-
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
-    }
 
-    $("#file").change(function() {
-        $('#gambar').show();
-        readURL(this);
-    });
+        $("#file").change(function() {
+            $('#gambar').show();
+            readURL(this);
+        });
     </script>
 
 </body>

@@ -113,4 +113,9 @@ class Page extends CI_Controller
     {
         $this->load->view('Frontend/v_login');
     }
+
+    public function refund()
+    {
+        $this->load->view('Backend/Semua_Refund_Baru');
+    }
 }
