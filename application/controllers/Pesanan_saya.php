@@ -12,6 +12,7 @@ class Pesanan_saya extends CI_Controller
         $this->load->library('session');
         $this->load->model('M_footer');
         $this->load->model('M_keranjang');
+        $this->load->model('Admin/M_Pengembalian_Barang');
     }
 
     public function index()
@@ -23,6 +24,8 @@ class Pesanan_saya extends CI_Controller
             $data['order'] = $this->M_user->getOrder();
             $data['footer'] = $show->tampil_footer();
             $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
+
+
             $this->load->view('Frontend/template/head1');
             $this->load->view('Frontend/template/navbar3', $data);
             $this->load->view('Frontend/pesanan_saya', $data);
@@ -72,10 +75,98 @@ class Pesanan_saya extends CI_Controller
 
     public function persetujuan_refund()
     {
+        $id_order = $this->uri->segment('3');
         $data['footer'] = $this->M_footer->tampil_footer();
         $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
+        $data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id_order);
+
         $this->load->view('Frontend/template/head1');
         $this->load->view('Frontend/template/navbar3', $data);
         $this->load->view('Frontend/Persetujuan_Refund', $data);
+    }
+
+    public function form_pengembalian_produk()
+    {
+        $id_order = $this->uri->segment('3');
+        $data['footer'] = $this->M_footer->tampil_footer();
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
+        $data['id_refund'] = $this->M_Pengembalian_Barang->id_refund();
+        $data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id_order);
+
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3', $data);
+        $this->load->view('Frontend/Form_Pengembalian_Produk', $data);
+    }
+
+    //untuk menyimpan Data Refund
+    public function simpan_pengembalian_produk()
+    {
+        $id_order = $this->input->post('id_order');
+        $id_refund = $this->input->post('id_refund');
+        if ($this->M_Pengembalian_Barang->simpan_data_refund()) {
+            //$this->session->set_flashdata('success', 'Berhasil Menambah Produk');
+            //$data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id_order);
+
+            redirect(site_url('Pesanan_saya/data_produk_refund/' . $id_order . '/' . $id_refund));
+        }
+    }
+
+    //untuk menyimpan Data Refund
+    public function data_produk_refund($id)
+    {
+        $data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id);
+        $data['data_detail_refund'] = $this->M_Pengembalian_Barang->get_data_detail_refund($id);
+        $data['footer'] = $this->M_footer->tampil_footer();
+        $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
+
+        $this->load->view('Frontend/template/head1');
+        $this->load->view('Frontend/template/navbar3', $data);
+        $this->load->view('Frontend/Produk_Refund', $data);
+    }
+
+    //untuk menyimpan Data Refund
+    public function simpan_produk_refund()
+    {
+        $id_order = $this->input->post('id_order');
+        $id_refund = $this->input->post('id_refund');
+        if ($this->M_Pengembalian_Barang->simpan_data_produk_refund()) {
+            //$this->session->set_flashdata('success', 'Berhasil Menambah Produk');
+            //$data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id_order);
+
+            redirect(site_url('Pesanan_saya/data_produk_refund/' . $id_order . '/' . $id_refund));
+        }
+    }
+
+    //untuk menyimpan Data Refund
+    public function hapus_produk_refund()
+    {
+        $id_order = $this->input->post('id_order');
+        $id_refund = $this->input->post('id_refund');
+        $id_detail_refund = $this->input->post('id_detail_refund');
+
+        $hasil = $this->db->query("DELETE FROM tbl_detail_refund WHERE id_detail_refund='$id_detail_refund'");
+        if ($hasil) {
+            //$this->session->set_flashdata('success', 'Berhasil Menambah Produk');
+            //$data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id_order);
+
+            redirect(site_url('Pesanan_saya/data_produk_refund/' . $id_order . '/' . $id_refund));
+        }
+    }
+
+    public function refund_barang()
+    {
+        $show = $this->M_footer;
+        if ($this->session->userdata('status') != "login0") {
+            redirect(base_url("login0"));
+        } else {
+            $data['refund'] = $this->M_user->getRefund();
+            $data['footer'] = $show->tampil_footer();
+            $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
+
+
+            $this->load->view('Frontend/template/head1');
+            $this->load->view('Frontend/template/navbar3', $data);
+            $this->load->view('Frontend/Refund_Barang', $data);
+        }
     }
 }

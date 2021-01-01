@@ -31,7 +31,8 @@
                     9. Dalam Membuka Paket Wajib Untuk Merekam video hingga Selesai, kemudian hasil rekaman video dikirimkan pada kami. <b>Jika Anda Mengabaikan ini Anda Tidak Dapat Melakukan Refund.</b><br>
                 </p>
                 <br>
-                <button class="btn btn-primary btn-lg float-right">Saya Setuju dan lanjutkan</button>
+                <?php $id_order = $this->uri->segment('3'); ?>
+                <a href="<?= base_url('Pesanan_saya/form_pengembalian_produk/' . $id_order) ?>"><button class="btn btn-primary btn-lg float-right">Saya Setuju dan lanjutkan</button></a>
             </div>
         </div>
     </div>

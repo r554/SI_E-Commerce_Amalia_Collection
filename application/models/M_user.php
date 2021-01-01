@@ -11,6 +11,15 @@ class M_user extends CI_Model
     $this->db->order_by('id_order', 'desc');
     return $this->db->get('tbl_order');
   }
+
+  public function getRefund()
+  {
+    $id = $this->session->userdata('id');
+    $this->db->where('status_refund <=', 7);
+    $this->db->where('id_pelanggan', $id);
+    return $this->db->get('tbl_refund');
+  }
+
   public function getOrderDone()
   {
     $id = $this->session->userdata('id');

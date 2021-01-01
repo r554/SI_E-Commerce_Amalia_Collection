@@ -20,60 +20,37 @@
                 <h1>Pesanan Anda</h1>
                 <div class="wrapper">
                     <div class="core">
-                        <!-- <h2 class="title">Pesanan Anda</h2> -->
-                        <!-- <?php echo $_SESSION["nama"]; ?><p>
-                        <?php echo $_SESSION["no_hp"]; ?><p>            
-                        <?php echo $_SESSION["alamat"]; ?><p>
-                        <?php echo $_SESSION["id"]; ?><p> -->
                         <hr>
-                        <?php if ($order->num_rows() > 0) { ?>
+                        <?php if ($refund->num_rows() > 0) { ?>
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Order ID</th>
-                                    <th>Tanggal Pesan</th>
-                                    <th>Total Pembayaran</th>
+                                    <th>Tanggal Pemesanan</th>
+                                    <th>Tanggal Pengajuan Refund</th>
                                     <th>Status</th>
-                                    <th>#</th>
-                                    <th>Pembayaran</th>
+                                    <th>Pilihan</th>
                                 </tr>
-                                <?php foreach ($order->result_array() as $d) : ?>
+                                <?php foreach ($refund->result_array() as $d) : ?>
                                     <tr>
                                         <td><?= $d['id_order']; ?></td>
-                                        <td><?= $d['tanggal_order']; ?></td>
-                                        <td>Rp <?= str_replace(",", ".", number_format($d['total'])); ?></td>
-                                        <?php if ($d['status'] == 1) { ?>
+                                        <td><?= $d['tgl_order']; ?></td>
+                                        <td><?= $d['tanggal_refund']; ?></td>
+                                        <?php if ($d['status_refund'] == 7) { ?>
                                             <td>Belum dibayar</td>
-                                        <?php } else if ($d['status'] == 2) { ?>
+                                        <?php } else if ($d['status_refund'] == 2) { ?>
                                             <td>Menunggu konfirmasi</td>
-                                        <?php } else if ($d['status'] == 3) { ?>
+                                        <?php } else if ($d['status_refund'] == 3) { ?>
                                             <td>Sedang diproses</td>
-                                        <?php } else if ($d['status'] == 4) { ?>
+                                        <?php } else if ($d['status_refund'] == 4) { ?>
                                             <td>Sedang dikirim</td>
-                                        <?php } else if ($d['status'] == 5) { ?>
+                                        <?php } else if ($d['status_refund'] == 5) { ?>
                                             <td>Selesai</td>
-                                        <?php } else if ($d['status'] == 6) { ?>
+                                        <?php } else if ($d['status_refund'] == 6) { ?>
                                             <td>Dibatalkan</td>
                                         <?php } ?>
 
                                         <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
-                                        <?php if ($d['status'] == 1) { ?>
-                                            <td><a href="<?php echo base_url("pesanan_saya/buktibayar/") ?><?= $d['id_order']; ?>" class="btn btn-info btn-lg">Bayar</a></td>
-                                        <?php } else if ($d['status'] == 2) { ?>
-                                            <td>Telah Melakukan Pembayaran</td>
-                                            <!-- <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pembayaran</button></td> -->
-                                        <?php } else if ($d['status'] >= 4) { ?>
-                                            <td>
-                                                <h5>No. Resi</h5>
-                                                <b><?= $d['nomor_resi']; ?><br></b>
-                                                <small>Beritahu kami Jika Telah Sampai</small><br>
-                                                <p>Barang Diterima ?</p>
 
-                                                <a href="<?php echo base_url("pesanan_saya/konfirmasibarangsampai/") ?><?= $d['id_order']; ?>" type="submit" class="btn btn-info btn-lg">Konfirmasi</a>
-                                                <a href="<?php echo base_url("pesanan_saya/persetujuan_refund/" . $d['id_order']) ?>"><button class="btn btn-warning btn-lg">Refund Pesanan</button></a>
-                                            </td>
-                                        <?php } else if ($d['status'] == 3) { ?>
-                                            <td>Nomor Resi Masih Belum Tersedia</td>
-                                        <?php } ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </table>

@@ -89,28 +89,89 @@ class M_Pengembalian_Barang extends CI_model
         return $this->db->get()->result();
     }
 
-
-
-
-
-
-
-
-
-
-    public function getById2($id)
+    // Function Untuk Membuat Auto Incremen id refund
+    function id_refund()
     {
-        return $this->db->get_where($this->_table, ["id_pelanggan" => $id])->row();
+        $q = $this->db->query("SELECT MAX(RIGHT(id_refund,4)) AS kd_max FROM tbl_refund WHERE DATE(tanggal_refund)=CURDATE()");
+        $kd = "";
+        $i = "RFD";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tmp = ((int) $k->kd_max) + 1;
+                $kd = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "0001";
+        }
+        date_default_timezone_set('Asia/Jakarta');
+        return $i . date('dmy') . $kd;
     }
 
-
-    public function tpdetailCustomer($id)
+    public function get_data_order($id)
     {
-        $this->db->select('*');
-        $this->db->from('tbl_pelanggan');
-        //$this->db->join('tbl_foto_produk', 'tbl_foto_produk.id_produk = tbl_produk.id_produk');
-        // $this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_produk.id_kategori');
-        $this->db->where('tbl_pelanggan.id_pelanggan', $id);
-        return $this->db->get()->result();
+        //$this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        $this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_order.id_order', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_data_detail_refund($id)
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_detail_refund');
+        //$this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        //$this->db->join('tbl_detail_order', 'tbl_detail_order.id_order = tbl_order.id_order');
+        //$this->db->join('tbl_produk', 'tbl_produk.id_produk = tbl_detail_order.id_produk');
+        $this->db->where('tbl_detail_refund.id_refund', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function simpan_data_refund()
+    {
+        $data = array(
+            'id_refund' => $this->input->post('id_refund'),
+            'id_order' => $this->input->post('id_order'),
+            'nama_penerima' => $this->input->post('nama_penerima'),
+            'no_penerima' => $this->input->post('no_penerima'),
+            'alamat_penerima' => $this->input->post('alamat_penerima'),
+            'alasan_refund' => $this->input->post('keterangan_refund'),
+            'tgl_order' => $this->input->post('tgl_order'),
+            'status_refund' => $this->input->post('status_refund'),
+            'id_pelanggan' => $this->input->post('id_pelanggan'),
+        );
+
+        return $this->db->insert('tbl_refund', $data);
+    }
+
+    public function simpan_data_produk_refund()
+    {
+        $data = array(
+            'id_refund' => $this->input->post('id_refund'),
+            'id_produk' => $this->input->post('id_produk'),
+            'nama_produk' => $this->input->post('nama_produk'),
+            'sub_qty' => $this->input->post('sub_qty'),
+            'harga_final' => $this->input->post('harga_final'),
+            'warna' => $this->input->post('warna'),
+        );
+
+        return $this->db->insert('tbl_detail_refund', $data);
+    }
+
+    public function get_data_refund()
+    {
+        //$this->db->select('*');
+        $this->db->from('tbl_refund');
+        //$this->db->join('tbl_pelanggan', 'tbl_pelanggan.id_pelanggan = tbl_order.id_pelanggan');
+        $this->db->where('tbl_refund.id_refund');
+
+        $query = $this->db->get();
+        return $query->result();
     }
 }

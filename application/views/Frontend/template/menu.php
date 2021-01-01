@@ -7,11 +7,11 @@ $order = $this->db->get_where('tbl_order', ['id_pelanggan' => $this->session->us
 
 <div class="list-group">
     <?php if ($order->num_rows() > 0) { ?>
-    <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi <span
-            class="badge badge-info">!</span></a>
+        <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi <span class="badge badge-info">!</span></a>
     <?php } else { ?>
-    <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi</a>
+        <a href="<?php echo base_url("pesanan_saya") ?>" class="list-group-item list-group-item-action">Transaksi</a>
     <?php } ?>
+    <a href="<?php echo base_url("Pesanan_saya/refund_barang") ?>" class="list-group-item list-group-item-action">Refund Barang</a>
     <a href="<?php echo base_url("riwayat_pesanan") ?>" class="list-group-item list-group-item-action">Riwayat
         Transaksi</a>
     <a href="<?php echo base_url("profile") ?>" class="list-group-item list-group-item-action">Edit Profil</a>
