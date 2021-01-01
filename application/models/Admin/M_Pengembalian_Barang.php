@@ -6,7 +6,7 @@ class M_Pengembalian_Barang extends CI_model
     public function get_refund_baru()
     {
         $this->db->from('tbl_refund');
-        $this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
+        //$this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
         $this->db->where('tbl_refund.status_refund', 7);
         $query = $this->db->get();
         return $query->result_array();
@@ -15,7 +15,7 @@ class M_Pengembalian_Barang extends CI_model
     public function get_refund_pengiriman()
     {
         $this->db->from('tbl_refund');
-        $this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
+        //$this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
         $this->db->like('tbl_refund.status_refund', 8);
         $this->db->or_like('tbl_refund.status_refund', 9);
         $query = $this->db->get();
@@ -56,7 +56,7 @@ class M_Pengembalian_Barang extends CI_model
     public function get_refund_diterima()
     {
         $this->db->from('tbl_refund');
-        $this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
+        //$this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
         $this->db->where('tbl_refund.status_refund', 10);
         $query = $this->db->get();
         return $query->result_array();
@@ -65,7 +65,7 @@ class M_Pengembalian_Barang extends CI_model
     public function get_produk_refund_dikirim()
     {
         $this->db->from('tbl_refund');
-        $this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
+        //$this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
         $this->db->where('tbl_refund.status_refund', 11);
         $query = $this->db->get();
         return $query->result_array();
@@ -74,8 +74,9 @@ class M_Pengembalian_Barang extends CI_model
     public function get_refund_selesai()
     {
         $this->db->from('tbl_refund');
-        $this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
-        $this->db->where('tbl_refund.status_refund', 13);
+        //$this->db->join('tbl_detail_refund', 'tbl_detail_refund.id_refund = tbl_refund.id_refund');
+        $this->db->like('tbl_refund.status_refund', 13);
+        $this->db->or_like('tbl_refund.status_refund', 12);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -134,7 +135,7 @@ class M_Pengembalian_Barang extends CI_model
     }
 
     public function simpan_data_refund()
-    {        
+    {
         $data = array(
             'id_refund' => $this->input->post('id_refund'),
             'id_order' => $this->input->post('id_order'),
@@ -145,8 +146,8 @@ class M_Pengembalian_Barang extends CI_model
             'tgl_order' => $this->input->post('tgl_order'),
             'status_refund' => $this->input->post('status_refund'),
             'id_pelanggan' => $this->input->post('id_pelanggan'),
-            'video_bukti'=> $this->video_bukti = $this->do_upload()
-        );        
+            'video_bukti' => $this->video_bukti = $this->do_upload()
+        );
         return $this->db->insert('tbl_refund', $data);
     }
 
@@ -160,7 +161,7 @@ class M_Pengembalian_Barang extends CI_model
             'harga_final' => $this->input->post('harga_final'),
             'warna' => $this->input->post('warna'),
         );
-        
+
         return $this->db->insert('tbl_detail_refund', $data);
     }
 
@@ -174,7 +175,7 @@ class M_Pengembalian_Barang extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
-    
+
     function do_upload()
     {
         // setting konfigurasi upload
@@ -188,5 +189,4 @@ class M_Pengembalian_Barang extends CI_model
         $result1 = $this->upload->data('file_name');
         return $result1;
     }
-    
 }

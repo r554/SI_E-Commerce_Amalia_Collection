@@ -52,8 +52,23 @@
                                         <?php } ?>
 
                                         <td>
-                                            <small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small>
-                                            <button class="btn btn-info btn-md">Kirim Produk</button>
+                                            <!-- <small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small> -->
+                                            <?php if ($d['status_refund'] == 8) { ?>
+                                                <button class="btn btn-info btn-md" id='btn-edit' data-id='<?php echo $d['id_refund']; ?>'>Kirim Produk</button>
+                                            <?php } elseif ($d['status_refund'] == 10) { ?>
+                                                Nomor Resi Anda <?php echo $d['no_resi']  ?>
+                                            <?php } ?>
+
+                                            <?php if ($d['status_refund'] == 11) { ?>
+                                                Berikut Nomor Resi Pengiriman <?php echo $d['nomor_resi_admin']  ?><br>
+                                                <form action="<?= base_url('Pesanan_saya/konfirmasi_refund') ?>" method="POST">
+                                                    <input type="text" name="id_order" value="<?= $d['id_order'] ?>">
+                                                    <input type="text" name="id_refund" value="<?= $d['id_refund'] ?>">
+                                                    <button type="submit" class="btn btn-success btn-lg">Konfirmasi Barang Sampai</button>
+                                                </form>
+
+                                            <?php } ?>
+
                                         </td>
 
                                     </tr>
@@ -106,50 +121,6 @@
     </main>
     <!-- End Main -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Konfirmasi Pembayaran</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>BRI</strong><br />
-                        Atas Nama : Amalia<br />
-                        No Rekening : 7273829372</p>
-                    <p><strong>BCA</strong><br />
-                        Atas Nama : Amalia<br />
-                        No Rekening : 567828262819</p>
-                    <p><strong>OVO</strong><br />
-                        Atas Nama : Amalia<br />
-                        No Rekening : 081333768257</p>
-                    <hr>
-                    <form action="<?php echo base_url("bukti_pembayaran/save") ?>" method="POST" enctype="multipart/form-data">
-                        <h4>Upload Bukti Pembayaran</h4>
-                        <div class="col xm-8 col-md-12">
-                            <p>ID Transaksi Anda :
-                                <input type="hidden" name="id_order" value="<?= $d['id_order']; ?>">
-                                <input type="text" name="id" value="<?= $d['id_order']; ?>" disabled>
-                            </p>
-                            <p>
-                                <h3>Rp <?= str_replace(",", ".", number_format($d['total'])); ?></h3>
-                            </p>
-                            <p>Silahkan Upload Bukti Pembayaran :
-                                <input type='file' id="file" name="foto_bukti" />
-                                <img class="img-fluid" id="gambar" src="#" alt="Pilih Gambar" OnError=" $(this).hide();" height="500px" width="500px" />
-                            </p>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-success btn-lg" value="Kirim">
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
     <!-- Footer -->
     <?php $this->load->view('Frontend/template/footer') ?>
     <!-- End Footer -->
@@ -158,22 +129,57 @@
     <!-- Java Script -->
     <?php $this->load->view('Frontend/template/js') ?>
     <!-- End Java Script -->
-    <script type="text/javascript">
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
 
-                reader.onload = function(e) {
-                    $('#gambar').attr('src', e.target.result);
-                }
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Masukan Nomor Resi Pengiriman</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('Pesanan_saya/kirim_resi_pelanggan') ?>" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <input type="hidden" name="id_refund" id="warna">
+                        <div class="form-group">
+                            <label>Nomor Resi</label>
+                            <input type="text" class="form-control" name="nomor_resi" required>
+                            <small class="form-text text-muted">Pastikan Nomor Resi Benar</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Kirim Resi</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
-                reader.readAsDataURL(input.files[0]); // convert to base64 string
-            }
-        }
-
-        $("#file").change(function() {
-            $('#gambar').show();
-            readURL(this);
+    <script>
+        $(function() {
+            $('#btn-edit').click(function(e) {
+                e.preventDefault();
+                $('#modal').modal({
+                    backdrop: 'static',
+                    show: true
+                });
+                var id = $(this).data('id');
+                document.getElementById("warna").value = id; // Mengambil id_refund dan mengirimnya ke Input Pada Modal 
+                // mengambil nilai data - id yang di click
+                // $.ajax({
+                //     url: 'profile/edit/' + id,
+                //     success: function(data) {
+                //         $("input[name='id']").val(data.id);
+                //         $("input[name='nama']").val(data.nama);
+                //         $("textarea[name='alamat']").val(data.alamat);
+                //     }
+                // });
+            });
         });
     </script>
 

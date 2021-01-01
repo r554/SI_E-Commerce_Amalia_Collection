@@ -106,6 +106,9 @@ class Pesanan_saya extends CI_Controller
         if ($this->M_Pengembalian_Barang->simpan_data_refund()) {
             //$this->session->set_flashdata('success', 'Berhasil Menambah Produk');
             //$data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id_order);
+            $this->db->set('status', 7);
+            $this->db->where('id_order', $id_order);
+            $this->db->update('tbl_order');
 
             redirect(site_url('Pesanan_saya/data_produk_refund/' . $id_order . '/' . $id_refund));
         }
@@ -168,5 +171,38 @@ class Pesanan_saya extends CI_Controller
             $this->load->view('Frontend/template/navbar3', $data);
             $this->load->view('Frontend/Refund_Barang', $data);
         }
+    }
+
+    public function kirim_resi_pelanggan()
+    {
+        $id_refund = $this->input->post('id_refund');
+        $no_resi = $this->input->post('nomor_resi');
+        $id = 9;
+
+        $this->db->set('no_resi', $no_resi);
+        $this->db->set('status_refund', $id);
+        $this->db->where('id_refund', $id_refund);
+        $this->db->update('tbl_refund');
+
+        //$this->session->set_flashdata('success', 'Berhasil');
+        redirect('Pesanan_saya/refund_barang');
+    }
+
+    public function konfirmasi_refund()
+    {
+        $id_refund = $this->input->post('id_refund');
+        $id_order = $this->input->post('id_order');
+        $id = 12;
+
+        $this->db->set('status_refund', $id);
+        $this->db->where('id_refund', $id_refund);
+        $this->db->update('tbl_refund');
+
+        $this->db->set('status', 5);
+        $this->db->where('id_order', $id_order);
+        $this->db->update('tbl_order');
+
+        //$this->session->set_flashdata('success', 'Berhasil');
+        redirect('Pesanan_saya/refund_barang');
     }
 }
