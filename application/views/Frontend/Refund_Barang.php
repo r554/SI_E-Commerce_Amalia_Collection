@@ -36,20 +36,25 @@
                                         <td><?= $d['tgl_order']; ?></td>
                                         <td><?= $d['tanggal_refund']; ?></td>
                                         <?php if ($d['status_refund'] == 7) { ?>
-                                            <td>Belum dibayar</td>
-                                        <?php } else if ($d['status_refund'] == 2) { ?>
-                                            <td>Menunggu konfirmasi</td>
-                                        <?php } else if ($d['status_refund'] == 3) { ?>
-                                            <td>Sedang diproses</td>
-                                        <?php } else if ($d['status_refund'] == 4) { ?>
-                                            <td>Sedang dikirim</td>
-                                        <?php } else if ($d['status_refund'] == 5) { ?>
-                                            <td>Selesai</td>
-                                        <?php } else if ($d['status_refund'] == 6) { ?>
-                                            <td>Dibatalkan</td>
+                                            <td>Pengajuan Refund Produk</td>
+                                        <?php } else if ($d['status_refund'] == 8) { ?>
+                                            <td>Pengajuan Refund Diterima <br> Silahkan Kirim Produk <br> Dengan Menggunakan Jasa Pengiriman JNE / J&T Dengan Layanan DFOD <br> Kirim Pada Alamat Jl Semeru 14 Ponjen Lor, Kamaran, Kencong, Kabupaten Jember, Jawa Timur 68167 </td>
+                                        <?php } else if ($d['status_refund'] == 9) { ?>
+                                            <td>Anda Sudah Mengirim Produk</td>
+                                        <?php } else if ($d['status_refund'] == 10) { ?>
+                                            <td>Produk Sudah Diterima Amalia | Proses Refund</td>
+                                        <?php } else if ($d['status_refund'] == 11) { ?>
+                                            <td>Produk Telah Dikirim Kembali Oleh Amalia</td>
+                                        <?php } else if ($d['status_refund'] == 12) { ?>
+                                            <td>Produk Telah Diterima Oleh Penerima</td>
+                                        <?php } else if ($d['status_refund'] == 13) { ?>
+                                            <td>Refund Produk Ditolak Pastikan Sebelum Anda Melakukan Refund Produk Telah Membaca Syarat & Ketentuan Refund</td>
                                         <?php } ?>
 
-                                        <td><small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small></td>
+                                        <td>
+                                            <small><a href="<?php echo base_url("pesanan_saya/detail_order/") ?><?= $d['id_order']; ?>" class="text-info">Detail</a></small>
+                                            <button class="btn btn-info btn-md">Kirim Produk</button>
+                                        </td>
 
                                     </tr>
                                 <?php endforeach; ?>

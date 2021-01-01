@@ -15,7 +15,7 @@ class M_user extends CI_Model
   public function getRefund()
   {
     $id = $this->session->userdata('id');
-    $this->db->where('status_refund <=', 7);
+    //$this->db->where('status_refund =', 7);
     $this->db->where('id_pelanggan', $id);
     return $this->db->get('tbl_refund');
   }
