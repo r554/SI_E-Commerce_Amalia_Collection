@@ -60,15 +60,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Keterangan Refund</label>
-                                <textarea name="" id="" name="keterangan_refund" class="form-control" cols="30" rows="10" style="font-size: medium; height: 130px;" placeholder="Kenapa Anda Ingin Refund Produk?"></textarea>
+                                <textarea name="keterangan_refund" class="form-control" cols="30" rows="10" style="font-size: medium; height: 130px;" placeholder="Kenapa Anda Ingin Refund Produk?"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">Upload Video Unboxing Anda</label>
                                 <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Pilih Video</label>
-                                    </div>
+                                <input type='file' multiple accept='video/*' id="menu_images" name="video_bukti" required
+                                    oninvalid="this.setCustomValidity('Video Tidak Boleh Kosong!')"
+                                    oninput="setCustomValidity('')" />
+                                    <img class="img-fluid" id="video" src="#" alt="Pilih Video" OnError=" $(this).hide();"
+                                    height="500px" width="500px" />
                                 </div>
                                 <small><b>Perhatian!!! </b> Apabila Anda Tidak Memiliki Video Unboxing Anda Tidak Bisa Melakukan Refund</small>
                             </div>
@@ -128,7 +129,27 @@
 
 
     <!-- Java Script -->
-    <?php $this->load->view('Frontend/template/js') ?>
+    <?php $this->load->view('Frontend/template/js2') ?>
+
+
+    <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#video').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#menu_images").change(function() {
+        $('#video').show();
+        readURL(this);
+    });
+    </script>
     <!-- End Java Script -->
 
 

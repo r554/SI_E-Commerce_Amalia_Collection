@@ -2,7 +2,7 @@
 
 class M_Pengembalian_Barang extends CI_model
 {
-
+    public $video_bukti;
     public function get_refund_baru()
     {
         $this->db->from('tbl_refund');
@@ -134,7 +134,7 @@ class M_Pengembalian_Barang extends CI_model
     }
 
     public function simpan_data_refund()
-    {
+    {        
         $data = array(
             'id_refund' => $this->input->post('id_refund'),
             'id_order' => $this->input->post('id_order'),
@@ -145,8 +145,8 @@ class M_Pengembalian_Barang extends CI_model
             'tgl_order' => $this->input->post('tgl_order'),
             'status_refund' => $this->input->post('status_refund'),
             'id_pelanggan' => $this->input->post('id_pelanggan'),
-        );
-
+            'video_bukti'=> $this->video_bukti = $this->do_upload()
+        );        
         return $this->db->insert('tbl_refund', $data);
     }
 
@@ -160,7 +160,7 @@ class M_Pengembalian_Barang extends CI_model
             'harga_final' => $this->input->post('harga_final'),
             'warna' => $this->input->post('warna'),
         );
-
+        
         return $this->db->insert('tbl_detail_refund', $data);
     }
 
@@ -174,4 +174,19 @@ class M_Pengembalian_Barang extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
+    
+    function do_upload()
+    {
+        // setting konfigurasi upload
+        $config['upload_path'] = './assets/Gambar/video_bukti';
+        $config['allowed_types'] = 'mkv|mp4|avi|mov';
+        $config['file_name']            = 'Vb' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+        // load library upload
+        $this->load->library('upload', $config);
+        // upload gambar 1
+        $this->upload->do_upload('video_bukti');
+        $result1 = $this->upload->data('file_name');
+        return $result1;
+    }
+    
 }

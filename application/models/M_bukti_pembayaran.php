@@ -2,7 +2,7 @@
 
 class M_bukti_pembayaran extends CI_model
 {
-    private $_table = "tbl_bukti_pembayaran";
+    private $_table = "tbl_bukti_pembayaran";    
 
     public $id_order;
     public $foto_bukti;
@@ -41,5 +41,5 @@ class M_bukti_pembayaran extends CI_model
         $this->upload->do_upload('foto_bukti');
         $result1 = $this->upload->data('file_name');
         return $result1;
-    }
+    }    
 }
