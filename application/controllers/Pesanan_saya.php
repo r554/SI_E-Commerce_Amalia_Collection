@@ -117,8 +117,10 @@ class Pesanan_saya extends CI_Controller
     //untuk menyimpan Data Refund
     public function data_produk_refund($id)
     {
+        $id_refund = $this->uri->segment('4');
+
         $data['data_order'] = $this->M_Pengembalian_Barang->get_data_order($id);
-        $data['data_detail_refund'] = $this->M_Pengembalian_Barang->get_data_detail_refund($id);
+        $data['data_detail_refund'] = $this->M_Pengembalian_Barang->get_data_detail_refund($id_refund);
         $data['footer'] = $this->M_footer->tampil_footer();
         $data['jumlah_keranjang'] = $this->M_keranjang->jumlah_data_keranjang();
 
